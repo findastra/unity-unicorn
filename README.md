@@ -27,7 +27,7 @@ Records are stored only in the browser where you enter them. Clearing site data 
 
 ## Source version
 
-Version `0.1.0-20261008`, planned tag [`v0.1.0-20261008`](https://github.com/findastra/unity-unicorn/tree/v0.1.0-20261008). Source publication and release verification are recorded separately from local feature checks in `docs/publications-20261008.md`.
+Version `0.1.1-20261009`, planned tag [`v0.1.1-20261009`](https://github.com/findastra/unity-unicorn/tree/v0.1.1-20261009). Source publication and release verification are recorded separately from local feature checks in `docs/publications-20261009.md` (previous release: `docs/publications-20261008.md`).
 
 ## Credits
 

@@ -3,6 +3,7 @@
 *A pet app by Astra.* Public credit is always Astra.
 
 Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
+Square pet frame (`v0.1.1-20261009`) fixed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09.
 
 ## Scope
 
