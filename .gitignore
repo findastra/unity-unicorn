@@ -1,0 +1,15 @@
+.env
+.env.*
+*.log
+*.dat
+*.dat.*
+private/
+local-data/
+node_modules/
+.claude/
+.codex/
+.DS_Store
+Thumbs.db
+# Private browser exports
+*-export-*.json
+*-export-*.md
