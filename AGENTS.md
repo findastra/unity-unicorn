@@ -4,6 +4,7 @@
 
 Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
 Square pet frame (`v0.1.1-20261009`) fixed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09.
+Skill book `docs/skills-20261009.md` started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. After avatar or world sessions, add learned skills to its categories and append to its session log, without account details, blueprint IDs or machine paths.
 
 ## Scope
 

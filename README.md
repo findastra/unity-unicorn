@@ -20,6 +20,10 @@ Open [unity-unicorn-20261008.html](unity-unicorn-20261008.html) directly in a mo
 
 Unity and VRChat connections are planned. Record project work here as you build.
 
+## Skill book
+
+What Unity Unicorn has learned about avatar and world work, sorted by category, is in [docs/skills-20261009.md](docs/skills-20261009.md). Add new skills there and log each session.
+
 ## Data and limits
 
 Records are stored only in the browser where you enter them. Clearing site data can remove them; export backups. Exported records can contain personal information and must stay outside this source repository. The page does not send entries to a server. The pet's mood is a display choice.
