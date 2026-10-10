@@ -24,6 +24,13 @@ Unity and VRChat connections are planned. Record project work here as you build.
 
 What Unity Unicorn has learned about avatar and world work, sorted by category, is in [docs/skills-20261009.md](docs/skills-20261009.md). Add new skills there and log each session.
 
+## Avatar tracker and plans
+
+- [docs/avatar-tracker-20261009.md](docs/avatar-tracker-20261009.md): which avatars are uploaded to which VRChat account, with PC, Quest, impostor, fallback and opti coverage, plus the upload to-do list.
+- [docs/avatar-plans-20261009.md](docs/avatar-plans-20261009.md): planned edits gathered from the edit log in each avatar's folder.
+
+The tracker is updated by hand or by a routine scan. The app does not log in to VRChat itself.
+
 ## Data and limits
 
 Records are stored only in the browser where you enter them. Clearing site data can remove them; export backups. Exported records can contain personal information and must stay outside this source repository. The page does not send entries to a server. The pet's mood is a display choice.
