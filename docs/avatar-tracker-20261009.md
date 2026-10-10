@@ -39,7 +39,7 @@ Unity Unicorn keeps this list of which avatars are uploaded to which VRChat acco
 
 All 16 uploads are **private**.
 
-**Pictures:** These are the VRChat thumbnails, saved in `art/avatars/`. Poppy always uses Astra's chosen Poppy picture, and Poppy 7 VRCFT's VRChat thumbnail was changed to it on 2026-10-09. ⚠️ **Fae [VRCFT]** and **Leilin [VRCFT]** on VRChat also use that same Poppy picture, so they probably need their own thumbnails.
+**Pictures:** These are the VRChat thumbnails, saved in `art/avatars/`. Poppy always uses Astra's chosen Poppy picture, and Poppy 7 VRCFT's VRChat thumbnail was changed to it on 2026-10-09. Fae always uses Astra's chosen Fae picture (set 2026-10-09). Fae [VRCFT]'s thumbnail on VRChat still shows the Poppy picture until Fae is next uploaded. ⚠️ **Leilin [VRCFT]** on VRChat also uses the Poppy picture and needs its own.
 
 ## Opti versions
 
