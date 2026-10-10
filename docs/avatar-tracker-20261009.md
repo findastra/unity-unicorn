@@ -18,26 +18,28 @@ Unity Unicorn keeps this list of which avatars are uploaded to which VRChat acco
 
 ## Uploaded avatars
 
-| Avatar | Variant | Account | PC | Quest | Impostor | Fallback | Perf (PC / Quest) | Last updated |
-|---|---|---|---|---|---|---|---|---|
-| Poppy | 7 VRCFT | aiノastra | ✅ | ❌ | ❌ | ❌ | VP / — | 2026-10-09 |
-| Poppy | 6 VRCFT | findノastra | ✅ | ✅ | ❌ | ❌ | VP / VP | 2026-09-05 |
-| Poppy | BIRTHDAY | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
-| Meep | VRCFT | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-10-01 |
-| Nya | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
-| Nya | OPTI | findノastra | ✅ | ✅ | ✅ | ❌ | Good / VP | 2026-09-05 |
-| Obsi | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
-| Obsi | OPTI | findノastra | ✅ | ✅ | ✅ | ❌ | Medium / VP | 2026-09-05 |
-| Fae | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
-| Leilin | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
-| Tisha | VRCFT | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
-| Ryuu | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
-| Zhora | — | findノastra | ✅ | ❌ | ❌ | ❌ | VP / — | 2026-09-05 |
-| Onyx | — | findノastra | ✅ | ✅ | ❌ | ❌ | VP / VP | 2026-03-14 |
-| Anarchy | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2025-08-27 |
-| Akalii | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2025-08-12 |
+| Pic | Avatar | Variant | Account | PC | Quest | Impostor | Fallback | Perf (PC / Quest) | Last updated |
+|---|---|---|---|---|---|---|---|---|---|
+| <img src="../art/avatars/poppy-20261009.jpg" width="120" alt="Poppy"> | Poppy | 7 VRCFT | aiノastra | ✅ | ❌ | ❌ | ❌ | VP / — | 2026-10-09 |
+| <img src="../art/avatars/poppy-20261009.jpg" width="120" alt="Poppy"> | Poppy | 6 VRCFT | findノastra | ✅ | ✅ | ❌ | ❌ | VP / VP | 2026-09-05 |
+| <img src="../art/avatars/poppy-20261009.jpg" width="120" alt="Poppy"> | Poppy | BIRTHDAY | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
+| <img src="../art/avatars/meep-20261009.jpg" width="120" alt="Meep"> | Meep | VRCFT | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-10-01 |
+| <img src="../art/avatars/nya-vrcft-20261009.jpg" width="120" alt="Nya"> | Nya | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
+| <img src="../art/avatars/nya-opti-20261009.jpg" width="120" alt="Nya"> | Nya | OPTI | findノastra | ✅ | ✅ | ✅ | ❌ | Good / VP | 2026-09-05 |
+| <img src="../art/avatars/obsi-vrcft-20261009.jpg" width="120" alt="Obsi"> | Obsi | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
+| <img src="../art/avatars/obsi-opti-20261009.jpg" width="120" alt="Obsi"> | Obsi | OPTI | findノastra | ✅ | ✅ | ✅ | ❌ | Medium / VP | 2026-09-05 |
+| <img src="../art/avatars/fae-20261009.jpg" width="120" alt="Fae"> | Fae | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
+| <img src="../art/avatars/leilin-20261009.jpg" width="120" alt="Leilin"> | Leilin | VRCFT | findノastra | ✅ | ✅ | ✅ | ❌ | VP / VP | 2026-09-05 |
+| <img src="../art/avatars/tisha-20261009.jpg" width="120" alt="Tisha"> | Tisha | VRCFT | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
+| <img src="../art/avatars/ryuu-20261009.jpg" width="120" alt="Ryuu"> | Ryuu | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2026-09-05 |
+| <img src="../art/avatars/zhora-20261009.jpg" width="120" alt="Zhora"> | Zhora | — | findノastra | ✅ | ❌ | ❌ | ❌ | VP / — | 2026-09-05 |
+| <img src="../art/avatars/onyx-20261009.jpg" width="120" alt="Onyx"> | Onyx | — | findノastra | ✅ | ✅ | ❌ | ❌ | VP / VP | 2026-03-14 |
+| <img src="../art/avatars/anarchy-20261009.jpg" width="120" alt="Anarchy"> | Anarchy | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2025-08-27 |
+| <img src="../art/avatars/akalii-20261009.jpg" width="120" alt="Akalii"> | Akalii | — | findノastra | ✅ | ❌ | ✅ | ❌ | VP / — | 2025-08-12 |
 
 All 16 uploads are **private**.
+
+**Pictures:** These are the VRChat thumbnails, saved in `art/avatars/`. Poppy always uses Astra's chosen Poppy picture, and Poppy 7 VRCFT's VRChat thumbnail was changed to it on 2026-10-09. ⚠️ **Fae [VRCFT]** and **Leilin [VRCFT]** on VRChat also use that same Poppy picture, so they probably need their own thumbnails.
 
 ## Opti versions
 
