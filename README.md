@@ -43,3 +43,5 @@ Version `0.1.1-20261009`, planned tag [`v0.1.1-20261009`](https://github.com/fin
 ## Credits
 
 Made by Astra. Interface prepared with Codex (GPT-6), 2026-10-08. The pet artwork is copied from Astra's Pet Apps.
+
+Desktop hub sync, 2026-10-11: the Unity tool-library interface now accepts local catalog/verification imports, preserves original execution dates, and exports private backups. Local seed files are not published.

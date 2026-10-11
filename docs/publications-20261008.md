@@ -24,3 +24,5 @@ Keep this tag immutable. If a defect is found, fix it in a new commit and publis
 ## Remaining work
 
 GitHub Release creation and live hosting verification are tracked separately. Planned external integrations are listed in the README and shown in the browser interface.
+
+2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
