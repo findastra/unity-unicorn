@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
-const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
+const html = readFileSync(process.env.UNITY_UNICORN_HTML || new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
 const script = /<script id="tool-library-app">([\s\S]*?)<\/script>/.exec(html)[1];
 const key = 'astra-unity-tool-library:1';
 const deskKey = 'astra-pet-desk:unity-unicorn:1';
@@ -109,7 +109,7 @@ test('finding text is not HTML and exports, copies, reloads and searches do not 
   app.nodes.get('tool-export').onclick();
   const commandDetails = card(app).children.find(e => e.tag === 'details');
   await commandDetails.children.find(e => e.tag === 'button').onclick();
-  app.nodes.get('tool-search').value = 'masonry';
+  app.nodes.get('tool-search').value = 'masonry structural';
   app.nodes.get('tool-search').oninput();
   assert.equal(app.nodes.get('tool-grid').children.length, 1);
   assert.equal(JSON.stringify(app.api.getState()), before);
@@ -136,4 +136,29 @@ test('storage failure is visible and retains records for an immediate private ex
   const output = flatten(card(app, 'cloud-mesh-generator'));
   assert.match(output, /Last completed use\nOct 10, 2026/);
   assert.match(output, /Latest attempt: Oct 11, 2026.*failed/);
+});
+
+test('optional installed copy loads its real local sidecar with evidenced dates and preserves private storage', { skip: !process.env.UNITY_UNICORN_LOCAL_SEED }, () => {
+  const seedContext = {};
+  vm.createContext(seedContext);
+  const seedSource = readFileSync(process.env.UNITY_UNICORN_LOCAL_SEED, 'utf8');
+  assert.match(seedSource, /^globalThis\.UnityUnicornLocalTools = /);
+  vm.runInContext(seedSource, seedContext);
+  const seed = seedContext.UnityUnicornLocalTools;
+  assert.equal(seed.schema, 'unity-unicorn.tool-library-backup/v1');
+  assert.ok(seed.catalog.length > 0);
+  assert.ok(seed.runs.length > 0);
+  const desk = '[{"id":"retained","title":"Existing private planning record"}]';
+  const storage = new Map([[deskKey, desk]]);
+  const app = boot(storage, seed);
+  assert.equal(storage.get(deskKey), desk);
+  assert.equal(app.api.getState().catalog.length, seed.catalog.length);
+  for (const t of seed.catalog) {
+    const output = flatten(card(app, t.id));
+    assert.ok(output.includes(t.name));
+    if (t.last_used) assert.ok(output.includes(app.api.displayDate(t.last_used)), 'Actual evidenced date should render for '+t.id);
+  }
+  const before = JSON.stringify(app.api.getState());
+  assert.equal(JSON.stringify(boot(storage, seed).api.getState()), before);
+  assert.ok(app.api.getState().runs.every(run => seed.runs.some(original => original.tool_id === run.tool_id && original.completed_at === run.completed_at)));
 });

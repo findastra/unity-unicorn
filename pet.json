@@ -9,7 +9,7 @@
   "version": "0.2.0-20261011",
   "source": "https://github.com/findastra/unity-unicorn/tree/v0.2.0-20261011",
   "release_tag": "v0.2.0-20261011",
-  "publication_status": "source-release-prepared; see docs/publications-20261008.md",
+  "publication_status": "source-release; verification in docs/publications-20261011.md",
   "visibility": "public",
   "implementation_status": "Offline planning desk plus generic tool catalog, private report and usage imports, local execution-history display and command copying. No direct Unity connection or command execution.",
   "cage": {

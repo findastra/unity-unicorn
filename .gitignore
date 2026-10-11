@@ -14,3 +14,7 @@ Thumbs.db
 *-export-*.json
 *-export-*.md
 unity-unicorn-local-tools-*.js
+
+# Python execution caches
+__pycache__/
+*.pyc

@@ -17,14 +17,13 @@ Open [unity-unicorn-20261008.html](unity-unicorn-20261008.html) directly in a mo
 - Keep entries in this browser's local storage.
 - Export a private JSON backup or Markdown worklist.
 - Choose among all nine pet moods.
-
 - Search a library of Unity, cloud-generation, inspection and build tools.
 - Import a private catalog with local paths and dated execution evidence.
 - Import masonry-audit reports and usage receipts; inspect findings, metrics and limitations.
-- Track the last recorded use in America/Denver, with **Unknown** when evidence is missing.
+- Track the last completed use in America/Denver, with **Unknown** when evidence is missing.
 - Copy command templates and export a private tool-library backup.
 
-Run tools locally and import their reports. The browser does not connect to Unity or execute commands. See [the tool-library contracts and workflow](docs/tool-library-20261011.md).
+An optional ignored local sidecar can supply the installed desktop app with private inventory and execution dates. Run tools locally and import their reports. The browser does not connect to Unity or execute commands. See [the tool-library contracts and workflow](docs/tool-library-20261011.md).
 
 ## Skill book
 
@@ -44,7 +43,7 @@ Records are stored only in the browser where you enter them. Clearing site data 
 
 ## Source version
 
-Version `0.2.0-20261011`, prepared tag [`v0.2.0-20261011`](https://github.com/findastra/unity-unicorn/tree/v0.2.0-20261011). Source publication and release verification are recorded separately from local feature checks in `docs/publications-20261008.md`. Previous revisions are recorded in docs/publications-20261009.md.
+Version `0.2.0-20261011`, source tag [`v0.2.0-20261011`](https://github.com/findastra/unity-unicorn/tree/v0.2.0-20261011). Source publication and release verification are recorded separately from local feature checks in [the dated publication record](docs/publications-20261011.md). Previous revisions are recorded in docs/publications-20261009.md.
 
 ## Credits
 

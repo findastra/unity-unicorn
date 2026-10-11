@@ -9,7 +9,7 @@ The self-contained browser entry preserves the existing planning desk and adds a
 3. Import the completed tool report or usage receipt. Dates come from the imported execution record, never from opening this app or copying a command.
 4. Use **Export tool backup** to keep catalog entries and run history outside Git.
 
-Last recorded use is shown in America/Denver. A historical date without a verified time is labeled **date only**. Missing evidence stays **Unknown**. A failed execution is labeled **Failed attempt**. Imported timestamps are records supplied by the user/tool, not independently authenticated by the browser. File modification dates and catalog-generation dates do not establish use.
+Last completed use is shown in America/Denver. A historical date without a verified time is labeled **date only**. Missing evidence stays **Unknown**. A newer failed execution appears separately as **Latest attempt** and never replaces the last completed use. Imported timestamps are records supplied by the user/tool, not independently authenticated by the browser. File modification dates and catalog-generation dates do not establish use.
 
 ## Private catalog contract
 
@@ -37,7 +37,7 @@ Last recorded use is shown in America/Denver. A historical date without a verifi
 }
 ```
 
-Omit `last_used` or set it to `null` when no execution evidence exists. For a known instant use `completed_at` with an ISO UTC timestamp ending in `Z` instead of `date`. A last-use record requires evidence text. The command token `{date}` expands to the owner's current `YYYYMMDD` date without changing execution history. Catalog imports update tools by `id` and do not remove other tools.
+Omit `last_used` or set it to `null` when no execution evidence exists. For a known instant use `completed_at` with an ISO UTC timestamp ending in `Z` instead of `date`. A last-use record requires evidence text and completed status (omitted status defaults to completed). Catalog last_used rejects failed records: import failed attempts as usage reports so older completed history remains available. The command token `{date}` expands to the owner's current `YYYYMMDD` date without changing execution history. Catalog imports update tools by `id` and do not remove other tools.
 
 ## Report and usage contracts
 
@@ -52,3 +52,19 @@ Backups use `unity-unicorn.tool-library-backup/v1`, `catalog` and `runs` arrays.
 Tool data uses `astra-unity-tool-library:1`. The existing planning desk remains at `astra-pet-desk:unity-unicorn:1`. Records are stored only on the browser origin/file location being used; there is no service, telemetry, token storage or network call. Moving to a different origin may require importing a backup. If browser storage fails, the page reports it and allows an export.
 
 Private paths, project names, reports, run history and backups must remain outside the public source repository. Generic defaults contain none of the owner's private inventory. A tool's presence in the catalog does not prove it was run, and a completed geometric audit is not a Unity runtime check or a structural-engineering certification.
+
+## Local inventory beside the desktop app
+
+The page can read an optional, ignored file named unity-unicorn-local-tools-20261011.js in the same folder as the HTML. It contains one controlled assignment to globalThis.UnityUnicornLocalTools with a unity-unicorn.tool-library-backup/v1 object. The locally installed copy can therefore show a private catalog and dated reports immediately, even when a different browser has different storage. Missing sidecar files leave the generic catalog available.
+
+This optional sidecar is trusted local code: generate it only from reviewed JSON, never from imported code or remote content. Never commit it or publish it as an asset. The source and Cage ignore matching local-tool files. Updates merge missing tools and newer completed evidence, preserve saved custom names/commands and retain existing run history. A malformed sidecar is rejected before it mutates stored records. The page does not monitor other tools or create completion records simply by loading the sidecar.
+
+## Recording future runs
+
+The current structural auditor supports the procedural PMS1/PMS2 mesh format, HouseLayout placement data and the supplied masonry profile. It is not a universal parser for arbitrary Unity scenes or FBX assets. Reuse its checks on compatible projects; extend the profile and add regression cases for different formats or architecture. The current assembled-opening checks cover four declared central junction segments, not every intersection in a world.
+
+The structural auditor emits a report plus a usage receipt after completion. For another synchronous tool, scripts/run-unity-tool-20261011.py accepts --tool-id, --project, --usage-log, optional --report, and --foreground followed by -- and the command arguments. The foreground flag asserts that the command waits until the tool finishes. The wrapper rejects direct Unity launches, shells and known asynchronous launchers. Use the existing editor workflow and an explicit completion report for editor jobs.
+
+A wrapper receipt records the process result, timing and optional output hash; it does not establish engineering correctness. A nonzero exit or missing/unchanged requested report records a failed attempt. Import that receipt to preserve it separately from completed use. Do not use a command that only starts work in the background. Private commands, local inventory and receipts stay outside public source.
+
+For Blender Python jobs, place `--python-exit-code 1` before `--python` so script failures reach the wrapper. For Unity mesh refreshes, saving copied serialized data may leave stale native render buffers: synchronously reimport changed mesh assets before rendering inspection views, and compare the actual scene with the source checks.

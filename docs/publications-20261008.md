@@ -30,3 +30,7 @@ GitHub Release creation and live hosting verification are tracked separately. Pl
 Version `0.2.0-20261011`, intended immutable tag `v0.2.0-20261011`, prepared with Codex (GPT-6). This revision adds a generic tool library, private catalog/report/usage imports, execution dates shown in America/Denver, command copying and private backups. Existing planning-desk records and the Cage's square pet-well presentation are preserved. No private project inventory is bundled.
 
 The page does not execute commands or connect to Unity. Local script tests, actual browser verification and source publication are separate checks. No commit, push, tag, release or hosting verification is asserted by this preparation note. Record their evidence after they complete.
+
+The v0.2 source was reconciled with the existing avatar tracker, plans, skill book and images through origin/main 7a6ac96. Nine Node regression tests passed for history, imports, storage and safe rendering. These local harness results do not assert an interactive browser check or remote release publication.
+
+The installed Cage HTML and ignored private sidecar additionally passed all ten tool-library tests, including real catalog date rendering and repeated-load preservation. The file-URL browser tool could not open the desktop page, so this is an exact-file local harness check, not a visual browser verification. The private sidecar is excluded from source publication.
