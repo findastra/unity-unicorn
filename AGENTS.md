@@ -3,10 +3,13 @@
 *A pet app by Astra.* Public credit is always Astra.
 
 Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
+Tool library and private report imports prepared with Codex (GPT-6), 2026-10-11.
 
 ## Scope
 
 Working offline draft: purpose-specific records, editing, status changes, search, local browser storage, JSON and Markdown exports. External integrations are planned.
+
+The tool library is a local catalog and report viewer, not a Unity execution bridge. Keep private tool paths, project names and run history in imported catalogs/browser storage outside Git. A last-used date requires execution evidence; never substitute a file modification time, catalog import time or page-load time. Preserve `astra-pet-desk:unity-unicorn:1` when changing the separate tool-library storage.
 
 ## Rules
 

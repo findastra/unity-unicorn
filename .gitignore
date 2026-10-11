@@ -13,3 +13,4 @@ Thumbs.db
 # Private browser exports
 *-export-*.json
 *-export-*.md
+unity-unicorn-local-tools-*.js

@@ -24,3 +24,9 @@ Keep this tag immutable. If a defect is found, fix it in a new commit and publis
 ## Remaining work
 
 GitHub Release creation and live hosting verification are tracked separately. Planned external integrations are listed in the README and shown in the browser interface.
+
+## Tool library revision · 2026-10-11
+
+Version `0.2.0-20261011`, intended immutable tag `v0.2.0-20261011`, prepared with Codex (GPT-6). This revision adds a generic tool library, private catalog/report/usage imports, execution dates shown in America/Denver, command copying and private backups. Existing planning-desk records and the Cage's square pet-well presentation are preserved. No private project inventory is bundled.
+
+The page does not execute commands or connect to Unity. Local script tests, actual browser verification and source publication are separate checks. No commit, push, tag, release or hosting verification is asserted by this preparation note. Record their evidence after they complete.
