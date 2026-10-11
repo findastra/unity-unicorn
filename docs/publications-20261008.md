@@ -34,3 +34,5 @@ The page does not execute commands or connect to Unity. Local script tests, actu
 The v0.2 source was reconciled with the existing avatar tracker, plans, skill book and images through origin/main 7a6ac96. Nine Node regression tests passed for history, imports, storage and safe rendering. These local harness results do not assert an interactive browser check or remote release publication.
 
 The installed Cage HTML and ignored private sidecar additionally passed all ten tool-library tests, including real catalog date rendering and repeated-load preservation. The file-URL browser tool could not open the desktop page, so this is an exact-file local harness check, not a visual browser verification. The private sidecar is excluded from source publication.
+
+2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
