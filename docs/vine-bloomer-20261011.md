@@ -52,4 +52,16 @@ Render each piece in Blender with the mantle (daylight, oblique and edge-on view
 Unity and take review shots from the roof way and from the sea. The user judges coverage from a distance — if a roof
 still shows mostly stone, raise coverage, don't add strands.
 
-Status (2026-10-11): texture renderer written; shells, IvyMat shader and placement are the next build steps.
+Status (2026-10-11): the first pass is in the Piranesi House. Every hall roof, dome and drum is covered, and most outer
+walls of the halls, galleries, naves, sea halls and isle halls. That's 36 mantle meshes in 597 placements, each with a
+LOD. The shell script is `scripts/vine-bloomer-mantle-20261011.py`.
+
+Lessons from the first pass:
+- Wind every source face so its normal points out before building the shells. Faces with flipped winding put the shell
+  inside the wall, where back-face culling hides it.
+- Decimate only small ornament faces. Quadric decimation of the whole surface collapses big, simple faces such as a
+  dome drum. Pass big faces through unchanged, and give richly ornamented drums a synthetic cylinder.
+- Split triangles by longest-edge bisection, not uniform subdivision. Long cornice slivers otherwise explode into
+  thousands of triangles.
+- Measure "near an opening" from evenly sampled surface area, not from vertex density, which is low on big flat faces.
+- The outer wall field of a hall belongs to the inner side piece (`Vest_Side*`), not only the exterior skin, so mantle both.
