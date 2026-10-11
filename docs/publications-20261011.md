@@ -28,4 +28,6 @@ The browser automation surface disallows local file URLs, so no interactive brow
 
 The tag names the exact source prepared for release. Remote push, tag and GitHub Release verification are recorded in a subsequent dated publication receipt; this source record alone is not evidence of those network actions or a website deployment.
 
+Completed remote and local verification is recorded in [the source release receipt](source-release-receipt-20261011.md).
+
 Keep all existing tags immutable. Rollback uses an earlier source revision and the corresponding app entry. Private tool history uses a separate storage key and a private export; older apps may not display it. Preserve that data and the existing planning desk during rollback.
