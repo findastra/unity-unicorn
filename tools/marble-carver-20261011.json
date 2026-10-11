@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "marble-carver",
+      "name": "marble-carver-20261011.json",
+      "kind": "Generator",
+      "description": "Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs. Export a PMS2 mesh, LOD and textures for the Unity house builder.",
+      "source_path": "scripts/marble-carver-bring-statue-20261011.py",
+      "command_template": "blender --background --python scripts/marble-carver-bring-statue-20261011.py -- <Name> \"<private-output>/Blender/Out/<Name>\" \"<scan>_normals.png\" \"<scan>_occlusion.png\" <height-m> \"<project-path>/Assets/Piranesi\""
+    }
+  ]
+}

@@ -8,6 +8,7 @@ Skill book `docs/skills-20261009.md` started with Claude Opus 5.5 (`claude-opus-
 Avatar tracker and plans (`docs/avatar-tracker-20261009.md`, `docs/avatar-plans-20261009.md`) started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. Rules: every avatar asset folder keeps an `Edit Log - <avatar>-<date>.txt`, so create one from the template when it's missing. Refresh both files on each routine scan. When an avatar's licence may not allow uploads to more than one account, upload to findノastra only. Poppy's thumbnail is always `art/avatars/poppy-20261009.jpg` (the original is kept beside Poppy's assets); use it for every Poppy upload and tracker row. Fae's thumbnail is always `art/avatars/fae-20261009.jpg` (the original is kept beside Fae's assets).
 
 Tool library and private report imports prepared with Codex (GPT-6), 2026-10-11.
+marble-carver and vine-bloomer tools, scripts and guides added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
 ## Scope
 

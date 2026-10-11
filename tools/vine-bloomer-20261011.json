@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "vine-bloomer",
+      "name": "vine-bloomer-20261011.json",
+      "kind": "Generator",
+      "description": "Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning. Drape it over every roof and most outer walls with leaf curtains at edges, keeping water channels, paths and openings clear.",
+      "source_path": "scripts/vine-bloomer-ivy-texture-20261011.py",
+      "command_template": "python scripts/vine-bloomer-ivy-texture-20261011.py"
+    }
+  ]
+}

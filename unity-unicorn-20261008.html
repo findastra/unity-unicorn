@@ -17,6 +17,22 @@ const mk=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className
 const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Denver',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const DEFAULTS=[
   {
+    "id": "marble-carver",
+    "name": "marble-carver-20261011.json",
+    "kind": "Generator",
+    "description": "Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs. Export a PMS2 mesh, LOD and textures for the Unity house builder.",
+    "source_path": "scripts/marble-carver-bring-statue-20261011.py",
+    "command_template": "blender --background --python scripts/marble-carver-bring-statue-20261011.py -- <Name> \"<private-output>/Blender/Out/<Name>\" \"<scan>_normals.png\" \"<scan>_occlusion.png\" <height-m> \"<project-path>/Assets/Piranesi\""
+  },
+  {
+    "id": "vine-bloomer",
+    "name": "vine-bloomer-20261011.json",
+    "kind": "Generator",
+    "description": "Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning. Drape it over every roof and most outer walls with leaf curtains at edges, keeping water channels, paths and openings clear.",
+    "source_path": "scripts/vine-bloomer-ivy-texture-20261011.py",
+    "command_template": "python scripts/vine-bloomer-ivy-texture-20261011.py"
+  },
+  {
     "id": "no-windows-audit-tool",
     "name": "no-windows-audit-tool-20261011.json",
     "kind": "Audit",
