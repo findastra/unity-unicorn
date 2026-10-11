@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-physics-check",
+      "name": "cloud-physics-check-20261011.json",
+      "kind": "Audit",
+      "description": "Probe cloud tops, undersides and side walls using the available physics checks. Look for unintended barriers and verify moving-cloud references; a completed run still needs its findings reviewed."
+    }
+  ]
+}

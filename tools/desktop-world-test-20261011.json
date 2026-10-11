@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "desktop-world-test",
+      "name": "desktop-world-test-20261011.json",
+      "kind": "Build",
+      "description": "Build the current world for a local VRChat desktop test using its existing workflow. Record completion and available client evidence, while distinguishing a successful launch from an actual visual or multiplayer inspection."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "scene-preview-render",
+      "name": "scene-preview-render-20261011.json",
+      "kind": "Preview",
+      "description": "Assemble a supported generated layout and render an offline overview of its architecture and materials. Use the image for visual inspection while clearly separating it from Unity, collision and headset verification."
+    }
+  ]
+}

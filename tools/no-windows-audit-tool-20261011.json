@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "no-windows-audit-tool",
+      "name": "no-windows-audit-tool-20261011.json",
+      "kind": "Audit",
+      "description": "Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages. Check curved arch heads and neighboring modules, then produce a dated report and matching Unity collider probes.",
+      "source_path": "scripts/no-windows-audit-tool-20261011.py",
+      "command_template": "python scripts/no-windows-audit-tool-20261011.py --project \"<project-path>\" --output \"<private-output>/no-windows-audit-tool-{date}.json\" --usage-log \"<private-output>/no-windows-audit-tool-usage-{date}.json\""
+    }
+  ]
+}

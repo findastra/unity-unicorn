@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "button-check",
+      "name": "button-check-20261011.json",
+      "kind": "Audit",
+      "description": "Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes. Exercise the available test controls and record what was checked without treating an untouched control as verified."
+    }
+  ]
+}

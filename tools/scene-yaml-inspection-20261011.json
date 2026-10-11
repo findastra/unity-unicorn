@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "scene-yaml-inspection",
+      "name": "scene-yaml-inspection-20261011.json",
+      "kind": "Audit",
+      "description": "Read supported serialized Unity scene data to inspect object references, transforms and saved component settings. Use it for source-level diagnosis while keeping conclusions separate from live editor behavior and visual verification."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "reflection-probe-bake",
+      "name": "reflection-probe-bake-20261011.json",
+      "kind": "Build",
+      "description": "Refresh the scene reflection probes after changes that affect nearby geometry or lighting. Inspect the resulting reflections in Unity and keep the bake date separate from any later world upload."
+    }
+  ]
+}

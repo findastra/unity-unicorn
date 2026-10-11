@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "occlusion-bake",
+      "name": "occlusion-bake-20261011.json",
+      "kind": "Build",
+      "description": "Bake visibility data that helps Unity avoid drawing hidden parts of the scene. Recheck views after major geometry changes so newly opened passages are not hidden by stale visibility information."
+    }
+  ]
+}

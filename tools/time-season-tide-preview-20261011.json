@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "time-season-tide-preview",
+      "name": "time-season-tide-preview-20261011.json",
+      "kind": "Preview",
+      "description": "Preview time of day, seasonal effects and tide height in the Unity editor. Compare environmental states without claiming a client test; record whether the helper ran directly or within another verified tool."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "vrchat-avatar-upload",
+      "name": "vrchat-avatar-upload-20261011.json",
+      "kind": "Workflow",
+      "description": "Follow the established avatar preparation and SDK upload workflow for the intended account. Check dependencies and build feedback, then record an upload only when completion evidence confirms it actually happened."
+    }
+  ]
+}

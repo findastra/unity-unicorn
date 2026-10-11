@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-sea-fusion",
+      "name": "cloud-sea-fusion-20261011.json",
+      "kind": "Generator",
+      "description": "Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement. Reduce visible seams and overlapping balls, then review the new shapes before applying them to the world."
+    }
+  ]
+}

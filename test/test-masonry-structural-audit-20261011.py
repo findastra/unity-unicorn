@@ -33,6 +33,11 @@ def mesh_bytes(positions, normals=None, subs=None, uv=None, reserved=1):
 
 
 class AuditTests(unittest.TestCase):
+    def test_empty_removed_material_slot_preserves_following_material_identity(self):
+        mesh = self.mesh(mesh_bytes([(0,0,0),(1,0,0),(0,1,0)], subs=[('Glass', []), ('Wall', [0,1,2])]))
+        self.assertEqual([(name,len(indices)) for name,indices in mesh['submeshes']], [('Glass',0),('Wall',3)])
+        self.assertEqual(audit.mesh_metrics(mesh,{})['masonry_triangles'],1)
+
     def test_completion_times_preserve_distinct_observations_in_one_second(self):
         observed = [datetime(2026,10,11,19,38,20,123456,tzinfo=timezone.utc),
                     datetime(2026,10,11,19,38,20,123789,tzinfo=timezone.utc)]

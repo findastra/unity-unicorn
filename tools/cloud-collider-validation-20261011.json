@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-collider-validation",
+      "name": "cloud-collider-validation-20261011.json",
+      "kind": "Audit",
+      "description": "Check rebuilt cloud support slabs against the visible top surface and outer outline. Report supports that float above a cloud or extend beyond it so they can be corrected before a play test."
+    }
+  ]
+}

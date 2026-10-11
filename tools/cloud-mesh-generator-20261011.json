@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-mesh-generator",
+      "name": "cloud-mesh-generator-20261011.json",
+      "kind": "Generator",
+      "description": "Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets. Export the shapes for Unity, then inspect their appearance and shared uses before replacing existing world assets."
+    }
+  ]
+}

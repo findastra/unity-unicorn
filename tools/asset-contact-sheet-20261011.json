@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "asset-contact-sheet",
+      "name": "asset-contact-sheet-20261011.json",
+      "kind": "Preview",
+      "description": "Render a compact visual inventory of supported meshes and materials for comparison. Use it to spot missing parts, unusual scale or inconsistent surfaces, then inspect suspicious assets more closely in the scene."
+    }
+  ]
+}

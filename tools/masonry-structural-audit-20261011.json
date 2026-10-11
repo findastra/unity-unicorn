@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "masonry-structural-audit",
+      "name": "masonry-structural-audit-20261011.json",
+      "kind": "Audit",
+      "description": "Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams. Compare the source layout with declared junction checks and save the findings with an evidence-backed execution date.",
+      "source_path": "scripts/masonry-structural-audit-20261011.py",
+      "command_template": "python scripts/masonry-structural-audit-20261011.py --project \"<project-path>\" --output \"<private-output>/masonry-structural-audit-{date}.json\" --usage-log \"<private-output>/masonry-structural-audit-usage-{date}.json\""
+    }
+  ]
+}

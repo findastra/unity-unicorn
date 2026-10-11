@@ -87,13 +87,13 @@ def read_mesh(path):
         except UnicodeDecodeError as error:
             raise ValueError("Invalid UTF-8 submesh name") from error
         count = number()
-        if count <= 0 or count % 3:
-            raise ValueError("Triangle-index count must be a positive multiple of three")
+        if count < 0 or count % 3:
+            raise ValueError("Triangle-index count must be a nonnegative multiple of three")
         indices = array.array("i")
         indices.frombytes(take(count * 4))
         if sys.byteorder != "little":
             indices.byteswap()
-        if min(indices) < 0 or max(indices) >= nv:
+        if indices and (min(indices) < 0 or max(indices) >= nv):
             raise ValueError("Triangle index outside vertex buffer")
         subs.append((name, indices))
     if offset != len(data):
@@ -642,7 +642,7 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 
 
-def audit_git_ref(project, ref):
+def audit_git_ref(project, ref, auditor=None):
     """Audit committed inputs in a private temporary snapshot; never checkout."""
     project = Path(project).resolve()
     revision = subprocess.run(["git", "-C", str(project), "rev-parse", "--verify", "--end-of-options", ref+"^{commit}"],
@@ -652,7 +652,7 @@ def audit_git_ref(project, ref):
     paths = ["Assets/Piranesi/Meshes", "Assets/Piranesi/Shaders/Stone.shader",
         "Assets/Piranesi/Generated/Materials/M_Wall.mat", "Assets/Piranesi/Generated/Materials/M_Stone.mat",
         "Assets/Piranesi/Data/HouseLayout.json", "Assets/Piranesi/Textures/Wall_Albedo.png",
-        "ArtSource/gen/kit.py", "ArtSource/gen/kit2.py"]
+        "ArtSource/gen/kit.py", "ArtSource/gen/kit2.py", "Assets/Piranesi/Scenes/PiranesiHouse.unity"]
     with tempfile.TemporaryDirectory(prefix="unicorn-committed-snapshot-") as directory:
         destination = Path(directory).resolve()
         process = subprocess.Popen(["git", "-C", str(project), "archive", "--format=tar", revision, "--", *paths],
@@ -677,7 +677,7 @@ def audit_git_ref(project, ref):
             stderr = process.stderr.read().decode("utf-8", errors="replace")
             if process.wait() != 0:
                 raise ValueError("Git archive failed: "+stderr.strip())
-            report = audit_project(destination)
+            report = (auditor or audit_project)(destination)
             report["project"]["name"] = project.name
             report["input_source"] = {"kind": "git-commit", "commit": revision}
             return report

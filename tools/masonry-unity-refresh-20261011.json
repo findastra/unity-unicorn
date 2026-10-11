@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "masonry-unity-refresh",
+      "name": "masonry-unity-refresh-20261011.json",
+      "kind": "Editor",
+      "description": "Refresh existing masonry mesh assets and their authored material mapping in Unity. Reimport changed meshes to avoid stale rendering, then capture scene views and record shader compilation and completion evidence."
+    }
+  ]
+}

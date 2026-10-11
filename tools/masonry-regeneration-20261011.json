@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "masonry-regeneration",
+      "name": "masonry-regeneration-20261011.json",
+      "kind": "Generator",
+      "description": "Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry. Stage the results, preserve backups and verify material slots, bounds and opening checks before replacing mesh data."
+    }
+  ]
+}

@@ -57,7 +57,7 @@ Private paths, project names, reports, run history and backups must remain outsi
 
 The page can read an optional, ignored file named unity-unicorn-local-tools-20261011.js in the same folder as the HTML. It contains one controlled assignment to globalThis.UnityUnicornLocalTools with a unity-unicorn.tool-library-backup/v1 object. The locally installed copy can therefore show a private catalog and dated reports immediately, even when a different browser has different storage. Missing sidecar files leave the generic catalog available.
 
-This optional sidecar is trusted local code: generate it only from reviewed JSON, never from imported code or remote content. Never commit it or publish it as an asset. The source and Cage ignore matching local-tool files. Updates merge missing tools and newer completed evidence, preserve saved custom names/commands and retain existing run history. A malformed sidecar is rejected before it mutates stored records. The page does not monitor other tools or create completion records simply by loading the sidecar.
+This optional sidecar is trusted local code: generate it only from reviewed JSON, never from imported code or remote content. Never commit it or publish it as an asset. The source and Cage ignore matching local-tool files. Updates merge missing tools and newer completed evidence, preserve custom tools and commands; known built-in tools receive the current dated name and summary and retain existing run history. A malformed sidecar is rejected before it mutates stored records. The page does not monitor other tools or create completion records simply by loading the sidecar.
 
 ## Recording future runs
 
@@ -68,3 +68,11 @@ The structural auditor emits a report plus a usage receipt after completion. For
 A wrapper receipt records the process result, timing and optional output hash; it does not establish engineering correctness. A nonzero exit or missing/unchanged requested report records a failed attempt. Import that receipt to preserve it separately from completed use. Do not use a command that only starts work in the background. Private commands, local inventory and receipts stay outside public source.
 
 For Blender Python jobs, place `--python-exit-code 1` before `--python` so script failures reach the wrapper. For Unity mesh refreshes, saving copied serialized data may leave stale native render buffers: synchronously reimport changed mesh assets before rendering inspection views, and compare the actual scene with the source checks.
+
+## Dated definitions and open-arches audit
+
+All 26 built-in tools have lowercase, hyphenated, dated definition files under `tools/`. Each card displays its exact definition filename and a short two-sentence summary below it. Definitions describe existing legacy scripts without renaming Unity asset identities. Natural-language searches also match hyphenated names. Last-use dates remain evidence-based; missing evidence displays Unknown.
+
+`no-windows-audit-tool-20261011.py` checks glazing, bars, arched heads, low passages, retained window seats and neighboring architectural obstructions. It uses the same report/receipt contracts with tool ID `no-windows-audit-tool`. `--unity-probes` exports hash-bound scene probes for the separate editor refresh. `--git-ref` audits a previous version read-only. Sparse samples and declared channel-support contacts are disclosed; this does not provide fluid simulation or universal Unity scene parsing.
+
+The matching scene-refresh entry records editor completion evidence; the foreground recorder is also listed. New tools follow `my-preferred-nomenclature` in the skill book. Definitions contain generic descriptions only; local paths, reports and actual use history stay private.

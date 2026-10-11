@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-survey",
+      "name": "cloud-survey-20261011.json",
+      "kind": "Audit",
+      "description": "Inventory cloud objects, mesh references and their place in the scene before changing them. Identify shared assets and affected instances so a cloud edit does not unexpectedly change furniture or other world features."
+    }
+  ]
+}

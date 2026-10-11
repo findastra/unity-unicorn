@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "no-windows-scene-refresh",
+      "name": "no-windows-scene-refresh-20261011.json",
+      "kind": "Editor",
+      "description": "Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions. Refresh masonry colliders, test the exported passage probes and capture views that show the actual openings and water."
+    }
+  ]
+}

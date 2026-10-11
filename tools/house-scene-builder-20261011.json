@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "house-scene-builder",
+      "name": "house-scene-builder-20261011.json",
+      "kind": "Editor",
+      "description": "Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene. This can rebuild scene content, so preserve current work and inspect the resulting scene before publishing."
+    }
+  ]
+}

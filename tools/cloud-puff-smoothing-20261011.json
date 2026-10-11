@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-lounge-smoothing",
+      "name": "cloud-puff-smoothing-20261011.json",
+      "kind": "Editor",
+      "description": "Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes. Keep the existing layout, then check the visible contours and walkable support slabs before accepting the result."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "vcc-package-manager",
+      "name": "vcc-package-manager-20261011.json",
+      "kind": "Workflow",
+      "description": "Review and manage a Unity project through VRChat Creator Companion and its package workflow. Confirm the intended project and required versions before changing dependencies, and record completed changes with their evidence."
+    }
+  ]
+}

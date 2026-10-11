@@ -34,6 +34,31 @@ const usage = (over = {}) => ({ schema: 'unity-unicorn.tool-usage/v1', tool_id: 
 const report = (over = {}) => ({ ...usage(), schema: 'unity-unicorn.structural-audit/v1', summary: { warnings: 1 }, findings: [{ id: 'sample-gap', severity: 'warning', title: 'Sample gap', evidence: 'A gap was measured.', suggested_fix: 'Inspect the joint.' }], metrics: {}, limitations: [], ...over });
 const card = (app, id = 'masonry-structural-audit') => app.nodes.get('tool-grid').children.find(e => e.dataset.toolId === id);
 
+test('every built-in tool has a real dated definition and a concise expanded summary below its name', () => {
+  const app=boot();
+  assert.equal(app.nodes.get('tool-grid').children.length,26);
+  for (const item of app.nodes.get('tool-grid').children) {
+    const title=item.children[0].children.find(e=>e.tag==='h3').textContent;
+    const description=item.children[1].textContent;
+    assert.match(title,/^[a-z0-9-]+-\d{8}\.json$/);
+    assert.ok(description.split(/\s+/).length>=25 && description.split(/\s+/).length<=50);
+    const definition=JSON.parse(readFileSync(new URL('../tools/'+title,import.meta.url),'utf8')).tools[0];
+    assert.equal(definition.id,item.dataset.toolId);
+    assert.equal(definition.description,description);
+  }
+});
+
+test('older saved catalog cards receive new names and summaries without changing execution history', () => {
+  const saved={catalog:[tool({description:'Old short summary.',last_used:{date:'2026-10-06',evidence:'A real dated completion report.'}})],runs:[]};
+  const storage=new Map([[key,JSON.stringify(saved)]]);
+  const app=boot(storage);
+  const output=flatten(card(app,'cloud-mesh-generator'));
+  assert.match(output,/cloud-mesh-generator-20261011.json/);
+  assert.match(output,/Build connected cloud shapes from overlapping lobes/);
+  assert.match(output,/Oct 6, 2026/);
+  assert.equal(app.writes(),0);
+});
+
 test('scripts parse and page loading preserves the legacy planning desk and does not create usage', () => {
   for (const m of html.matchAll(/<script(?:[^>]*)>([\s\S]*?)<\/script>/g)) new vm.Script(m[1]);
   const storage = new Map([[deskKey, '[{"id":"existing-task","title":"Existing notes"}]']]);
@@ -161,4 +186,12 @@ test('optional installed copy loads its real local sidecar with evidenced dates 
   const before = JSON.stringify(app.api.getState());
   assert.equal(JSON.stringify(boot(storage, seed).api.getState()), before);
   assert.ok(app.api.getState().runs.every(run => seed.runs.some(original => original.tool_id === run.tool_id && original.completed_at === run.completed_at)));
+});
+
+test('structural reports accept the no-windows tool and future valid tool IDs', () => {
+  const app = boot();
+  for (const id of ['no-windows-audit-tool', 'future-arch-audit']) {
+    app.api.ingest(report({tool_id: id}));
+    assert.ok(app.api.getState().runs.some(run => run.tool_id === id && run.findings.length === 1));
+  }
 });

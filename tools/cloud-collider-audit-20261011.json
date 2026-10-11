@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "cloud-collider-audit",
+      "name": "cloud-collider-audit-20261011.json",
+      "kind": "Audit",
+      "description": "Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes. Compare their edges and heights with the visible cloud shapes before deciding whether to rebuild them."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "wall-texture-rebuild",
+      "name": "wall-texture-rebuild-20261011.json",
+      "kind": "Generator",
+      "description": "Rebuild the wall color, surface-mask and normal textures with complete repeating coverage. Check that every texture row is painted and that the normal orientation matches Unity before using the new maps."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "world-validator",
+      "name": "world-validator-20261011.json",
+      "kind": "Audit",
+      "description": "Inspect supported world references, missing scripts, walkable surfaces and configured content budgets. Use the findings to catch obvious scene problems before building, while keeping editor checks separate from a VRChat client test."
+    }
+  ]
+}
