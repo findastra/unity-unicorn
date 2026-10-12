@@ -36,7 +36,7 @@ const card = (app, id = 'masonry-structural-audit') => app.nodes.get('tool-grid'
 
 test('every built-in tool has a real dated definition and a concise expanded summary below its name', () => {
   const app=boot();
-  assert.equal(app.nodes.get('tool-grid').children.length,28);
+  assert.equal(app.nodes.get('tool-grid').children.length,29);
   for (const item of app.nodes.get('tool-grid').children) {
     const title=item.children[0].children.find(e=>e.tag==='h3').textContent;
     const description=item.children[1].textContent;

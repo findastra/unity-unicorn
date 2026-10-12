@@ -55,7 +55,7 @@ Desktop hub sync, 2026-10-11: the Unity tool-library interface now accepts local
 
 ## Open arches and dated tools (0.3.0-20261011)
 
-The library includes 28 dated tool definitions with short summaries below each name, including the no-windows auditor and its Unity scene-refresh workflow. Known tool descriptions update without changing recorded use dates. The naming rule is documented as `my-preferred-nomenclature` in the skill book.
+The library includes 29 dated tool definitions with short summaries below each name, including the no-windows auditor and its Unity scene-refresh workflow. Known tool descriptions update without changing recorded use dates. The naming rule is documented as `my-preferred-nomenclature` in the skill book.
 
 See [publication and validation](docs/open-arches-publication-20261011.md). Source: [v0.3.0-20261011](https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011). The pet remains a local catalog and report viewer; it does not launch Unity commands itself.
 
@@ -65,5 +65,11 @@ Two world-building tools for the Piranesi House, with step scripts under `script
 
 - **marble-carver**: statues that look like real carved marble, starting from scans of real museum statues. They're adapted and weathered in Blender, baked, and brought into Unity. Guide: [docs/marble-carver-20261011.md](docs/marble-carver-20261011.md).
 - **vine-bloomer**: ivy over every roof and most of every outer wall, using a Blender-rendered ivy mantle from scanned leaves plus 3D leaf curtains at the edges. Guide: [docs/vine-bloomer-20261011.md](docs/vine-bloomer-20261011.md).
+
+Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
+
+## Neck blender (2026-10-11)
+
+- **neck-blender**: hides the line where a separate head mesh meets the body. It paints the head's skin colour into a copy of the body texture around the neck, weighted from the real geometry in Blender, and can repoint the body material (with a backup). Guide: [docs/neck-blender-20261011.md](docs/neck-blender-20261011.md).
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.

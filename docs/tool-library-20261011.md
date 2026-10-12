@@ -71,7 +71,7 @@ For Blender Python jobs, place `--python-exit-code 1` before `--python` so scrip
 
 ## Dated definitions and open-arches audit
 
-All 28 built-in tools have lowercase, hyphenated, dated definition files under `tools/`. Each card displays its exact definition filename and a short two-sentence summary below it. Definitions describe existing legacy scripts without renaming Unity asset identities. Natural-language searches also match hyphenated names. Last-use dates remain evidence-based; missing evidence displays Unknown.
+All 29 built-in tools have lowercase, hyphenated, dated definition files under `tools/`. Each card displays its exact definition filename and a short two-sentence summary below it. Definitions describe existing legacy scripts without renaming Unity asset identities. Natural-language searches also match hyphenated names. Last-use dates remain evidence-based; missing evidence displays Unknown.
 
 `no-windows-audit-tool-20261011.py` checks glazing, bars, arched heads, low passages, retained window seats and neighboring architectural obstructions. It uses the same report/receipt contracts with tool ID `no-windows-audit-tool`. `--unity-probes` exports hash-bound scene probes for the separate editor refresh. `--git-ref` audits a previous version read-only. Sparse samples and declared channel-support contacts are disclosed; this does not provide fluid simulation or universal Unity scene parsing.
 

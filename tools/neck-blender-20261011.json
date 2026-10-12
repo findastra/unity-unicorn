@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "neck-blender",
+      "name": "neck-blender-20261011.json",
+      "kind": "Generator",
+      "description": "Hide the seam where a separate head mesh meets the body by painting the head's skin colour into a copy of the body texture around the neck. Weights come from the real geometry in Blender; the body material can be repointed with a backup.",
+      "source_path": "scripts/neck-blender-20261011.py",
+      "command_template": "python scripts/neck-blender-20261011.py --fbx \"<avatar>.fbx\" --body-tex \"<body-base>.png\" --head-tex \"<face-base>.png\" --out \"<body-base> - neck blend.png\" --body-tint <r,g,b> --unity-mat \"<Body>.mat\" --backup-dir \"<private-output>/neck-blender-backup-{date}\""
+    }
+  ]
+}
