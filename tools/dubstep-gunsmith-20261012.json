@@ -1,0 +1,24 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "dubstep-gunsmith",
+      "name": "dubstep-gunsmith-20261012.json",
+      "kind": "Workflow",
+      "description": "Catalog third-party creator gun assets with reference videos, clear stills, credits and source links. Plan separate avatar loadouts and record known or unknown resource costs, then export a loadout manifest for reviewed Unity setup.",
+      "source_path": "docs/avatar-effects-program-20261012.md",
+      "command_template": "Open https://dubstep-gunsmith.audra-volk-1606.chatgpt.site (owner-private). Export planned loadouts; Unity companion setup requires explicit prefab mapping.",
+      "requirements": [
+        "Acquire required assets from their creators and preserve their source references."
+      ],
+      "limitations": [
+        "Catalog stores records in this browser; use JSON exports for backup or transfer.",
+        "Removing an item from an avatar plan preserves the catalog entry.",
+        "Cost totals are reported estimates and unknown counts, not a VRChat performance rating.",
+        "No direct Unity connection. The website alone does not change a scene.",
+        "Unverified reference credits and names are kept separate from verified creator sales listings."
+      ],
+      "last_used": null
+    }
+  ]
+}

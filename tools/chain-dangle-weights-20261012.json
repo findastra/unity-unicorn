@@ -1,0 +1,23 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "chain-dangle-weights",
+      "name": "chain-dangle-weights-20261012.json",
+      "kind": "Editor",
+      "description": "Inspect disconnected indexed mesh islands and explicitly map selected chain pieces to existing bones. Creates a mesh copy with rigid weights for mapped pieces while preserving topology and untouched influences; requires the correct source rig and movement checks.",
+      "source_path": "scripts/unity-editor/gold-and-dangle-tools-20261012.cs",
+      "command_template": "Unity menu: Tools/Unity Unicorn/chain-dangle-weights",
+      "requirements": [
+        "Unity 2022.3; readable skinned mesh with matching bones and bind poses.",
+        "Explicit piece-to-bone mappings reviewed against the intended rig."
+      ],
+      "limitations": [
+        "Source preview. The intended shoe asset has not been repaired or validated.",
+        "Indexed islands may be split by UV seams; above 256 islands the tool remains diagnostic-only.",
+        "Does not weld, compress, create bones or add physics. No scene save or upload."
+      ],
+      "last_used": null
+    }
+  ]
+}

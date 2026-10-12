@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "fan-fitter",
+      "name": "fan-fitter-20261012.json",
+      "kind": "Workflow",
+      "description": "Add the supplied fan variants to both hands using reviewed placement templates, preserve distinct stock materials, and keep one active choice per hand. Includes the revised RGB material workflow; verify the saved scene and visible result in Unity.",
+      "source_path": "scripts/unity-editor/sparks-and-fans-20261012.cs",
+      "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/fan-fitter.",
+      "requirements": [
+        "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+        "Review the source and keep a recoverable project baseline before applying changes."
+      ],
+      "limitations": [
+        "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+        "Private learned templates, third-party assets and actual use records are not bundled."
+      ],
+      "last_used": null
+    }
+  ]
+}

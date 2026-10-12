@@ -201,6 +201,164 @@ const DEFAULTS=[
     "description": "Run a supported synchronous tool and record its actual completion time, exit result and optional output hash. Keep failed attempts separate from completed use; starting a background job does not count as finishing it.",
     "source_path": "scripts/run-unity-tool-20261011.py",
     "command_template": "python scripts/run-unity-tool-20261011.py --foreground --tool-id \"<tool-id>\" --project \"<project-name>\" --usage-log \"<private-output>/tool-usage-{date}.json\" -- <synchronous-command>"
+  },
+  {
+    "id": "fan-fitter",
+    "name": "fan-fitter-20261012.json",
+    "kind": "Workflow",
+    "description": "Add the supplied fan variants to both hands using reviewed placement templates, preserve distinct stock materials, and keep one active choice per hand. Includes the revised RGB material workflow; verify the saved scene and visible result in Unity.",
+    "source_path": "scripts/unity-editor/sparks-and-fans-20261012.cs",
+    "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/fan-fitter.",
+    "requirements": [
+      "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+      "Review the source and keep a recoverable project baseline before applying changes."
+    ],
+    "limitations": [
+      "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+      "Private learned templates, third-party assets and actual use records are not bundled."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "sparkle-strapper",
+    "name": "sparkle-strapper-20261012.json",
+    "kind": "Workflow",
+    "description": "Add reviewed sparkle templates with separate hand and foot controls, then offer a continuous RGB option alongside manual hue. Copies controller, menu and parameter assets before editing them, and rejects incomplete prior installs that need repair.",
+    "source_path": "scripts/unity-editor/sparks-and-fans-20261012.cs",
+    "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/sparkle-strapper.",
+    "requirements": [
+      "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+      "Review the source and keep a recoverable project baseline before applying changes."
+    ],
+    "limitations": [
+      "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+      "Private learned templates, third-party assets and actual use records are not bundled."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "rgb-painter",
+    "name": "rgb-painter-20261012.json",
+    "kind": "Generator",
+    "description": "Create editable copies of supported Poiyomi materials and enable continuous hue cycling for active color layers. Neutral reflective layers receive color so RGB can appear; original materials and particle renderers are preserved, with visual verification still required.",
+    "source_path": "scripts/unity-editor/phys-and-paint-20261012.cs",
+    "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/rgb-painter.",
+    "requirements": [
+      "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+      "Review the source and keep a recoverable project baseline before applying changes."
+    ],
+    "limitations": [
+      "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+      "Private learned templates, third-party assets and actual use records are not bundled."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "bending-adder",
+    "name": "bending-adder-20261012.json",
+    "kind": "Workflow",
+    "description": "Choose reviewed blood, water or sparkle bending templates in one editor window, validate their references and bone placement, and add missing effects with Undo. Existing objects remain unchanged; a separate verified sparkle bending source must be supplied.",
+    "source_path": "scripts/unity-editor/bending-and-star-tools-20261012.cs",
+    "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/bending-adder.",
+    "requirements": [
+      "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+      "Review the source and keep a recoverable project baseline before applying changes."
+    ],
+    "limitations": [
+      "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+      "Private learned templates, third-party assets and actual use records are not bundled."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "star-effects-diagnostic",
+    "name": "star-effects-diagnostic-20261012.json",
+    "kind": "Verification",
+    "description": "Inspect star effects for missing references, controller integration, repeated attachment targets and recorded firing conditions without changing the scene. Export a private diagnostic report, then verify suspected repairs in the built avatar and emulator before claiming success.",
+    "source_path": "scripts/unity-editor/bending-and-star-tools-20261012.cs",
+    "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/star-effects-diagnostic (read only).",
+    "requirements": [
+      "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+      "Review the source and keep a recoverable project baseline before applying changes."
+    ],
+    "limitations": [
+      "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+      "Private learned templates, third-party assets and actual use records are not bundled."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "dubstep-gunsmith",
+    "name": "dubstep-gunsmith-20261012.json",
+    "kind": "Workflow",
+    "description": "Catalog third-party creator gun assets with reference videos, clear stills, credits and source links. Plan separate avatar loadouts and record known or unknown resource costs, then export a loadout manifest for reviewed Unity setup.",
+    "source_path": "docs/avatar-effects-program-20261012.md",
+    "command_template": "Open https://dubstep-gunsmith.audra-volk-1606.chatgpt.site (owner-private). Export planned loadouts; Unity companion setup requires explicit prefab mapping.",
+    "requirements": [
+      "Acquire required assets from their creators and preserve their source references."
+    ],
+    "limitations": [
+      "Catalog stores records in this browser; use JSON exports for backup or transfer.",
+      "Removing an item from an avatar plan preserves the catalog entry.",
+      "Cost totals are reported estimates and unknown counts, not a VRChat performance rating.",
+      "No direct Unity connection. The website alone does not change a scene.",
+      "Unverified reference credits and names are kept separate from verified creator sales listings."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "golden-painter",
+    "name": "golden-painter-20261012.json",
+    "kind": "Editor",
+    "description": "Create gold material copies for explicitly selected renderer slots, preserve their textures and alpha, and record assignment with Undo. Supports reviewed shader properties; inspect the visible finish on the intended avatar before saving the scene.",
+    "source_path": "scripts/unity-editor/gold-and-dangle-tools-20261012.cs",
+    "command_template": "Unity menu: Tools/Unity Unicorn/golden-painter",
+    "requirements": [
+      "Unity 2022.3; selected scene renderer and compatible shader properties."
+    ],
+    "limitations": [
+      "Source preview. No completed use on the intended gold avatar.",
+      "Texture maps and shader-specific effects may override the visible tint; no automatic texture painting.",
+      "Creates material copies; does not save the scene or upload an avatar."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "chain-dangle-weights",
+    "name": "chain-dangle-weights-20261012.json",
+    "kind": "Editor",
+    "description": "Inspect disconnected indexed mesh islands and explicitly map selected chain pieces to existing bones. Creates a mesh copy with rigid weights for mapped pieces while preserving topology and untouched influences; requires the correct source rig and movement checks.",
+    "source_path": "scripts/unity-editor/gold-and-dangle-tools-20261012.cs",
+    "command_template": "Unity menu: Tools/Unity Unicorn/chain-dangle-weights",
+    "requirements": [
+      "Unity 2022.3; readable skinned mesh with matching bones and bind poses.",
+      "Explicit piece-to-bone mappings reviewed against the intended rig."
+    ],
+    "limitations": [
+      "Source preview. The intended shoe asset has not been repaired or validated.",
+      "Indexed islands may be split by UV seams; above 256 islands the tool remains diagnostic-only.",
+      "Does not weld, compress, create bones or add physics. No scene save or upload."
+    ],
+    "last_used": null
+  },
+  {
+    "id": "gunsmith-loadout",
+    "name": "gunsmith-loadout-20261012.json",
+    "kind": "Editor",
+    "description": "Import a planned Gunsmith loadout, explicitly map catalog entries to local prefabs and avatar parents, and preview additions or managed removals. Applies with Undo and persistent ownership checks; creator setup and real scene behavior still need validation.",
+    "source_path": "scripts/unity-editor/gunsmith-loadout-tools-20261012.cs",
+    "command_template": "Unity menu: Tools/Unity Unicorn/gunsmith-loadouts",
+    "requirements": [
+      "Unity 2022.3 and com.unity.nuget.newtonsoft-json.",
+      "An already-saved scene, exact avatar root, acquired creator prefabs and explicit parent mappings."
+    ],
+    "limitations": [
+      "Source preview; pure-data tests and compilation passed, scene Undo/save-reopen and creator integration remain unverified.",
+      "Only instances created and tracked by this tool can be removed. Changed ownership, overrides or added objects block removal.",
+      "Local EditorPrefs ownership does not transfer when the project moves or the registry is cleared.",
+      "Attaches prefabs only; does not install dependencies, wire controllers or menus, save scenes, upload or optimize assets."
+    ],
+    "last_used": null
   }
 ];
 let state={catalog:[],runs:[]};

@@ -36,3 +36,13 @@ The v0.2 source was reconciled with the existing avatar tracker, plans, skill bo
 The installed Cage HTML and ignored private sidecar additionally passed all ten tool-library tests, including real catalog date rendering and repeated-load preservation. The file-URL browser tool could not open the desktop page, so this is an exact-file local harness check, not a visual browser verification. The private sidecar is excluded from source publication.
 
 2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
+
+## Avatar effects source preview · 2026-10-12
+
+Prepared with OpenAI Codex (GPT-6): generic editor source for supplied fan variants, RGB materials, independent hand/foot sparkles, the bending template chooser and read-only star diagnostics, plus nine dated tool definitions including surface/weight and loadout previews. The source preview excludes private avatar runners, templates, asset files and use history. See [the source guide](avatar-effects-editor-tools-20261012.md) for dependencies and validation boundaries.
+
+Dubstep Gunsmith is recorded as a separate third-party asset catalog and planned avatar-loadout workflow. The site is now published owner-private; its Unity companion is a separate source preview pending live scene validation. No product release version, tag or GitHub Release is established by this source submission. Preserve the previously published tags; record the eventual source submission and deployment separately.
+
+2026-10-12: Golden material copying and chain-island weighting source previews added for review. No intended gold-avatar usage or shoe repair is claimed.
+
+2026-10-12: Dubstep Gunsmith published owner-private at https://dubstep-gunsmith.audra-volk-1606.chatgpt.site. This repository links to the catalog; it does not contain its private reference media or catalog data.

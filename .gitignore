@@ -18,3 +18,10 @@ unity-unicorn-local-tools-*.js
 # Python execution caches
 __pycache__/
 *.pyc
+
+# Private editor outputs and asset dependencies are never part of this public source package.
+UnityUnicornReports/
+Assets/UnityUnicorn/Templates/
+Assets/UnityUnicorn/generated/
+*.dll
+*.pdb
