@@ -68,6 +68,14 @@ Two world-building tools for the Piranesi House, with step scripts under `script
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
+## Avatar effects editor source preview (2026-10-12)
+
+The library now includes dated definitions for fan fitting, sparkle hand/foot controls, continuous RGB materials, a unified bending chooser, read-only star diagnostics, gold material copying, explicit chain-island weighting and a source-preview Gunsmith loadout companion. The reusable source set is in [scripts/unity-editor](scripts/unity-editor/); follow the [installation and validation guide](docs/avatar-effects-editor-tools-20261012.md) before adding it to a Unity project. No third-party assets, avatar scenes, private templates or project runner are bundled. Compilation and catalog checks do not certify visible avatar behavior.
+
+[Dubstep Gunsmith](https://dubstep-gunsmith.audra-volk-1606.chatgpt.site) is the owner-private catalog for third-party creator assets, videos and avatar plans, with known and unknown performance costs. Its optional Unity companion is supplied as a source preview with explicit local prefab mapping; live scene behavior still requires validation. Weapon creation and automatic optimization are outside its scope.
+
+Prepared with OpenAI Codex (GPT-6), 2026-10-12. Source submission, release and site deployment remain separate from this preview; see [the publication record](docs/publications-20261008.md#avatar-effects-source-preview--2026-10-12).
+
 ## Neck blender (2026-10-11)
 
 - **neck-blender**: hides the line where a separate head mesh meets the body. It paints the face's skin colour into a copy of the body texture around the neck and fades matcap and rim out at the line on both materials, all weighted from the real geometry in Blender, with backups. Guide: [docs/neck-blender-20261011.md](docs/neck-blender-20261011.md).

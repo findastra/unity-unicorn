@@ -71,8 +71,10 @@ For Blender Python jobs, place `--python-exit-code 1` before `--python` so scrip
 
 ## Dated definitions and open-arches audit
 
-All 29 built-in tools have lowercase, hyphenated, dated definition files under `tools/`. Each card displays its exact definition filename and a short two-sentence summary below it. Definitions describe existing legacy scripts without renaming Unity asset identities. Natural-language searches also match hyphenated names. Last-use dates remain evidence-based; missing evidence displays Unknown.
+All 35 built-in tools have lowercase, hyphenated, dated definition files under `tools/`. Each card displays its exact definition filename and a short two-sentence summary below it. Definitions describe scripts or explicitly planned workflows without renaming Unity asset identities. Natural-language searches also match hyphenated names. Last-use dates remain evidence-based; missing evidence displays Unknown.
 
 `no-windows-audit-tool-20261011.py` checks glazing, bars, arched heads, low passages, retained window seats and neighboring architectural obstructions. It uses the same report/receipt contracts with tool ID `no-windows-audit-tool`. `--unity-probes` exports hash-bound scene probes for the separate editor refresh. `--git-ref` audits a previous version read-only. Sparse samples and declared channel-support contacts are disclosed; this does not provide fluid simulation or universal Unity scene parsing.
 
 The matching scene-refresh entry records editor completion evidence; the foreground recorder is also listed. New tools follow `my-preferred-nomenclature` in the skill book. Definitions contain generic descriptions only; local paths, reports and actual use history stay private.
+
+The 2026-10-12 avatar-effects preview adds five editor tool entries and the planned Dubstep Gunsmith catalog workflow. [Install and validate the editor sources](avatar-effects-editor-tools-20261012.md) in the intended Unity project; importing their definitions here does not execute them. Dubstep Gunsmith has no verified site URL in this preparation record, and its future Unity add/remove integration is separate from the catalog website.

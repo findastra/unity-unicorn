@@ -1,0 +1,24 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "gunsmith-loadout",
+      "name": "gunsmith-loadout-20261012.json",
+      "kind": "Editor",
+      "description": "Import a planned Gunsmith loadout, explicitly map catalog entries to local prefabs and avatar parents, and preview additions or managed removals. Applies with Undo and persistent ownership checks; creator setup and real scene behavior still need validation.",
+      "source_path": "scripts/unity-editor/gunsmith-loadout-tools-20261012.cs",
+      "command_template": "Unity menu: Tools/Unity Unicorn/gunsmith-loadouts",
+      "requirements": [
+        "Unity 2022.3 and com.unity.nuget.newtonsoft-json.",
+        "An already-saved scene, exact avatar root, acquired creator prefabs and explicit parent mappings."
+      ],
+      "limitations": [
+        "Source preview; pure-data tests and compilation passed, scene Undo/save-reopen and creator integration remain unverified.",
+        "Only instances created and tracked by this tool can be removed. Changed ownership, overrides or added objects block removal.",
+        "Local EditorPrefs ownership does not transfer when the project moves or the registry is cleared.",
+        "Attaches prefabs only; does not install dependencies, wire controllers or menus, save scenes, upload or optimize assets."
+      ],
+      "last_used": null
+    }
+  ]
+}
