@@ -46,3 +46,5 @@ Dubstep Gunsmith is recorded as a separate third-party asset catalog and planned
 2026-10-12: Golden material copying and chain-island weighting source previews added for review. No intended gold-avatar usage or shoe repair is claimed.
 
 2026-10-12: Dubstep Gunsmith published owner-private at https://dubstep-gunsmith.audra-volk-1606.chatgpt.site. This repository links to the catalog; it does not contain its private reference media or catalog data.
+
+2026-10-12: Source submitted in draft pull request https://github.com/findastra/unity-unicorn/pull/1 on codex/avatar-effects-20261012. All eight editor sources compile together, 13 catalog/history checks pass, gold/chain synthetic Unity checks pass (30), and Gunsmith pure-data checks pass (42). This is a source preview; no merge, product release or avatar upload is claimed.
