@@ -14,7 +14,7 @@ Still to do on Poppy VRCFT and Poppy NO VRCFT:
 - [ ] Angel wings: three Angel Wings objects (Plain, Bandaged, Chained) are already on Poppy VRCFT in Unity. Confirm whether they're finished and tick this off in the log.
 
 Done since the last log:
-- Neck blended to match the face (2026-10-11, neck-blender). Not uploaded yet.
+- Neck blended to match the face, texture and lighting (2026-10-11, neck-blender). Not uploaded yet.
 - Uploaded **Poppy 7 VRCFT** to aiノastra on 2026-10-09 (Modular Avatar added for the Star Burst gimmick).
 
 ## Fae

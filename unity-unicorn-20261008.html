@@ -36,9 +36,9 @@ const DEFAULTS=[
     "id": "neck-blender",
     "name": "neck-blender-20261011.json",
     "kind": "Generator",
-    "description": "Hide the seam where a separate head mesh meets the body by painting the head's skin colour into a copy of the body texture around the neck. Weights come from the real geometry in Blender; the body material can be repointed with a backup.",
+    "description": "Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials. Weights come from the real geometry in Blender, with backups.",
     "source_path": "scripts/neck-blender-20261011.py",
-    "command_template": "python scripts/neck-blender-20261011.py --fbx \"<avatar>.fbx\" --body-tex \"<body-base>.png\" --head-tex \"<face-base>.png\" --out \"<body-base> - neck blend.png\" --body-tint <r,g,b> --unity-mat \"<Body>.mat\" --backup-dir \"<private-output>/neck-blender-backup-{date}\""
+    "command_template": "python scripts/neck-blender-20261011.py --fbx \"<avatar>.fbx\" --body-tex \"<body-base>.png\" --head-tex \"<face-base>.png\" --out \"<body-base> - neck blend.png\" --body-tint <r,g,b> --unity-mat \"<Body>.mat\" --unity-face-mat \"<Face>.mat\" --backup-dir \"<private-output>/neck-blender-backup-{date}\""
   },
   {
     "id": "no-windows-audit-tool",
