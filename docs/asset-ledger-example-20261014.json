@@ -1,0 +1,32 @@
+{
+  "tool": "pet-program-5-v1.0-asset-ledger-v1.0",
+  "about": "Worked example rows for Astra's two worlds, from their repos' own third-party records (2026-10-14). Proof fields stay on the PC and are never committed.",
+  "rows": [
+    { "id": "infinite-pole-kenney-particle-pack", "name": "Kenney Particle Pack", "kind": "particles", "creator": "Kenney", "source": "kenney.nl",
+      "license": "CC0-1.0", "attribution": null, "where_used": ["astras-infinite-pole"], "in_repo": "tracked", "public_ok": true, "status": "cleared" },
+    { "id": "infinite-pole-poly-haven-skies", "name": "Poly Haven skies", "kind": "sky", "creator": "Poly Haven", "source": "polyhaven.com",
+      "license": "CC0-1.0", "attribution": null, "where_used": ["astras-infinite-pole"], "in_repo": "tracked", "public_ok": true, "status": "cleared" },
+    { "id": "infinite-pole-usharpvideo", "name": "USharpVideo", "kind": "script", "creator": "Merlin", "source": "GitHub",
+      "license": "MIT", "attribution": "USharpVideo, copyright Merlin, MIT License (Assets/USharpVideo/LICENSE.txt)", "where_used": ["astras-infinite-pole"],
+      "in_repo": "tracked", "public_ok": true, "status": "cleared" },
+    { "id": "infinite-pole-vrchat-sdk", "name": "VRChat SDK (base, worlds)", "kind": "package", "creator": "VRChat", "source": "VRChat Creator Companion",
+      "license": "VRChat SDK terms", "attribution": null, "where_used": ["astras-infinite-pole", "piranesi-house"], "in_repo": "restored", "public_ok": true, "status": "cleared" },
+    { "id": "infinite-pole-playlist", "name": "Playlist entries", "kind": "video link", "creator": "Each host", "source": "External streaming links",
+      "license": "Links only; rights stay with each host", "attribution": null, "where_used": ["astras-infinite-pole"], "in_repo": "tracked", "public_ok": true,
+      "status": "cleared", "note": "No songs or videos are bundled as downloaded media." },
+    { "id": "piranesi-house-stanford-scans", "name": "Lucy, Happy Buddha, XYZ Dragon, Stanford Bunny, Armadillo", "kind": "model", "creator": "Stanford 3D Scanning Repository",
+      "source": "common-3d-test-models collection", "license": "research-only", "attribution": null, "where_used": ["piranesi-house"], "in_repo": "tracked",
+      "public_ok": false, "status": "placeholder", "note": "Research use: private testing only. Replace or get permission before any public upload." },
+    { "id": "piranesi-house-nefertiti", "name": "Nefertiti", "kind": "model", "creator": "Neues Museum Berlin scan (\"The Other Nefertiti\")", "source": "common-3d-test-models collection",
+      "license": "unclear", "attribution": null, "where_used": ["piranesi-house"], "in_repo": "tracked", "public_ok": false, "status": "needs-permission",
+      "note": "Check the scan's terms before a public upload." },
+    { "id": "piranesi-house-cyberware-samples", "name": "Igea, Horse", "kind": "model", "creator": "Cyberware sample scans", "source": "common-3d-test-models collection",
+      "license": "unclear", "attribution": null, "where_used": ["piranesi-house"], "in_repo": "tracked", "public_ok": false, "status": "placeholder" },
+    { "id": "piranesi-house-bimba", "name": "Bimba", "kind": "model", "creator": "AIM@SHAPE repository", "source": "common-3d-test-models collection",
+      "license": "unclear", "attribution": null, "where_used": ["piranesi-house"], "in_repo": "tracked", "public_ok": false, "status": "placeholder",
+      "note": "Repository licence; treat as a placeholder." },
+    { "id": "piranesi-house-inspiration", "name": "Inspired by Piranesi (Susanna Clarke)", "kind": "inspiration", "creator": "Susanna Clarke", "source": "Novel",
+      "license": "inspiration only", "attribution": "Inspired by Piranesi by Susanna Clarke. Non-commercial fan work; no text or characters reproduced.",
+      "where_used": ["piranesi-house"], "in_repo": "never", "public_ok": true, "status": "cleared", "note": "Declared inspiration; nothing from the book is copied." }
+  ]
+}
