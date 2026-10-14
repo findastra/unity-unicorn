@@ -36,6 +36,14 @@ What Unity Unicorn has learned about avatar and world work, sorted by category, 
 
 The tracker is updated by hand or by a routine scan. The app does not log in to VRChat itself.
 
+## Asset ledger (design, 2026-10-14)
+
+How Unity Unicorn acquires, audits, handles and credits every asset in Astra's worlds and avatars: a row for every
+asset before it ships, paid assets never in a repo, research-only and unclear assets kept as private placeholders, and
+credits generated per world. Design: [docs/asset-ledger-20261014.md](docs/asset-ledger-20261014.md); worked examples for
+Astra's Infinite Pole (all cleared) and Piranesi House (blocked for public upload until its stand-in scans are replaced):
+[docs/asset-ledger-example-20261014.json](docs/asset-ledger-example-20261014.json). Not built into the web app yet.
+
 ## Data and limits
 
 Records are stored only in the browser where you enter them. Clearing site data can remove them; export backups. Exported records can contain personal information and must stay outside this source repository. The page does not send entries to a server. The pet's mood is a display choice. Loading the app, copying a command or importing a catalog never creates a new use timestamp. Imported report times are execution evidence supplied by the tool; the browser does not independently verify them. Existing planning-desk data is preserved in its original storage key.
