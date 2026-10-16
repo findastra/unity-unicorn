@@ -40,3 +40,5 @@ The installed Cage HTML and ignored private sidecar additionally passed all ten 
 ## Liminal glass tools - 2026-10-15
 
 Prepared with Codex (GPT-6). Adds two catalog definitions, a Unity Editor workshop, an original prismatic shader, installation notes and a disposable-project integration fixture. Unity 2022.3.22f1 / Direct3D 11 validation covers geometry, open-shell collision, source preservation, saved prefab dependencies and shader/render checks. This note does not assert a release, upload, headset test or exact reference-asset match. GitHub branch publication is verified separately after pushing.
+
+2026-10-15 correction: the requested bubble chair molds around the seated avatar. The published draft currently contains only a static chair prototype; the catalog and guide now mark the interactive feature as unimplemented.

@@ -25,7 +25,11 @@ The original shader combines transparency, reflection-probe sampling and a view-
 
 The visual direction came from observing a prismatic wolf in VRChat. No original world mesh, shader or cached asset bundle is included or extracted. This is a new approximation, not a verified exact copy.
 
-## Bubble chair blower
+## Bubble chair blower - required behavior not implemented
+
+The requested reference is an interactive deformable chair that molds around the seated avatar. The current spherical shell and cushions are a static stand-in, not a matching implementation. Keep the feature incomplete until empty, seated and standing states have been inspected and the deformation reproduced or the correct asset integrated. Geometry/export checks below apply only to the static prototype.
+
+Asset lead: [DynamicMochiMochiShader by Nine Gates](https://booth.pm/en/items/3129610) documents deformable surfaces, elasticity and damping. It has not been identified as the reference world's asset or integrated.
 
 Controls include diameter, front opening angle, filling thickness, glass tint, rim color and filling color. A custom filling Mesh/model can replace the generated rounded cushions; it becomes static geometry and is fitted to the available width. Inspect unusually shaped custom fillings for intersections.
 
