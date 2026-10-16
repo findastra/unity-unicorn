@@ -1,0 +1,20 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "bubble-chair-blower",
+      "name": "bubble-chair-blower-20261015.json",
+      "kind": "Generator",
+      "description": "Build an open-front spherical chair with adjustable diameter, opening, cushion thickness and colors. Use generated cushions or a supplied filling model, inspect the real geometry in Unity, then export a prefab with shell collision and a seat-placement anchor.",
+      "source_path": "scripts/liminal-glass-workshop-20261015.cs",
+      "command_template": "Unity menu: Tools > Unity Unicorn > Bubble Chair Blower",
+      "requirements": [
+        "Unity 2022.3 Built-in Render Pipeline; install the editor script and prismatic-glass-20261015.shader."
+      ],
+      "limitations": [
+        "Editor generator, not a runtime blowing interaction.",
+        "Add and test VRCStation separately. Original reference-chair matching remains open."
+      ]
+    }
+  ]
+}

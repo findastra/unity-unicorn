@@ -81,3 +81,9 @@ Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 - **neck-blender**: hides the line where a separate head mesh meets the body. It paints the face's skin colour into a copy of the body texture around the neck and fades matcap and rim out at the line on both materials, all weighted from the real geometry in Blender, with backups. Guide: [docs/neck-blender-20261011.md](docs/neck-blender-20261011.md).
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
+
+## Prismatic animals and bubble chairs (2026-10-15)
+
+The library now includes **glass-animal-tool** and **bubble-chair-blower**, backed by a Unity Editor workshop and an original prismatic shader. Drag in a source model, adjust the material or chair geometry, preview in Unity, and export new prefab assets. The current main-line catalog contains 31 tools.
+
+See [installation, controls and validation limits](docs/liminal-glass-tools-20261015.md). The chair has a real front opening and static colliders; a VRCStation must be added and tested separately. The original reference-world assets are not bundled, and exact visual matching and headset checks remain open. Prepared with Codex (GPT-6).

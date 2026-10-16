@@ -1,0 +1,21 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "glass-animal-tool",
+      "name": "glass-animal-tool-20261015.json",
+      "kind": "Generator",
+      "description": "Turn a supplied mesh or model into a static prismatic glass sculpture, with controllable tint, rainbow flashes, opacity and faceting. Preview it in Unity, then export a new prefab with separate material and mesh assets.",
+      "source_path": "scripts/liminal-glass-workshop-20261015.cs",
+      "command_template": "Unity menu: Tools > Unity Unicorn > Glass Animal Tool",
+      "requirements": [
+        "Unity 2022.3 Built-in Render Pipeline; install the editor script and prismatic-glass-20261015.shader.",
+        "Supply your own model; imported static meshes require Read/Write enabled."
+      ],
+      "limitations": [
+        "Original shader approximation; no reference-world model or shader is included.",
+        "Static sculpture output. Headset and exact visual-match validation remain open."
+      ]
+    }
+  ]
+}
