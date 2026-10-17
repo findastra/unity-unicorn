@@ -55,7 +55,7 @@ Version `0.2.0-20261011`, source tag [`v0.2.0-20261011`](https://github.com/find
 
 ## Credits
 
-Made by Astra. Interface prepared with Codex (GPT-6), 2026-10-08. The pet artwork is copied from Astra's Pet Apps.
+Made by Astra. Interface prepared with Codex (GPT-6), 2026-10-08. The pet artwork is copied from Astra's PetOS.
 
 Tool library and report imports prepared with Codex (GPT-6), 2026-10-11. The square pet-well layout is preserved from the Cage's 2026-10-09 revision.
 
