@@ -79,5 +79,6 @@ Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 ## Neck blender (2026-10-11)
 
 - **neck-blender**: hides the line where a separate head mesh meets the body. It paints the face's skin colour into a copy of the body texture around the neck and fades matcap and rim out at the line on both materials, all weighted from the real geometry in Blender, with backups. Guide: [docs/neck-blender-20261011.md](docs/neck-blender-20261011.md).
+- **face-transfer**: keeps a private log of each avatar's face tracking build (which VRCFT OSC standard its parameters use, which module drives them, which blendshapes the face FBX has) and moves a face tracking module to another avatar with its dependencies, after checking the target has every blendshape it animates. Guide: [docs/face-transfer-20261011.md](docs/face-transfer-20261011.md).
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.

@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "face-transfer",
+      "name": "face-transfer-20261011.json",
+      "kind": "Workflow",
+      "description": "Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has. Move a face tracking module to another avatar with its dependencies, after checking the target has every animated blendshape.",
+      "source_path": "scripts/face-transfer-20261011.py",
+      "command_template": "python scripts/face-transfer-20261011.py transfer --source \"<source-project>\" --target \"<target-project>\" --module \"Assets/<ft-module-folder>\" --target-fbx \"Assets/<target-face>.fbx\" --backup-dir \"<private-output>/face-transfer-backup-{date}\" --report \"<private-output>/face-transfer-{date}.json\""
+    }
+  ]
+}
