@@ -23,7 +23,7 @@ The tool library is a local catalog and report viewer, not a Unity execution bri
 - Treat user text as untrusted. Render it with textContent, validate links, and never insert record contents as HTML.
 - Keep private records, health or finance entries, API secrets, credentials, environment files, logs and machine metadata outside Git. Browser exports are private user data.
 - Label planned connections truthfully; do not imply an account, device, editor or service is connected without verification.
-- Preserve the approved nine mood frames and the shared Cage character. Metadata is in `pet.json`; frame paths are in `sprite-20261008.json`.
+- Preserve the approved nine mood frames and the shared Cage character. Metadata is in `pet.json`; the frames live in findastra/astras-pet-os and their addresses are in `sprite-20261008.json`.
 - New descriptive files use lowercase names with the owner's America/Denver date immediately before the extension. Required contract files keep their standard names.
 - Keep release tags immutable. Publish fixes as a new commit and tag; never force-push or retag an existing release.
 - Update README limits and `docs/publications-20261008.md` when implementation or publication status changes.
@@ -35,3 +35,5 @@ Check the actual browser script syntax and meaningful user flows after behavior 
 Cage: https://github.com/findastra/astras-pet-apps. Repository topic: `pet-app`.
 
 Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
+
+Pictures moved to the hub (one art source, Flash Audit A58, Astra 2026-10-18): every picture of Unity Unicorn lives only in [findastra/astras-pet-os](https://github.com/findastra/astras-pet-os) (`art/frames/unity-unicorn/`); this repo links to them and keeps no copy, so change a picture there, never here. By Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
