@@ -1,6 +1,6 @@
 # Unity Unicorn
 
-*A pet app by Astra.*
+*An Intelligent App, or Pet, by Astra.*
 
 ## Unity Unicorn
 
