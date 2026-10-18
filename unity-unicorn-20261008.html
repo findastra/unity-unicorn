@@ -77,6 +77,20 @@ const DEFAULTS=[
     "description": "Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement. Reduce visible seams and overlapping balls, then review the new shapes before applying them to the world."
   },
   {
+    "id": "prop-decomposer",
+    "name": "prop-decomposer-20261018.json",
+    "kind": "Audit",
+    "description": "Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders. Use the findings to restyle or rebuild a prop so it keeps what makes the original read as real.",
+    "source_path": "scripts/prop-decomposer-20261018.py",
+    "command_template": "blender -b --factory-startup --python-exit-code 1 --python scripts/prop-decomposer-20261018.py -- \"<reference-model.gltf>\" \"<private-output>/prop-decomposer-{date}\""
+  },
+  {
+    "id": "realistic-prop-restyle",
+    "name": "realistic-prop-restyle-20261018.json",
+    "kind": "Generator",
+    "description": "Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set. Review it close up in the world's light before replacing the old prop."
+  },
+  {
     "id": "cloud-lounge-smoothing",
     "name": "cloud-puff-smoothing-20261011.json",
     "kind": "Editor",
