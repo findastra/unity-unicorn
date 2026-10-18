@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "prop-decomposer",
+      "name": "prop-decomposer-20261018.json",
+      "kind": "Audit",
+      "description": "Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders. Use the findings to restyle or rebuild a prop so it keeps what makes the original read as real."
+    }
+  ]
+}

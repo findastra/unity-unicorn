@@ -63,7 +63,7 @@ Desktop hub sync, 2026-10-11: the Unity tool-library interface now accepts local
 
 ## Open arches and dated tools (0.3.0-20261011)
 
-The library includes 29 dated tool definitions with short summaries below each name, including the no-windows auditor and its Unity scene-refresh workflow. Known tool descriptions update without changing recorded use dates. The naming rule is documented as `my-preferred-nomenclature` in the skill book.
+The library includes 31 dated tool definitions with short summaries below each name, including the no-windows auditor and its Unity scene-refresh workflow. Known tool descriptions update without changing recorded use dates. The naming rule is documented as `my-preferred-nomenclature` in the skill book.
 
 See [publication and validation](docs/open-arches-publication-20261011.md). Source: [v0.3.0-20261011](https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011). The pet remains a local catalog and report viewer; it does not launch Unity commands itself.
 

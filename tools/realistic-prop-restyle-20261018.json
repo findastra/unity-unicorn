@@ -1,0 +1,11 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "realistic-prop-restyle",
+      "name": "realistic-prop-restyle-20261018.json",
+      "kind": "Generator",
+      "description": "Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set. Review it close up in the world's light before replacing the old prop."
+    }
+  ]
+}

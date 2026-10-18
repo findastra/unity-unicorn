@@ -1,0 +1,73 @@
+{
+  "tool": "pet-program-5-v1.0-asset-ledger-v1.0",
+  "section": "downloads",
+  "about": "Everything an assistant downloaded or installed to do Unity, Blender or VRChat work for Astra: assets and tools. One copy on the PC, owned by Unity Unicorn; other pets use it through a grant. Started 2026-10-18 by Claude Opus 5.5 at Astra's request. Machine paths, receipts and accounts stay on the PC (the private 'stored' and 'proof' fields), never in Git.",
+  "rows": [
+    {
+      "id": "download-poly-haven-korean-public-payphone-01",
+      "name": "Korean Public Payphone 01 (1k glTF set)",
+      "kind": "model",
+      "creator": "UM JOORIN, published by Poly Haven",
+      "source": "https://polyhaven.com/a/korean_public_payphone_01 (via api.polyhaven.com)",
+      "license": "CC0-1.0",
+      "size_mb": 5.6,
+      "files_sha256": {
+        "korean_public_payphone_01_1k.gltf": "8b64fe9a7be8850c9ad1436ed2d8a7efeaa58fc9854e9b6e6ed6f0bfb41c8fc5",
+        "korean_public_payphone_01.bin": "7927d721ebea112b9c03f85b5521fc0baf3d0161bee73708feff4336638942f2",
+        "korean_public_payphone_01_arm_1k.jpg": "d91d6e502af197f7950f6ee09437f38795a84697be573f44c3007d51fcbb3537",
+        "korean_public_payphone_01_diff_1k.jpg": "6975ea3ede9f7a8edc7d369529cc8ff0c1bb73b3c236d72e3728c5d268436ae1",
+        "korean_public_payphone_01_nor_gl_1k.jpg": "1fd643f4ab8d5b477603089a9e8ab8b3db42bfb4b85224c28ed870299dc37ed0"
+      },
+      "downloaded_at": "2026-10-18",
+      "downloaded_by": "Claude Opus 5.5 (claude-opus-5-5)",
+      "approved_by": "Astra, in chat, 2026-10-18",
+      "why": "Real base for the realistic booth payphones (round 39) and the worked example in docs/realistic-props-20261018.md.",
+      "where_used": ["astras-infinite-pole"],
+      "in_repo": "never (only the restyled derivative is tracked, in the world repo)",
+      "public_ok": true,
+      "status": "in use",
+      "owner_pet": "Unity Unicorn",
+      "listed_in": "AI Doghouse (AI Dashund's pet program)"
+    },
+    {
+      "id": "download-blender-4-5-9-lts",
+      "name": "Blender 4.5.9 LTS, portable",
+      "kind": "program",
+      "creator": "Blender Foundation",
+      "source": "https://www.blender.org/download/ (official portable ZIP)",
+      "license": "GPL-2.0-or-later",
+      "size_mb": null,
+      "files_sha256": "checked against blender.org's published checksum at install (2026-09-28); value kept with the install record",
+      "downloaded_at": "2026-09-28",
+      "downloaded_by": "Astra's Codex assistant (GPT-6), recorded as \"Astra\" in ACTIVITY",
+      "approved_by": "Astra, earlier explicit approval (recorded 2026-09-28)",
+      "why": "Runs every Blender tool headless: cloud meshes, cloud-sea fusion, prop-decomposer, realistic-prop-restyle, marble-carver, vine-bloomer.",
+      "where_used": ["astras-infinite-pole", "piranesi-house", "avatars"],
+      "in_repo": "never",
+      "public_ok": true,
+      "status": "in use",
+      "owner_pet": "Unity Unicorn",
+      "listed_in": "AI Doghouse (AI Dashund's pet program)"
+    },
+    {
+      "id": "service-poly-haven-api",
+      "name": "Poly Haven public API",
+      "kind": "service",
+      "creator": "Poly Haven",
+      "source": "https://api.polyhaven.com",
+      "license": "API data and assets CC0-1.0; no key needed",
+      "size_mb": null,
+      "downloaded_at": "2026-10-18 (queried; nothing installed)",
+      "downloaded_by": "Claude Opus 5.5 (claude-opus-5-5)",
+      "approved_by": "Read-only metadata; asset downloads are asked for one by one",
+      "why": "Finds real CC0 models, textures and skies to start from instead of primitives.",
+      "where_used": ["astras-infinite-pole"],
+      "in_repo": "never",
+      "public_ok": true,
+      "status": "in use",
+      "owner_pet": "Unity Unicorn",
+      "listed_in": "AI Doghouse (AI Dashund's pet program)"
+    }
+  ],
+  "not_yet_recorded": "Earlier downloads by any assistant (for example the museum scans used by marble-carver and the ivy scans used by vine-bloomer) still need rows. Backfill them from ACTIVITY.md and each tool guide, with dates only where a record shows them."
+}

@@ -10,6 +10,7 @@ Avatar tracker and plans (`docs/avatar-tracker-20261009.md`, `docs/avatar-plans-
 Tool library and private report imports prepared with Codex (GPT-6), 2026-10-11.
 marble-carver and vine-bloomer tools, scripts and guides added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 neck-blender tool, script and guide added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
+Realistic-props guide, prop-decomposer and realistic-prop-restyle tools, and the asset ledger's Downloads section added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 
 ## Scope
 

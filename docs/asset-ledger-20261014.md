@@ -66,3 +66,30 @@ Made by Astra. Built with Unity and the VRChat SDK.
 
 <attribution text required by each license>
 ```
+
+## Downloads: everything an assistant fetches or installs (Astra, 2026-10-18)
+Astra asked for one place that remembers what the AI downloaded to get work done, so any pet can find and reuse it
+instead of fetching a second copy. It lives here, in the asset ledger, and is owned by Unity Unicorn. Other pets reach
+it through a grant (read only), never through their own copy (TOOLS-AND-TRICKS.md, "Shared tools and grants").
+AI Dashund's pet program, AI Doghouse, lists every row so the pets learn which tools exist and why.
+
+A download row is a ledger row with these extra fields. Rows: [download-ledger-20261018.json](download-ledger-20261018.json).
+
+| Field | What it holds | Public? |
+|---|---|---|
+| `kind` | `model`, `texture`, `sky`, `audio`, `program`, `plugin`, `mcp-server`, `package`, `script`, `service`, `reference-data` | Yes |
+| `source` | Where it came from (official page or registry) | Yes |
+| `size_mb`, `files_sha256` | How big, and hashes so a later copy can be checked | Yes |
+| `downloaded_at`, `downloaded_by` | Denver date, and which assistant and model fetched it | Yes |
+| `approved_by` | Who said yes, and when (downloads are asked for one by one) | Yes |
+| `why`, `where_used` | What it was fetched for, and which worlds, avatars or pets use it | Yes |
+| `owner_pet` | The one pet program that owns the copy; others get grants | Yes |
+| `listed_in` | Where it is taught (AI Doghouse) | Yes |
+| `stored` | Where the files sit on the PC | **No: on the PC only** |
+
+Rules:
+1. **Ask first.** No download without Astra's yes for that file, with its name, source and size.
+2. **One copy.** Check this ledger before downloading. If it is already here, ask for a grant instead.
+3. **Third-party tools go through quarantine.** A program, plugin or MCP server from someone else follows the Shed's
+   rules (a checker reviews it and the farm's L4 approves) before it runs.
+4. **Dates come from records.** `downloaded_at` comes from the chat, ACTIVITY.md or a receipt, never a file date.
