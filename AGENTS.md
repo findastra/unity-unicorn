@@ -35,3 +35,5 @@ Check the actual browser script syntax and meaningful user flows after behavior 
 Cage: https://github.com/findastra/astras-pet-apps. Repository topic: `pet-app`.
 
 Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
+
+Prismatic glass workshop and bubble-chair generator prepared with Codex (GPT-6), 2026-10-15. Preserve source assets; export copies and keep original reference assets out of the repository.

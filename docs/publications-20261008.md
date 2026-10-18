@@ -36,3 +36,9 @@ The v0.2 source was reconciled with the existing avatar tracker, plans, skill bo
 The installed Cage HTML and ignored private sidecar additionally passed all ten tool-library tests, including real catalog date rendering and repeated-load preservation. The file-URL browser tool could not open the desktop page, so this is an exact-file local harness check, not a visual browser verification. The private sidecar is excluded from source publication.
 
 2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
+
+## Liminal glass tools - 2026-10-15
+
+Prepared with Codex (GPT-6). Adds two catalog definitions, a Unity Editor workshop, an original prismatic shader, installation notes and a disposable-project integration fixture. Unity 2022.3.22f1 / Direct3D 11 validation covers geometry, open-shell collision, source preservation, saved prefab dependencies and shader/render checks. This note does not assert a release, upload, headset test or exact reference-asset match. GitHub branch publication is verified separately after pushing.
+
+2026-10-15 correction: the requested bubble chair molds around the seated avatar. The published draft currently contains only a static chair prototype; the catalog and guide now mark the interactive feature as unimplemented.
