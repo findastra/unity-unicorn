@@ -5,7 +5,7 @@
 - Immutable tag: [`v0.2.0-20261011`](https://github.com/findastra/unity-unicorn/tree/v0.2.0-20261011).
 - Published GitHub Release: [Unity Unicorn 0.2](https://github.com/findastra/unity-unicorn/releases/tag/v0.2.0-20261011), verified published at `2026-10-11T19:42:43Z` (13:42:43 America/Denver).
 - Source platform: dependency-free browser HTML; reusable auditor and recorder use Python's standard library.
-- Desktop destination: [Astra's Pet Apps](https://github.com/findastra/astras-pet-apps), `apps/unity-unicorn-20261008.html`.
+- Desktop destination: [Astra's PetOS](https://github.com/findastra/astras-pet-os), `apps/unity-unicorn-20261008.html`.
 - Exact source and installed HTML SHA-256: `f0ccd2c6411202b58f87d4a6ecb0132c4d3b35dda2ae2dcc3d54f2942db5955f`.
 
 The source commit and tag were pushed and the non-draft GitHub Release was read back successfully. The installed HTML and private catalog were checked with all ten library tests; 21 auditor and seven recorder tests pass. Concurrent avatar/planner and pet-hub source commits are included in the tagged ancestry.
