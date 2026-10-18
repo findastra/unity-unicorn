@@ -2,7 +2,7 @@
   "pet": "Unity Unicorn",
   "kind": "pet-app",
   "owner": "Astra",
-  "job": "Track Astra's VRChat avatars: what is uploaded to which account (findノastra, aiノastra), opti/Quest/fallback coverage, and planned edits from each avatar folder's edit log. Also Unity and VRChat world projects. Includes a local tool library, private audit reports and evidence-based execution history.",
+  "job": "A local Unity and VRChat desk with avatar plans, 26 dated tools, open-arch audits, concise summaries and evidenced execution history.",
   "sprite": "sprite-20261008.json",
   "preview": "unity-unicorn-20261008.html",
   "status": "hatching",
@@ -15,10 +15,15 @@
   "cage": {
     "topic": "pet-app",
     "home": "README.md",
-    "repository": "https://github.com/findastra/astras-pet-apps"
+    "repository": "https://github.com/findastra/astras-pet-os"
   },
   "updated": "2026-10-11",
   "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11",
   "entry": "unity-unicorn-20261008.html",
-  "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies."
+  "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
+  "audit": {
+    "cadence": "weekly",
+    "subject": "your Unity and VRChat project notes",
+    "needs": "a project opened in Unity so I can check it"
+  }
 }

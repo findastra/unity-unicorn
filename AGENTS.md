@@ -1,6 +1,6 @@
 # Assistant rules for unity-unicorn
 
-*A pet app by Astra.* Public credit is always Astra.
+*An Intelligent App, or Pet, by Astra.* Public credit is always Astra.
 
 Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
 Square pet frame (`v0.1.1-20261009`) fixed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09.
@@ -32,7 +32,7 @@ The tool library is a local catalog and report viewer, not a Unity execution bri
 
 Check the actual browser script syntax and meaningful user flows after behavior changes. Keep data local, and do not launch scanners against the owner's files merely to test an interface.
 
-Cage: https://github.com/findastra/astras-pet-apps. Repository topic: `pet-app`.
+Cage: https://github.com/findastra/astras-pet-os. Repository topic: `pet-app`.
 
 Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
 
