@@ -35,3 +35,5 @@ Check the actual browser script syntax and meaningful user flows after behavior 
 Cage: https://github.com/findastra/astras-pet-apps. Repository topic: `pet-app`.
 
 Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
+
+Avatar effects editor source preview and catalog integration prepared with OpenAI Codex (GPT-6), 2026-10-12. `docs/avatar-effects-editor-tools-20261012.md` defines source installation, private-data boundaries and validation limits. The private avatar acceptance runner and all third-party assets are excluded from this source package. Dubstep Gunsmith covers third-party asset cataloging, planned avatar loadouts and reported costs; its explicit-prefab Unity companion remains a source preview pending live scene validation, and weapon creation or automatic optimization is outside its scope.

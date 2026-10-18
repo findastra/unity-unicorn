@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "star-effects-diagnostic",
+      "name": "star-effects-diagnostic-20261012.json",
+      "kind": "Verification",
+      "description": "Inspect star effects for missing references, controller integration, repeated attachment targets and recorded firing conditions without changing the scene. Export a private diagnostic report, then verify suspected repairs in the built avatar and emulator before claiming success.",
+      "source_path": "scripts/unity-editor/bending-and-star-tools-20261012.cs",
+      "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/star-effects-diagnostic (read only).",
+      "requirements": [
+        "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+        "Review the source and keep a recoverable project baseline before applying changes."
+      ],
+      "limitations": [
+        "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+        "Private learned templates, third-party assets and actual use records are not bundled."
+      ],
+      "last_used": null
+    }
+  ]
+}

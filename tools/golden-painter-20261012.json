@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "golden-painter",
+      "name": "golden-painter-20261012.json",
+      "kind": "Editor",
+      "description": "Create gold material copies for explicitly selected renderer slots, preserve their textures and alpha, and record assignment with Undo. Supports reviewed shader properties; inspect the visible finish on the intended avatar before saving the scene.",
+      "source_path": "scripts/unity-editor/gold-and-dangle-tools-20261012.cs",
+      "command_template": "Unity menu: Tools/Unity Unicorn/golden-painter",
+      "requirements": [
+        "Unity 2022.3; selected scene renderer and compatible shader properties."
+      ],
+      "limitations": [
+        "Source preview. No completed use on the intended gold avatar.",
+        "Texture maps and shader-specific effects may override the visible tint; no automatic texture painting.",
+        "Creates material copies; does not save the scene or upload an avatar."
+      ],
+      "last_used": null
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "rgb-painter",
+      "name": "rgb-painter-20261012.json",
+      "kind": "Generator",
+      "description": "Create editable copies of supported Poiyomi materials and enable continuous hue cycling for active color layers. Neutral reflective layers receive color so RGB can appear; original materials and particle renderers are preserved, with visual verification still required.",
+      "source_path": "scripts/unity-editor/phys-and-paint-20261012.cs",
+      "command_template": "Install the reviewed editor source set described in docs/avatar-effects-editor-tools-20261012.md; then open Tools/Unity Unicorn/rgb-painter.",
+      "requirements": [
+        "Unity 2022.3 with the intended avatar project and its legitimately acquired asset dependencies.",
+        "Review the source and keep a recoverable project baseline before applying changes."
+      ],
+      "limitations": [
+        "Editor source preview; standalone compilation is not Unity or VRChat runtime verification.",
+        "Private learned templates, third-party assets and actual use records are not bundled."
+      ],
+      "last_used": null
+    }
+  ]
+}
