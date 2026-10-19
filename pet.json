@@ -6,7 +6,7 @@
   "sprite": "sprite-20261008.json",
   "preview": "unity-unicorn-20261008.html",
   "status": "hatching",
-  "version": "0.4.4-20261019",
+  "version": "0.4.5-20261019",
   "source": "https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011",
   "release_tag": "v0.3.0-20261011",
   "publication_status": "source-release; verification in docs/open-arches-publication-20261011.md",
@@ -18,7 +18,7 @@
     "repository": "https://github.com/findastra/astras-pet-os"
   },
   "updated": "2026-10-19",
-  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; matcap palette panel, matcap-palette Unity window and PNG maker with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; menu-map panel and Unity export with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19",
+  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; matcap palette panel, matcap-palette Unity window and PNG maker with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; menu-map panel and Unity export with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; vcc-package-manager and vrchat-avatar-upload moved from L1 tools to L2 tricks to write (astras-pet-os PR #114) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19",
   "entry": "unity-unicorn-20261008.html",
   "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
   "audit": {
@@ -80,9 +80,7 @@
         "scene-preview-render",
         "scene-yaml-inspection",
         "time-season-tide-preview",
-        "vcc-package-manager",
         "vine-bloomer",
-        "vrchat-avatar-upload",
         "wall-texture-rebuild",
         "world-spawn-tool",
         "world-validator",
@@ -125,8 +123,11 @@
       ],
       "tricks_to_write": [
         "weekly-update-from-friendly-farmer",
-        "weekly-copyright-auditor"
-      ]
+        "weekly-copyright-auditor",
+        "vcc-package-manager",
+        "vrchat-avatar-upload"
+      ],
+      "note": "vcc-package-manager and vrchat-avatar-upload moved here from L1.tools on 2026-10-19 (Astra's decision, astras-pet-os PR #114): they have no code, only written steps (their catalog entries in tools/ and the skill book, docs/skills-20261009.md sections 2 and 4). Each is a trick once it is written as skills/<name>/SKILL.md."
     },
     "L3": {
       "skills": [

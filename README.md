@@ -120,3 +120,16 @@ A new panel, **unity-unicorn-menu-map-panel**: an avatar's real radial menu, the
 
 - **menu-map** (Unity): select the avatar and run Tools › Unity Unicorn › menu-map. It builds a disposable test copy (the SDK build step an upload runs), writes `UnityUnicornReports/menu-map-<avatar>-<time>.json` with every menu page, control, parameter and icon (PNG), deletes the copy and leaves a usage receipt. The scene is never saved. Code: `scripts/unity-editor/menu-map-20261019.cs`.
 - Sample: [docs/menu-map-sample-20261019.json](docs/menu-map-sample-20261019.json). Guide: [docs/menu-map-20261019.md](docs/menu-map-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## vcc-package-manager and vrchat-avatar-upload are tricks to write (0.4.5-20261019)
+
+Astra decided on 2026-10-19 that everything a pet program owns is a native program, a native tool (code that runs with no AI) or a native trick (a SKILL.md its AI follows) ([astras-pet-os PR #114](https://github.com/findastra/astras-pet-os/pull/114)). **vcc-package-manager** and **vrchat-avatar-upload** have no code, only written steps, so they are now tricks to write: `pet.json` moves them from `intelligence_levels.L1.tools` to `L2.tricks_to_write` with a note, and the page lists them in the L2 panel, not the L1 panel. The L1 panel now lists 34 tools on `main`, with matcap-palette and menu-map (0.4.3, 0.4.4).
+
+Their catalog files, `tools/vcc-package-manager-20261011.json` and `tools/vrchat-avatar-upload-20261011.json`, stay, with `kind` set to `Trick to write`:
+
+- The hub's System Map and its registry table (TOOLS-AND-TRICKS.md) cite them as the source of each trick.
+- With the skill book (sections 2 and 4 of [docs/skills-20261009.md](docs/skills-20261009.md)), they are the written steps each SKILL.md will be written from.
+- The tool library keeps their cards, so a real upload or package change can still be recorded with its evidence.
+- The v0.3.0-20261011 release has them, and release tags never change.
+
+When a trick is written as `skills/<name>/SKILL.md`, move it to `L2.tricks` and decide then whether its catalog card stays. `test/levels-match-page-test-20261019.mjs` checks that `pet.json` and the page's L1 and L2 lists agree, and that no item is both a tool and a trick. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
