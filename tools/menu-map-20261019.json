@@ -1,0 +1,23 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "menu-map",
+      "name": "menu-map-20261019.json",
+      "kind": "Audit",
+      "description": "Map an avatar's real radial menu after VRCFury and Modular Avatar build it: a Unity tool exports a disposable test build's menu, icons and synced parameters, and the page draws the menu to click through with a 256-bit parameter budget per add-on.",
+      "source_path": "scripts/unity-editor/menu-map-20261019.cs",
+      "command_template": "Copy scripts/unity-editor/menu-map-20261019.cs into Assets/UnityUnicorn/Editor/, select the avatar, then run Tools > Unity Unicorn > menu-map",
+      "requirements": [
+        "Unity 2022.3 with the VRChat Avatars SDK; VRCFury and Modular Avatar are built in when the avatar uses them.",
+        "An avatar with a VRC Avatar Descriptor in an open scene, outside Play mode."
+      ],
+      "limitations": [
+        "Read only: the test copy is deleted afterwards and the scene is never saved, but Unity may still mark the scene as changed.",
+        "Which add-on a parameter belongs to is read from the top menu that uses it; parameters folded by VRCFury's compressor are an estimate.",
+        "The page's 'Load a menu map' keeps your file in that browser tab only."
+      ],
+      "last_used": null
+    }
+  ]
+}
