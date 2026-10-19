@@ -105,3 +105,13 @@ Every panel's label now sits on its top border, the way Astra drew it: the cyber
 ## Panels, not modules (0.4.2-20261019)
 
 The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): to a developer a module is a file of code, and a box on a dashboard page is a panel ([PET-PROGRAM-FRAMEWORK.md](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 1). The four level panels are now labelled `unity-unicorn-L1-panel` to `unity-unicorn-L4-panel`, and the page's own names follow (`uu-panels`, `uu-panel`). Lights you saved on the old `-module` labels carry over to the new ones; the browser storage key keeps its name so nothing saved is lost. The face tracking modules, masonry mesh modules and Python modules elsewhere in this repo are real modules and keep the word. `test/panels-test-20261019.mjs` fails if a page box is called a module again. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Assets we created (2026-10-19)
+
+The **unity-unicorn-assets-we-created** panel on the Unity Stable page lists every asset we made for Astra's avatars and
+worlds, on two sides (avatar assets, world assets), each by type: effects, outfits and accessories, props, shaders and
+looks, rigs and face; buildings and props, skies, ground and plants, materials and shaders, effects. Each card shows a
+preview, its version, its licence, where it was made and every world or avatar it is used in. The rows are
+[docs/assets-we-created-20261019.json](docs/assets-we-created-20261019.json); one copy of each finished asset lives in
+[findastra/unity-assets-library](https://github.com/findastra/unity-assets-library). First rows: the K6 phone booth
+(Liminal Doors and Astra's Infinite Pole), stop 01's sunset sky and the CC0 pink payphone. No avatar assets are listed yet.

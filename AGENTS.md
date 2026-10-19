@@ -43,3 +43,5 @@ Cage: https://github.com/findastra/astras-pet-os. Repository topic: `pet-app`.
 Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
 
 Pictures moved to the hub (one art source, Flash Audit A58, Astra 2026-10-18): every picture of Unity Unicorn lives only in [findastra/astras-pet-os](https://github.com/findastra/astras-pet-os) (`art/frames/unity-unicorn/`); this repo links to them and keeps no copy, so change a picture there, never here. By Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+
+Assets we created panel (`unity-unicorn-assets-we-created`, `docs/assets-we-created-20261019.json`, `test/assets-panel-test-20261019.mjs`) added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. When you make or export an asset, add its row there, with every world and avatar it is used in.

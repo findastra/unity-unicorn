@@ -51,6 +51,12 @@
 #uu-panels .uu-chat{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:12px;align-items:center;background:var(--slate);border:1px solid var(--edge);border-radius:10px;padding:16px 10px 8px 12px;min-width:156px;justify-content:space-between;color:var(--ink);box-shadow:0 4px 18px #0006}
 #uu-panels .uu-chat .uu-label{position:absolute;top:-7px;left:8px;padding:0 6px;background:var(--slate);color:var(--ink);white-space:nowrap}
 #uu-panels .uu-chat button.uu-open{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:#3d4a62;color:var(--ink);display:grid;place-items:center;padding:0}
+#uu-panels .uu-asset-sides{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+#uu-panels .uu-assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+#uu-panels .uu-asset{border:1px solid var(--edge);border-radius:10px;padding:8px;display:grid;gap:4px;align-content:start;background:#20252e}
+#uu-panels .uu-asset img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#1c2028}
+#uu-panels .uu-asset p{margin:0;font-size:12px;color:var(--muted)}
+#uu-panels .uu-asset .uu-name{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 @media (max-width:700px){#uu-panels .uu-top,#uu-panels .uu-row{grid-template-columns:1fr}#uu-panels .uu-home{max-width:200px}}
 </style>
 
@@ -87,6 +93,14 @@
     </div>
   </form>
   <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
+</details>
+
+<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-assets-we-created"></span>unity-unicorn-assets-we-created<span class="uu-what">every asset we made, by avatar and world asset type</span></summary>
+  <div class="uu-asset-sides">
+    <fieldset><legend class="uu-label">avatar assets</legend><div id="uu-assets-avatar"></div></fieldset>
+    <fieldset><legend class="uu-label">world assets</legend><div id="uu-assets-world"></div></fieldset>
+  </div>
+  <p class="uu-note">One copy of each finished asset lives in <a href="https://github.com/findastra/unity-assets-library">unity-assets-library</a>, exported by unity-asset-creator; each card says where it is used. The list is <code>docs/assets-we-created-20261019.json</code>.</p>
 </details>
 
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-panel"></span>unity-unicorn-L2-panel<span class="uu-what">what the pet program does by itself</span></summary>
@@ -173,6 +187,7 @@ const UNMERGED=[
 const THIRD=[["Unity 2022.3.22f1","the editor"],["VRChat Creator Companion","projects and packages"],["VRChat SDK","avatars and worlds"],["Blender","marble-carver, vine-bloomer, neck-blender"],["VRCFT","face tracking"],["Packages","Poiyomi, VRCFury, Modular Avatar with NDMF, lilToon, d4rkAvatarOptimizer, AudioLink, Gesture Manager, Av3Emulator, SPS Configurator"]];
 const PROGRAMS=[["Poppy","avatar project; has the Unity Unicorn menu installed (Tools › Unity Unicorn)"],["Piranesi House","world; Piranesi Nessi looks after it too"],["Liminal Doors","world; world-spawn-tool was first written from it"],["Dubstep Gunsmith","catalog site for avatar gun effects (PR #1, not merged)"]];
 const TRICKS=[["make-a-prop-look-real","skills/make-a-prop-look-real/SKILL.md · uses prop-decomposer, realistic-prop-restyle"],["weekly-update-from-friendly-farmer","from the sketch; to write"],["weekly-copyright-auditor","from the sketch; to write"]];
+const ASSETS_WE_CREATED={"schema":"unity-unicorn.assets-we-created/v1","about":"Every asset Astra and her assistants made for her avatars and worlds, grouped by what it is for and its type. One copy of a finished asset lives in findastra/unity-assets-library; this list says where each one is used. Rows follow docs/asset-ledger-20261014.md (public fields only). The page's assets-we-created panel shows the same rows (test/assets-panel-test-20261019.mjs).","updated":"2026-10-19","types":{"avatar":["effects","outfits and accessories","props","shaders and looks","rigs and face"],"world":["buildings and props","skies","ground and plants","materials and shaders","effects"]},"assets":[{"id":"liminal-doors-phone-booth","name":"Phone booth (K6)","for":"world","type":"buildings and props","version":"1.0.0","what":"A handmade pink K6 kiosk with chipped enamel, lit TELEPHONE signs, gilded crowns, pink glass with fingerprints and its own payphone, with gold and pink sparkles swirling up.","creator":"Astra (built with Claude)","license":"own-work","attribution":"Surface scans: ambientCG PaintedMetal002, Metal009, Smear002, Scratches001 (CC0)","made_in":"Liminal Doors","where_used":["Liminal Doors: stop 01, the start","Astra's Infinite Pole: all three phone booths (round 40, branch claude/k6-booths-20261019, not merged)"],"library":"https://github.com/findastra/unity-assets-library/tree/main/assets/liminal-doors-phone-booth/1.0.0","library_status":"in the export pull request findastra/unity-assets-library#1, not merged","preview":"https://raw.githubusercontent.com/findastra/unity-assets-library/main/assets/liminal-doors-phone-booth/1.0.0/previews/liminal-doors-phone-booth-v1.0.0-three-quarter.png"},{"id":"liminal-doors-stop-01-sky","name":"Stop 01 sunset sky","for":"world","type":"skies","version":"1.0.0","what":"A sunset sky dome over a 2.4 km cloud sea, with cumulus, puffs around the booth's base and a sunset reflection probe.","creator":"Astra (built with Claude)","license":"own-work","attribution":"","made_in":"Liminal Doors","where_used":["Liminal Doors: stop 01"],"library":"https://github.com/findastra/unity-assets-library/tree/main/assets/liminal-doors-stop-01-sky/1.0.0","library_status":"in the export pull request findastra/unity-assets-library#1, not merged","preview":"https://raw.githubusercontent.com/findastra/unity-assets-library/main/assets/liminal-doors-stop-01-sky/1.0.0/previews/liminal-doors-stop-01-sky-v1.0.0-three-quarter.png"},{"id":"astras-infinite-pole-payphone-pink","name":"Pink payphone (CC0 restyle)","for":"world","type":"buildings and props","version":"","what":"Poly Haven's Korean Public Payphone 01 restyled rose pink by mask, brand marks painted out of every map, at true size (round 39).","creator":"UM JOORIN (Poly Haven); restyled by Claude for Astra","license":"CC0-1.0","attribution":"Korean Public Payphone 01 by UM JOORIN, Poly Haven (CC0)","made_in":"Astra's Infinite Pole","where_used":["Astra's Infinite Pole: in the project, switched off since round 40 (the K6 booth has its own payphone)"],"library":"","library_status":"not exported to the library","preview":""}]};
 const SCHEDULE=[["self-audit","weekly, Thursday (MOOD-KEY.md)"],["backlog run","weekly; bundles new session notes into the next task"],["tool use dates","only from real run reports; Unknown otherwise"]];
 const CONNS=[["Friendly Farmer","my status and audit, weekly","his round and the weekly update"],["Rift Rabbit","world build tasks I made from its findings","VR performance findings"],["Skill Scout","my tricks and skill book","which tricks changed and why"],["Piranesi Nessi","Unity builds of Piranesi House (planned)","world tasks (planned)"]];
 const L3=[["Seat","not shown live yet: the presence link is not built. When a chat works here, it is Claude Code or Codex."],["L3 activity bubble","read only; planned"],["Harness skills on this PC","face-transfer, vrchat-unity-world (Claude Code's, not the pet's)"],["Suggestions","none yet"],["Token use","from Token Toucan (planned)"]];
@@ -214,6 +229,15 @@ MOODS.forEach(([m,d])=>{const n=SKETCH_NAMES[m]||m;const b=el("div","uu-mood");c
 const home=$("uu-home-pet");home.src=ART+"idle.png";
 let blinkT=setInterval(()=>{home.src=ART+"blink.png";setTimeout(()=>home.src=ART+"idle.png",220)},4200);
 
+function renderAssets(){const A=ASSETS_WE_CREATED;["avatar","world"].forEach(side=>{const box=$("uu-assets-"+side);box.replaceChildren();
+  A.types[side].forEach(type=>{box.append(el("h4",null,type));const rows=A.assets.filter(a=>a.for===side&&a.type===type);
+    if(!rows.length){box.append(el("p","uu-note","None yet."));return}
+    const grid=el("div","uu-assets");rows.forEach(a=>{const c=el("div","uu-asset");
+      if(a.preview&&/^https:\/\//.test(a.preview)){const i=el("img");i.src=a.preview;i.alt=a.name;i.loading="lazy";i.onerror=()=>i.remove();c.append(i)}
+      const n=el("span","uu-name");n.append(lights("asset: "+a.id),document.createTextNode(a.name));if(a.version)n.append(el("span","uu-tag ok","v"+a.version));c.append(n);
+      c.append(el("p",null,a.what),el("p",null,"Made in "+a.made_in+" · "+a.license),el("p",null,"Used in: "+a.where_used.join("; ")),el("p",null,"Library: "+a.library_status));
+      if(a.library&&/^https:\/\//.test(a.library)){const l=el("a",null,"Open in the library");l.href=a.library;c.append(l)}
+      grid.append(c)});box.append(grid)})})}
 function renderAdded(){$("uu-added").replaceChildren();if(!st.added.length){$("uu-added").append(el("li","uu-desc","Nothing yet. Add a tool or program below as you make it."));return}
   st.added.forEach(a=>{const li=el("li");li.append(lights(a.name),el("span","uu-name",a.name),el("span","uu-desc",a.desc||""));li.append(el("span","uu-tag",{tool:"your tool",program:"your program",third:"3rd party"}[a.kind]+" · added "+a.date));if(a.link&&/^https:\/\//.test(a.link)){const l=el("a",null,"link");l.href=a.link;l.rel="noopener noreferrer";l.target="_blank";li.append(l)}$("uu-added").append(li)})}
 $("uu-add").onsubmit=e=>{e.preventDefault();const a={name:$("uu-add-name").value.trim(),desc:$("uu-add-desc").value.trim(),link:$("uu-add-link").value.trim(),kind:$("uu-add-kind").value,date:today()};if(!a.name)return;st.added.push(a);save(KEY,st);addBacklog("change request","unity-unicorn-L1-panel","Added "+a.kind+" "+a.name+": "+a.desc+(a.link?" ("+a.link+")":""),[]);renderAdded();e.target.reset()};
@@ -232,7 +256,7 @@ function renderStatus(){const b=backlog();const last=b.entries.length?b.entries[
   const m=el("span");m.append(el("b",null,"On the map: "));const a=el("a",null,"unity-unicorn node");a.href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn";m.append(a);s.append(m)}
 $("uu-chat-open").onclick=()=>{$("uu-chat-msg").textContent="Unity Unicorn's chat bot is planned: it will ask before using your own Claude or ChatGPT account. Until then, use session notes above."};
 st.lastOpened=new Date().toISOString();save(KEY,st);
-renderAdded();renderBacklog();renderStatus();
+renderAdded();renderAssets();renderBacklog();renderStatus();
 })();
 </script>
 </section>
