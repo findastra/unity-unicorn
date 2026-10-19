@@ -6,17 +6,19 @@
 <style>
 #uu-modules{--slate:#252a33;--slate2:#2e3440;--ink:#eef0f4;--muted:#b7bfcc;--edge:#5a6475;--on:#3fbf6f;--off:#d9534f;--ok:#4a8fe7;--fix:#e8c33a;--conn:#c58be0;background:var(--slate);color:var(--ink);border-radius:18px;padding:18px;margin:0 0 34px;font-size:14px}
 #uu-modules a{color:#9fd0ff}
-#uu-modules .uu-top{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:start}
+#uu-modules .uu-top{display:grid;grid-template-columns:184px minmax(0,1fr);gap:16px;align-items:start;margin-top:10px}
 #uu-modules .uu-home{position:relative;border:1px solid var(--edge);border-radius:12px;aspect-ratio:1/1;background:radial-gradient(ellipse,#3b4558 0%,#232833 70%);display:grid;place-items:center;padding-top:18px}
 #uu-modules .uu-home img{width:82%;image-rendering:pixelated}
-#uu-modules .uu-home .uu-lights{position:absolute;top:6px;left:8px}
+#uu-modules .uu-edge{position:absolute;top:-7px;left:8px;padding:0 6px;background:var(--slate);white-space:nowrap}
+#uu-modules .uu-home>.uu-lights{position:absolute;top:12px;right:10px}
 #uu-modules .uu-label{font:600 11px/1 ui-monospace,Consolas,monospace;letter-spacing:.02em;color:var(--muted)}
 #uu-modules h2.uu-title{margin:0;font-size:clamp(24px,3.4vw,36px);letter-spacing:-.02em;font-weight:700;color:var(--ink)}
 #uu-modules h2.uu-title small{font:600 14px ui-monospace,Consolas,monospace;color:var(--muted);margin-left:10px;letter-spacing:0}
 #uu-modules fieldset{border:1px solid var(--edge);border-radius:10px;margin:12px 0 0;padding:6px 12px 12px;min-width:0}
 #uu-modules legend{padding:0 6px}
-#uu-modules details.uu-mod{border:1px solid var(--edge);border-radius:10px;margin:14px 0 0;padding:0 12px 10px;background:var(--slate2)}
-#uu-modules details.uu-mod>summary{cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center;padding:10px 0;font:700 12px ui-monospace,Consolas,monospace;color:var(--ink)}
+#uu-modules details.uu-mod{border:1px solid var(--edge);border-radius:10px;margin:24px 0 0;padding:0 12px 12px}
+#uu-modules details.uu-mod>summary{cursor:pointer;list-style:none;display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;margin:-10px 0 4px -6px;padding:0 6px;max-width:calc(100% + 12px);background:var(--slate);font:700 12px/18px ui-monospace,Consolas,monospace;color:var(--ink)}
+#uu-modules details.uu-mod>summary .uu-what{font-weight:400;color:var(--muted)}
 #uu-modules details.uu-mod>summary::-webkit-details-marker{display:none}
 #uu-modules details.uu-mod>summary::before{content:"▸";color:var(--muted)}
 #uu-modules details.uu-mod[open]>summary::before{content:"▾"}
@@ -46,27 +48,28 @@
 #uu-modules .uu-status{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:var(--muted)}
 #uu-modules .uu-status b{color:var(--ink)}
 #uu-modules .uu-note{font-size:12px;color:var(--muted);margin:6px 0 0}
-#uu-modules .uu-chat{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:6px;align-items:center;background:var(--slate);border:1px solid var(--edge);border-radius:999px;padding:6px 8px 6px 12px;color:var(--ink);box-shadow:0 4px 18px #0006}
-#uu-modules .uu-chat button.uu-open{width:34px;height:34px;border-radius:50%;border:1px solid var(--edge);background:#3d4a62;color:var(--ink);font-size:18px;line-height:1}
+#uu-modules .uu-chat{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:12px;align-items:center;background:var(--slate);border:1px solid var(--edge);border-radius:10px;padding:16px 10px 8px 12px;min-width:156px;justify-content:space-between;color:var(--ink);box-shadow:0 4px 18px #0006}
+#uu-modules .uu-chat .uu-label{position:absolute;top:-7px;left:8px;padding:0 6px;background:var(--slate);color:var(--ink);white-space:nowrap}
+#uu-modules .uu-chat button.uu-open{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:#3d4a62;color:var(--ink);display:grid;place-items:center;padding:0}
 @media (max-width:700px){#uu-modules .uu-top,#uu-modules .uu-row{grid-template-columns:1fr}#uu-modules .uu-home{max-width:200px}}
 </style>
 
 <div class="uu-top">
   <div class="uu-home" aria-label="unity-unicorn-cyberhome">
+    <span class="uu-label uu-edge">unity-unicorn-cyberhome</span>
     <span class="uu-lights" data-item="unity-unicorn-cyberhome"></span>
     <img id="uu-home-pet" alt="Unity Unicorn, idle" width="256" height="256">
   </div>
   <div>
-    <span class="uu-label">unity-unicorn-cyberhome · title</span>
-    <h2 class="uu-title">Unity Stable<small>V0.4.0 // 20261018</small></h2>
+    <h2 class="uu-title">Unity Stable<small>V0.4.1 // 20261018</small></h2>
     <fieldset><legend class="uu-label">unity-stable-pet-program-quick-summary</legend>
-      <p style="margin:4px 0 0">Unity Stable is your Unity and VRChat desk, run by you and Unity Unicorn. It keeps your avatar plans, every Unity tool you and the Unicorn have made (with what each one does and when it last really ran), and the audits for your worlds, so a tool made once can be used on any avatar.</p>
+      <p style="margin:4px 0 0">Unity Stable is the pet program run by you and Unity Unicorn. It is a dashboard that presents the health of, and organizes, your world and avatar programs and the tools and tricks used to manage them, which are always created with the intention of preserving the authenticity, creativity and provenance of all artists' work.</p>
     </fieldset>
     <div class="uu-status" id="uu-status" style="margin-top:10px"></div>
   </div>
 </div>
 
-<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-module"></span>unity-unicorn-L1-module · programs and tools (no AI needed)</summary>
+<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-module"></span>unity-unicorn-L1-module<span class="uu-what">programs and tools (no AI needed)</span></summary>
   <h4>3rd party programs</h4><ul class="uu-items" id="uu-third"></ul>
   <h4>Your programs</h4><ul class="uu-items" id="uu-programs"></ul>
   <h4>Your tools on main</h4><ul class="uu-items" id="uu-tools"></ul>
@@ -86,18 +89,18 @@
   <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
 </details>
 
-<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-module"></span>unity-unicorn-L2-module · what the pet program does by itself</summary>
+<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-module"></span>unity-unicorn-L2-module<span class="uu-what">what the pet program does by itself</span></summary>
   <h4>Your tricks</h4><ul class="uu-items" id="uu-tricks"></ul>
   <p class="uu-note">vcc-package-manager and vrchat-avatar-upload are catalogued as tools, so they are in the L1 module only. Whether they become tricks is waiting on Astra.</p>
   <h4>Schedule</h4><ul class="uu-items" id="uu-schedule"></ul>
   <h4>Pets it talks to</h4><div class="uu-conns" id="uu-conns"></div>
 </details>
 
-<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L3-module"></span>unity-unicorn-L3-module · agentic harness and your AI model</summary>
+<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L3-module"></span>unity-unicorn-L3-module<span class="uu-what">agentic harness and your AI model</span></summary>
   <ul class="uu-items" id="uu-l3"></ul>
 </details>
 
-<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L4-module"></span>unity-unicorn-L4-module · you, the verified human</summary>
+<details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-L4-module"></span>unity-unicorn-L4-module<span class="uu-what">you, the verified human</span></summary>
   <ul class="uu-items" id="uu-l4"></ul>
 </details>
 
@@ -122,7 +125,7 @@
   <details class="uu-mod" open><summary><span class="uu-lights" data-item="unity-unicorn-clicker-training"></span>unity-unicorn-clicker-training</summary>
     <ul class="uu-items">
       <li><span class="uu-name">1 click</span><span class="uu-desc">Show the current reminder.</span></li>
-      <li><span class="uu-name">2 clicks</span><span class="uu-desc">Open this pet program.</span></li>
+      <li><span class="uu-name">2 clicks</span><span class="uu-desc">Open Unity Stable.</span></li>
       <li><span class="uu-name">3 clicks</span><span class="uu-desc">Refresh the tools and the tool list.</span></li>
     </ul>
     <p class="uu-note">Read by the desktop pets app; more clicks can be bound to a tool later.</p>
@@ -136,7 +139,7 @@
   <a href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn">On the map</a></p>
 </details>
 
-<div class="uu-chat" aria-label="unity-unicorn-chat"><span class="uu-lights" data-item="unity-unicorn-chat"></span><span class="uu-label" style="color:var(--ink)">unity-unicorn-chat</span><button class="uu-open" type="button" id="uu-chat-open" aria-label="Open Unity Unicorn's chat" title="Open Unity Unicorn's chat">⟳</button></div>
+<div class="uu-chat" aria-label="unity-unicorn-chat"><span class="uu-label">unity-unicorn-chat</span><span class="uu-lights" data-item="unity-unicorn-chat"></span><button class="uu-open" type="button" id="uu-chat-open" aria-label="Open Unity Unicorn's chat" title="Open Unity Unicorn's chat"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 <p class="uu-note" id="uu-chat-msg" role="status"></p>
 <p class="uu-note">The ON/OFF and maintenance buttons are saved in this browser only. The Farm's core switch, which makes OFF real, is not built yet.</p>
 
@@ -174,7 +177,7 @@ const SCHEDULE=[["self-audit","weekly, Thursday (MOOD-KEY.md)"],["backlog run","
 const CONNS=[["Friendly Farmer","my status and audit, weekly","his round and the weekly update"],["Rift Rabbit","world build tasks I made from its findings","VR performance findings"],["Skill Scout","my tricks and skill book","which tricks changed and why"],["Piranesi Nessi","Unity builds of Piranesi House (planned)","world tasks (planned)"]];
 const L3=[["Seat","not shown live yet: the presence link is not built. When a chat works here, it is Claude Code or Codex."],["L3 activity bubble","read only; planned"],["Harness skills on this PC","face-transfer, vrchat-unity-world (Claude Code's, not the pet's)"],["Suggestions","none yet"],["Token use","from Token Toucan (planned)"]];
 const L4=[["Approval waiting","merge unity-unicorn PR #1 (sparkle-strapper, fan-fitter and the other avatar effect tools)"],["Approval waiting","merge unity-unicorn PR #3 (glass-animal-tool, bubble-chair-blower)"],["Always yours","the VRChat copyright agreement at upload"],["Grants","none recorded yet (Iron Gates is planned)"],["Keys","none: no agent key system yet (API Fairy shows them once built)"],["Requires maintenance","every item you mark yellow on this page"],["Pet passport","pedigree: Astra's PetOS · stamps: v0.3.0-20261011 source release · vaccination card: none · vet records: none"]];
-const MOODS=[["alarmed","an active alarm or a security breach"],["sick","too many broken tools, or a broken pet program"],["curious","an agent needs your OK or input"],["worried","missed runs or checks, failed audits, token overuse"],["happy","new work pushed, a suggestion, or work ready"],["sad","not opened in more than two weeks"],["idle","open, and you haven't interacted lately"],["blink","open, and you've interacted lately (awake)"],["sleep","running in the background"]];
+const MOODS=[["alarmed","an active alarm or a security breach"],["sick","too many broken tools, or a broken pet program"],["curious","an agent needs your OK or input"],["worried","missed runs or checks, failed audits, token overuse"],["happy","new work pushed, a suggestion, or work ready"],["sad","not opened in more than two weeks"],["idle","open, and you haven't interacted lately"],["blink","open, and you've interacted lately"],["sleep","running in the background"]];
 
 const KEY="astra-pet-desk:unity-unicorn:modules:1", BL="unity-unicorn-backlog";
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
@@ -202,7 +205,8 @@ SCHEDULE.forEach(([n,d])=>item("uu-schedule",n,d));
 CONNS.forEach(([n,s,r])=>{const f=el("fieldset","uu-conn");const lg=el("legend");lg.append(lights("connection: "+n),document.createTextNode(" "+n));f.append(lg,el("p",null,"Sends: "+s),el("p",null,"Receives: "+r),el("p",null,"Last exchange: not recorded yet"));$("uu-conns").append(f)});
 L3.forEach(([n,d])=>item("uu-l3",n,d));
 L4.forEach(([n,d])=>item("uu-l4",n,d));
-MOODS.forEach(([m,d])=>{const b=el("div","uu-mood");const i=el("img");i.src=ART+m+".png";i.alt="Unity Unicorn, "+m;i.loading="lazy";const t=el("span");t.append(el("b",null,m),document.createTextNode(d));b.append(i,t);$("uu-moods").append(b)});
+const SKETCH_NAMES={blink:"awake",sleep:"sleepy"};
+MOODS.forEach(([m,d])=>{const n=SKETCH_NAMES[m]||m;const b=el("div","uu-mood");const i=el("img");i.src=ART+m+".png";i.alt="Unity Unicorn, "+n;i.loading="lazy";const t=el("span");t.append(el("b",null,n),document.createTextNode(d));b.append(i,t);$("uu-moods").append(b)});
 
 const home=$("uu-home-pet");home.src=ART+"idle.png";
 let blinkT=setInterval(()=>{home.src=ART+"blink.png";setTimeout(()=>home.src=ART+"idle.png",220)},4200);
@@ -221,7 +225,7 @@ $("uu-note-file").onchange=async e=>{files=[];for(const f of e.target.files){if(
 $("uu-notes").onsubmit=e=>{e.preventDefault();const t=$("uu-note-text").value.trim();if(!t&&!files.length)return;addBacklog(files.length?"screenshot":"note","unity-unicorn-session-notes",t,files);files=[];$("uu-note-files").textContent="";e.target.reset()};
 $("uu-backlog-export").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(backlog(),null,2)],{type:"application/json"}));a.download="unity-unicorn-backlog-"+today().replace(/-/g,"")+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
 function renderStatus(){const b=backlog();const last=b.entries.length?b.entries[b.entries.length-1].created.slice(0,10):"none yet";const s=$("uu-status");s.replaceChildren();
-  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-18, V0.4.0"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
+  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-18, V0.4.1"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
   const m=el("span");m.append(el("b",null,"On the map: "));const a=el("a",null,"unity-unicorn node");a.href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn";m.append(a);s.append(m)}
 $("uu-chat-open").onclick=()=>{$("uu-chat-msg").textContent="Unity Unicorn's chat bot is planned: it will ask before using your own Claude or ChatGPT account. Until then, use session notes above."};
 st.lastOpened=new Date().toISOString();save(KEY,st);

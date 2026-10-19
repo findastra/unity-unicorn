@@ -6,7 +6,7 @@
   "sprite": "sprite-20261008.json",
   "preview": "unity-unicorn-20261008.html",
   "status": "hatching",
-  "version": "0.4.0-20261018",
+  "version": "0.4.1-20261018",
   "source": "https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011",
   "release_tag": "v0.3.0-20261011",
   "publication_status": "source-release; verification in docs/open-arches-publication-20261011.md",
@@ -18,7 +18,7 @@
     "repository": "https://github.com/findastra/astras-pet-os"
   },
   "updated": "2026-10-18",
-  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18",
+  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18",
   "entry": "unity-unicorn-20261008.html",
   "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
   "audit": {
