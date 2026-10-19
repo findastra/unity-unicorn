@@ -97,3 +97,7 @@ Limits: the lights, the backlog and added items are saved in this browser only, 
 - Limit: its skeleton step still copies from a reference world. Astra's rule since 2026-10-18 is that new worlds start fresh from VCC's World template, so change that step before the next world.
 
 `pet.json` now has the framework's `intelligence_levels` block: every tool in L1 (on `main`, and not merged with its pull request), tricks in L2, harness skills in L3, and no item in two modules. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+
+## Labels as in Astra's sketch (0.4.1-20261018)
+
+Every module's label now sits on its top border, the way Astra drew it: the cyberhome, the quick summary, the L1 to L4 modules, session notes, emotions, clicker training, the unified footer and the chat. The cyberhome has its own label (`unity-unicorn-cyberhome`) and the title has none. The quick summary uses the sketch's words: a dashboard for your world and avatar programs and the tools and tricks that manage them, made to preserve the authenticity, creativity and provenance of all artists' work. The moods show the sketch's names (awake, sleepy), and the chat button is the sketch's arrow in a circle. The L1 module lists all 34 tools on `main` and the 21 not merged. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.

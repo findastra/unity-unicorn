@@ -14,6 +14,7 @@ face-transfer tool, script and guide added with Claude Opus 5.5 (`claude-opus-5-
 Realistic-props guide, prop-decomposer and realistic-prop-restyle tools, and the asset ledger's Downloads section added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 Framework modules on the page (L1 to L4, session notes, emotions, clicker training, footer, chat) added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 world-spawn-tool moved in from findastra/liminal-doors, and pet.json `intelligence_levels` added, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+Module labels on each box's top border, the cyberhome's own label, the sketch's summary and mood names (0.4.1) with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 
 ## Scope
 
