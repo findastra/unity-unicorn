@@ -113,3 +113,10 @@ A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a gr
 - **matcap-palette** (Unity): Tools › Unity Unicorn › matcap-palette shows every matcap in a project the same way and puts the one you pick on a Poiyomi or lilToon material's matcap slot, with Undo and a usage receipt. Code: `scripts/unity-editor/matcap-palette-20261019.cs`.
 - PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 48 from the page's own recipes.
 - Guide: [docs/matcap-palette-20261019.md](docs/matcap-palette-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Menu map (0.4.4-20261019)
+
+A new panel, **unity-unicorn-menu-map-panel**: an avatar's real radial menu, the way VRChat shows it, after VRCFury and Modular Avatar have built it. Click a wedge to open a submenu or switch a toggle; the middle is Back. Beside it, the **parameter budget**: synced bits used out of 256, the total before VRCFury's compressor, and what each add-on costs (each top menu, the compressor's own slots, and parameters the menu does not show). **Load a menu map** keeps your file in that tab only; **Try the sample** shows a made-up avatar.
+
+- **menu-map** (Unity): select the avatar and run Tools › Unity Unicorn › menu-map. It builds a disposable test copy (the SDK build step an upload runs), writes `UnityUnicornReports/menu-map-<avatar>-<time>.json` with every menu page, control, parameter and icon (PNG), deletes the copy and leaves a usage receipt. The scene is never saved. Code: `scripts/unity-editor/menu-map-20261019.cs`.
+- Sample: [docs/menu-map-sample-20261019.json](docs/menu-map-sample-20261019.json). Guide: [docs/menu-map-20261019.md](docs/menu-map-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

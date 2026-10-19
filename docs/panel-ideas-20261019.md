@@ -9,7 +9,7 @@ and a usage receipt. The first five are the ones I would build next, in this ord
 
 | # | Panel | Design concept | What it shows and does | Why now |
 |---|---|---|---|---|
-| 1 | **menu-map** | Toggles and menus | Draws an avatar's real radial menu (after VRCFury and Modular Avatar build it), page by page, with icons, plus the synced-parameter meter (256 bits) and what each add-on costs. | Poppy is at 256/256 after VRCFury's compressor; every new effect now needs a plan. |
+| 1 | **menu-map** (built: [guide](menu-map-20261019.md)) | Toggles and menus | Draws an avatar's real radial menu (after VRCFury and Modular Avatar build it), page by page, with icons, plus the synced-parameter meter (256 bits) and what each add-on costs. | Poppy is at 256/256 after VRCFury's compressor; every new effect now needs a plan. |
 | 2 | **effects-rack** | Effects and props | Every effect on an avatar (fans, sparkles, bending, stars, wings) with its menu path, gesture trigger, hand or foot, and a picture of it firing. Adds one from a learned template. | Tonight's work: 18 fan colours, four bendings, four star kits, two sparkle sets. |
 | 3 | **performance-rank** | Performance | VRChat's PC and Quest rank: polygons, materials, meshes, bones, PhysBones, particles, texture memory, download size, with the worst offenders first and a fix for each. | Effects add particles and materials fast. |
 | 4 | **gesture-map** | Face and expressions | Each hand gesture (Fist, Open, Point, Peace, Rock'n'Roll, Gun, Thumbs up) with its face picture and what else fires on it (Star Gun fires on Gun, Star Burst on Open). Face tracking status. | Poppy's gestures now drive faces and effects at once; a map shows clashes. |

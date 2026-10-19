@@ -1,0 +1,907 @@
+{
+  "schema": "unity-unicorn.menu-map/v1",
+  "tool_id": "menu-map",
+  "avatar": {
+    "name": "Sample Pony"
+  },
+  "built_at": "2026-10-19T14:00:00Z",
+  "unity": "2022.3.22f1",
+  "sample": "Made-up names for trying the panel; not a real avatar.",
+  "menu": {
+    "name": "Sample Pony",
+    "controls": [
+      {
+        "name": "Outfits",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Outfits",
+          "controls": [
+            {
+              "name": "Hoodie",
+              "type": "Toggle",
+              "parameter": "Hoodie",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Skirt",
+              "type": "Toggle",
+              "parameter": "Skirt",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Boots",
+              "type": "Toggle",
+              "parameter": "Boots",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Crown",
+              "type": "Toggle",
+              "parameter": "Crown",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Hoodie Hue",
+              "type": "RadialPuppet",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "sub_parameters": [
+                "HoodieHue"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Effects",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Effects",
+          "controls": [
+            {
+              "name": "Fans",
+              "type": "SubMenu",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "submenu": {
+                "name": "Fans",
+                "controls": [
+                  {
+                    "name": "Left Fan",
+                    "type": "Toggle",
+                    "parameter": "FanLeft",
+                    "value": 1,
+                    "icon": null
+                  },
+                  {
+                    "name": "Right Fan",
+                    "type": "Toggle",
+                    "parameter": "FanRight",
+                    "value": 1,
+                    "icon": null
+                  },
+                  {
+                    "name": "Fan Colour",
+                    "type": "RadialPuppet",
+                    "parameter": null,
+                    "value": 0,
+                    "icon": null,
+                    "sub_parameters": [
+                      "FanColour"
+                    ]
+                  },
+                  {
+                    "name": "Rainbow",
+                    "type": "Toggle",
+                    "parameter": "FanRainbow",
+                    "value": 1,
+                    "icon": null
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sparkles",
+              "type": "Toggle",
+              "parameter": "Sparkles",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Stars",
+              "type": "SubMenu",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "submenu": {
+                "name": "Stars",
+                "controls": [
+                  {
+                    "name": "Star Gun",
+                    "type": "Toggle",
+                    "parameter": "StarGun",
+                    "value": 1,
+                    "icon": null
+                  },
+                  {
+                    "name": "Star Burst",
+                    "type": "Toggle",
+                    "parameter": "StarBurst",
+                    "value": 1,
+                    "icon": null
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wings",
+              "type": "Toggle",
+              "parameter": "Wings",
+              "value": 1,
+              "icon": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "Hair",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Hair",
+          "controls": [
+            {
+              "name": "Hair Hue",
+              "type": "RadialPuppet",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "sub_parameters": [
+                "HairHue"
+              ]
+            },
+            {
+              "name": "Ponytail",
+              "type": "Toggle",
+              "parameter": "Ponytail",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Bangs",
+              "type": "Toggle",
+              "parameter": "Bangs",
+              "value": 1,
+              "icon": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "Face",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Face",
+          "controls": [
+            {
+              "name": "Blush",
+              "type": "Button",
+              "parameter": "Blush",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Tongue",
+              "type": "Toggle",
+              "parameter": "Tongue",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Expressions",
+              "type": "TwoAxisPuppet",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "sub_parameters": [
+                "FaceX",
+                "FaceY"
+              ],
+              "labels": [
+                {
+                  "name": "Happy",
+                  "icon": null
+                },
+                {
+                  "name": "Smug",
+                  "icon": null
+                },
+                {
+                  "name": "Sad",
+                  "icon": null
+                },
+                {
+                  "name": "Angry",
+                  "icon": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Emotes",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Emotes",
+          "controls": [
+            {
+              "name": "Wave",
+              "type": "Button",
+              "parameter": "Emote",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Dance",
+              "type": "Button",
+              "parameter": "Emote",
+              "value": 2,
+              "icon": null
+            },
+            {
+              "name": "Sit",
+              "type": "Button",
+              "parameter": "Emote",
+              "value": 3,
+              "icon": null
+            },
+            {
+              "name": "Spin",
+              "type": "Button",
+              "parameter": "Emote",
+              "value": 4,
+              "icon": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "Lights",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Lights",
+          "controls": [
+            {
+              "name": "Glow",
+              "type": "Toggle",
+              "parameter": "Glow",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Glow Strength",
+              "type": "RadialPuppet",
+              "parameter": null,
+              "value": 0,
+              "icon": null,
+              "sub_parameters": [
+                "GlowStrength"
+              ]
+            },
+            {
+              "name": "AudioLink",
+              "type": "Toggle",
+              "parameter": "AudioLink",
+              "value": 1,
+              "icon": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "Settings",
+        "type": "SubMenu",
+        "parameter": null,
+        "value": 0,
+        "icon": null,
+        "submenu": {
+          "name": "Settings",
+          "controls": [
+            {
+              "name": "Face Tracking",
+              "type": "Toggle",
+              "parameter": "FTOn",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Mirror Hide",
+              "type": "Toggle",
+              "parameter": "MirrorHide",
+              "value": 1,
+              "icon": null
+            },
+            {
+              "name": "Shoe Height",
+              "type": "Toggle",
+              "parameter": "ShoeHeight",
+              "value": 1,
+              "icon": null
+            }
+          ]
+        }
+      },
+      {
+        "name": "Hearts",
+        "type": "Toggle",
+        "parameter": "Hearts",
+        "value": 1,
+        "icon": null
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "name": "Hoodie",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Outfits › Hoodie"
+    },
+    {
+      "name": "Skirt",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Outfits › Skirt"
+    },
+    {
+      "name": "Boots",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Outfits › Boots"
+    },
+    {
+      "name": "Crown",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Outfits › Crown"
+    },
+    {
+      "name": "HoodieHue",
+      "type": "Float",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Outfits › Hoodie Hue"
+    },
+    {
+      "name": "FanLeft",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Fans › Left Fan"
+    },
+    {
+      "name": "FanRight",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Fans › Right Fan"
+    },
+    {
+      "name": "FanColour",
+      "type": "Float",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Fans › Fan Colour"
+    },
+    {
+      "name": "FanRainbow",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Fans › Rainbow"
+    },
+    {
+      "name": "Sparkles",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Sparkles"
+    },
+    {
+      "name": "StarGun",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Stars › Star Gun"
+    },
+    {
+      "name": "StarBurst",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Stars › Star Burst"
+    },
+    {
+      "name": "Wings",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Effects › Wings"
+    },
+    {
+      "name": "HairHue",
+      "type": "Float",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Hair › Hair Hue"
+    },
+    {
+      "name": "Ponytail",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Hair › Ponytail"
+    },
+    {
+      "name": "Bangs",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Hair › Bangs"
+    },
+    {
+      "name": "Blush",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": "Face › Blush"
+    },
+    {
+      "name": "Tongue",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": "Face › Tongue"
+    },
+    {
+      "name": "FaceX",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": "Face › Expressions"
+    },
+    {
+      "name": "FaceY",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": "Face › Expressions"
+    },
+    {
+      "name": "Emote",
+      "type": "Int",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": "Emotes › Wave"
+    },
+    {
+      "name": "Glow",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Lights › Glow"
+    },
+    {
+      "name": "GlowStrength",
+      "type": "Float",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Lights › Glow Strength"
+    },
+    {
+      "name": "AudioLink",
+      "type": "Bool",
+      "synced": false,
+      "saved": true,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Lights › AudioLink"
+    },
+    {
+      "name": "FTOn",
+      "type": "Bool",
+      "synced": true,
+      "saved": true,
+      "default": 0,
+      "bits": 1,
+      "menu_path": "Settings › Face Tracking"
+    },
+    {
+      "name": "MirrorHide",
+      "type": "Bool",
+      "synced": false,
+      "saved": false,
+      "default": 0,
+      "bits": 0,
+      "menu_path": "Settings › Mirror Hide"
+    },
+    {
+      "name": "ShoeHeight",
+      "type": "Bool",
+      "synced": true,
+      "saved": true,
+      "default": 0,
+      "bits": 1,
+      "menu_path": "Settings › Shoe Height"
+    },
+    {
+      "name": "Hearts",
+      "type": "Bool",
+      "synced": true,
+      "saved": true,
+      "default": 0,
+      "bits": 1,
+      "menu_path": "Hearts"
+    },
+    {
+      "name": "FT/v2/EyeLeftX",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/EyeRightX",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/EyeY",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/EyeLidLeft",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/EyeLidRight",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/EyeSquint",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/BrowUp",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/BrowDown",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/BrowInnerUp",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/JawOpen",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/JawX",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/MouthClosed",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/MouthSmile",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/MouthFrown",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/MouthPout",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/LipFunnel",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/LipSuck",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/CheekPuff",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/NoseSneer",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "FT/v2/TongueOut",
+      "type": "Float",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncIndex0",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncIndex1",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataNum0",
+      "type": "Int",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 8,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool0",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool1",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool2",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool3",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool4",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool5",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool6",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    },
+    {
+      "name": "VF101_SyncDataBool7",
+      "type": "Bool",
+      "synced": true,
+      "saved": false,
+      "default": 0,
+      "bits": 1,
+      "menu_path": null
+    }
+  ],
+  "budget": {
+    "limit": 256,
+    "used": 207,
+    "before_compressor": 237,
+    "before_build": 40
+  },
+  "icons": {}
+}
