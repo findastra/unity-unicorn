@@ -16,6 +16,7 @@ Framework modules on the page (L1 to L4, session notes, emotions, clicker traini
 world-spawn-tool moved in from findastra/liminal-doors, and pet.json `intelligence_levels` added, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 Module labels on each box's top border, the cyberhome's own label, the sketch's summary and mood names (0.4.1) with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 Panels, not modules (0.4.2): the page boxes are panels (`unity-unicorn-L1-panel` to `-L4-panel`, `uu-panels`, `uu-panel`), saved lights carried over, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19 (Astra's decision of the same day). A module is a file of code; never call a page box a module again.
+Matcap palette panel (unity-unicorn-matcap-panel), the matcap-palette Unity window and the PNG maker added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. The 48 palette matcaps are drawn from math in the page's `uu-matcap-recipes` script; never commit matcaps that came with avatars or shaders.
 
 ## Scope
 

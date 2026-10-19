@@ -105,3 +105,11 @@ Every panel's label now sits on its top border, the way Astra drew it: the cyber
 ## Panels, not modules (0.4.2-20261019)
 
 The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): to a developer a module is a file of code, and a box on a dashboard page is a panel ([PET-PROGRAM-FRAMEWORK.md](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 1). The four level panels are now labelled `unity-unicorn-L1-panel` to `unity-unicorn-L4-panel`, and the page's own names follow (`uu-panels`, `uu-panel`). Lights you saved on the old `-module` labels carry over to the new ones; the browser storage key keeps its name so nothing saved is lost. The face tracking modules, masonry mesh modules and Python modules elsewhere in this repo are real modules and keep the word. `test/panels-test-20261019.mjs` fails if a page box is called a module again. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Matcap palette (0.4.3-20261019)
+
+A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 48 matcaps (Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
+
+- **matcap-palette** (Unity): Tools › Unity Unicorn › matcap-palette shows every matcap in a project the same way and puts the one you pick on a Poiyomi or lilToon material's matcap slot, with Undo and a usage receipt. Code: `scripts/unity-editor/matcap-palette-20261019.cs`.
+- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 48 from the page's own recipes.
+- Guide: [docs/matcap-palette-20261019.md](docs/matcap-palette-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
