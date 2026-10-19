@@ -83,11 +83,11 @@ Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
-## Framework modules (0.4.0-20261018)
+## Framework panels (0.4.0-20261018)
 
-The top of the page now follows [the Pet Program Framework](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 3 (Astra's sketch of 2026-10-18): the cyberhome, the **Unity Stable** title with its version, the quick summary and status line, the four stacked L1 to L4 modules, session notes that save to the backlog, the nine emotions, clicker training, the unified footer and the chat button. Every module collapses on a phone, and every item has its two paired lights (ON/OFF and maintenance).
+The top of the page now follows [the Pet Program Framework](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 3 (Astra's sketch of 2026-10-18): the cyberhome, the **Unity Stable** title with its version, the quick summary and status line, the four stacked L1 to L4 panels, session notes that save to the backlog, the nine emotions, clicker training, the unified footer and the chat button. Every panel collapses on a phone, and every item has its two paired lights (ON/OFF and maintenance).
 
-The L1 module lists all 32 tools on `main` and the 21 that are not merged yet (PR #1's avatar effect tools, including **sparkle-strapper** and **fan-fitter**, PR #3, and the asset ledger), each marked "not merged". **Added tonight** lets you add a tool or program as you make it; it stays in this browser and goes into the backlog.
+The L1 panel lists all 32 tools on `main` and the 21 that are not merged yet (PR #1's avatar effect tools, including **sparkle-strapper** and **fan-fitter**, PR #3, and the asset ledger), each marked "not merged". **Added tonight** lets you add a tool or program as you make it; it stays in this browser and goes into the backlog.
 
 Limits: the lights, the backlog and added items are saved in this browser only, because the Farm's core switch is not built. The seat, the chat bot, keys, grants and the weekly backlog run are shown as planned. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 
@@ -96,8 +96,12 @@ Limits: the lights, the backlog and added items are saved in this browser only, 
 - **world-spawn-tool**: spawns a new VRChat world. First a public GitHub repo, then a link with a cute one-line summary in the Findastra profile README (by pull request), then the Unity project skeleton. It started in Liminal Doors (draft findastra/liminal-doors#1) and moved here, its own pet program, on 2026-10-18. Guide: [docs/world-spawn-tool-20261018.md](docs/world-spawn-tool-20261018.md); code and tests in `scripts/world-spawn-tool/`.
 - Limit: its skeleton step still copies from a reference world. Astra's rule since 2026-10-18 is that new worlds start fresh from VCC's World template, so change that step before the next world.
 
-`pet.json` now has the framework's `intelligence_levels` block: every tool in L1 (on `main`, and not merged with its pull request), tricks in L2, harness skills in L3, and no item in two modules. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+`pet.json` now has the framework's `intelligence_levels` block: every tool in L1 (on `main`, and not merged with its pull request), tricks in L2, harness skills in L3, and no item in two panels. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 
 ## Labels as in Astra's sketch (0.4.1-20261018)
 
-Every module's label now sits on its top border, the way Astra drew it: the cyberhome, the quick summary, the L1 to L4 modules, session notes, emotions, clicker training, the unified footer and the chat. The cyberhome has its own label (`unity-unicorn-cyberhome`) and the title has none. The quick summary uses the sketch's words: a dashboard for your world and avatar programs and the tools and tricks that manage them, made to preserve the authenticity, creativity and provenance of all artists' work. The moods show the sketch's names (awake, sleepy), and the chat button is the sketch's arrow in a circle. The L1 module lists all 34 tools on `main` and the 21 not merged. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+Every panel's label now sits on its top border, the way Astra drew it: the cyberhome, the quick summary, the L1 to L4 panels, session notes, emotions, clicker training, the unified footer and the chat. The cyberhome has its own label (`unity-unicorn-cyberhome`) and the title has none. The quick summary uses the sketch's words: a dashboard for your world and avatar programs and the tools and tricks that manage them, made to preserve the authenticity, creativity and provenance of all artists' work. The moods show the sketch's names (awake, sleepy), and the chat button is the sketch's arrow in a circle. The L1 panel lists all 34 tools on `main` and the 21 not merged. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+
+## Panels, not modules (0.4.2-20261019)
+
+The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): to a developer a module is a file of code, and a box on a dashboard page is a panel ([PET-PROGRAM-FRAMEWORK.md](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 1). The four level panels are now labelled `unity-unicorn-L1-panel` to `unity-unicorn-L4-panel`, and the page's own names follow (`uu-panels`, `uu-panel`). Lights you saved on the old `-module` labels carry over to the new ones; the browser storage key keeps its name so nothing saved is lost. The face tracking modules, masonry mesh modules and Python modules elsewhere in this repo are real modules and keep the word. `test/panels-test-20261019.mjs` fails if a page box is called a module again. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
