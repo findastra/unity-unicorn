@@ -120,3 +120,14 @@ A new panel, **unity-unicorn-menu-map-panel**: an avatar's real radial menu, the
 
 - **menu-map** (Unity): select the avatar and run Tools › Unity Unicorn › menu-map. It builds a disposable test copy (the SDK build step an upload runs), writes `UnityUnicornReports/menu-map-<avatar>-<time>.json` with every menu page, control, parameter and icon (PNG), deletes the copy and leaves a usage receipt. The scene is never saved. Code: `scripts/unity-editor/menu-map-20261019.cs`.
 - Sample: [docs/menu-map-sample-20261019.json](docs/menu-map-sample-20261019.json). Guide: [docs/menu-map-20261019.md](docs/menu-map-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Asset creator, assets library and shaders shop (0.4.5-20261019)
+
+Three Unity Stable tools Astra asked for on 2026-10-18 ("lets make this booth together and then publish those tools"). They were built and first used in Liminal Doors, and moved here unchanged on 2026-10-19. Each folder is laid out like a world project, so installing one is a single copy into the project's folder.
+
+- **unity-asset-creator**: walks one world asset through a researched 12-step checklist (plan, provenance, scale and pivot, geometry, materials, textures, colliders, lighting, effects, prefab, review in the world, export). A failed check blocks its step, and steps 3, 7 and 11 need a person. It ends by exporting the version (package, previews, checksummed manifest) and opening a pull request to the library. Code: `scripts/unity-asset-creator/`. Guide: [docs/unity-asset-creator-20261019.md](docs/unity-asset-creator-20261019.md).
+- **unity-assets-library**: the public database of finished assets and their versions, [findastra/unity-assets-library](https://github.com/findastra/unity-assets-library), indexed in `library.json`. Astra merges every version. Guide: [docs/unity-assets-library-20261019.md](docs/unity-assets-library-20261019.md).
+- **shaders-shop**: installs shaders for worlds the way Creator Companion would, after showing the files, sources and licences, and records which shaders each world uses. It also stocks our own Unity Stable shaders. Code: `scripts/shaders-shop/`. Guide: [docs/shaders-shop-20261019.md](docs/shaders-shop-20261019.md).
+- **The unity-asset-creator trick** ([skills/unity-asset-creator/SKILL.md](skills/unity-asset-creator/SKILL.md), L2): how an agent walks the checklist through the world's agent queue and publishes, and what it asks Astra first.
+
+Limits: tested in one world (Liminal Doors) on two assets, the phone booth and stop 1's sky, both v1.0.0 in the library. The library has no licence yet. Liminal Doors keeps its incubating copy, so change the tools here first. Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

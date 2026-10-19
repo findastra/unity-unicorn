@@ -1,0 +1,393 @@
+{
+  "schema": "unity-unicorn.world-shaders/v1",
+  "world": "Astra's Infinite Pole",
+  "scanned_at": "2026-10-18T11:37:58Z",
+  "unity": "2022.3.22f1",
+  "scanned_by": "shaders-shop scan-world-shaders-20261018.py (read-only, from files)",
+  "scenes": [
+    "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+  ],
+  "shaders": [
+    {
+      "shader": "Astra/Celestial Sky",
+      "shader_path": "Assets/Astra/Shaders/CelestialSky.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Skies/Arctic Aurora.mat",
+        "Assets/Astra/Materials/Skies/Velvet Nebula.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Cherry Blossom Petal",
+      "shader_path": "Assets/Astra/Shaders/CherryBlossomPetal.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Cherry Blossom Petals.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Cloud Sea",
+      "shader_path": "Assets/Astra/Shaders/CloudSea.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Backdrop/Pink Cloud Sea.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Cloud Sea Sky",
+      "shader_path": "Assets/Astra/Shaders/CloudSeaSky.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Backdrop/Pink Cloud Sea Sky.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Glitter Cloud",
+      "shader_path": "Assets/Astra/Shaders/GlitterCloud.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Phone Booth Payphone.mat",
+        "Assets/Astra/Materials/Glitter Cloud Fused Outer.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Pink.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Dark.mat",
+        "Assets/Astra/Materials/DJ Glow.mat",
+        "Assets/Astra/Materials/Lounge/Phone Booth Body Pink.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Peach.mat",
+        "Assets/Astra/Materials/Lounge/Payphone Pink Chrome.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Lilac.mat",
+        "Assets/Astra/Materials/Glitter Cloud.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Porcelain.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Duck.mat",
+        "Assets/Astra/Materials/Lounge/Phone Booth Sign Pink.mat",
+        "Assets/Astra/Materials/Glitter Cloud Fused.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Beak.mat",
+        "Assets/Astra/Materials/Backdrop/Pink Sea Puff.mat",
+        "Assets/Astra/Materials/Lounge/Lounge Glow.mat",
+        "Assets/Astra/Materials/DJ Platter.mat",
+        "Assets/Astra/Materials/DJ Metal.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Glitter Gradient",
+      "shader_path": "Assets/Astra/Shaders/GlitterGradient.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Glitter/Confetti flakes.mat",
+        "Assets/Astra/Materials/Glitter/Rising sparks.mat",
+        "Assets/Astra/Materials/Glitter/Fine glitter dust.mat",
+        "Assets/Astra/Materials/Body Stardust 0.mat",
+        "Assets/Astra/Materials/Glitter/Tiny stars.mat",
+        "Assets/Astra/Materials/Glitter/Snow crystals.mat",
+        "Assets/Astra/Materials/Glitter/Soft bokeh.mat",
+        "Assets/Astra/Materials/Glitter/Starbursts.mat",
+        "Assets/Astra/Materials/Glitter/Falling shimmer.mat",
+        "Assets/Astra/Materials/Body Stardust 2.mat",
+        "Assets/Astra/Materials/Glitter/Floating hearts.mat",
+        "Assets/Astra/Materials/Glitter/Magic wisps.mat",
+        "Assets/Astra/Materials/Glitter/Fairy lights.mat",
+        "Assets/Astra/Materials/Glitter/Orbiting glints.mat",
+        "Assets/Astra/Materials/Glitter/Diamond shards.mat",
+        "Assets/Astra/Materials/Body Stardust 1.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Infinite Pole",
+      "shader_path": "Assets/Astra/Shaders/InfinitePole.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Pole Silver.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Prismatic Stair",
+      "shader_path": "Assets/Astra/Shaders/PrismaticStair.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Lounge/Crystal Aqua.mat",
+        "Assets/Astra/Materials/Prismatic Stair.mat",
+        "Assets/Astra/Materials/Lounge/Crystal Rose.mat",
+        "Assets/Astra/Materials/Lounge/Crystal Lilac.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Quiet Void",
+      "shader_path": "Assets/Astra/Shaders/Void.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Quiet Violet.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Rainbow Flow",
+      "shader_path": "Assets/Astra/Shaders/RainbowFlow.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Rainbow Flow.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Soft Sparkle",
+      "shader_path": "Assets/Astra/Shaders/Sparkle.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Lilac Sparkles.mat",
+        "Assets/Astra/Materials/Cloud Sparkle Rain.mat",
+        "Assets/Astra/Materials/Stair Star Dust.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Sparkle Clouds",
+      "shader_path": "Assets/Astra/Shaders/SparkleClouds.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Sparkle Clouds.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Storm Bolt",
+      "shader_path": "Assets/Astra/Shaders/StormBolt.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Storm/Storm Bolt.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Storm Rain",
+      "shader_path": "Assets/Astra/Shaders/StormRain.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Storm/Storm Rain.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Astra/Storm Sky",
+      "shader_path": "Assets/Astra/Shaders/StormSky.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Astra/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Storm/Storm Sky.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Merlin/World/Standard Video Emission",
+      "shader_path": "Assets/USharpVideo/Shaders/StandardVideoEmissive.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/USharpVideo/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/USharpVideo/Materials/VideoScreen.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "UI/MUI",
+      "shader_path": "Assets/USharpVideo/Shaders/UI-MerlinUI.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/USharpVideo/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/USharpVideo/Materials/UIMaterial.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Standard",
+      "shader_path": "Resources/unity_builtin_extra",
+      "catalog_id": "unity-builtin",
+      "catalog_name": "Unity built-in",
+      "license": "unity-builtin",
+      "source": "Unity built-in",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Payphone Pink.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Unlit/Texture",
+      "shader_path": "Resources/unity_builtin_extra",
+      "catalog_id": "unity-builtin",
+      "catalog_name": "Unity built-in",
+      "license": "unity-builtin",
+      "source": "Unity built-in",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Easter/Egg Stripes.mat",
+        "Assets/Astra/Materials/Easter/Egg Confetti.mat",
+        "Assets/Astra/Materials/Easter/Egg Zigzag.mat",
+        "Assets/Astra/Materials/Easter/Egg Checker.mat",
+        "Assets/Astra/Materials/Easter/Egg Dots.mat",
+        "Assets/Astra/Materials/Easter/Egg Rainbow.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "Unlit/Transparent",
+      "shader_path": "Resources/unity_builtin_extra",
+      "catalog_id": "unity-builtin",
+      "catalog_name": "Unity built-in",
+      "license": "unity-builtin",
+      "source": "Unity built-in",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Easter/Sticker Sparkle.mat",
+        "Assets/Astra/Materials/Easter/Sticker Moon.mat",
+        "Assets/Astra/Materials/Easter/Sticker Smiley.mat",
+        "Assets/Astra/Materials/Easter/Sticker Rainbow.mat",
+        "Assets/Astra/Materials/Easter/Sticker Paw.mat",
+        "Assets/Astra/Materials/Easter/Sticker Heart.mat",
+        "Assets/Astra/Materials/Easter/Sticker Star.mat",
+        "Assets/Astra/Materials/Lounge/Phone Booth Window.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "built-in shader 108",
+      "shader_path": "Resources/unity_builtin_extra",
+      "catalog_id": "unity-builtin",
+      "catalog_name": "Unity built-in",
+      "license": "unity-builtin",
+      "source": "Unity built-in",
+      "version": "",
+      "materials": [
+        "Assets/Astra/Materials/Skies/kloppenheim_02_puresky_2k.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    },
+    {
+      "shader": "VRChat/Mobile/Worlds/Supersampled UI",
+      "shader_path": "Packages/com.vrchat.base/Runtime/VRCSDK/Sample Assets/Shaders/Mobile/VRChat-Mobile-SupersampledUnlit.shader",
+      "catalog_id": "vrchat-sdk",
+      "catalog_name": "VRChat SDK shaders",
+      "license": "vrchat-sdk",
+      "source": "com.vrchat.base",
+      "version": "",
+      "materials": [
+        "Packages/com.vrchat.worlds/Editor/VRCSDK/SDK3/VRCSuperSampledUIMaterial.mat"
+      ],
+      "scenes": [
+        "Assets/Astra/Scenes/AstrasInfinitePole.unity"
+      ]
+    }
+  ]
+}
