@@ -90,3 +90,10 @@ The top of the page now follows [the Pet Program Framework](https://github.com/f
 The L1 module lists all 32 tools on `main` and the 21 that are not merged yet (PR #1's avatar effect tools, including **sparkle-strapper** and **fan-fitter**, PR #3, and the asset ledger), each marked "not merged". **Added tonight** lets you add a tool or program as you make it; it stays in this browser and goes into the backlog.
 
 Limits: the lights, the backlog and added items are saved in this browser only, because the Farm's core switch is not built. The seat, the chat bot, keys, grants and the weekly backlog run are shown as planned. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
+
+## world-spawn-tool (2026-10-18)
+
+- **world-spawn-tool**: spawns a new VRChat world. First a public GitHub repo, then a link with a cute one-line summary in the Findastra profile README (by pull request), then the Unity project skeleton. It started in Liminal Doors (draft findastra/liminal-doors#1) and moved here, its own pet program, on 2026-10-18. Guide: [docs/world-spawn-tool-20261018.md](docs/world-spawn-tool-20261018.md); code and tests in `scripts/world-spawn-tool/`.
+- Limit: its skeleton step still copies from a reference world. Astra's rule since 2026-10-18 is that new worlds start fresh from VCC's World template, so change that step before the next world.
+
+`pet.json` now has the framework's `intelligence_levels` block: every tool in L1 (on `main`, and not merged with its pull request), tricks in L2, harness skills in L3, and no item in two modules. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.

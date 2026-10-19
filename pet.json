@@ -18,7 +18,7 @@
     "repository": "https://github.com/findastra/astras-pet-os"
   },
   "updated": "2026-10-18",
-  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18",
+  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18",
   "entry": "unity-unicorn-20261008.html",
   "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
   "audit": {
@@ -26,5 +26,112 @@
     "subject": "your Unity and VRChat project notes",
     "needs": "a project opened in Unity so I can check it"
   },
-  "framework": "PET-PROGRAM-FRAMEWORK.md section 3 (Astra sketch 2026-10-18)"
+  "framework": "PET-PROGRAM-FRAMEWORK.md section 3 (Astra sketch 2026-10-18)",
+  "intelligence_levels": {
+    "L1": {
+      "third_party": [
+        "Unity 2022.3",
+        "VRChat Creator Companion",
+        "VRChat SDK",
+        "Blender",
+        "VRCFT",
+        "Poiyomi",
+        "VRCFury",
+        "Modular Avatar with NDMF",
+        "lilToon",
+        "d4rkAvatarOptimizer",
+        "AudioLink",
+        "Gesture Manager",
+        "Av3Emulator",
+        "SPS Configurator"
+      ],
+      "native": [
+        "Poppy (avatar)",
+        "Piranesi House (world)",
+        "Liminal Doors (world)",
+        "Dubstep Gunsmith (catalog site, PR #1, not merged)"
+      ],
+      "tools": [
+        "asset-contact-sheet",
+        "button-check",
+        "cloud-collider-audit",
+        "cloud-collider-validation",
+        "cloud-lounge-smoothing",
+        "cloud-mesh-generator",
+        "cloud-physics-check",
+        "cloud-sea-fusion",
+        "cloud-survey",
+        "desktop-world-test",
+        "face-transfer",
+        "foreground-tool-recorder",
+        "house-scene-builder",
+        "marble-carver",
+        "masonry-regeneration",
+        "masonry-structural-audit",
+        "masonry-unity-refresh",
+        "neck-blender",
+        "no-windows-audit-tool",
+        "no-windows-scene-refresh",
+        "occlusion-bake",
+        "prop-decomposer",
+        "realistic-prop-restyle",
+        "reflection-probe-bake",
+        "run-unity-tool",
+        "scene-preview-render",
+        "scene-yaml-inspection",
+        "time-season-tide-preview",
+        "vcc-package-manager",
+        "vine-bloomer",
+        "vrchat-avatar-upload",
+        "wall-texture-rebuild",
+        "world-spawn-tool",
+        "world-validator"
+      ],
+      "tools_not_merged": {
+        "PR #1 (draft, Codex)": [
+          "sparkle-strapper",
+          "fan-fitter",
+          "learn-add-ons",
+          "bending-adder",
+          "blood-bender-strapper",
+          "water-bender-strapper",
+          "sparkle-bender-strapper",
+          "wing-strapper",
+          "neck-bow-strapper",
+          "star-effects-diagnostic",
+          "golden-painter",
+          "chain-dangle-weights",
+          "rgb-painter",
+          "gunsmith-loadout",
+          "hair-weighter",
+          "spring-joint-strapper",
+          "copyright-logger",
+          "copyright-catcher"
+        ],
+        "PR #3 (draft, Codex)": [
+          "glass-animal-tool",
+          "bubble-chair-blower"
+        ],
+        "design only": [
+          "asset-ledger"
+        ]
+      }
+    },
+    "L2": {
+      "tricks": [
+        "make-a-prop-look-real"
+      ],
+      "tricks_to_write": [
+        "weekly-update-from-friendly-farmer",
+        "weekly-copyright-auditor"
+      ]
+    },
+    "L3": {
+      "skills": [
+        "face-transfer",
+        "vrchat-unity-world"
+      ],
+      "note": "Harness skills installed in Claude Code on Astra's PC; they belong to the seat, not the pet."
+    }
+  }
 }
