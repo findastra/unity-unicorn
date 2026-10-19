@@ -158,6 +158,71 @@
   <p class="uu-note">These 48 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
 </details>
 
+<details class="uu-panel" id="uu-menumap" open><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
+<style>
+#uu-menumap{--mm-case:#26272b;--mm-well:#1b1c20;--mm-pink:#ff3cc7;--mm-cyan:#2ef2ff;--mm-lime:#b6ff3c;--mm-red:#ff4d5e}
+#uu-menumap .mm-case{background:linear-gradient(160deg,#2c2d33,var(--mm-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #2ef2ff1c,0 0 30px #ff3cc714}
+#uu-menumap .mm-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#uu-menumap .mm-btn{background:#33353e;color:var(--ink);border:1px solid #4a4d58;border-radius:999px;padding:5px 12px;font-size:12px;cursor:pointer}
+#uu-menumap .mm-btn:focus-visible,#uu-menumap .mm-wedge:focus-visible{outline:2px solid var(--mm-cyan);outline-offset:2px}
+#uu-menumap .mm-grid{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:16px;align-items:start;margin-top:12px}
+#uu-menumap .mm-wheel{background:var(--mm-well);border:1px solid #33353d;border-radius:16px;padding:10px}
+#uu-menumap .mm-crumbs{font:600 12px ui-monospace,Consolas,monospace;color:var(--mm-cyan);margin:0 0 6px;overflow-wrap:anywhere}
+#uu-menumap svg.mm-radial{display:block;width:100%;height:auto;max-width:340px;margin:auto;touch-action:manipulation;user-select:none}
+#uu-menumap .mm-wedge{cursor:pointer}
+#uu-menumap .mm-wedge path{fill:#2a2c33;stroke:#0f1013;stroke-width:1.2}
+#uu-menumap .mm-wedge:hover path,#uu-menumap .mm-wedge:focus path{fill:#363945;stroke:var(--mm-cyan)}
+#uu-menumap .mm-wedge.on path{fill:#3a2140;stroke:var(--mm-pink)}
+#uu-menumap .mm-wedge.picked path{stroke:var(--mm-cyan);stroke-width:2}
+#uu-menumap .mm-wedge text{fill:#e9ebf1;font:600 8px system-ui,sans-serif;text-anchor:middle;pointer-events:none}
+#uu-menumap .mm-wedge text.mm-glyph{font-size:12px;fill:var(--mm-cyan)}
+#uu-menumap .mm-wedge.on text.mm-glyph{fill:var(--mm-pink)}
+#uu-menumap .mm-hub circle{fill:#16171b;stroke:var(--mm-cyan);stroke-width:1.5}
+#uu-menumap .mm-hub text{fill:var(--mm-cyan);font:700 8px system-ui,sans-serif;text-anchor:middle;pointer-events:none}
+#uu-menumap .mm-detail{font-size:13px;color:var(--muted);min-height:2.6em;margin:8px 0 0}
+#uu-menumap .mm-detail b{color:var(--ink)}
+#uu-menumap .mm-meter{height:22px;border-radius:999px;background:#15161a;border:1px solid #3a3c44;display:flex;overflow:hidden}
+#uu-menumap .mm-seg{height:100%;min-width:2px}
+#uu-menumap .mm-total{font:700 22px/1.2 ui-monospace,Consolas,monospace;color:var(--ink);margin:0 0 4px}
+#uu-menumap .mm-total.over{color:var(--mm-red)}
+#uu-menumap .mm-groups{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px}
+#uu-menumap .mm-groups li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:8px;align-items:baseline;font-size:13px}
+#uu-menumap .mm-sw{width:12px;height:12px;border-radius:3px;align-self:center}
+#uu-menumap .mm-groups .mm-bits{font:600 12px ui-monospace,Consolas,monospace;color:var(--ink);white-space:nowrap}
+#uu-menumap .mm-groups small{display:block;color:var(--muted);font-size:11px}
+#uu-menumap details.mm-params{margin-top:12px}
+#uu-menumap details.mm-params summary{cursor:pointer;color:var(--muted);font-size:12px}
+#uu-menumap .mm-plist{list-style:none;margin:6px 0 0;padding:0;max-height:260px;overflow:auto;font:12px ui-monospace,Consolas,monospace;color:var(--muted)}
+#uu-menumap .mm-plist li{display:flex;gap:8px;flex-wrap:wrap;padding:2px 0;border-bottom:1px solid #2f3138}
+#uu-menumap .mm-plist b{color:var(--ink);font-weight:600}
+#uu-menumap code,#uu-menumap .uu-what{overflow-wrap:anywhere}
+@media (max-width:760px){#uu-menumap .mm-grid{grid-template-columns:1fr}}
+</style>
+  <div class="mm-case">
+    <div class="mm-row">
+      <label class="mm-btn">Load a menu map <input type="file" id="mm-file" accept=".json,application/json" hidden></label>
+      <button class="mm-btn" type="button" id="mm-sample">Try the sample</button>
+      <span class="uu-note" style="margin:0" id="mm-msg" role="status">Your file stays in this browser tab; nothing is uploaded.</span>
+    </div>
+    <div class="mm-grid">
+      <div class="mm-wheel">
+        <p class="mm-crumbs" id="mm-crumbs"></p>
+        <svg class="mm-radial" id="mm-radial" viewBox="-110 -110 220 220" role="group" aria-label="Radial menu"></svg>
+        <p class="mm-detail" id="mm-detail" aria-live="polite"></p>
+      </div>
+      <div>
+        <h4 style="margin-top:0">Parameter budget</h4>
+        <p class="mm-total" id="mm-total"></p>
+        <div class="mm-meter" id="mm-meter" role="img"></div>
+        <p class="uu-note" id="mm-budget-note"></p>
+        <ul class="mm-groups" id="mm-groups"></ul>
+        <details class="mm-params"><summary id="mm-params-sum">Every parameter</summary><ul class="mm-plist" id="mm-plist"></ul></details>
+      </div>
+    </div>
+  </div>
+  <p class="uu-note">In Unity, select the avatar and run <b>Tools › Unity Unicorn › menu-map</b>: it builds a throwaway test copy (VRCFury and Modular Avatar included), writes <code>UnityUnicornReports/menu-map-&lt;avatar&gt;-&lt;time&gt;.json</code> and deletes the copy. Load that file here.</p>
+</details>
+
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-session-notes"></span>unity-unicorn-session-notes</summary>
   <form id="uu-notes" autocomplete="off">
     <textarea id="uu-note-text" rows="3" maxlength="4000" placeholder="A note, a bug, a change request or a new tool idea…" aria-label="Session note"></textarea>
@@ -200,7 +265,7 @@
 <script>
 (()=>{
 const ART="https://raw.githubusercontent.com/findastra/astras-pet-os/main/art/frames/unity-unicorn/";
-const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison."],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes."],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes."],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline."],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes."],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets."],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks."],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement."],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them."],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow."],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has."],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash."],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene."],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs."],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry."],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams."],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity."],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials."],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages."],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions."],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene."],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders."],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set."],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting."],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file)."],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials."],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings."],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor."],["vcc-package-manager","Workflow","Review and manage a Unity project through VRChat Creator Companion and its package workflow."],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning."],["vrchat-avatar-upload","Workflow","Follow the established avatar preparation and SDK upload workflow for the intended account."],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage."],["world-spawn-tool","Generator","Spawn a new VRChat world."],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets."],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page panel and Unity window)."]];
+const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison."],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes."],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes."],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline."],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes."],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets."],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks."],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement."],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them."],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow."],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has."],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash."],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene."],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs."],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry."],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams."],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity."],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials."],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages."],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions."],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene."],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders."],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set."],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting."],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file)."],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials."],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings."],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor."],["vcc-package-manager","Workflow","Review and manage a Unity project through VRChat Creator Companion and its package workflow."],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning."],["vrchat-avatar-upload","Workflow","Follow the established avatar preparation and SDK upload workflow for the intended account."],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage."],["world-spawn-tool","Generator","Spawn a new VRChat world."],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets."],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page panel and Unity window)."],["menu-map","Audit","An avatar's built radial menu to click through, with the 256-bit synced parameter budget and what each add-on costs (page panel and Unity export)."]];
 const UNMERGED=[
  ["sparkle-strapper","PR #1","Phawksea's Sparks on hands and feet, with separate controls and a continuous RGB option.",true],
  ["fan-fitter","PR #1","Every supplied stock fan colour on both hands, one active per hand, and the RGB fan fix.",true],
@@ -607,6 +672,238 @@ const MC = (() => {
   families(); pans(); showChosen();
 })();
 </script>
+<script id="uu-menumap-sample">
+// The sample menu map (made-up names), the same as docs/menu-map-sample-20261019.json.
+const MM_SAMPLE = {"schema":"unity-unicorn.menu-map/v1","tool_id":"menu-map","avatar":{"name":"Sample Pony"},"built_at":"2026-10-19T14:00:00Z","unity":"2022.3.22f1","sample":"Made-up names for trying the panel; not a real avatar.","menu":{"name":"Sample Pony","controls":[{"name":"Outfits","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Outfits","controls":[{"name":"Hoodie","type":"Toggle","parameter":"Hoodie","value":1,"icon":null},{"name":"Skirt","type":"Toggle","parameter":"Skirt","value":1,"icon":null},{"name":"Boots","type":"Toggle","parameter":"Boots","value":1,"icon":null},{"name":"Crown","type":"Toggle","parameter":"Crown","value":1,"icon":null},{"name":"Hoodie Hue","type":"RadialPuppet","parameter":null,"value":0,"icon":null,"sub_parameters":["HoodieHue"]}]}},{"name":"Effects","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Effects","controls":[{"name":"Fans","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Fans","controls":[{"name":"Left Fan","type":"Toggle","parameter":"FanLeft","value":1,"icon":null},{"name":"Right Fan","type":"Toggle","parameter":"FanRight","value":1,"icon":null},{"name":"Fan Colour","type":"RadialPuppet","parameter":null,"value":0,"icon":null,"sub_parameters":["FanColour"]},{"name":"Rainbow","type":"Toggle","parameter":"FanRainbow","value":1,"icon":null}]}},{"name":"Sparkles","type":"Toggle","parameter":"Sparkles","value":1,"icon":null},{"name":"Stars","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Stars","controls":[{"name":"Star Gun","type":"Toggle","parameter":"StarGun","value":1,"icon":null},{"name":"Star Burst","type":"Toggle","parameter":"StarBurst","value":1,"icon":null}]}},{"name":"Wings","type":"Toggle","parameter":"Wings","value":1,"icon":null}]}},{"name":"Hair","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Hair","controls":[{"name":"Hair Hue","type":"RadialPuppet","parameter":null,"value":0,"icon":null,"sub_parameters":["HairHue"]},{"name":"Ponytail","type":"Toggle","parameter":"Ponytail","value":1,"icon":null},{"name":"Bangs","type":"Toggle","parameter":"Bangs","value":1,"icon":null}]}},{"name":"Face","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Face","controls":[{"name":"Blush","type":"Button","parameter":"Blush","value":1,"icon":null},{"name":"Tongue","type":"Toggle","parameter":"Tongue","value":1,"icon":null},{"name":"Expressions","type":"TwoAxisPuppet","parameter":null,"value":0,"icon":null,"sub_parameters":["FaceX","FaceY"],"labels":[{"name":"Happy","icon":null},{"name":"Smug","icon":null},{"name":"Sad","icon":null},{"name":"Angry","icon":null}]}]}},{"name":"Emotes","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Emotes","controls":[{"name":"Wave","type":"Button","parameter":"Emote","value":1,"icon":null},{"name":"Dance","type":"Button","parameter":"Emote","value":2,"icon":null},{"name":"Sit","type":"Button","parameter":"Emote","value":3,"icon":null},{"name":"Spin","type":"Button","parameter":"Emote","value":4,"icon":null}]}},{"name":"Lights","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Lights","controls":[{"name":"Glow","type":"Toggle","parameter":"Glow","value":1,"icon":null},{"name":"Glow Strength","type":"RadialPuppet","parameter":null,"value":0,"icon":null,"sub_parameters":["GlowStrength"]},{"name":"AudioLink","type":"Toggle","parameter":"AudioLink","value":1,"icon":null}]}},{"name":"Settings","type":"SubMenu","parameter":null,"value":0,"icon":null,"submenu":{"name":"Settings","controls":[{"name":"Face Tracking","type":"Toggle","parameter":"FTOn","value":1,"icon":null},{"name":"Mirror Hide","type":"Toggle","parameter":"MirrorHide","value":1,"icon":null},{"name":"Shoe Height","type":"Toggle","parameter":"ShoeHeight","value":1,"icon":null}]}},{"name":"Hearts","type":"Toggle","parameter":"Hearts","value":1,"icon":null}]},"parameters":[{"name":"Hoodie","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Outfits › Hoodie"},{"name":"Skirt","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Outfits › Skirt"},{"name":"Boots","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Outfits › Boots"},{"name":"Crown","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Outfits › Crown"},{"name":"HoodieHue","type":"Float","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Outfits › Hoodie Hue"},{"name":"FanLeft","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Fans › Left Fan"},{"name":"FanRight","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Fans › Right Fan"},{"name":"FanColour","type":"Float","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Fans › Fan Colour"},{"name":"FanRainbow","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Fans › Rainbow"},{"name":"Sparkles","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Sparkles"},{"name":"StarGun","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Stars › Star Gun"},{"name":"StarBurst","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Stars › Star Burst"},{"name":"Wings","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Effects › Wings"},{"name":"HairHue","type":"Float","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Hair › Hair Hue"},{"name":"Ponytail","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Hair › Ponytail"},{"name":"Bangs","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Hair › Bangs"},{"name":"Blush","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":"Face › Blush"},{"name":"Tongue","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":"Face › Tongue"},{"name":"FaceX","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":"Face › Expressions"},{"name":"FaceY","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":"Face › Expressions"},{"name":"Emote","type":"Int","synced":true,"saved":false,"default":0,"bits":8,"menu_path":"Emotes › Wave"},{"name":"Glow","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Lights › Glow"},{"name":"GlowStrength","type":"Float","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Lights › Glow Strength"},{"name":"AudioLink","type":"Bool","synced":false,"saved":true,"default":0,"bits":0,"menu_path":"Lights › AudioLink"},{"name":"FTOn","type":"Bool","synced":true,"saved":true,"default":0,"bits":1,"menu_path":"Settings › Face Tracking"},{"name":"MirrorHide","type":"Bool","synced":false,"saved":false,"default":0,"bits":0,"menu_path":"Settings › Mirror Hide"},{"name":"ShoeHeight","type":"Bool","synced":true,"saved":true,"default":0,"bits":1,"menu_path":"Settings › Shoe Height"},{"name":"Hearts","type":"Bool","synced":true,"saved":true,"default":0,"bits":1,"menu_path":"Hearts"},{"name":"FT/v2/EyeLeftX","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/EyeRightX","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/EyeY","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/EyeLidLeft","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/EyeLidRight","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/EyeSquint","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/BrowUp","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/BrowDown","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/BrowInnerUp","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/JawOpen","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/JawX","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/MouthClosed","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/MouthSmile","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/MouthFrown","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/MouthPout","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/LipFunnel","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/LipSuck","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/CheekPuff","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/NoseSneer","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"FT/v2/TongueOut","type":"Float","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"VF101_SyncIndex0","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncIndex1","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataNum0","type":"Int","synced":true,"saved":false,"default":0,"bits":8,"menu_path":null},{"name":"VF101_SyncDataBool0","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool1","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool2","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool3","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool4","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool5","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool6","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null},{"name":"VF101_SyncDataBool7","type":"Bool","synced":true,"saved":false,"default":0,"bits":1,"menu_path":null}],"budget":{"limit":256,"used":207,"before_compressor":237,"before_build":40},"icons":{}};
+</script>
+<script id="uu-menumap-model">
+// The menu-map panel's data side (Claude Opus 5.5, 2026-10-19): reads a unity-unicorn.menu-map/v1 file from the menu-map
+// Unity tool, keeps only what the panel draws, and adds up the parameter budget by add-on. No DOM here, so tests run it.
+const MM = (() => {
+  const TYPES = ["Button", "Toggle", "SubMenu", "TwoAxisPuppet", "FourAxisPuppet", "RadialPuppet"];
+  const GLYPH = {Button: "●", Toggle: "◐", SubMenu: "▸", TwoAxisPuppet: "✛", FourAxisPuppet: "✥", RadialPuppet: "◔", Unknown: "?"};
+  const KIND = {Button: "Button", Toggle: "Toggle", SubMenu: "Submenu", TwoAxisPuppet: "Two-axis puppet", FourAxisPuppet: "Four-axis puppet", RadialPuppet: "Radial puppet", Unknown: "Control"};
+  const COMPRESSOR = /(^|_)Sync(Index|DataNum|DataBool)\d+$/;
+  const PNG = /^data:image\/png;base64,[A-Za-z0-9+/]+=*$/;
+  const text = (v, max = 80) => (typeof v === "string" ? v : v == null ? "" : String(v)).replace(/[\u0000-\u001f]/g, " ").slice(0, max);
+  const num = (v) => (typeof v === "number" && Number.isFinite(v) ? v : 0);
+  const cost = (type) => (type === "Bool" ? 1 : 8);
+
+  function readMenu(m, icons, depth, count) {
+    const page = {name: text(m && m.name) || "Menu", controls: [], loop: !!(m && m.loop)};
+    const list = m && Array.isArray(m.controls) ? m.controls.slice(0, 64) : [];
+    for (const c of list) {
+      if (!c || typeof c !== "object" || count.n++ > 5000) break;
+      const type = TYPES.includes(c.type) ? c.type : "Unknown";
+      const icon = typeof c.icon === "string" && icons[c.icon] ? c.icon : null;
+      const control = {name: text(c.name) || "(no name)", type, parameter: text(c.parameter, 120) || null, value: num(c.value), icon};
+      if (Array.isArray(c.sub_parameters)) control.subParameters = c.sub_parameters.slice(0, 4).map((s) => text(s, 120)).filter(Boolean);
+      if (Array.isArray(c.labels)) control.labels = c.labels.slice(0, 4).map((l) => text(l && l.name));
+      if (type === "SubMenu") control.submenu = depth < 16 ? readMenu(c.submenu || {name: control.name}, icons, depth + 1, count) : {name: control.name, controls: [], loop: true};
+      page.controls.push(control);
+    }
+    return page;
+  }
+
+  // Throws an Error with a plain message when the file is not a menu map.
+  function parse(input) {
+    const data = typeof input === "string" ? JSON.parse(input) : input;
+    if (!data || data.schema !== "unity-unicorn.menu-map/v1") throw new Error("This is not a menu-map file (schema unity-unicorn.menu-map/v1).");
+    const icons = {};
+    if (data.icons && typeof data.icons === "object") {
+      for (const [id, url] of Object.entries(data.icons).slice(0, 2000)) {
+        if (/^[A-Za-z0-9_-]{1,24}$/.test(id) && typeof url === "string" && url.length < 400000 && PNG.test(url)) icons[id] = url;
+      }
+    }
+    const params = (Array.isArray(data.parameters) ? data.parameters : []).slice(0, 4000).filter((p) => p && p.name).map((p) => {
+      const type = ["Bool", "Int", "Float"].includes(p.type) ? p.type : "Int";
+      const synced = p.synced !== false;
+      return {name: text(p.name, 120), type, synced, saved: !!p.saved, bits: synced ? cost(type) : 0, menuPath: text(p.menu_path, 300) || null};
+    });
+    const b = data.budget || {};
+    const used = params.reduce((s, p) => s + p.bits, 0);
+    const budget = {
+      limit: num(b.limit) > 0 ? num(b.limit) : 256,
+      used: typeof b.used === "number" ? num(b.used) : used,
+      beforeCompressor: typeof b.before_compressor === "number" ? num(b.before_compressor) : null,
+      beforeBuild: typeof b.before_build === "number" ? num(b.before_build) : null,
+    };
+    return {
+      avatar: text(data.avatar && data.avatar.name) || "Avatar",
+      builtAt: text(data.built_at, 40),
+      sample: !!data.sample,
+      menu: readMenu(data.menu || {}, icons, 0, {n: 0}),
+      params, budget, icons,
+    };
+  }
+
+  // Which add-on costs what: each parameter goes to the top menu that uses it (Outfits, Effects …), the compressor's own
+  // slots to "VRCFury compressor", the rest to "Not in the menu". A menu parameter that is not synced while a compressor
+  // ran was most likely folded into the compressor's slots; its bits before folding are counted as "folded".
+  function groups(map) {
+    const compressorRan = map.params.some((p) => p.synced && COMPRESSOR.test(p.name));
+    const by = new Map();
+    for (const p of map.params) {
+      const name = COMPRESSOR.test(p.name) ? "VRCFury compressor" : p.menuPath ? p.menuPath.split(" › ")[0] : "Not in the menu";
+      const g = by.get(name) || {name, bits: 0, folded: 0, synced: 0, local: 0};
+      g.bits += p.bits;
+      if (p.synced) g.synced++; else g.local++;
+      if (!p.synced && compressorRan && p.menuPath) g.folded += cost(p.type);
+      by.set(name, g);
+    }
+    return [...by.values()].sort((a, b) => b.bits - a.bits || b.folded - a.folded || a.name.localeCompare(b.name));
+  }
+
+  // Wedge i of n as an SVG path between two radii; the first wedge is centred at the top, going clockwise like VRChat's.
+  function wedge(i, n, r0 = 34, r1 = 100) {
+    const span = (2 * Math.PI) / n, a0 = -Math.PI / 2 + (i - 0.5) * span, a1 = a0 + span, mid = a0 + span / 2;
+    const p = (r, a) => (r * Math.cos(a)).toFixed(2) + " " + (r * Math.sin(a)).toFixed(2);
+    const large = span > Math.PI ? 1 : 0;
+    const d = n === 1
+      ? `M 0 ${-r1} A ${r1} ${r1} 0 1 1 0 ${r1} A ${r1} ${r1} 0 1 1 0 ${-r1} M 0 ${-r0} A ${r0} ${r0} 0 1 0 0 ${r0} A ${r0} ${r0} 0 1 0 0 ${-r0} Z`
+      : `M ${p(r0, a0)} L ${p(r1, a0)} A ${r1} ${r1} 0 ${large} 1 ${p(r1, a1)} L ${p(r0, a1)} A ${r0} ${r0} 0 ${large} 0 ${p(r0, a0)} Z`;
+    const rm = (r0 + r1) / 2;
+    return {d, x: rm * Math.cos(mid), y: rm * Math.sin(mid)};
+  }
+
+  const paramByName = (map, name) => map.params.find((p) => p.name === name) || null;
+  return {parse, groups, wedge, cost, paramByName, GLYPH, KIND, COMPRESSOR};
+})();
+</script>
+<script id="uu-menumap-app">
+// The menu-map panel (Claude Opus 5.5, 2026-10-19): a VRChat-style radial menu you can click through, with Back in the
+// middle, and the parameter budget meter. Built with createElement / createElementNS and textContent only.
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs || {}) e.setAttribute(k, attrs[k]); return e; };
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const NEON = ["#ff3cc7", "#2ef2ff", "#b6ff3c", "#ffb02e", "#a46bff", "#ff6b6b", "#3cffa8", "#ffe14d", "#6ba8ff", "#ff8de1"];
+  let map = null, stack = [], picked = -1;
+  const on = new Set();   // toggles switched on while clicking around (this tab only)
+
+  const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
+  const page = () => stack[stack.length - 1];
+
+  function describe(c) {
+    if (!c) return [];
+    const parts = [["b", c.name], ["", " · " + MM.KIND[c.type]]];
+    const p = c.parameter && MM.paramByName(map, c.parameter);
+    if (c.parameter) parts.push(["", " · parameter "], ["b", c.parameter], ["", (c.type === "Button" || c.type === "Toggle") && c.value !== 1 ? " = " + c.value : ""]);
+    if (p) parts.push(["", " (" + p.type + ", " + (p.synced ? p.bits + (p.bits === 1 ? " bit" : " bits") : "not synced") + (p.saved ? ", saved" : "") + ")"]);
+    if (c.subParameters && c.subParameters.length) parts.push(["", " · drives " + c.subParameters.join(", ")]);
+    if (c.labels && c.labels.some(Boolean)) parts.push(["", " · " + c.labels.filter(Boolean).join(" / ")]);
+    if (c.type === "SubMenu") parts.push(["", " · " + (c.submenu.loop ? "links back to a page above" : c.submenu.controls.length + " controls")]);
+    return parts;
+  }
+  function showDetail(parts) {
+    const box = $("mm-detail"); box.replaceChildren();
+    for (const [tag, t] of parts) box.append(tag ? el(tag, null, t) : document.createTextNode(t));
+  }
+
+  function drawWheel() {
+    const root = $("mm-radial"); root.replaceChildren();
+    $("mm-crumbs").textContent = stack.map((p) => p.name).join(" › ");
+    if (!map) { showDetail([["", "Load a menu map, or try the sample."]]); return; }
+    const controls = page().controls;
+    controls.forEach((c, i) => {
+      const w = MM.wedge(i, controls.length);
+      const key = c.parameter + "=" + c.value;
+      const g = svg("g", {class: "mm-wedge" + (on.has(key) ? " on" : "") + (i === picked ? " picked" : ""), tabindex: "0", role: "button"});
+      g.setAttribute("aria-label", c.name + ", " + MM.KIND[c.type]);
+      g.append(svg("path", {d: w.d}));
+      if (c.icon && map.icons[c.icon]) {
+        const img = svg("image", {x: (w.x - 11).toFixed(1), y: (w.y - 17).toFixed(1), width: "22", height: "22"});
+        img.setAttribute("href", map.icons[c.icon]);
+        g.append(img);
+      } else {
+        const glyph = svg("text", {x: w.x.toFixed(1), y: (w.y - 2).toFixed(1), class: "mm-glyph"}); glyph.textContent = MM.GLYPH[c.type]; g.append(glyph);
+      }
+      const label = svg("text", {x: w.x.toFixed(1), y: (w.y + 13).toFixed(1)}); label.textContent = short(c.name, controls.length > 6 ? 11 : 14); g.append(label);
+      const act = () => choose(c, i);
+      g.addEventListener("click", act);
+      g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } });
+      root.append(g);
+    });
+    if (!controls.length) { const t = svg("text", {x: "0", y: "-50", fill: "#b7bfcc", "text-anchor": "middle", "font-size": "8"}); t.textContent = page().loop ? "This page links back to one above" : "Empty page"; root.append(t); }
+    const hub = svg("g", {class: "mm-hub", tabindex: "0", role: "button"});
+    const home = stack.length === 1;
+    hub.setAttribute("aria-label", home ? map.avatar + ", top of the menu" : "Back");
+    hub.style.cursor = home ? "default" : "pointer";
+    hub.append(svg("circle", {r: "30"}));
+    const ht = svg("text", {y: "3"}); ht.textContent = home ? short(map.avatar, 12) : "‹ Back"; hub.append(ht);
+    const back = () => { if (stack.length > 1) { stack.pop(); picked = -1; drawWheel(); showDetail([["", "Back to "], ["b", page().name]]); } };
+    hub.addEventListener("click", back);
+    hub.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); back(); } });
+    root.append(hub);
+  }
+
+  function choose(c, i) {
+    picked = i;
+    if (c.type === "SubMenu") { stack.push(c.submenu); picked = -1; }
+    else if (c.type === "Toggle" && c.parameter) { const k = c.parameter + "=" + c.value; on.has(k) ? on.delete(k) : on.add(k); }
+    drawWheel();
+    showDetail(describe(c));
+  }
+
+  function drawBudget() {
+    const meter = $("mm-meter"), list = $("mm-groups"), plist = $("mm-plist");
+    meter.replaceChildren(); list.replaceChildren(); plist.replaceChildren();
+    if (!map) { $("mm-total").textContent = "– / 256 bits"; $("mm-budget-note").textContent = ""; $("mm-params-sum").textContent = "Every parameter"; return; }
+    const b = map.budget, gs = MM.groups(map);
+    const total = $("mm-total");
+    total.textContent = b.used + " / " + b.limit + " bits";
+    total.className = "mm-total" + (b.used > b.limit ? " over" : "");
+    meter.setAttribute("aria-label", b.used + " of " + b.limit + " synced parameter bits used");
+    const free = b.limit - b.used;
+    const notes = [b.used > b.limit ? "Over the limit by " + (b.used - b.limit) + " bits: VRChat will not upload this." : free + " bits free."];
+    if (b.beforeCompressor != null) notes.push("Before VRCFury's compressor: " + b.beforeCompressor + " bits.");
+    if (b.beforeBuild != null) notes.push("Your own parameters before the build: " + b.beforeBuild + " bits.");
+    $("mm-budget-note").textContent = notes.join(" ");
+    gs.forEach((g, i) => {
+      const color = NEON[i % NEON.length];
+      if (g.bits > 0) {
+        const seg = el("div", "mm-seg"); seg.style.width = Math.min(100, (100 * g.bits) / b.limit) + "%"; seg.style.background = color;
+        seg.title = g.name + ": " + g.bits + " bits"; meter.append(seg);
+      }
+      const li = el("li"), sw = el("span", "mm-sw"); sw.style.background = g.bits > 0 ? color : "#3a3c44";
+      const name = el("span", null, g.name);
+      const extra = [g.synced + " synced", g.local + " local"];
+      if (g.folded) extra.push(g.folded + (g.folded === 1 ? " bit" : " bits") + " folded into the compressor");
+      name.append(el("small", null, extra.join(" · ")));
+      li.append(sw, name, el("span", "mm-bits", g.bits + (g.bits === 1 ? " bit" : " bits")));
+      list.append(li);
+    });
+    $("mm-params-sum").textContent = "Every parameter (" + map.params.length + ")";
+    for (const p of map.params) {
+      const li = el("li");
+      li.append(el("b", null, p.name), el("span", null, p.type), el("span", null, p.synced ? p.bits + (p.bits === 1 ? " bit" : " bits") : "local"), el("span", null, p.menuPath || "not in the menu"));
+      plist.append(li);
+    }
+  }
+
+  function show(next, message) {
+    map = next; stack = [map.menu]; picked = -1; on.clear();
+    drawWheel(); drawBudget();
+    $("mm-msg").textContent = message;
+  }
+
+  $("mm-sample").addEventListener("click", () => show(MM.parse(MM_SAMPLE), "The sample: made-up names, not a real avatar."));
+  $("mm-file").addEventListener("change", async (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    try {
+      if (f.size > 20e6) throw new Error("That file is over 20 MB.");
+      const next = MM.parse(await f.text());
+      show(next, next.avatar + (next.builtAt ? ", built " + next.builtAt : "") + ". It stays in this tab only.");
+    } catch (err) {
+      $("mm-msg").textContent = "Could not read " + f.name + ": " + (err && err.message ? err.message : "not JSON") + ".";
+    }
+    e.target.value = "";
+  });
+  drawWheel(); drawBudget();
+})();
+</script>
 </section>
 
 <header><div><p class="eyebrow">Worldbuilding desk</p><h1>Build the next world.</h1><p class="intro">Keep scene ideas, build tasks and release checks in one place.</p></div><div class="date-pill" id="today"></div></header><section class="stats" id="stats" aria-label="At a glance"></section><div class="workspace"><section class="panel"><div class="panel-head"><h2>Your desk</h2><span class="count" id="count"></span></div><div class="toolbar"><input id="search" aria-label="Search entries" placeholder="Search your desk…"><select id="filter" aria-label="Filter by status"><option value="">All statuses</option></select></div><div id="reminder" class="reminder hidden" role="status"></div><div class="records" id="records"></div><div class="exports"><button class="secondary" id="json-export">Export backup</button><button class="secondary" id="md-export">Export Markdown</button><span class="hint" id="saved">Saved only in this browser</span></div></section><section class="panel form-panel"><div class="panel-head"><h2 id="edit-title"></h2></div><form class="form" id="form"></form></section></div><section id="tool-library" class="tool-library" aria-labelledby="tool-library-title">
@@ -708,6 +1005,14 @@ const DEFAULTS=[
     "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 48 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
     "source_path": "scripts/unity-editor/matcap-palette-20261019.cs",
     "command_template": "Copy scripts/unity-editor/matcap-palette-20261019.cs into Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > matcap-palette"
+  },
+  {
+    "id": "menu-map",
+    "name": "menu-map-20261019.json",
+    "kind": "Audit",
+    "description": "Map an avatar's real radial menu after VRCFury and Modular Avatar build it: a Unity tool exports a disposable test build's menu, icons and synced parameters, and the page draws the menu to click through with a 256-bit parameter budget per add-on.",
+    "source_path": "scripts/unity-editor/menu-map-20261019.cs",
+    "command_template": "Copy scripts/unity-editor/menu-map-20261019.cs into Assets/UnityUnicorn/Editor/, select the avatar, then run Tools > Unity Unicorn > menu-map"
   },
   {
     "id": "realistic-prop-restyle",
