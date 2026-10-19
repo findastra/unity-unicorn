@@ -5,7 +5,7 @@
       "id": "world-spawn-tool",
       "name": "world-spawn-tool-20261018.json",
       "kind": "Generator",
-      "description": "Spawn a new VRChat world. First a public GitHub repo, then a link with a cute one-line summary in the Findastra profile README (by pull request), then the Unity project skeleton. Preview by default; never writes into an existing folder or merges anything.",
+      "description": "Spawn a new VRChat world: first a public GitHub repo, then a cute one-line link in the Findastra profile README by pull request, then the Unity project skeleton. Preview by default. Before the next world, change its skeleton step to start from VCC's World template (Astra, 2026-10-18).",
       "source_path": "scripts/world-spawn-tool/world-spawn-tool-20261018.py",
       "command_template": "python scripts/world-spawn-tool/world-spawn-tool-20261018.py --name \"<World Title>\" --summary \"<cute one-line summary>\" --check",
       "requirements": [
