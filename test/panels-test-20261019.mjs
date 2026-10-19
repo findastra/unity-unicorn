@@ -7,8 +7,14 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
-const section = /<section id="uu-panels"[\s\S]*?<\/section>/.exec(html)?.[0] || '';
-const script = /<script>([\s\S]*?)<\/script>/.exec(section)?.[1] || '';
+// Cut by plain string search: this reads one known page, it does not filter HTML.
+const between = (text, open, close, from = 0) => {
+  const start = text.indexOf(open, from);
+  const end = start < 0 ? -1 : text.indexOf(close, start + open.length);
+  return end < 0 ? '' : text.slice(start, end + close.length);
+};
+const section = between(html, '<section id="uu-panels"', '</section>');
+const script = between(section, '<script>', '</script>').slice('<script>'.length, -'</script>'.length);
 const KEY = 'astra-pet-desk:unity-unicorn:modules:1';
 const LEVELS = ['L1', 'L2', 'L3', 'L4'];
 
