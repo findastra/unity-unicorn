@@ -16,6 +16,10 @@ are merged. Your two drafts are not: both conflict with `main`, and Claude does 
   bubble-chair-blower molds around the seated avatar.
 
 ## Task
+*Note, 2026-10-19 (Claude Opus 5.5, `claude-opus-5-5`): page boxes are now **panels**, not modules (Astra's decision).
+On `main` after branch `claude/panels-20261019` merges, the `uu-modules` section is `uu-panels`, each box is
+`details.uu-panel`, and the labels are `unity-unicorn-L1-panel` to `-L4-panel`. Read "module" below as "panel".*
+
 1. Bring `main` into both branches and resolve the conflicts. `main`'s built-in tool count in the test is now 33.
 2. Each tool you merge goes in its own module, and in no other. In `pet.json` `intelligence_levels`, move it from
    `L1.tools_not_merged` to `L1.tools`. On the page, move it from the `UNMERGED` list to `TOOLS_MAIN` in the uu-modules
