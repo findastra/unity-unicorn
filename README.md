@@ -82,3 +82,11 @@ Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 - **face-transfer**: keeps a private log of each avatar's face tracking build (which VRCFT OSC standard its parameters use, which module drives them, which blendshapes the face FBX has) and moves a face tracking module to another avatar with its dependencies, after checking the target has every blendshape it animates. Guide: [docs/face-transfer-20261011.md](docs/face-transfer-20261011.md).
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
+
+## Framework modules (0.4.0-20261018)
+
+The top of the page now follows [the Pet Program Framework](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 3 (Astra's sketch of 2026-10-18): the cyberhome, the **Unity Stable** title with its version, the quick summary and status line, the four stacked L1 to L4 modules, session notes that save to the backlog, the nine emotions, clicker training, the unified footer and the chat button. Every module collapses on a phone, and every item has its two paired lights (ON/OFF and maintenance).
+
+The L1 module lists all 32 tools on `main` and the 21 that are not merged yet (PR #1's avatar effect tools, including **sparkle-strapper** and **fan-fitter**, PR #3, and the asset ledger), each marked "not merged". **Added tonight** lets you add a tool or program as you make it; it stays in this browser and goes into the backlog.
+
+Limits: the lights, the backlog and added items are saved in this browser only, because the Farm's core switch is not built. The seat, the chat bot, keys, grants and the weekly backlog run are shown as planned. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
