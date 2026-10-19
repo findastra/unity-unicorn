@@ -105,3 +105,16 @@ Every panel's label now sits on its top border, the way Astra drew it: the cyber
 ## Panels, not modules (0.4.2-20261019)
 
 The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): to a developer a module is a file of code, and a box on a dashboard page is a panel ([PET-PROGRAM-FRAMEWORK.md](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 1). The four level panels are now labelled `unity-unicorn-L1-panel` to `unity-unicorn-L4-panel`, and the page's own names follow (`uu-panels`, `uu-panel`). Lights you saved on the old `-module` labels carry over to the new ones; the browser storage key keeps its name so nothing saved is lost. The face tracking modules, masonry mesh modules and Python modules elsewhere in this repo are real modules and keep the word. `test/panels-test-20261019.mjs` fails if a page box is called a module again. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## vcc-package-manager and vrchat-avatar-upload are tricks to write (0.4.5-20261019)
+
+Astra decided on 2026-10-19 that everything a pet program owns is a native program, a native tool (code that runs with no AI) or a native trick (a SKILL.md its AI follows) ([astras-pet-os PR #114](https://github.com/findastra/astras-pet-os/pull/114)). **vcc-package-manager** and **vrchat-avatar-upload** have no code, only written steps, so they are now tricks to write: `pet.json` moves them from `intelligence_levels.L1.tools` to `L2.tricks_to_write` with a note, and the page lists them in the L2 panel, not the L1 panel. The L1 panel now lists 32 tools on `main`.
+
+Their catalog files, `tools/vcc-package-manager-20261011.json` and `tools/vrchat-avatar-upload-20261011.json`, stay, with `kind` set to `Trick to write`:
+
+- The hub's System Map and its registry table (TOOLS-AND-TRICKS.md) cite them as the source of each trick.
+- With the skill book (sections 2 and 4 of [docs/skills-20261009.md](docs/skills-20261009.md)), they are the written steps each SKILL.md will be written from.
+- The tool library keeps their cards, so a real upload or package change can still be recorded with its evidence.
+- The v0.3.0-20261011 release has them, and release tags never change.
+
+When a trick is written as `skills/<name>/SKILL.md`, move it to `L2.tricks` and decide then whether its catalog card stays. `test/levels-match-page-test-20261019.mjs` checks that `pet.json` and the page's L1 and L2 lists agree, and that no item is both a tool and a trick. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
