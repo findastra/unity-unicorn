@@ -16,10 +16,12 @@
 // Each Grow writes a usage receipt to UnityUnicornReports/ so the tool library can show real last-use dates.
 // Install: copy this file into Assets/UnityUnicorn/Editor/ (or any Editor folder) of the world's project.
 //
-// After the first real use, in Astra's Infinite Pole (Claude Opus 5.5, 2026-10-19): leaves and stems have a Leaf glow of their
-// own, so they read green in a world lit mostly by glowing materials; Flower glow starts at 0.8 (0.2 read dark there); the
-// window opens centred and roomy and its squares wrap to its width; and vines start only where the object is open to the world,
-// so on a phone kiosk they climb the outside, not up the inside glass.
+// After the first real use, in Astra's Infinite Pole (Claude Opus 5.5, 2026-10-19): leaves and stems can have a Leaf glow of
+// their own, for a world lit mostly by glowing materials, where they read black (it is 0 unless you turn it up, so vines in a
+// world with a sun look as they did); Flower glow starts at 0.4, not 0.2; the window offers the Pole's glows, opens centred and
+// roomy, and its squares wrap to its width; and vines start only where the object is open to the world, so on a phone kiosk
+// they climb the outside, not up the inside glass. VineBuilder20261019.Grow and the VineSettings20261019 fields keep their
+// names and types: Liminal Doors calls Grow by name through reflection (GetMethod("Grow"), so never add a second Grow).
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,7 +61,7 @@ namespace UnityUnicorn
     public sealed class VineSettings20261019
     {
         public int vinesPerObject = 6, seed = 20261019;
-        public float lengthM = 3.5f, flowersPerM = 3f, leavesPerM = 12f, glow = 0.8f, leafGlow = 0.4f, flowerSize = 1f;
+        public float lengthM = 3.5f, flowersPerM = 3f, leavesPerM = 12f, glow = 0.4f, leafGlow = 0f, flowerSize = 1f;
         public VineGrow20261019 grow = VineGrow20261019.Climb;
         public Color leafColor = new Color(0.20f, 0.42f, 0.18f);
         public int maxTriangles = 150000;
@@ -94,6 +96,11 @@ namespace UnityUnicorn
             if (here.Contains("infinite") || here.Contains("pole")) return "astras-infinite-pole";
             return "";
         }
+
+        // Worlds lit mostly by their own glowing materials, and the glows that read right there: in the Pole, petals were dark at
+        // Flower glow 0.2 and fine at 1.5, and leaves were black with no Leaf glow. The page's GLOW_WORLDS says the same.
+        public static readonly string[] LitByGlow = { "astras-infinite-pole" };
+        public const float LitByGlowFlowerGlow = 1.5f, LitByGlowLeafGlow = 0.4f;
 
         public static void SetThisWorld(string id) => EditorPrefs.SetString(PrefKey, id ?? "");
         static string PrefKey => "UnityUnicorn.VineSpawn.World." + Application.dataPath.GetHashCode().ToString("x");
@@ -385,12 +392,19 @@ namespace UnityUnicorn
                 s.leavesPerM = EditorGUILayout.Slider("Leaves per metre", s.leavesPerM, 0f, 24f);
                 s.leafColor = EditorGUILayout.ColorField("Leaf colour", s.leafColor);
                 s.glow = EditorGUILayout.Slider("Flower glow", s.glow, 0f, 3f);
-                s.leafGlow = EditorGUILayout.Slider(new GUIContent("Leaf glow", "Stems and leaves keep this much of their colour with no scene light, for worlds lit mostly by glowing materials. 0: scene light only."), s.leafGlow, 0f, 1f);
+                s.leafGlow = EditorGUILayout.Slider(new GUIContent("Leaf glow", "Stems and leaves keep this much of their colour with no scene light. 0 (scene light only) is right for a world with a sun; about 0.4 for a world lit mostly by glowing materials."), s.leafGlow, 0f, 1f);
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     s.seed = EditorGUILayout.IntField("Seed", s.seed);
                     if (GUILayout.Button("New", GUILayout.Width(50))) s.seed = UnityEngine.Random.Range(1, int.MaxValue);
                 }
+            }
+
+            if (Array.IndexOf(VineWorlds20261019.LitByGlow, world) >= 0 && s.leafGlow < VineWorlds20261019.LitByGlowLeafGlow)
+            {
+                Text(VineWorlds20261019.NameOf(world) + " is lit mostly by glowing materials: with Leaf glow " + s.leafGlow.ToString("0.##") + " the leaves read black there.", muted);
+                if (GUILayout.Button("Use Flower glow " + VineWorlds20261019.LitByGlowFlowerGlow + " and Leaf glow " + VineWorlds20261019.LitByGlowLeafGlow, GUILayout.Width(Mathf.Min(wide, 300))))
+                { s.glow = VineWorlds20261019.LitByGlowFlowerGlow; s.leafGlow = VineWorlds20261019.LitByGlowLeafGlow; }
             }
 
             GUILayout.Space(8);
@@ -469,8 +483,17 @@ namespace UnityUnicorn
 
         // How open a spot is to the world: the share of 13 directions out of its face that meet none of the selected objects
         // within Reach. Inside a closed phone kiosk every way out meets glass, floor or roof (0); an outer wall is about 1, an
-        // inside corner about a half. Vines start only where at least MinOpen is open, and prefer the more open spots.
-        public const float Reach = 3f, MinOpen = 0.3f;
+        // inside corner about a half. Vines start and grow only where at least MinOpen is open (7 of 13); at 0.3 a vine still
+        // started on the floor just inside an open kiosk door and climbed the inner glass. A floor under a roof needs
+        // CoveredMinOpen: an open kiosk's floor sees the world through its doorway, a bench seat sees the sky. Where every spot
+        // is open, roots are chosen exactly as before, so a world's build that grows vines again gets the same vines.
+        public const float Reach = 3f, MinOpen = 0.5f, CoveredMinOpen = 0.75f;
+
+        static bool ClosedIn(List<Surface> all, Vector3 q, Vector3 n, out float open)
+        {
+            open = Openness(all, q, n, out bool roofed);
+            return open < MinOpen || (open < CoveredMinOpen && n.y > 0.7f && roofed);
+        }
 
         sealed class Builder
         {
@@ -591,7 +614,7 @@ namespace UnityUnicorn
             p = n = Vector3.zero; inside = false;
             float total = own.Sum(x => x.area), best = float.MaxValue, bestInside = float.MaxValue; bool found = false;
             Vector3 ip = Vector3.zero, iN = Vector3.zero;
-            for (int k = 0; k < 32; k++)
+            for (int k = 0; k < 24; k++)
             {
                 float pick = (float)rnd.NextDouble() * total; var surf = own[0];
                 foreach (var x in own) { if (pick <= x.area) { surf = x; break; } pick -= x.area; }
@@ -602,23 +625,22 @@ namespace UnityUnicorn
                 var q = surf.v[surf.t[tri * 3]] + a * (surf.v[surf.t[tri * 3 + 1]] - surf.v[surf.t[tri * 3]]) + b * (surf.v[surf.t[tri * 3 + 2]] - surf.v[surf.t[tri * 3]]);
                 if (taken.Any(o => (o - q).sqrMagnitude < 0.16f)) continue;
                 float score = (climb ? q.y : -q.y) + (float)rnd.NextDouble() * 0.6f;
-                if (score >= best) continue;                              // can't win even if it is wide open
-                float open = Openness(all, q, nn);
-                if (open < MinOpen) { if (score < bestInside) { bestInside = score; ip = q; iN = nn; } continue; }
-                score += (1 - open) * 1.5f;                               // a half-open corner counts as 0.75 m higher
+                if (score >= best) continue;                              // can't win: no need to look around
+                if (ClosedIn(all, q, nn, out _)) { if (score < bestInside) { bestInside = score; ip = q; iN = nn; } continue; }
                 if (score < best) { best = score; p = q; n = nn; found = true; }
             }
             if (!found && bestInside < float.MaxValue) { p = ip; n = iN; inside = true; return true; }
             return found;
         }
 
-        // The 13 ways out of a face: straight out, then 6 at 40° and 6 at 72° from it.
-        static float Openness(List<Surface> all, Vector3 q, Vector3 n)
+        // The 13 ways out of a face: straight out, then 6 at 40° and 6 at 72° from it. straight: the way straight out is blocked.
+        static float Openness(List<Surface> all, Vector3 q, Vector3 n, out bool straight)
         {
             var t1 = Vector3.Cross(n, Mathf.Abs(n.y) < 0.9f ? Vector3.up : Vector3.right).normalized;
             var t2 = Vector3.Cross(n, t1);
             var from = q + n * 0.02f;
-            int open = Blocked(all, from, n, Reach) ? 0 : 1;
+            straight = Blocked(all, from, n, Reach);
+            int open = straight ? 0 : 1;
             for (int ring = 0; ring < 2; ring++)
             {
                 float tilt = (ring == 0 ? 40f : 72f) * Mathf.Deg2Rad;
@@ -658,7 +680,10 @@ namespace UnityUnicorn
             {
                 wander = Vector3.ProjectOnPlane(wander + RandomUnit(rnd) * 0.45f, n).normalized;
                 var want = Vector3.ProjectOnPlane(grow, n);
-                if (want.sqrMagnitude < 0.02f) want = dir;                       // on a floor or a roof: carry on across it
+                bool flat = want.sqrMagnitude < 0.02f;
+                if (flat) want = dir;                                              // on a floor or a roof: carry on across it
+                // across a floor, through a doorway, into a closed-in space: stop (checked every other step)
+                if (flat && !sh.inside && (i & 1) == 0 && i > 0 && ClosedIn(surfaces, p, n, out _)) break;
                 dir = Vector3.ProjectOnPlane(dir * 0.6f + want.normalized * 0.3f + wander * 0.3f, n).normalized;
                 if (dir.sqrMagnitude < 0.5f) break;
                 var next = p + dir * Step;
@@ -666,7 +691,7 @@ namespace UnityUnicorn
                 if (Cast(surfaces, p, dir, Step + Lift, out var hit))              // a wall ahead (an inside corner): climb onto it
                 {
                     var nn = hit.normal;
-                    if (!sh.inside && Openness(surfaces, hit.point, nn) < MinOpen) break;   // not into a closed-in space
+                    if (!sh.inside && ClosedIn(surfaces, hit.point, nn, out _)) break;   // not into a closed-in space
                     dir = Vector3.ProjectOnPlane(n, nn).normalized; if (dir.sqrMagnitude < 0.5f) dir = Vector3.ProjectOnPlane(grow, nn).normalized;
                     n = nn; next = hit.point + n * Lift;
                 }
@@ -677,7 +702,7 @@ namespace UnityUnicorn
                 else if (Cast(surfaces, next - n * (Lift + Step), -dir, Step * 1.8f, out hit))     // over an outside edge: wrap round it
                 {
                     var nn = hit.normal;
-                    if (!sh.inside && Openness(surfaces, hit.point, nn) < MinOpen) break;   // not round a door frame into a kiosk
+                    if (!sh.inside && ClosedIn(surfaces, hit.point, nn, out _)) break;   // not round a door frame into a kiosk
                     var turned = Vector3.ProjectOnPlane(-n, nn).normalized; if (turned.sqrMagnitude < 0.5f) turned = Vector3.ProjectOnPlane(grow, nn).normalized;
                     float across = Vector3.Dot(turned, n);
                     if (across < -0.2f)                                            // the corner itself, so the stem bends round the edge
@@ -877,8 +902,9 @@ namespace UnityUnicorn
         static string Safe(string s) => Regex.Replace(string.IsNullOrEmpty(s) ? "Untitled" : s, @"[^\w\- ]", "_");
 
         // One shared material per glow pair; the shader is written the first time, so installing is one file. A world that
-        // has the first shader (no Leaf glow) gets this one in its place, and the vines grown before then get the shader's
-        // default Leaf glow, because their materials never had one.
+        // has the first shader (no Leaf glow) gets this one in its place; its vines keep their look, because the shader's
+        // Leaf glow is 0 unless a material sets it. With no Leaf glow the material keeps its first name, so a world's build
+        // that grows vines again reuses its material.
         static Material VineMaterial(float glow, float leafGlow)
         {
             var shader = Shader.Find(ShaderName);
@@ -893,7 +919,7 @@ namespace UnityUnicorn
             }
             if (!shader) throw new InvalidOperationException("Could not load the " + ShaderName + " shader.");
             var inv = System.Globalization.CultureInfo.InvariantCulture;
-            var path = OutDir + "/Vine Bloom glow " + glow.ToString("0.0", inv) + " leaf " + leafGlow.ToString("0.00", inv) + ".mat";
+            var path = OutDir + "/Vine Bloom glow " + glow.ToString("0.0", inv) + (leafGlow > 0 ? " leaf " + leafGlow.ToString("0.00", inv) : "") + ".mat";
             Directory.CreateDirectory(OutDir);
             var mat = AssetDatabase.LoadAssetAtPath<Material>(path);
             if (!mat) { mat = new Material(shader) { enableInstancing = true }; AssetDatabase.CreateAsset(mat, path); }
@@ -931,8 +957,8 @@ Shader ""Unity Stable/Vine Bloom""
         _Tint (""Tint"", Color) = (1,1,1,1)
         _Gloss (""Stem and leaf gloss"", Range(0,1)) = 0.32
         _PetalGloss (""Petal gloss"", Range(0,1)) = 0.5
-        _Glow (""Flower glow"", Range(0,3)) = 0.8
-        _LeafGlow (""Leaf glow"", Range(0,1)) = 0.4
+        _Glow (""Flower glow"", Range(0,3)) = 0.4
+        _LeafGlow (""Leaf glow"", Range(0,1)) = 0
         _Sway (""Sway (m)"", Range(0,0.05)) = 0.006
         _SwaySpeed (""Sway speed"", Range(0,4)) = 1.2
     }

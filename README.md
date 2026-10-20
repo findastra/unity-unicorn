@@ -174,8 +174,10 @@ world tools, for a panel of the sparkles used in the worlds, and for a new vine 
   - Code: `scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs` (install: copy it into the world's
     `Assets/UnityUnicorn/Editor/`). Guide: [docs/vine-spawn-with-trumpet-flowers-20261019.md](docs/vine-spawn-with-trumpet-flowers-20261019.md).
   - Fixed the same day, after its first real use in Astra's Infinite Pole:
-    - **Leaf glow** keeps stems and leaves green in a world lit mostly by glowing materials.
-    - Flower glow starts at 0.8.
+    - An optional **Leaf glow** keeps stems and leaves green in a world lit mostly by glowing materials. It is 0 unless you
+      turn it up, so worlds with a sun look as before; for Astra's Infinite Pole the page and the window offer Flower glow 1.5
+      and Leaf glow 0.4.
+    - Flower glow starts at 0.4.
     - The window opens in the middle of Unity, and its squares wrap to its width.
     - Vines start only where the object is open to the world, so they climb a phone kiosk's outside, not its inside glass.
 

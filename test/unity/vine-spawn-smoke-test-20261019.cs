@@ -92,20 +92,20 @@ namespace UnityUnicornTests
                 Check(shader != null && !ShaderUtil.ShaderHasError(shader), "the shader compiles without errors");
                 Check(shader != null && shader.FindPropertyIndex("_LeafGlow") >= 0 && File.ReadAllText(ShaderAt).Contains("_LeafGlow"), "the first-version shader was replaced by the one with Leaf glow");
                 var olderNow = AssetDatabase.LoadAssetAtPath<Material>(OldMat);
-                Check(olderNow != null && olderNow.shader == shader && Mathf.Approximately(olderNow.GetFloat("_LeafGlow"), 0.4f) && Mathf.Approximately(olderNow.GetFloat("_Glow"), 1.5f),
-                      "vines grown before the update get Leaf glow 0.4 and keep their Flower glow 1.5 (" + (olderNow ? olderNow.GetFloat("_LeafGlow") + ", " + olderNow.GetFloat("_Glow") : "no material") + ")");
+                Check(olderNow != null && olderNow.shader == shader && olderNow.GetFloat("_LeafGlow") == 0f && Mathf.Approximately(olderNow.GetFloat("_Glow"), 1.5f),
+                      "vines grown before the update keep their look: Leaf glow 0 and their Flower glow 1.5 (" + (olderNow ? olderNow.GetFloat("_LeafGlow") + ", " + olderNow.GetFloat("_Glow") : "no material") + ")");
                 var mat = parts.Length > 0 ? parts[0].GetComponent<MeshRenderer>().sharedMaterial : null;
-                Check(mat != null && Mathf.Approximately(mat.GetFloat("_LeafGlow"), 0.4f) && Mathf.Approximately(mat.GetFloat("_Glow"), 0.25f) && AssetDatabase.GetAssetPath(mat).EndsWith(" leaf 0.40.mat"),
-                      "the material has the Grow's Flower glow (0.25) and the default Leaf glow (0.4): " + (mat ? AssetDatabase.GetAssetPath(mat) : "none"));
+                Check(mat != null && mat.GetFloat("_LeafGlow") == 0f && Mathf.Approximately(mat.GetFloat("_Glow"), 0.25f) && AssetDatabase.GetAssetPath(mat).EndsWith("/Vine Bloom glow 0.3.mat"),
+                      "with no Leaf glow (the default) the material keeps its first name and the Grow's Flower glow (0.25): " + (mat ? AssetDatabase.GetAssetPath(mat) : "none"));
 
                 // Leaf glow in a world with no scene light at all (the Pole is lit mostly by glowing materials)
                 Directory.CreateDirectory("VineSmoke");
-                int greenLit = Render(new Vector3(-2.2f, 2.0f, -1.6f), new Vector3(-2.9f, 1.9f, 0.1f), 34, "VineSmoke/vines-dark-leaf-glow-0.4.png", true);
-                if (mat) mat.SetFloat("_LeafGlow", 0f);
-                int greenOff = Render(new Vector3(-2.2f, 2.0f, -1.6f), new Vector3(-2.9f, 1.9f, 0.1f), 34, "VineSmoke/vines-dark-leaf-glow-0.png", true);
                 if (mat) mat.SetFloat("_LeafGlow", 0.4f);
+                int greenLit = Render(new Vector3(0.6f, 2.1f, -7.2f), new Vector3(0.6f, 1.5f, 0), 42, "VineSmoke/vines-dark-leaf-glow-0.4.png", true);
+                if (mat) mat.SetFloat("_LeafGlow", 0f);
+                int greenOff = Render(new Vector3(0.6f, 2.1f, -7.2f), new Vector3(0.6f, 1.5f, 0), 42, "VineSmoke/vines-dark-leaf-glow-0.png", true);
                 log.Add("  green pixels with no scene light: Leaf glow 0.4 -> " + greenLit + ", Leaf glow 0 -> " + greenOff);
-                Check(greenLit > 3000 && greenOff * 10 < greenLit, "with no scene light, leaves read green with Leaf glow 0.4 and black with 0");
+                Check(greenLit > 5000 && greenOff * 10 < greenLit, "with no scene light, leaves read green with Leaf glow 0.4 and black with 0");
 
                 var lines2 = new List<string>();
                 var hang = VineBuilder20261019.Grow(new[] { arch }, new VineSettings20261019 { grow = VineGrow20261019.Hang, vinesPerObject = 4, seed = 11 }, colours.Take(2).ToList(), lines2);
@@ -137,8 +137,8 @@ namespace UnityUnicornTests
                 var j = VineJobs20261019.FromText(Job("liminal-doors", 3));
                 var st = VineJobs20261019.Settings(j);
                 Check(st.vinesPerObject == 9 && Mathf.Approximately(st.lengthM, 4.5f) && st.grow == VineGrow20261019.Both && st.seed == 42, "job settings carry over");
-                // jobs made before Leaf glow (no leaf_glow, as Job() writes them) keep the default; 0 is a real choice
-                Check(Mathf.Approximately(st.leafGlow, 0.4f), "a job without leaf_glow gets the default Leaf glow 0.4 (got " + st.leafGlow + ")");
+                // jobs made before Leaf glow (no leaf_glow, as Job() writes them) get the default, which is none
+                Check(st.leafGlow == new VineSettings20261019().leafGlow && st.leafGlow == 0f, "a job without leaf_glow gets the default, no Leaf glow (got " + st.leafGlow + ")");
                 string WithLeafGlow(string v) => Job("liminal-doors", 3).Replace("\"seed\":42", "\"seed\":42,\"leaf_glow\":" + v);
                 Check(Mathf.Approximately(VineJobs20261019.Settings(VineJobs20261019.FromText(WithLeafGlow("0"))).leafGlow, 0f), "leaf_glow 0 in a job means no Leaf glow");
                 Check(Mathf.Approximately(VineJobs20261019.Settings(VineJobs20261019.FromText(WithLeafGlow("7"))).leafGlow, 1f), "leaf_glow is held to 0 to 1");
@@ -167,11 +167,51 @@ namespace UnityUnicornTests
                     if (!doorOpen) Check(inside == 0, name + ": no part of a vine inside the kiosk (" + inside + " of " + kv.Count + " vertices inside)");
                     else
                     {
-                        // leaves on the door posts may lean a few cm into the doorway; nothing grows into the kiosk itself
+                        // a petal tip may poke a cm or two through the glass from outside; nothing grows in through the door
                         Check(deepIn == 0, name + ": nothing more than 15 cm inside (" + deepIn + " vertices)");
-                        Check(inside * 100 < kv.Count, name + ": under 1% of the vertices lean in at the doorway (" + inside + " of " + kv.Count + ")");
+                        Check(inside * 1000 < kv.Count, name + ": under 0.1% of the vertices inside, petal tips at most (" + inside + " of " + kv.Count + ")");
                     }
                     Check(!kl.Any(l => l.Contains("inner face")), name + ": every vine started on an outer face");
+                }
+
+                // a bench like the Pole's lounge bench: vines still cross the open seat and climb the backrest
+                {
+                    var bench = new GameObject("Bench"); var bAt = new Vector3(-4.5f, 0, 3.2f);
+                    foreach (var (part, pos, size) in new[] {
+                        ("Seat", new Vector3(0, 0.45f, 0), new Vector3(1.6f, 0.08f, 0.5f)), ("Backrest", new Vector3(0, 0.74f, 0.22f), new Vector3(1.6f, 0.5f, 0.06f)),
+                        ("Leg", new Vector3(-0.74f, 0.205f, -0.2f), new Vector3(0.06f, 0.41f, 0.06f)), ("Leg", new Vector3(0.74f, 0.205f, -0.2f), new Vector3(0.06f, 0.41f, 0.06f)),
+                        ("Leg", new Vector3(-0.74f, 0.205f, 0.2f), new Vector3(0.06f, 0.41f, 0.06f)), ("Leg", new Vector3(0.74f, 0.205f, 0.2f), new Vector3(0.06f, 0.41f, 0.06f)) })
+                        Shape(PrimitiveType.Cube, part, bAt + pos, size, bench.transform);
+                    var bl = new List<string>();
+                    var br = VineBuilder20261019.Grow(new[] { bench }, new VineSettings20261019 { vinesPerObject = 6, seed = 20261019 }, colours, bl);
+                    log.AddRange(bl.Select(l => "  " + l));
+                    var bv = br ? br.GetComponentsInChildren<MeshFilter>().SelectMany(f => f.sharedMesh.vertices).ToList() : new List<Vector3>();
+                    int onSeat = bv.Count(p => p.y > 0.49f && p.y < 0.6f && p.z < bAt.z + 0.15f), upBack = bv.Count(p => p.y > 0.8f);
+                    Check(onSeat > 50 && upBack > 50, "Bench: vines cross the seat (" + onSeat + " vertices) and climb the backrest (" + upBack + " above 0.8 m)");
+                }
+
+                // Liminal Doors' Doorspace 09 build calls Grow the way it did with the first version: by name, through reflection
+                // (findastra/liminal-doors PR #2, a72cad8). It must still find one Grow, set these fields, and grow.
+                {
+                    var tb = typeof(VineBuilder20261019); var ts = typeof(VineSettings20261019);
+                    MethodInfo growBy = null;
+                    try { growBy = tb.GetMethod("Grow"); } catch (AmbiguousMatchException) { }
+                    Check(growBy != null && growBy.GetParameters().Length == 4, "Liminal Doors' reflection call finds exactly one Grow with 4 parameters");
+                    var holder = new GameObject("Vine lines");
+                    var seeds = new List<GameObject>();
+                    for (int i = 0; i < 4; i++) seeds.Add(Shape(PrimitiveType.Cube, "Doorspace 09 vine line " + i.ToString("00"), new Vector3(5.6f + i * 0.5f, 2.2f, -3f + (i % 2) * 0.3f), new Vector3(0.22f, 3f, 0.02f), holder.transform));
+                    var s = Activator.CreateInstance(ts);
+                    void Set(string f, object v) => ts.GetField(f).SetValue(s, v);
+                    Set("vinesPerObject", 3); Set("seed", 20261019 + 9); Set("lengthM", 5f); Set("flowersPerM", 4.5f); Set("leavesPerM", 22f);
+                    Set("glow", 0.35f); Set("flowerSize", 1.2f); Set("grow", Enum.Parse(typeof(VineGrow20261019), "Hang")); Set("leafColor", new Color(0.30f, 0.58f, 0.40f)); Set("maxTriangles", 300000);
+                    var report = new List<string>();
+                    var ld = growBy?.Invoke(null, new object[] { seeds.ToList(), s, colours.Take(3).ToList(), report }) as GameObject;
+                    log.AddRange(report.Select(l => "  " + l));
+                    var ldMat = ld ? ld.GetComponentInChildren<MeshRenderer>().sharedMaterial : null;
+                    Check(ld != null && ld.transform.childCount == 4, "Liminal Doors' call grows hanging vines on all 4 vine lines");
+                    Check(ldMat != null && ldMat.GetFloat("_LeafGlow") == 0f && !AssetDatabase.GetAssetPath(ldMat).Contains(" leaf "), "its vines keep the look and material name they had: " + (ldMat ? AssetDatabase.GetAssetPath(ldMat) : "none"));
+                    if (ld) Object.DestroyImmediate(ld);
+                    Object.DestroyImmediate(holder);
                 }
 
                 // the window: squares wrap to its width, from the smallest it can be to the size it opens at
@@ -257,7 +297,7 @@ namespace UnityUnicornTests
             VineWorlds20261019.SetThisWorld("astras-infinite-pole");
             foreach (var open in Resources.FindObjectsOfTypeAll<VineSpawnWindow20261019>()) open.Close();
             var job = VineJobs20261019.FromText("{\"schema\":\"unity-unicorn.vine-spawn-job/v1\",\"tool_id\":\"vine-spawn-with-trumpet-flowers\",\"world\":\"astras-infinite-pole\",\"made_at\":\"2026-10-20T03:48:07Z\"," +
-                "\"flower_colors\":[\"#ff3cc7\",\"#2ef2ff\",\"#d86bff\",\"#c4b5fd\",\"#ff2bd6\",\"#ff5a1f\",\"#ffd23f\",\"#b6ff3c\",\"#3b82f6\",\"#ffffff\"],\"settings\":{\"grow\":\"climb\",\"glow\":1.5,\"leaf_glow\":0.4}}");
+                "\"flower_colors\":[\"#ff3cc7\",\"#2ef2ff\",\"#d86bff\",\"#c4b5fd\",\"#ff2bd6\",\"#ff5a1f\",\"#ffd23f\",\"#b6ff3c\",\"#3b82f6\",\"#ffffff\"],\"settings\":{\"grow\":\"climb\",\"glow\":0.2}}");
             VineSpawnWindow20261019.OpenWithJob(job, "unity-unicorn-vine-spawn-astras-infinite-pole-20261020-034807.json");
             var w = EditorWindow.GetWindow<VineSpawnWindow20261019>();
             log.Add("opened at " + w.position + ", main window " + EditorGUIUtility.GetMainWindowPosition() + ", " + EditorGUIUtility.pixelsPerPoint + " pixels a point");
