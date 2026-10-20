@@ -108,10 +108,10 @@ The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): 
 
 ## Matcap palette (0.4.3-20261019)
 
-A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 48 matcaps (Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
+A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 54 matcaps (Liminal, Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
 
 - **matcap-palette** (Unity): Tools › Unity Unicorn › matcap-palette shows every matcap in a project the same way and puts the one you pick on a Poiyomi or lilToon material's matcap slot, with Undo and a usage receipt. Code: `scripts/unity-editor/matcap-palette-20261019.cs`.
-- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 48 from the page's own recipes.
+- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 54 from the page's own recipes.
 - Guide: [docs/matcap-palette-20261019.md](docs/matcap-palette-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
 
 ## Menu map (0.4.4-20261019)

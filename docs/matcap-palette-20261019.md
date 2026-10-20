@@ -6,7 +6,7 @@ capture") is a picture of a lit ball; a matcap shader paints it onto a model by 
 
 ## On the page: unity-unicorn-matcap-tool-panel
 
-- A graphite compact of round pans, one per matcap, with neon edges. Families: Metal, Candy, Holo, Glass, Toon, Neon,
+- A graphite compact of round pans, one per matcap, with neon edges. Families: Liminal, Metal, Candy, Holo, Glass, Toon, Neon,
   Soft, Sparkle, plus ★ Favourites and Yours.
 - Pick a pan: it shows big on a sphere and on a ring you can turn (drag it, or the Turn slider), so you can see how it
   wraps a shape that is not a ball.
@@ -15,7 +15,7 @@ capture") is a picture of a lit ball; a matcap shader paints it onto a model by 
 - **Load my matcaps** shows your own matcap files as pans too. They stay in that browser tab; nothing is uploaded.
 - Favourites are saved in this browser (`astra-pet-desk:unity-unicorn:matcaps:1`).
 
-The 48 matcaps are drawn from math by the page (`<script id="uu-matcap-recipes">`), not copied from anywhere, so they are
+The 54 matcaps are drawn from math by the page (`<script id="uu-matcap-recipes">`), not copied from anywhere, so they are
 Astra's to use and share. A new matcap is one line in `MC_RECIPES`.
 
 ## PNGs for Unity
@@ -41,7 +41,7 @@ matcap slot (Poiyomi `_Matcap`, `_Matcap2` ...; lilToon `_MatCapTex`, `_MatCap2n
 
 ## Checked
 
-- `node --test test/matcap-palette-test-20261019.mjs`: the panel's label and controls, 48 recipes with unique ids in
+- `node --test test/matcap-palette-test-20261019.mjs`: the panel's label and controls, 54 recipes with unique ids in
   known families, every recipe's colours inside 0 to 1 and nothing outside the circle, a valid PNG, and no HTML writing.
 - In Poppy's project (2026-10-19): the window listed 105 matcaps after removing duplicate formats, and Apply on a
   throwaway Poiyomi material set `_Matcap`, switched on `_MatcapEnable` with `POI_MATCAP0` and wrote a receipt. The

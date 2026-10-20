@@ -5,12 +5,12 @@
       "id": "matcap-palette",
       "name": "matcap-palette-20261019.json",
       "kind": "Editor",
-      "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 48 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
+      "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 54 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
       "source_path": "scripts/unity-editor/matcap-palette-20261019.cs",
       "command_template": "Copy scripts/unity-editor/matcap-palette-20261019.cs into Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > matcap-palette",
       "requirements": [
         "Unity 2022.3 with a matcap shader: Poiyomi (_Matcap, _Matcap2 ...) or lilToon (_MatCapTex, _MatCap2ndTex).",
-        "PNGs of the 48 palette matcaps: node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>."
+        "PNGs of the 54 palette matcaps: node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>."
       ],
       "limitations": [
         "A locked Poiyomi material keeps a switched-off slot off; unlock it in Poiyomi first. The window says so instead of guessing.",
