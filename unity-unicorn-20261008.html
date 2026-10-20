@@ -155,7 +155,7 @@
     <label class="mc-btn">Load my matcaps <input type="file" id="mc-files" accept="image/*" multiple hidden></label>
     <span class="uu-note" style="margin:0">Your own files stay in this browser tab; nothing is uploaded.</span>
   </div>
-  <p class="uu-note">These 48 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
+  <p class="uu-note">These 54 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
 </details>
 
 <details class="uu-panel" id="uu-menumap" open><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
@@ -355,68 +355,84 @@ renderAdded();renderBacklog();renderStatus();
 })();
 </script>
 <script id="uu-matcap-recipes">
-// Matcap palette recipes (Claude Opus 5.5, 2026-10-19). Every matcap here is drawn from math, not copied from anywhere, so
-// the PNGs it makes are Astra's to use and share. One source: the page draws them, and
+// Matcap palette recipes (Claude Opus 5.5, 2026-10-19; richer second pass the same day at Astra's ask: "grandiose and
+// liminal and interesting ... really beautiful textures and not plainness"). Every matcap here is drawn from math, not
+// copied from anywhere, so the PNGs it makes are Astra's to use and share. One source: the page draws them, and
 // scripts/matcap-palette/make-matcaps-20261019.mjs reads this same block to write the PNGs for Unity.
 // x is right and y is up on the sphere, both from -1 to 1. MC.shade returns [r, g, b] from 0 to 1, or null outside the circle.
-const MC_FAMILIES = ["Metal", "Candy", "Holo", "Glass", "Toon", "Neon", "Soft", "Sparkle"];
+//
+// Layers any recipe can use on top of its model:
+//   env:     a mirror world — sky with sun, clouds and haze, a tiled floor running to the horizon (liminal pools and halls)
+//   marble:  [scale, sharpness, colour, strength] veins through the surface
+//   nebula:  [scale, colourA, colourB, strength] cloudy colour drifting through the body
+//   core:    [colour, strength, power] a glow deep inside, like light caught in glass
+//   flake:   [density, amount, hue?] metallic flake glints
+//   coat:    [sharpness, strength] a second, sharper clear-coat highlight
+const MC_FAMILIES = ["Liminal", "Metal", "Candy", "Holo", "Glass", "Toon", "Neon", "Soft", "Sparkle"];
 const MC_RECIPES = [
-  // Metal: a mirror ball of a studio sky and floor, with a bright horizon line.
-  {id: "chrome", name: "Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#9aa7b8"], gnd: ["#3a3f48", "#0d0f13"], spec: [60, 0.6]},
-  {id: "black-chrome", name: "Black Chrome", family: "Metal", model: "env", sky: ["#8c93a0", "#2b2f37"], gnd: ["#111317", "#000000"], lineK: 0.9, spec: [80, 0.8]},
-  {id: "gold", name: "Gold", family: "Metal", model: "env", sky: ["#fff3c4", "#e0a63b"], gnd: ["#6b3f0c", "#1d0f02"], line: "#fff1b8", spec: [50, 0.5, 0], specC: "#fff7d6"},
-  {id: "rose-gold", name: "Rose Gold", family: "Metal", model: "env", sky: ["#ffe6dc", "#e8a08c"], gnd: ["#7a3f36", "#240f0d"], line: "#ffe3d6", spec: [50, 0.5]},
-  {id: "silver-satin", name: "Silver Satin", family: "Metal", model: "env", sky: ["#f2f4f7", "#a9b0ba"], gnd: ["#5a606a", "#24272d"], soft: 0.35, lineK: 0.25, spec: [12, 0.35]},
-  {id: "gunmetal", name: "Gunmetal", family: "Metal", model: "env", sky: ["#b9c1cc", "#5b6470"], gnd: ["#262a31", "#0b0c0f"], soft: 0.2, spec: [30, 0.45]},
-  {id: "copper", name: "Copper", family: "Metal", model: "env", sky: ["#ffd9b8", "#d0783f"], gnd: ["#5a2810", "#170803"], line: "#ffd2a8", spec: [40, 0.5]},
-  {id: "holo-chrome", name: "Holo Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#b9a7ff"], gnd: ["#47306b", "#0f0a1c"], line: "#9ff6ff", lineK: 0.9, fresTint: "#ff8ad8", fresK: 0.5, spec: [70, 0.6]},
-  // Candy: glossy coloured plastic, sweet and shiny.
-  {id: "bubblegum", name: "Bubblegum", family: "Candy", base: "#ff7ec8", shadow: "#a01a6e", spec: [40, 0.9], rimS: ["#ffd1ee", 0.5, 3]},
-  {id: "lilac-jelly", name: "Lilac Jelly", family: "Candy", base: "#b48cff", shadow: "#4b2a9a", spec: [50, 0.9], rimS: ["#f0e2ff", 0.7, 2.5], fill: 0.4},
-  {id: "peach-gloss", name: "Peach Gloss", family: "Candy", base: "#ffb08a", shadow: "#a8452a", spec: [45, 0.85], rimS: ["#fff0e0", 0.45, 3]},
-  {id: "mint-candy", name: "Mint Candy", family: "Candy", base: "#7af0c6", shadow: "#167a5c", spec: [45, 0.85], rimS: ["#e6fff6", 0.5, 3]},
-  {id: "cherry-lacquer", name: "Cherry Lacquer", family: "Candy", base: "#e01b4c", shadow: "#4a0012", spec: [90, 1.0], rimS: ["#ff9ab3", 0.35, 3]},
-  {id: "lemon-drop", name: "Lemon Drop", family: "Candy", base: "#ffe45c", shadow: "#a5791a", spec: [45, 0.8], rimS: ["#fffbe0", 0.45, 3]},
-  // Holo: thin-film colour that shifts with the angle, like opal, oil and soap bubbles.
-  {id: "opal", name: "Opal", family: "Holo", model: "film", base: "#f4f1ff", h0: 0.55, span: 0.9, sat: 0.35, filmK: 0.7, amb: 0.7, spec: [40, 0.5]},
-  {id: "oil-slick", name: "Oil Slick", family: "Holo", model: "film", base: "#14121c", h0: 0.7, span: 1.6, sat: 0.85, val: 0.9, filmK: 0.95, amb: 0.45, spec: [60, 0.6]},
-  {id: "unicorn-pearl", name: "Unicorn Pearl", family: "Holo", model: "film", base: "#fff6fb", h0: 0.85, span: 0.7, sat: 0.3, filmK: 0.8, amb: 0.75, spec: [30, 0.45]},
-  {id: "soap-bubble", name: "Soap Bubble", family: "Holo", model: "film", base: "#1c2230", h0: 0.15, span: 2.2, sat: 0.6, filmK: 1, amb: 0.35, swirl: 0.4, spec: [120, 1.0]},
-  {id: "prism", name: "Prism", family: "Holo", model: "film", base: "#ffffff", h0: 0, span: 1, swirl: 1.0, swirl2: 0.6, sat: 0.7, filmK: 0.9, amb: 0.6, spec: [80, 0.7]},
-  {id: "holo-foil", name: "Holo Foil", family: "Holo", model: "film", base: "#d9dde6", h0: 0.3, span: 1.3, swirl: 0.8, sat: 0.65, filmK: 0.9, amb: 0.65, sparkle: [26, 0.8, 0.8], sparkleHue: 1, spec: [50, 0.5]},
-  // Glass: deep colour with a bright rim, like glass and gems.
-  {id: "sapphire", name: "Sapphire Glass", family: "Glass", base: "#1d3fd6", shadow: "#020a3a", amb: 0.15, spec: [150, 1.2], rimS: ["#8fd2ff", 1.1, 2.2]},
-  {id: "amethyst", name: "Amethyst", family: "Glass", base: "#8a3fd6", shadow: "#1d0638", amb: 0.15, spec: [150, 1.2], rimS: ["#e2b8ff", 1.1, 2.2]},
-  {id: "emerald", name: "Emerald", family: "Glass", base: "#14a86b", shadow: "#002616", amb: 0.15, spec: [150, 1.2], rimS: ["#a8ffd8", 1.0, 2.2]},
-  {id: "ice", name: "Ice", family: "Glass", base: "#bfe9ff", shadow: "#3a6a8a", amb: 0.45, spec: [90, 1.0], rimS: ["#ffffff", 0.9, 1.8], fresTint: "#e8fbff", fresK: 0.4},
-  {id: "moonstone", name: "Moonstone", family: "Glass", model: "film", base: "#dfe6f2", h0: 0.58, span: 0.35, sat: 0.4, filmK: 0.55, amb: 0.6, rimS: ["#c9e4ff", 0.8, 2.4], spec: [40, 0.35]},
-  // Toon: flat bands of light, for cel-shaded looks.
-  {id: "toon-pink", name: "Toon Pink", family: "Toon", base: "#ff9ccf", shadow: "#b84d8a", toon: 2, shadowLift: 0.75, amb: 0, spec: [30, 0.9], toonSpec: 1},
-  {id: "toon-lavender", name: "Toon Lavender", family: "Toon", base: "#c4b0ff", shadow: "#7058c4", toon: 2, shadowLift: 0.8, amb: 0, spec: [30, 0.8], toonSpec: 1},
-  {id: "toon-skin", name: "Toon Skin", family: "Toon", base: "#ffe1d1", shadow: "#e09a8c", toon: 2, shadowLift: 0.9, amb: 0, rimS: ["#ffffff", 0.35, 4]},
-  {id: "toon-3-step", name: "Toon 3 Step", family: "Toon", base: "#9ad8ff", shadow: "#2f6fa8", toon: 3, shadowLift: 0.6, amb: 0, spec: [40, 0.9], toonSpec: 1},
-  {id: "anime-hair", name: "Anime Hair Sheen", family: "Toon", base: "#3a2f4a", shadow: "#120c1c", toon: 2, shadowLift: 0.7, amb: 0.1, spec: [6, 0.9], specL: [0, 0.9, 0.45], toonSpec: 1, specC: "#c8b8e8"},
+  // Liminal: mirror balls of places that feel like a dream you have been to before.
+  {id: "pink-sunset-pool", name: "Pink Sunset Pool", family: "Liminal", model: "env", sky: ["#ffd6ec", "#ff7eb6", "#7a4cc2"], sun: ["#fff1c9", 0.35, 0.25, 9, 1.2], clouds: ["#ffe9f4", 0.55, 3.2], floor: ["#9fe9ff", "#6fc8ee", "#ffffff", 6], haze: "#ffc4e1", coat: [260, 0.6]},
+  {id: "backrooms-glow", name: "Backrooms Glow", family: "Liminal", model: "env", sky: ["#f3e7a3", "#d8c66a", "#a8954a"], sun: ["#fffbe6", 0, 0.9, 30, 0.8], floor: ["#b9a55a", "#9c8a45", "#e6d58a", 9], haze: "#efe1a0", coat: [200, 0.3]},
+  {id: "dreamcore-sky", name: "Dreamcore Sky", family: "Liminal", model: "env", sky: ["#bfe6ff", "#6fb7ff", "#2a4fbf"], sun: ["#ffffff", -0.3, 0.45, 14, 1.0], clouds: ["#ffffff", 0.8, 2.6], floor: ["#e9f4ff", "#c7dcf2", "#ffffff", 5], haze: "#e8f5ff", coat: [300, 0.5]},
+  {id: "vaporwave-mall", name: "Vaporwave Mall", family: "Liminal", model: "env", sky: ["#ffb3f0", "#b06cff", "#3b1a7a"], sun: ["#ffe36b", 0, 0.12, 6, 1.4], floor: ["#2ef2ff", "#ff3cc7", "#1a1033", 7], haze: "#ff9ae6", coat: [240, 0.6]},
+  {id: "moon-pool", name: "Moon Pool", family: "Liminal", model: "env", sky: ["#3a4a8a", "#141c45", "#05071a"], sun: ["#e8f0ff", 0.4, 0.55, 60, 1.6], clouds: ["#7d8ccc", 0.35, 3.5], stars: 34, floor: ["#2b6f8f", "#174a63", "#9fe0ff", 6], haze: "#28356e", coat: [320, 0.7]},
+  {id: "endless-hallway", name: "Endless Hallway", family: "Liminal", model: "env", sky: ["#f2efe9", "#d9d3c9", "#b8b0a2"], sun: ["#ffffff", 0, 0.75, 18, 0.9], floor: ["#e8e2d6", "#cfc6b4", "#9f9584", 12], haze: "#f4f1ea", coat: [260, 0.4]},
+  {id: "aurora-lake", name: "Aurora Lake", family: "Liminal", model: "env", sky: ["#6dffd3", "#1d6b8a", "#0a1430"], aurora: ["#7dffb0", "#c46bff"], stars: 28, floor: ["#14324a", "#0d2236", "#6dffd3", 5], haze: "#1d4a6a", coat: [300, 0.7]},
+  {id: "cathedral-opal", name: "Cathedral Opal", family: "Liminal", model: "env", sky: ["#fff4fb", "#d7c2ff", "#8a6fd0"], sun: ["#ffffff", -0.2, 0.7, 12, 1.1], clouds: ["#fdeaff", 0.5, 2.2], floor: ["#f2e6ff", "#d8c6f2", "#ffd6f5", 4], haze: "#efe2ff", film: [0.75, 0.6], coat: [280, 0.6]},
+  // Metal: polished worlds, not flat gradients.
+  {id: "chrome", name: "Studio Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#c4ccd8", "#7b8698"], sun: ["#ffffff", -0.45, 0.55, 40, 1.4], floor: ["#3a3f48", "#22262d", "#5a6270", 8], haze: "#aeb7c4", coat: [400, 0.5]},
+  {id: "black-chrome", name: "Black Chrome", family: "Metal", model: "env", sky: ["#9aa2b0", "#3a3f4a", "#121418"], sun: ["#ffffff", -0.4, 0.5, 70, 1.6], floor: ["#0b0c10", "#050608", "#2c3038", 10], haze: "#2a2e36", coat: [500, 0.8]},
+  {id: "gold", name: "Molten Gold", family: "Metal", model: "env", sky: ["#fff6d1", "#f0bd52", "#8a5512"], sun: ["#fffbe9", -0.4, 0.55, 30, 1.3], clouds: ["#fff0b8", 0.35, 3], floor: ["#5e370b", "#2d1904", "#c98a2e", 7], haze: "#e8b25a", flake: [70, 0.35], coat: [400, 0.5]},
+  {id: "rose-gold", name: "Rose Gold", family: "Metal", model: "env", sky: ["#ffece4", "#efab96", "#8a4a40"], sun: ["#fff6f0", -0.4, 0.55, 30, 1.2], clouds: ["#ffe2d8", 0.35, 3], floor: ["#6b3530", "#331816", "#d88f80", 7], haze: "#eeb0a0", flake: [70, 0.3], coat: [380, 0.5]},
+  {id: "gunmetal", name: "Brushed Gunmetal", family: "Metal", model: "env", sky: ["#c6ced9", "#6a7380", "#2c3139"], sun: ["#ffffff", -0.5, 0.5, 20, 0.9], floor: ["#262a31", "#16191e", "#4b525e", 9], haze: "#7c8592", brush: 0.6, coat: [200, 0.3]},
+  {id: "holo-chrome", name: "Holo Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#c9b8ff", "#5a3c9a"], sun: ["#ffffff", -0.4, 0.5, 40, 1.3], floor: ["#2a1a4a", "#120a24", "#9ff6ff", 7], haze: "#b7a2ff", film: [0.5, 0.8], coat: [400, 0.6]},
+  // Candy: glossy and deep, with a glow inside.
+  {id: "bubblegum", name: "Bubblegum", family: "Candy", base: "#ff6fc1", shadow: "#8a0f5c", core: ["#ffd1ee", 0.5, 3], spec: [60, 1.0], coat: [400, 0.8], rimS: ["#ffc2ea", 0.6, 2.5]},
+  {id: "lilac-jelly", name: "Lilac Jelly", family: "Candy", base: "#a77bff", shadow: "#3a1a8a", core: ["#f2e6ff", 0.7, 2], nebula: [2.2, "#ff8ad8", "#6fb7ff", 0.25], spec: [70, 1.0], coat: [450, 0.9], rimS: ["#f0e2ff", 0.8, 2.2]},
+  {id: "peach-gloss", name: "Peach Gloss", family: "Candy", base: "#ffa47c", shadow: "#9a3818", core: ["#fff0dc", 0.5, 3], spec: [60, 0.9], coat: [400, 0.7], rimS: ["#ffe6d0", 0.5, 2.6]},
+  {id: "mint-candy", name: "Mint Swirl", family: "Candy", base: "#6ff0c4", shadow: "#0f6a50", marble: [3.0, 6, "#ffffff", 0.75], spec: [60, 0.9], coat: [400, 0.7], rimS: ["#e6fff6", 0.5, 2.6]},
+  {id: "cherry-lacquer", name: "Cherry Lacquer", family: "Candy", base: "#d8143f", shadow: "#3a0010", core: ["#ff6a8a", 0.6, 1.6], spec: [120, 1.2], coat: [600, 1.0], rimS: ["#ff9ab3", 0.45, 2.6]},
+  {id: "lemon-drop", name: "Lemon Drop", family: "Candy", base: "#ffe04a", shadow: "#9a6a10", core: ["#fffbe0", 0.6, 2], flake: [80, 0.25], spec: [60, 0.9], coat: [400, 0.7]},
+  // Holo: thin film, opal fire and oil.
+  {id: "opal", name: "Fire Opal", family: "Holo", model: "film", base: "#f6f2ff", h0: 0.55, span: 0.9, sat: 0.45, filmK: 0.75, amb: 0.7, nebula: [3.0, "#ff8ad8", "#7dffd3", 0.45], flake: [60, 0.4, 1], spec: [50, 0.6], coat: [400, 0.6]},
+  {id: "oil-slick", name: "Oil Slick", family: "Holo", model: "film", base: "#0e0c16", h0: 0.7, span: 1.8, sat: 0.9, val: 0.95, filmK: 1, amb: 0.4, marble: [2.2, 3, "#000000", 0.35], spec: [80, 0.7], coat: [500, 0.8]},
+  {id: "unicorn-pearl", name: "Unicorn Pearl", family: "Holo", model: "film", base: "#fff6fb", h0: 0.85, span: 0.8, sat: 0.35, filmK: 0.85, amb: 0.75, nebula: [2.5, "#ffd1f2", "#c9f4ff", 0.35], spec: [40, 0.5], coat: [350, 0.6]},
+  {id: "soap-bubble", name: "Soap Bubble", family: "Holo", model: "film", base: "#141a26", h0: 0.15, span: 2.4, sat: 0.7, filmK: 1, amb: 0.3, swirl: 0.6, marble: [1.6, 2, "#ffffff", 0.2], spec: [160, 1.2], coat: [700, 1.0]},
+  {id: "prism", name: "Prism", family: "Holo", model: "film", base: "#ffffff", h0: 0, span: 1.2, swirl: 1.2, swirl2: 0.7, sat: 0.75, filmK: 0.95, amb: 0.6, flake: [50, 0.5, 1], spec: [90, 0.8], coat: [500, 0.7]},
+  {id: "holo-foil", name: "Holo Foil", family: "Holo", model: "film", base: "#d9dde6", h0: 0.3, span: 1.4, swirl: 0.9, sat: 0.7, filmK: 0.95, amb: 0.65, flake: [90, 0.9, 1], brush: 0.5, spec: [60, 0.6], coat: [400, 0.5]},
+  // Glass: light caught inside.
+  {id: "sapphire", name: "Sapphire Depths", family: "Glass", base: "#1d3fd6", shadow: "#020a3a", amb: 0.1, core: ["#6fd6ff", 0.4, 1.4], nebula: [2.6, "#7d5bff", "#2ef2ff", 0.35], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#9fdcff", 1.2, 2.0]},
+  {id: "amethyst", name: "Amethyst Geode", family: "Glass", base: "#7a2fd0", shadow: "#16042e", amb: 0.1, core: ["#ffb8ff", 0.45, 1.5], marble: [4.0, 5, "#f0d0ff", 0.4], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#e2b8ff", 1.1, 2.0]},
+  {id: "emerald", name: "Emerald Pool", family: "Glass", base: "#0f9e66", shadow: "#00200f", amb: 0.1, core: ["#b8ffd8", 0.35, 1.5], nebula: [2.4, "#2ef2ff", "#b6ff2e", 0.3], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#a8ffd8", 1.0, 2.0]},
+  {id: "ice", name: "Glacier Ice", family: "Glass", base: "#8fcdf0", shadow: "#1f4a6a", amb: 0.3, marble: [3.5, 7, "#ffffff", 0.55], core: ["#ffffff", 0.15, 2], spec: [120, 1.1], coat: [600, 0.9], rimS: ["#ffffff", 0.9, 1.8]},
+  {id: "moonstone", name: "Moonstone", family: "Glass", model: "film", base: "#c4cfe2", h0: 0.58, span: 0.4, sat: 0.45, filmK: 0.6, amb: 0.6, core: ["#a8d4ff", 0.25, 1.5], nebula: [2.0, "#c9e4ff", "#ffffff", 0.35], rimS: ["#c9e4ff", 0.9, 2.2], spec: [50, 0.4], coat: [400, 0.6]},
+  // Toon: clean bands, with a little style.
+  {id: "toon-pink", name: "Toon Pink", family: "Toon", base: "#ff9ccf", shadow: "#b84d8a", toon: 2, shadowLift: 0.75, amb: 0, spec: [30, 0.9], toonSpec: 1, rimS: ["#ffe0f2", 0.9, 5]},
+  {id: "toon-lavender", name: "Toon Lavender", family: "Toon", base: "#c4b0ff", shadow: "#6a4fc0", toon: 2, shadowLift: 0.8, amb: 0, spec: [30, 0.8], toonSpec: 1, rimS: ["#ffffff", 0.8, 5]},
+  {id: "toon-skin", name: "Toon Skin", family: "Toon", base: "#ffe1d1", shadow: "#e09a8c", toon: 2, shadowLift: 0.9, amb: 0, rimS: ["#ff9aa6", 0.5, 4]},
+  {id: "toon-3-step", name: "Toon 3 Step", family: "Toon", base: "#9ad8ff", shadow: "#2f6fa8", toon: 3, shadowLift: 0.6, amb: 0, spec: [40, 0.9], toonSpec: 1, rimS: ["#ffffff", 0.7, 5]},
+  {id: "anime-hair", name: "Anime Hair Sheen", family: "Toon", base: "#3a2f4a", shadow: "#120c1c", toon: 2, shadowLift: 0.7, amb: 0.1, spec: [6, 0.9], specL: [0, 0.9, 0.45], toonSpec: 1, specC: "#c8b8e8", brush: 0.4},
   {id: "toon-ink", name: "Toon Ink", family: "Toon", base: "#f4f4f6", shadow: "#26272b", toon: 2, shadowLift: 0.1, amb: 0, rimS: ["#26272b", 2.0, 6]},
-  // Neon: graphite with a glowing edge (Astra's gray with neon accents).
-  {id: "neon-pink", name: "Neon Pink Rim", family: "Neon", model: "neon", rim: "#ff3cc7", spec: [60, 0.4]},
-  {id: "neon-cyan", name: "Neon Cyan Rim", family: "Neon", model: "neon", rim: "#2ef2ff", spec: [60, 0.4]},
-  {id: "neon-lime", name: "Neon Lime Rim", family: "Neon", model: "neon", rim: "#b6ff2e", spec: [60, 0.4]},
-  {id: "neon-violet", name: "Neon Violet Rim", family: "Neon", model: "neon", rim: "#a35bff", spec: [60, 0.4]},
-  {id: "synthwave", name: "Synthwave", family: "Neon", model: "neon", rim: "#ff3cc7", rim2: "#2ef2ff", splitY: 1, rimK: 1.6, spec: [60, 0.4]},
-  {id: "plasma", name: "Plasma", family: "Neon", model: "neon", base: "#1b1030", rim: "#ff5c3c", rim2: "#a35bff", rimK: 1.8, rimP: 1.6, spec: [40, 0.5], specC: "#ffd0f0"},
+  // Neon: graphite with glowing edges (Astra's gray with neon accents), now with depth inside.
+  {id: "neon-pink", name: "Neon Pink Rim", family: "Neon", model: "neon", rim: "#ff3cc7", nebula: [2.4, "#3a1030", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-cyan", name: "Neon Cyan Rim", family: "Neon", model: "neon", rim: "#2ef2ff", nebula: [2.4, "#0a2a33", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-lime", name: "Neon Lime Rim", family: "Neon", model: "neon", rim: "#b6ff2e", nebula: [2.4, "#1f330a", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-violet", name: "Neon Violet Rim", family: "Neon", model: "neon", rim: "#a35bff", nebula: [2.4, "#22103a", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "synthwave", name: "Synthwave Grid", family: "Neon", model: "env", sky: ["#ff3cc7", "#6a1f9a", "#12061f"], sun: ["#ffd23c", 0, 0.12, 5, 1.6], floor: ["#12061f", "#08020f", "#2ef2ff", 8], haze: "#ff3cc7", coat: [400, 0.6]},
+  {id: "plasma", name: "Plasma Core", family: "Neon", model: "neon", base: "#1b1030", rim: "#ff5c3c", rim2: "#a35bff", rimK: 1.8, rimP: 1.6, core: ["#ff8ad8", 0.9, 2.5], nebula: [3, "#ff5c3c", "#a35bff", 0.5], spec: [40, 0.5], specC: "#ffd0f0"},
   // Soft: skin, satin, velvet and latex.
-  {id: "porcelain", name: "Porcelain", family: "Soft", base: "#f7f1ee", shadow: "#b8a39c", amb: 0.35, spec: [25, 0.35], rimS: ["#ffffff", 0.25, 3]},
-  {id: "blush", name: "Blush", family: "Soft", base: "#ffc9c4", shadow: "#c46a6a", amb: 0.3, fill: 0.35, rimS: ["#ff9aa6", 0.4, 2.5]},
-  {id: "warm-skin", name: "Warm Skin", family: "Soft", base: "#e6a983", shadow: "#8a4a33", amb: 0.3, spec: [20, 0.2], rimS: ["#ffd2b8", 0.3, 3]},
-  {id: "velvet", name: "Velvet", family: "Soft", base: "#6a1b5a", shadow: "#1c0418", amb: 0.2, rimS: ["#ff9ae6", 1.2, 1.6]},
-  {id: "latex", name: "Latex Black", family: "Soft", base: "#141418", shadow: "#000000", amb: 0.2, spec: [140, 1.4], rimS: ["#6b6f7c", 0.6, 3]},
-  {id: "satin", name: "Satin", family: "Soft", base: "#d7cdf0", shadow: "#6b5a9a", amb: 0.35, spec: [8, 0.5], specL: [0.2, 0.9, 0.4], rimS: ["#ffffff", 0.3, 3]},
-  // Sparkle: glitter and stars.
-  {id: "glitter-pink", name: "Glitter Pink", family: "Sparkle", base: "#ff5fb8", shadow: "#6a0f45", amb: 0.25, spec: [40, 0.5], sparkle: [34, 0.72, 1.4], sparkleHue: 0},
-  {id: "glitter-rainbow", name: "Glitter Rainbow", family: "Sparkle", base: "#3b2a5a", shadow: "#0c0618", amb: 0.25, spec: [40, 0.5], sparkle: [34, 0.7, 1.6], sparkleHue: 1},
-  {id: "galaxy", name: "Galaxy", family: "Sparkle", model: "galaxy", n1: "#ff3cc7", n2: "#2ef2ff", stars: 20},
-  {id: "starlight", name: "Starlight Silver", family: "Sparkle", model: "env", sky: ["#ffffff", "#aab4c8"], gnd: ["#2c3240", "#080a10"], soft: 0.25, sparkle: [28, 0.82, 1.2], spec: [40, 0.4]},
-  {id: "sparkle-bending", name: "Sparkle Bending", family: "Sparkle", model: "galaxy", base: "#24123d", n1: "#c46bff", n2: "#4fd7ff", rim: "#ff8ad8", stars: 26}
+  {id: "porcelain", name: "Porcelain", family: "Soft", base: "#f7f1ee", shadow: "#b8a39c", amb: 0.35, core: ["#fff8f4", 0.3, 2], spec: [25, 0.35], coat: [500, 0.5], rimS: ["#ffffff", 0.25, 3]},
+  {id: "blush", name: "Blush", family: "Soft", base: "#ffc9c4", shadow: "#c46a6a", amb: 0.3, fill: 0.35, core: ["#ff9aa6", 0.4, 1.5], rimS: ["#ff9aa6", 0.5, 2.5]},
+  {id: "warm-skin", name: "Warm Skin", family: "Soft", base: "#e6a983", shadow: "#8a4a33", amb: 0.3, core: ["#ff9a7a", 0.45, 1.4], spec: [20, 0.2], rimS: ["#ffd2b8", 0.3, 3]},
+  {id: "velvet", name: "Crushed Velvet", family: "Soft", base: "#6a1b5a", shadow: "#1c0418", amb: 0.2, nebula: [5, "#2a0624", "#b03a96", 0.45], rimS: ["#ff9ae6", 1.3, 1.6]},
+  {id: "latex", name: "Latex Black", family: "Soft", base: "#141418", shadow: "#000000", amb: 0.2, spec: [160, 1.5], coat: [800, 1.0], rimS: ["#6b6f7c", 0.6, 3]},
+  {id: "satin", name: "Satin", family: "Soft", base: "#d7cdf0", shadow: "#6b5a9a", amb: 0.35, brush: 0.5, spec: [8, 0.5], specL: [0.2, 0.9, 0.4], rimS: ["#ffffff", 0.3, 3]},
+  // Sparkle: glitter, galaxies and stars.
+  {id: "glitter-pink", name: "Glitter Pink", family: "Sparkle", base: "#ff5fb8", shadow: "#6a0f45", amb: 0.25, spec: [40, 0.5], flake: [110, 1.1], sparkle: [34, 0.72, 1.4], coat: [500, 0.6]},
+  {id: "glitter-rainbow", name: "Glitter Rainbow", family: "Sparkle", base: "#3b2a5a", shadow: "#0c0618", amb: 0.25, spec: [40, 0.5], flake: [110, 1.3, 1], sparkle: [34, 0.7, 1.6, 1], coat: [500, 0.6]},
+  {id: "galaxy", name: "Galaxy", family: "Sparkle", model: "galaxy", n1: "#ff3cc7", n2: "#2ef2ff", stars: 22, coat: [500, 0.5]},
+  {id: "starlight", name: "Starlight Silver", family: "Sparkle", model: "env", sky: ["#ffffff", "#aab4c8", "#3a4458"], sun: ["#ffffff", -0.4, 0.5, 40, 1.2], floor: ["#2c3240", "#14181f", "#8f9ab0", 8], haze: "#8f9ab0", flake: [100, 0.9], sparkle: [28, 0.82, 1.2], coat: [400, 0.5]},
+  {id: "sparkle-bending", name: "Sparkle Bending", family: "Sparkle", model: "galaxy", base: "#24123d", n1: "#c46bff", n2: "#4fd7ff", rim: "#ff8ad8", stars: 26, flake: [90, 0.6, 1], coat: [500, 0.5]}
 ];
 
 const MC = (() => {
@@ -430,9 +446,54 @@ const MC = (() => {
     h = (((h % 1) + 1) % 1) * 6; const i = Math.floor(h), f = h - i, p = v * (1 - s), q = v * (1 - s * f), t = v * (1 - s * (1 - f));
     return [[v, t, p], [q, v, p], [p, v, t], [p, q, v], [t, p, v], [v, p, q]][i % 6];
   };
-  const hash = (x, y) => { const h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); };
+  const fract = (v) => v - Math.floor(v);
+  const hash = (x, y) => fract(Math.sin(x * 127.1 + y * 311.7) * 43758.5453);
+  function noise(x, y) {
+    const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy, u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
+    const a = hash(ix, iy), b = hash(ix + 1, iy), c = hash(ix, iy + 1), d = hash(ix + 1, iy + 1);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  function fbm(x, y, o = 5) { let s = 0, a = 0.5, f = 1; for (let i = 0; i < o; i++) { s += a * noise(x * f + i * 13.7, y * f - i * 7.3); f *= 2.03; a *= 0.5; } return s / 0.97; }
   const unit = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
   const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
+  // The mirror world for env matcaps: sky, sun, clouds, aurora, stars, then a tiled floor running to a hazy horizon.
+  function world(R, r) {
+    const t = r[1], haze = hex(R.haze || R.sky[1]);
+    if (t >= 0) {
+      let c = mix(hex(R.sky[1]), hex(R.sky[0]), cl(Math.pow(t, 0.55)));
+      if (R.sky[2]) c = mix(c, hex(R.sky[2]), cl((t - 0.55) * 2.2));
+      if (R.stars) {
+        const N = R.stars, u = r[0] / (t + 0.35) * N, v = t * N * 2, gx = Math.floor(u), gy = Math.floor(v);
+        if (hash(gx + 5, gy + 9) > 0.86) { const fx = u - gx - 0.5, fy = v - gy - 0.5; c = add(c, [1, 1, 1], 1.2 * Math.exp(-(fx * fx + fy * fy) * 40) * cl(t * 3)); }
+      }
+      if (R.aurora) {
+        const w = Math.sin(r[0] * 5 + fbm(r[0] * 2, t * 3) * 4) * 0.5 + 0.5, band = Math.exp(-Math.pow((t - 0.35 - 0.12 * w) * 6, 2));
+        c = add(c, mix(hex(R.aurora[0]), hex(R.aurora[1]), w), 0.9 * band * (0.5 + 0.5 * fbm(r[0] * 6, t * 2)));
+      }
+      if (R.clouds) {
+        const [cc, ck, cs] = R.clouds, u = r[0] / (t + 0.12), v = 1 / (t + 0.12);
+        const d = cl((fbm(u * cs * 0.5, v * cs * 0.35) - 0.45) * 2.4);
+        c = mix(c, hex(cc), d * ck * cl(t * 4));
+      }
+      if (R.sun) {
+        const [sc0, sx, sy, sp, sk] = R.sun, s = unit([sx, sy, Math.sqrt(Math.max(0, 1 - sx * sx - sy * sy))]);
+        const g = Math.max(0, dot(r, s));
+        c = add(c, hex(sc0), sk * (Math.pow(g, sp * 8) * 2 + Math.pow(g, sp) * 0.35));
+      }
+      return mix(haze, c, cl(t * 6 + 0.15));
+    }
+    // floor: perspective tiles, with grout lines and a soft reflection of the sky near the horizon
+    const f = R.floor || ["#333333", "#222222", "#555555", 8];
+    const depth = -t, u = r[0] / (depth + 0.04), v = 1 / (depth + 0.04), n = f[3] / 8;
+    const gu = fract(u * n), gv = fract(v * n * 0.5), check = (Math.floor(u * n) + Math.floor(v * n * 0.5)) & 1;
+    let c = check ? hex(f[0]) : hex(f[1]);
+    c = mix(c, c, 0);
+    const line = Math.max(Math.exp(-Math.min(gu, 1 - gu) * 60), Math.exp(-Math.min(gv, 1 - gv) * 60));
+    c = mix(c, hex(f[2]), line * cl(depth * 2.5));
+    c = add(c, hex(f[0]), 0.15 * fbm(u * 0.6, v * 0.3, 3));
+    return mix(haze, c, cl(Math.pow(depth, 0.6) * 1.6));
+  }
 
   function shade(R, x, y) {
     const d = x * x + y * y;
@@ -441,13 +502,9 @@ const MC = (() => {
     const ref = [2 * z * x, 2 * z * y, 2 * z * z - 1]; // the view direction mirrored by the surface
     let c;
     if (R.model === "env") {
-      const t = ref[1], soft = R.soft || 0.08;
-      const sky = mix(hex(R.sky[1]), hex(R.sky[0]), cl(Math.pow(Math.max(0, t), 0.7)));
-      const gnd = mix(hex(R.gnd[0]), hex(R.gnd[1]), cl(Math.pow(Math.max(0, -t), 0.6)));
-      c = mix(gnd, sky, cl(0.5 + t / (2 * soft)));
-      c = add(c, hex(R.line || "#ffffff"), (R.lineK ?? 0.6) * Math.exp(-Math.abs(t - 0.02) * 40));
+      c = world(R, ref);
     } else if (R.model === "film") {
-      const h = (R.h0 || 0) + (1 - z) * (R.span || 1) + x * (R.swirl || 0.15) + y * (R.swirl2 || 0);
+      const h = (R.h0 || 0) + (1 - z) * (R.span || 1) + x * (R.swirl || 0.15) + y * (R.swirl2 || 0) + 0.25 * fbm(x * 2 + 3, y * 2);
       c = mix(hex(R.base || "#ffffff"), hsv(h, R.sat ?? 0.55, R.val ?? 1), cl((R.filmK ?? 0.85) * (0.35 + 0.65 * Math.pow(1 - z, 0.8))));
       const amb = R.amb ?? 0.55;
       c = sc(c, amb + (1 - amb) * Math.max(0, dot(n, unit([-0.5, 0.6, 0.62]))));
@@ -455,10 +512,12 @@ const MC = (() => {
       c = sc(hex(R.base || "#26272b"), 0.6 + 0.6 * Math.max(0, dot(n, unit([-0.4, 0.7, 0.6]))));
       const rim = R.rim2 ? mix(hex(R.rim), hex(R.rim2), cl(0.5 + 0.5 * (R.splitY ? y : x))) : hex(R.rim);
       c = add(c, rim, (R.rimK || 1.4) * Math.pow(1 - z, R.rimP || 2.2));
+      c = add(c, rim, 0.25 * Math.exp(-Math.pow((1 - z - 0.35) * 7, 2)));
     } else if (R.model === "galaxy") {
       c = hex(R.base || "#120d22");
-      const neb = 0.5 + 0.5 * Math.sin(x * 3.1 + Math.sin(y * 4.2) * 1.7) * Math.cos(y * 2.3 - x * 1.3);
-      c = add(c, mix(hex(R.n1), hex(R.n2), cl(0.5 + 0.5 * x)), 0.55 * neb * neb);
+      const neb = fbm(x * 2.2 + 1, y * 2.2 - 2), arms = 0.5 + 0.5 * Math.sin(Math.atan2(y, x) * 2 + Math.hypot(x, y) * 7 + neb * 3);
+      c = add(c, mix(hex(R.n1), hex(R.n2), cl(0.5 + 0.5 * x + 0.3 * (neb - 0.5))), 0.9 * neb * neb * (0.4 + 0.8 * arms));
+      c = add(c, [1, 0.95, 1], 0.6 * Math.exp(-d * 9));
       c = add(c, hex(R.rim || "#b48cff"), 0.9 * Math.pow(1 - z, 2.5));
     } else {
       const base = hex(R.base), amb = R.amb ?? 0.25;
@@ -468,29 +527,52 @@ const MC = (() => {
       c = mix(shadow, base, cl(dif * (1 - amb) + amb));
       c = add(c, base, Math.max(0, dot(n, unit([0.7, -0.2, 0.5]))) * (R.fill ?? 0.25));
     }
+    if (R.film) c = mix(c, hsv(R.film[0] + (1 - z) * 1.3 + x * 0.3, 0.6, 1), R.film[1] * Math.pow(1 - z, 1.2));
+    if (R.nebula) {
+      const [s, a, b, k] = R.nebula, q = fbm(x * s + 4.1, y * s + 1.7), w = fbm(x * s * 1.7 - q * 2, y * s * 1.7 + q * 2);
+      c = mix(c, mix(hex(a), hex(b), w), k * cl(q * 1.4 - 0.1));
+    }
+    if (R.marble) {
+      const [s, sharp, col, k] = R.marble, vein = Math.abs(Math.sin((x * 1.3 + y) * s * 2 + fbm(x * s, y * s) * 6));
+      c = mix(c, hex(col), k * Math.pow(1 - vein, sharp));
+    }
+    if (R.brush) c = sc(c, 1 + R.brush * 0.18 * (fbm(x * 1.5, y * 60, 2) - 0.5));
+    if (R.core) c = add(c, hex(R.core[0]), R.core[1] * Math.pow(z, R.core[2] || 2) * (0.6 + 0.4 * fbm(x * 3, y * 3, 3)));
     if (R.spec) {
       let k = Math.pow(Math.max(0, dot(ref, unit(R.specL || [-0.45, 0.6, 0.66]))), R.spec[0]) * R.spec[1];
       if (R.toonSpec) k = k > 0.45 * R.spec[1] ? R.spec[1] : 0;
       c = add(c, hex(R.specC || "#ffffff"), k);
     }
+    if (R.coat) {
+      const g = Math.max(0, dot(ref, unit([-0.5, 0.7, 0.5])));
+      c = add(c, [1, 1, 1], Math.pow(g, R.coat[0]) * R.coat[1] * 1.6 + Math.pow(Math.max(0, dot(ref, unit([0.6, -0.5, 0.6]))), R.coat[0] * 0.5) * R.coat[1] * 0.25);
+    }
     if (R.rimS) c = add(c, hex(R.rimS[0]), R.rimS[1] * Math.pow(1 - z, R.rimS[2] || 3));
     if (R.fresTint) c = mix(c, hex(R.fresTint), cl(Math.pow(1 - z, 3) * (R.fresK || 0.6)));
+    if (R.flake) {
+      const [N, k, rainbow] = R.flake, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx * 1.7, gy * 3.1);
+      if (h > 0.55) {
+        const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5, tilt = Math.pow(hash(gy, gx), 6);
+        c = add(c, rainbow ? hsv(hash(gx, gy * 2), 0.55, 1) : [1, 0.97, 0.9], k * tilt * Math.exp(-(fx * fx + fy * fy) * 6));
+      }
+    }
     if (R.sparkle) {
-      const [N, th, k] = R.sparkle, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx, gy);
+      const [N, th, k, rainbow] = R.sparkle, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx, gy);
       if (h > th) {
         const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5;
-        c = add(c, R.sparkleHue ? hsv(hash(gy, gx), 0.6, 1) : [1, 1, 1], k * Math.exp(-(fx * fx + fy * fy) * 18) * (h - th) / (1 - th) * 2);
+        const g = Math.exp(-(fx * fx + fy * fy) * 18) + 0.5 * Math.exp(-Math.abs(fx) * 30 - Math.abs(fy) * 5) + 0.5 * Math.exp(-Math.abs(fy) * 30 - Math.abs(fx) * 5);
+        c = add(c, rainbow || R.sparkleHue ? hsv(hash(gy, gx), 0.6, 1) : [1, 1, 1], k * g * (h - th) / (1 - th) * 2);
       }
     }
-    if (R.stars) {
+    if (R.stars && R.model !== "env") {
       const N = R.stars, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N);
-      if (hash(gx + 7, gy + 3) > 0.9) {
+      if (hash(gx + 7, gy + 3) > 0.88) {
         const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5;
-        const g = 1.4 * Math.exp(-(fx * fx + fy * fy) * 30) + 0.5 * Math.exp(-Math.abs(fx) * 26 - Math.abs(fy) * 4) + 0.5 * Math.exp(-Math.abs(fy) * 26 - Math.abs(fx) * 4);
-        c = add(c, [1, 1, 1], g);
+        c = add(c, [1, 1, 1], 1.4 * Math.exp(-(fx * fx + fy * fy) * 30) + 0.5 * Math.exp(-Math.abs(fx) * 26 - Math.abs(fy) * 4) + 0.5 * Math.exp(-Math.abs(fy) * 26 - Math.abs(fx) * 4));
       }
     }
-    return [cl(c[0]), cl(c[1]), cl(c[2])];
+    // a soft filmic roll-off so bright layers glow instead of clipping flat
+    return c.map((v) => (v <= 0.8 ? cl(v) : 0.8 + 0.2 * (1 - Math.exp(-(v - 0.8) * 5))));
   }
 
   // Hue turn and tint, the way Poiyomi's matcap colour and hue shift change a matcap.
@@ -1002,7 +1084,7 @@ const DEFAULTS=[
     "id": "matcap-palette",
     "name": "matcap-palette-20261019.json",
     "kind": "Editor",
-    "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 48 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
+    "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 54 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
     "source_path": "scripts/unity-editor/matcap-palette-20261019.cs",
     "command_template": "Copy scripts/unity-editor/matcap-palette-20261019.cs into Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > matcap-palette"
   },

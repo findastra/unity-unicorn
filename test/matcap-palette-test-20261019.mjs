@@ -17,8 +17,8 @@ test('the matcap panel is a labelled uu-panel inside the panels section', () => 
   }
 });
 
-test('48 recipes with unique, file-safe ids in known families', () => {
-  assert.ok(MC_RECIPES.length >= 48, 'at least 48 matcaps');
+test('54 recipes with unique, file-safe ids in known families', () => {
+  assert.ok(MC_RECIPES.length >= 54, 'at least 54 matcaps');
   const ids = MC_RECIPES.map((r) => r.id);
   assert.equal(new Set(ids).size, ids.length, 'ids are unique');
   for (const r of MC_RECIPES) {
