@@ -36,3 +36,16 @@ The v0.2 source was reconciled with the existing avatar tracker, plans, skill bo
 The installed Cage HTML and ignored private sidecar additionally passed all ten tool-library tests, including real catalog date rendering and repeated-load preservation. The file-URL browser tool could not open the desktop page, so this is an exact-file local harness check, not a visual browser verification. The private sidecar is excluded from source publication.
 
 2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
+
+## Avatar tools and world tools · 2026-10-19
+
+Version `0.5.0-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):
+
+- The panels section has two tabs, Avatar tools and World tools. Every tool is in exactly one panel.
+- There's a world sparkle tools panel.
+- vine-spawn-with-trumpet-flowers is new. Its page panel saves a job file to Downloads, and the open Unity editor of the
+  chosen world reads it. The page still doesn't execute commands or connect to Unity.
+
+Node tests: 53, of which 52 pass and 1 is skipped (the local seed). Python tests: 41 OK. The Unity tool's smoke test (35
+checks) and the page-job hand-off (6 checks) passed in a throwaway Unity 2022.3.22f1 project in batch mode, not in a world.
+Nothing is tagged or released.

@@ -1,0 +1,216 @@
+{
+  "schema": "unity-unicorn.world-sparkles/v1",
+  "updated": "2026-10-19",
+  "about": "Every sparkle, glitter and mote used in Astra's three worlds so far, with its source. Unity Unicorn's world sparkle tools panel shows the same list (test/avatar-and-world-tools-test-20261019.mjs keeps them equal).",
+  "worlds": [
+    {
+      "id": "piranesi-house",
+      "name": "Piranesi House",
+      "repo": "findastra/piranesi-house",
+      "ref": "master"
+    },
+    {
+      "id": "astras-infinite-pole",
+      "name": "Astra's Infinite Pole",
+      "repo": "findastra/astras-infinite-pole",
+      "ref": "main"
+    },
+    {
+      "id": "liminal-doors",
+      "name": "Liminal Doors",
+      "repo": "findastra/liminal-doors",
+      "ref": "claude/fresh-start-20261018"
+    }
+  ],
+  "sparkles": [
+    {
+      "id": "sparkle-sky",
+      "world": "liminal-doors",
+      "name": "Evening Sky sparkle layer",
+      "what": "Twinkling sparkles in three densities, big four-point glints and a faint pink-violet nebula, none near the sun or the horizon; off unless _StarAmount, _GlintAmount or _NebulaAmount is set (stops 02 and 03).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/EveningSky.shader"
+    },
+    {
+      "id": "sky-sparkles",
+      "world": "liminal-doors",
+      "name": "Sky sparkles",
+      "what": "Up to 900 sparkles drifting far out over the Faraway Field against the sky, twinkling as they grow and shrink (stop 02).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs"
+    },
+    {
+      "id": "field-sparkles",
+      "world": "liminal-doors",
+      "name": "Field sparkles",
+      "what": "Up to 800 fine glints hanging just above the frond grass along the whole path. The grass shader itself has no glitter; this is the glitter over it (stop 02).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs"
+    },
+    {
+      "id": "door-motes",
+      "world": "liminal-doors",
+      "name": "Door motes",
+      "what": "Rose and gold motes rising in front of each door (LiminalDoorKit.Motes, Soft Glow material).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs"
+    },
+    {
+      "id": "glitter-halo",
+      "world": "liminal-doors",
+      "name": "Glitter halos",
+      "what": "A cloud of twinkling glitter round each door, thickest at the doorway, up to 700 at the pink door (LiminalDoorKit.GlitterHalo).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs"
+    },
+    {
+      "id": "glitter-paint",
+      "world": "liminal-doors",
+      "name": "Glitter Paint shader",
+      "what": "Door frames and leaves full of tiny mirror flecks that flash as you walk past and twinkle on their own (Astra: “the door more glittery”).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/GlitterPaint.shader"
+    },
+    {
+      "id": "portal-shader",
+      "world": "liminal-doors",
+      "name": "Portal glitter",
+      "what": "Sparkles that blink on and off across each portal veil (_Glitter and _GlitterColor in the Portal shader).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/Portal.shader"
+    },
+    {
+      "id": "pool-bubbles",
+      "world": "liminal-doors",
+      "name": "Pool bubbles",
+      "what": "Up to 700 small glowing bubbles rising out of the 220 m pool (stop 03).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs"
+    },
+    {
+      "id": "hall-motes",
+      "world": "liminal-doors",
+      "name": "Hall motes",
+      "what": "Up to 800 slow dust motes in the warm air of the pool hall (stop 03).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs"
+    },
+    {
+      "id": "booth-sparkles",
+      "world": "liminal-doors",
+      "name": "Swirling booth sparkles",
+      "what": "Gold and pink sparkles swirling up round the phone booth in a slow helix, with a glow at its base (stop 01).",
+      "source": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalBooth.cs"
+    },
+    {
+      "id": "unity-stable-sparkle",
+      "world": "liminal-doors",
+      "name": "Unity Stable/Sparkle shader",
+      "what": "Additive HDR particle shader for glints and motes, bright enough for the bloom; the booth sparkles use it. On Unity Unicorn's main as part of shaders-shop.",
+      "source": "https://github.com/findastra/unity-unicorn/blob/main/scripts/shaders-shop/Assets/ShadersShop/UnityStable/Sparkle.shader"
+    },
+    {
+      "id": "glitter-collection",
+      "world": "astras-infinite-pole",
+      "name": "Glitter collection (Upgrade Glitter)",
+      "what": "Thirteen particle effects in one set: fine glitter dust, starbursts, tiny stars, diamond shards, soft bokeh, fairy lights, falling shimmer, rising sparks, confetti flakes, orbiting glints, floating hearts, snow crystals and magic wisps.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/AstraGlitterBuilder.cs"
+    },
+    {
+      "id": "glitter-controls",
+      "world": "astras-infinite-pole",
+      "name": "Glitter controls",
+      "what": "The in-world glitter menu: each effect on or off, density, two hues, saturation, brightness and twinkle, shared with everyone in the instance (Udon).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Scripts/AstraGlitterControls.cs"
+    },
+    {
+      "id": "glitter-gradient",
+      "world": "astras-infinite-pole",
+      "name": "Glitter Gradient shader",
+      "what": "The glitter collection's particle shader: a drifting two-colour gradient, twinkle, and texture, diamond or confetti shapes.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/GlitterGradient.shader"
+    },
+    {
+      "id": "soft-sparkle",
+      "world": "astras-infinite-pole",
+      "name": "Soft Sparkle shader",
+      "what": "A soft additive sparkle dot, used by the stair star dust and the cloud sparkle rain.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/Sparkle.shader"
+    },
+    {
+      "id": "stair-star-dust",
+      "world": "astras-infinite-pole",
+      "name": "Stair star dust",
+      "what": "Star dust filling the 6.4 m drop under the stair opening (round 1b).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound1b.cs"
+    },
+    {
+      "id": "bokeh-sparkles",
+      "world": "astras-infinite-pole",
+      "name": "Round bokeh sparkles",
+      "what": "The round bokeh sparkles from the world's thumbnail, brought back to full size (round 3c).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound3c.cs"
+    },
+    {
+      "id": "cloud-sparkle-rain",
+      "world": "astras-infinite-pole",
+      "name": "Cloud sparkle rain",
+      "what": "Every cloud rains bright white sparkles that sway as they fall and ride along with it, with a switch in the menu (round 3d).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound3d.cs"
+    },
+    {
+      "id": "sparkle-clouds",
+      "world": "astras-infinite-pole",
+      "name": "Sparkle Clouds shader",
+      "what": "Clouds in a two-colour gradient that glitter.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/SparkleClouds.shader"
+    },
+    {
+      "id": "lounge-cloud-sparkles",
+      "world": "astras-infinite-pole",
+      "name": "Lounge cloud sparkles",
+      "what": "Sparkles inside every lounge cloud (the cozy clouds pass).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/AstraClaudeCozy.cs"
+    },
+    {
+      "id": "sparkle-slurry",
+      "world": "astras-infinite-pole",
+      "name": "Sparkle slurry",
+      "what": "A thick swirling cloud of tiny glitter round every glow orb and egg, always on, that trails when carried (300 per orb, 150 per egg; round 38).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs"
+    },
+    {
+      "id": "celestial-stars",
+      "world": "astras-infinite-pole",
+      "name": "Celestial Sky stars",
+      "what": "A deep-space sky with nebula clouds and constellations of stars (_Stars).",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/CelestialSky.shader"
+    },
+    {
+      "id": "glitter-cloud",
+      "world": "astras-infinite-pole",
+      "name": "Glitter Cloud shader",
+      "what": "Soft rounded cloud shading with twinkling glitter and a slowly shifting pastel tint per cloud; Piranesi House's Stormscape uses a copy.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/GlitterCloud.shader"
+    },
+    {
+      "id": "prismatic-stair",
+      "world": "astras-infinite-pole",
+      "name": "Prismatic Stair shader",
+      "what": "Dense pink glitter on the spiral stair, rainbow gradients that drift with height, and HDR sparkles for the bloom; Piranesi House's Stormscape uses a copy.",
+      "source": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/PrismaticStair.shader"
+    },
+    {
+      "id": "stone-sparkle",
+      "world": "piranesi-house",
+      "name": "Stone mica sparkle",
+      "what": "Glints of mica in the marble and stone, from a sparkle channel in each stone texture's mask (_Sparkle in the Stone shader).",
+      "source": "https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Shaders/Stone.shader"
+    },
+    {
+      "id": "house-sparkles",
+      "world": "piranesi-house",
+      "name": "Sparkle and mote particles",
+      "what": "Atlas particles with a four-ray sparkle, and warm motes rising over the lamps like embers (Piranesi/Particle; M_P_Sparkle and M_P_Mote).",
+      "source": "https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Shaders/Particle.shader"
+    },
+    {
+      "id": "colossus-glitter",
+      "world": "piranesi-house",
+      "name": "The Colossus's glittering hand",
+      "what": "Two layers of glitter at the Colossus's hand in the centre hall, under the oculus spot and a narrow golden light, plus sparkle emitters in the halls.",
+      "source": "https://github.com/findastra/piranesi-house/blob/master/ArtSource/gen/layout7.py"
+    }
+  ]
+}

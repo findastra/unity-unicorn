@@ -65,3 +65,6 @@ Lessons from the first pass:
   thousands of triangles.
 - Measure "near an opening" from evenly sampled surface area, not from vertex density, which is low on big flat faces.
 - The outer wall field of a hall belongs to the inner side piece (`Vest_Side*`), not only the exterior skin, so mantle both.
+
+See also (2026-10-19): [vine-spawn-with-trumpet-flowers](vine-spawn-with-trumpet-flowers-20261019.md) grows single vines with
+trumpet flowers in Unity over objects you pick, in up to 10 colours, for any of the three worlds.

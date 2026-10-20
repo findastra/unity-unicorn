@@ -51,6 +51,16 @@
 #uu-panels .uu-chat{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:12px;align-items:center;background:var(--slate);border:1px solid var(--edge);border-radius:10px;padding:16px 10px 8px 12px;min-width:156px;justify-content:space-between;color:var(--ink);box-shadow:0 4px 18px #0006}
 #uu-panels .uu-chat .uu-label{position:absolute;top:-7px;left:8px;padding:0 6px;background:var(--slate);color:var(--ink);white-space:nowrap}
 #uu-panels .uu-chat button.uu-open{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:#3d4a62;color:var(--ink);display:grid;place-items:center;padding:0}
+#uu-panels .uu-sides{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 0;border-bottom:1px solid var(--edge)}
+#uu-panels .uu-side-tab{background:#1c2028;color:var(--muted);border:1px solid var(--edge);border-bottom:0;border-radius:12px 12px 0 0;padding:10px 18px;font:700 16px system-ui,sans-serif;cursor:pointer}
+#uu-panels .uu-side-tab b{font:600 12px ui-monospace,Consolas,monospace;color:var(--muted);margin-left:6px}
+#uu-panels .uu-side-tab[aria-selected=true]{background:var(--slate2);color:var(--ink);box-shadow:inset 0 3px 0 #ff3cc7}
+#uu-panels .uu-side-tab[data-side=world][aria-selected=true]{box-shadow:inset 0 3px 0 #2ef2ff}
+#uu-panels .uu-side-tab:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#uu-panels .uu-side-lede{margin:14px 0 0;color:var(--muted);font-size:13px}
+#uu-panels .uu-count{font:600 12px ui-monospace,Consolas,monospace;color:var(--muted)}
+#uu-panels .uu-items a.uu-src{font-size:12px}
+#uu-panels .uu-desc b{color:var(--ink);font-weight:600}
 @media (max-width:700px){#uu-panels .uu-top,#uu-panels .uu-row{grid-template-columns:1fr}#uu-panels .uu-home{max-width:200px}}
 </style>
 
@@ -61,7 +71,7 @@
     <img id="uu-home-pet" alt="Unity Unicorn, idle" width="256" height="256">
   </div>
   <div>
-    <h2 class="uu-title">Unity Stable<small>V0.4.6 // 20261019</small></h2>
+    <h2 class="uu-title">Unity Stable<small>V0.5.0 // 20261019</small></h2>
     <fieldset><legend class="uu-label">unity-stable-pet-program-quick-summary</legend>
       <p style="margin:4px 0 0">Unity Stable is the pet program run by you and Unity Unicorn. It is a dashboard that presents the health of, and organizes, your world and avatar programs and the tools and tricks used to manage them, which are always created with the intention of preserving the authenticity, creativity and provenance of all artists' work.</p>
     </fieldset>
@@ -72,8 +82,7 @@
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-panel"></span>unity-unicorn-L1-panel<span class="uu-what">programs and tools (no AI needed)</span></summary>
   <h4>3rd party programs</h4><ul class="uu-items" id="uu-third"></ul>
   <h4>Your programs</h4><ul class="uu-items" id="uu-programs"></ul>
-  <h4>Your tools on main</h4><ul class="uu-items" id="uu-tools"></ul>
-  <h4>Your tools not merged yet</h4><ul class="uu-items" id="uu-unmerged"></ul>
+  <h4>Your tools</h4><p class="uu-note" id="uu-tools-where" style="margin:0"></p>
   <h4>Added tonight</h4><ul class="uu-items" id="uu-added"></ul>
   <form id="uu-add" class="uu-row" style="margin-top:8px" autocomplete="off">
     <div style="display:grid;gap:6px">
@@ -104,7 +113,16 @@
   <ul class="uu-items" id="uu-l4"></ul>
 </details>
 
-<details class="uu-panel" id="uu-matcap" open><summary><span class="uu-lights" data-item="unity-unicorn-matcap-panel"></span>unity-unicorn-matcap-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
+<div class="uu-sides" id="uu-sides" role="tablist" aria-label="Avatar tools and world tools">
+  <button type="button" class="uu-side-tab" role="tab" id="uu-tab-avatar" data-side="avatar" aria-controls="uu-side-avatar" aria-selected="true">Avatar tools <b id="uu-avatar-count"></b></button>
+  <button type="button" class="uu-side-tab" role="tab" id="uu-tab-world" data-side="world" aria-controls="uu-side-world" aria-selected="false" tabindex="-1">World tools <b id="uu-world-count"></b></button>
+</div>
+<div class="uu-side" id="uu-side-avatar" data-side="avatar" role="tabpanel" aria-labelledby="uu-tab-avatar">
+<p class="uu-side-lede">For avatars: fit them, colour them, map their menus and add effects. Click a panel to open it.</p>
+<details class="uu-panel" id="uu-p-avatar-build"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-build-panel"></span>unity-unicorn-avatar-build-panel<span class="uu-what">build and fit avatars: face tracking and the neck seam <span class="uu-count" id="uu-n-avatar-build"></span></span></summary>
+  <ul class="uu-items" id="uu-avatar-build"></ul>
+</details>
+<details class="uu-panel" id="uu-matcap"><summary><span class="uu-lights" data-item="unity-unicorn-matcap-panel"></span>unity-unicorn-matcap-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
 <style>
 #uu-matcap{--mc-case:#26272b;--mc-well:#1b1c20;--mc-pink:#ff3cc7;--mc-cyan:#2ef2ff}
 #uu-matcap .mc-case{background:linear-gradient(160deg,#2c2d33,var(--mc-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #ff3cc722,0 0 30px #2ef2ff14}
@@ -157,8 +175,7 @@
   </div>
   <p class="uu-note">These 48 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
 </details>
-
-<details class="uu-panel" id="uu-menumap" open><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
+<details class="uu-panel" id="uu-menumap"><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
 <style>
 #uu-menumap{--mm-case:#26272b;--mm-well:#1b1c20;--mm-pink:#ff3cc7;--mm-cyan:#2ef2ff;--mm-lime:#b6ff3c;--mm-red:#ff4d5e}
 #uu-menumap .mm-case{background:linear-gradient(160deg,#2c2d33,var(--mm-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #2ef2ff1c,0 0 30px #ff3cc714}
@@ -222,6 +239,97 @@
   </div>
   <p class="uu-note">In Unity, select the avatar and run <b>Tools › Unity Unicorn › menu-map</b>: it builds a throwaway test copy (VRCFury and Modular Avatar included), writes <code>UnityUnicornReports/menu-map-&lt;avatar&gt;-&lt;time&gt;.json</code> and deletes the copy. Load that file here.</p>
 </details>
+<details class="uu-panel" id="uu-p-avatar-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-sparkles-panel"></span>unity-unicorn-avatar-sparkles-panel<span class="uu-what">avatar sparkles: sparks on hands and feet, sparkle bending, stars and RGB fans (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-sparkles"></span></span></summary>
+  <ul class="uu-items" id="uu-avatar-sparkles"></ul>
+</details>
+<details class="uu-panel" id="uu-p-avatar-effects"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-effects-panel"></span>unity-unicorn-avatar-effects-panel<span class="uu-what">avatar effects and add-ons: bending, wings, bows, gold, chains, hair and spring joints (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-effects"></span></span></summary>
+  <ul class="uu-items" id="uu-avatar-effects"></ul>
+</details>
+<details class="uu-panel" id="uu-p-avatar-records"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-records-panel"></span>unity-unicorn-avatar-records-panel<span class="uu-what">where each avatar asset came from (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-records"></span></span></summary>
+  <ul class="uu-items" id="uu-avatar-records"></ul>
+</details>
+</div>
+<div class="uu-side" id="uu-side-world" data-side="world" role="tabpanel" aria-labelledby="uu-tab-world" hidden>
+<p class="uu-side-lede">For worlds: Piranesi House, Astra's Infinite Pole, Liminal Doors and the next one. Click a panel to open it.</p>
+<details class="uu-panel" id="uu-vine"><summary><span class="uu-lights" data-item="unity-unicorn-vine-spawn-panel"></span>unity-unicorn-vine-spawn-panel<span class="uu-what">vine-spawn-with-trumpet-flowers: vines with trumpet flowers in up to 10 colours, opened in a world's Unity</span></summary>
+<style>
+#uu-vine{--vn-case:#26272b;--vn-well:#1b1c20;--vn-pink:#ff3cc7;--vn-cyan:#2ef2ff}
+#uu-vine .vn-case{background:linear-gradient(160deg,#2c2d33,var(--vn-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #00000040,0 10px 30px #00000055}
+#uu-vine .vn-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+#uu-vine canvas{display:block;width:100%;height:auto;border-radius:14px;background:var(--vn-well);border:1px solid #33353d}
+#uu-vine h4{margin:2px 0 8px}
+#uu-vine [hidden]{display:none!important}
+#uu-vine .vn-chosen{display:grid;grid-template-columns:repeat(5,34px);gap:8px}
+#uu-vine .vn-palette{display:flex;flex-wrap:wrap;gap:7px}
+#uu-vine .vn-sq{width:34px;height:34px;border-radius:8px;border:2px solid #0f1013;padding:0;cursor:pointer;box-shadow:inset 0 0 0 1px #ffffff26}
+#uu-vine .vn-palette .vn-sq{width:28px;height:28px;border-radius:7px}
+#uu-vine .vn-sq[aria-pressed=true]{outline:2px solid var(--vn-cyan);outline-offset:2px}
+#uu-vine .vn-sq[aria-disabled=true]{opacity:.35;cursor:not-allowed}
+#uu-vine .vn-sq:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#uu-vine .vn-slot{width:34px;height:34px;border-radius:8px;border:2px dashed #4a4d58;box-sizing:border-box}
+#uu-vine .vn-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#uu-vine .vn-world,#uu-vine .vn-btn{background:#33353e;color:var(--ink);border:1px solid #4a4d58;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+#uu-vine .vn-world[aria-checked=true]{border-color:var(--vn-pink);color:#ffd2f1;box-shadow:0 0 10px #ff3cc755}
+#uu-vine .vn-btn[aria-expanded=true]{border-color:var(--vn-cyan);color:#c9fbff}
+#uu-vine .vn-go{background:linear-gradient(90deg,#ff3cc7,#b44cff);color:#fff;border:0;border-radius:999px;padding:10px 22px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 0 16px #ff3cc766}
+#uu-vine .vn-go:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+#uu-vine .vn-world:focus-visible,#uu-vine .vn-btn:focus-visible,#uu-vine .vn-go:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#uu-vine .vn-opts{display:grid;grid-template-columns:auto minmax(0,1fr) 52px;gap:8px 12px;align-items:center;font-size:12px;color:var(--muted);margin-top:12px;max-width:620px}
+#uu-vine .vn-opts input[type=range]{width:100%;accent-color:var(--vn-pink)}
+#uu-vine .vn-opts output{font:600 12px ui-monospace,Consolas,monospace;color:var(--ink)}
+#uu-vine .vn-opts select,#uu-vine .vn-opts input[type=number]{width:auto;min-width:120px}
+#uu-vine .vn-opts input[type=color]{width:52px;height:26px;border:1px solid var(--edge);border-radius:6px;background:none;padding:0}
+#uu-vine .vn-how p{margin:8px 0 0}
+@media (max-width:760px){#uu-vine .vn-top{grid-template-columns:1fr}#uu-vine .vn-opts{grid-template-columns:auto minmax(0,1fr) 44px}}
+</style>
+  <div class="vn-case">
+    <div class="vn-top">
+      <canvas id="vn-preview" width="640" height="400" aria-label="A preview of the vines with trumpet flowers in the chosen colours"></canvas>
+      <div>
+        <h4>Flower colours <span class="uu-count" id="vn-count"></span></h4>
+        <div class="vn-chosen" id="vn-chosen" role="group" aria-label="Chosen flower colours; click one to take it out"></div>
+        <h4 style="margin-top:14px">Palette</h4>
+        <div class="vn-palette" id="vn-palette" role="group" aria-label="Palette; click a colour to add it"></div>
+      </div>
+    </div>
+    <h4 style="margin-top:14px">Send to</h4>
+    <div class="vn-row" id="vn-worlds" role="radiogroup" aria-label="Which world's Unity"></div>
+    <div class="vn-row" style="margin-top:14px">
+      <button type="button" class="vn-go" id="vn-send">Open in Unity</button>
+      <button type="button" class="vn-btn" id="vn-more" aria-expanded="false" aria-controls="vn-options">More</button>
+      <button type="button" class="vn-btn" id="vn-how" aria-expanded="false" aria-controls="vn-howto">How it reaches Unity</button>
+    </div>
+    <p class="uu-note" id="vn-msg" role="status"></p>
+    <div class="vn-opts" id="vn-options" hidden></div>
+    <div class="uu-note vn-how" id="vn-howto" hidden>
+      <p><b>What the button does:</b> it saves a small job file, <code>unity-unicorn-vine-spawn-&lt;world&gt;-&lt;time&gt;.json</code>, to your Downloads, with your colours and settings.</p>
+      <p><b>What happens in Unity:</b> in the chosen world's Unity editor, the tool looks in Downloads every 2 seconds. It opens its window with your colours and flashes Unity on the taskbar. Nothing grows until you select the walls, arches or railings there and press <b>Grow vines</b>; one Undo takes them away.</p>
+      <p><b>What a web page can't do:</b> it can't start Unity, open a project, bring Unity to the front or write into a project folder. So that world has to be open in Unity, with the tool installed once: copy <code>scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs</code> into its <code>Assets/UnityUnicorn/Editor/</code>. If the world isn't open, open it; the job waits in Downloads for 2 hours.</p>
+      <p>If your browser saves downloads to another folder, press <b>Also watch a folder…</b> in the tool's window (Tools › Unity Unicorn › vine-spawn-with-trumpet-flowers). Jobs for another world are left for that world's editor.</p>
+    </div>
+  </div>
+  <p class="uu-note">Built on vine-bloomer (the Blender ivy mantle of Piranesi House). This one grows single vines in Unity over the objects you pick, with leaves, buds and five-lobed trumpet flowers, and its own Unity Stable/Vine Bloom shader. Your colours and world stay in this browser.</p>
+</details>
+<details class="uu-panel" id="uu-p-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-world-sparkles-panel"></span>unity-unicorn-world-sparkles-panel<span class="uu-what">world sparkle tools: every sparkle, glitter and mote used in the three worlds <span class="uu-count" id="uu-n-sparkles"></span></span></summary>
+  <h4>Liminal Doors · 11</h4><ul class="uu-items" id="uu-sparkle-liminal-doors"></ul>
+  <h4>Astra's Infinite Pole · 13</h4><ul class="uu-items" id="uu-sparkle-astras-infinite-pole"></ul>
+  <h4>Piranesi House · 3</h4><ul class="uu-items" id="uu-sparkle-piranesi-house"></ul>
+  <p class="uu-note">Each sparkle links to its source on GitHub: Liminal Doors' are on branch claude/fresh-start-20261018 (liminal-doors PR #2, not merged yet), Astra's Infinite Pole's on its main and Piranesi House's on its master. The same list is in docs/world-sparkle-tools-20261019.json, for other pages to read.</p>
+</details>
+<details class="uu-panel" id="uu-p-every-world"><summary><span class="uu-lights" data-item="unity-unicorn-every-world-panel"></span>unity-unicorn-every-world-panel<span class="uu-what">for every world: spawn, check, test, bake, props, assets and shaders <span class="uu-count" id="uu-n-every-world"></span></span></summary>
+  <ul class="uu-items" id="uu-every-world"></ul>
+</details>
+<details class="uu-panel" id="uu-p-piranesi-house"><summary><span class="uu-lights" data-item="unity-unicorn-piranesi-house-panel"></span>unity-unicorn-piranesi-house-panel<span class="uu-what">made for Piranesi House: the house builder, masonry, open arches, tides, ivy and marble <span class="uu-count" id="uu-n-piranesi-house"></span></span></summary>
+  <ul class="uu-items" id="uu-world-piranesi-house"></ul>
+</details>
+<details class="uu-panel" id="uu-p-astras-infinite-pole"><summary><span class="uu-lights" data-item="unity-unicorn-infinite-pole-panel"></span>unity-unicorn-infinite-pole-panel<span class="uu-what">made for Astra's Infinite Pole: clouds you can stand on, pickups and photos <span class="uu-count" id="uu-n-astras-infinite-pole"></span></span></summary>
+  <ul class="uu-items" id="uu-world-astras-infinite-pole"></ul>
+</details>
+<details class="uu-panel" id="uu-p-liminal-doors"><summary><span class="uu-lights" data-item="unity-unicorn-liminal-doors-panel"></span>unity-unicorn-liminal-doors-panel<span class="uu-what">made for Liminal Doors: concept art, the stops, the booth, doors, grass and the pool <span class="uu-count" id="uu-n-liminal-doors"></span></span></summary>
+  <ul class="uu-items" id="uu-world-liminal-doors"></ul>
+</details>
+</div>
+
 
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-session-notes"></span>unity-unicorn-session-notes</summary>
   <form id="uu-notes" autocomplete="off">
@@ -265,32 +373,35 @@
 <script>
 (()=>{
 const ART="https://raw.githubusercontent.com/findastra/astras-pet-os/main/art/frames/unity-unicorn/";
-const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison."],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes."],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes."],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline."],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes."],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets."],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks."],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement."],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them."],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow."],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has."],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash."],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene."],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs."],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry."],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams."],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity."],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials."],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages."],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions."],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene."],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders."],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set."],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting."],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file)."],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials."],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings."],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor."],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning."],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage."],["world-spawn-tool","Generator","Spawn a new VRChat world."],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets."],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page panel and Unity window)."],["menu-map","Audit","An avatar's built radial menu to click through, with the 256-bit synced parameter budget and what each add-on costs (page panel and Unity export)."],["unity-asset-creator","Workflow","Walk a world asset through the researched 12-step checklist, then export each version and publish it to unity-assets-library by pull request."],["unity-assets-library","Library","The public library of finished world assets (findastra/unity-assets-library): every asset and version, indexed in library.json."],["shaders-shop","Workflow","Install shaders for worlds after showing their files, sources and licences, and track which shaders each world uses."]];
+const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison.","every-world"],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes.","every-world"],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes.","astras-infinite-pole"],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline.","astras-infinite-pole"],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes.","astras-infinite-pole"],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets.","astras-infinite-pole"],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks.","astras-infinite-pole"],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement.","astras-infinite-pole"],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them.","astras-infinite-pole"],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow.","every-world"],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has.","avatar-build"],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash.","every-world"],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene.","piranesi-house"],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs.","piranesi-house"],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry.","piranesi-house"],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams.","piranesi-house"],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity.","piranesi-house"],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials.","avatar-build"],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages.","piranesi-house"],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions.","piranesi-house"],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene.","every-world"],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders.","every-world"],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set.","every-world"],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting.","every-world"],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file).","every-world"],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials.","piranesi-house"],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings.","every-world"],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor.","piranesi-house"],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning.","piranesi-house"],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage.","piranesi-house"],["world-spawn-tool","Generator","Spawn a new VRChat world.","every-world"],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets.","every-world"],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page panel and Unity window).","own-avatar"],["menu-map","Audit","An avatar's built radial menu to click through, with the 256-bit synced parameter budget and what each add-on costs (page panel and Unity export).","own-avatar"],["vine-spawn-with-trumpet-flowers","Generator","Vines with trumpet flowers in up to 10 colours, grown over the objects you select in Unity; the page panel sends a world its colours (page panel and Unity window).","own-world"],["unity-asset-creator","Workflow","Walk a world asset through the researched 12-step checklist, then export each version and publish it to unity-assets-library by pull request.","every-world"],["unity-assets-library","Library","The public library of finished world assets (findastra/unity-assets-library): every asset and version, indexed in library.json.","every-world"],["shaders-shop","Workflow","Install shaders for worlds after showing their files, sources and licences, and track which shaders each world uses.","every-world"]];
 const UNMERGED=[
- ["sparkle-strapper","PR #1","Phawksea's Sparks on hands and feet, with separate controls and a continuous RGB option.",true],
- ["fan-fitter","PR #1","Every supplied stock fan colour on both hands, one active per hand, and the RGB fan fix.",true],
- ["learn-add-ons","PR #1 · menu only","Learn add-ons from the selected avatar, so strappers can copy them to another avatar.",true],
- ["bending-adder","PR #1","One workflow for blood, water and sparkle bending, left and right.",true],
- ["blood-bender-strapper","PR #1 · menu only","Blood bending from a learned template.",true],
- ["water-bender-strapper","PR #1 · menu only","Water bending from a learned template.",true],
- ["sparkle-bender-strapper","PR #1 · menu only","Sparkle bending from a learned template.",true],
- ["wing-strapper","PR #1 · menu only","Wings from a learned template.",true],
- ["neck-bow-strapper","PR #1 · menu only","A neck bow from a learned template.",true],
- ["star-effects-diagnostic","PR #1","Read-only check of star gun and star shooter sets.",true],
- ["golden-painter","PR #1","Stronger gold on copied materials, keeping texture detail.",false],
- ["chain-dangle-weights","PR #1","Weights shoe chain dangles without closing the links.",false],
- ["rgb-painter","PR #1","RGB material setup that handles neutral reflective layers.",true],
- ["gunsmith-loadout","PR #1","Previews Dubstep Gunsmith loadouts on an avatar, with Undo.",false],
- ["hair-weighter","PR #1 · menu only","Hair weighting helper.",true],
- ["spring-joint-strapper","PR #1 · menu only","Spring joints from a learned template.",true],
- ["copyright-logger","PR #1 · menu only","Logs where each asset came from (the sketch calls it copyright-collector).",true],
- ["copyright-catcher","PR #1 · menu only","Flags assets with no logged source (the sketch calls it copyright-auditor).",true],
- ["glass-animal-tool","PR #3","Prismatic glass animals.",false],
- ["bubble-chair-blower","PR #3","Static bubble chair prototype.",false],
- ["asset-ledger","design only","Rows for every asset before it ships, and credits per world.",false]
+ ["sparkle-strapper","PR #1","Phawksea's Sparks on hands and feet, with separate controls and a continuous RGB option.",true,"avatar-sparkles"],
+ ["fan-fitter","PR #1","Every supplied stock fan colour on both hands, one active per hand, and the RGB fan fix.",true,"avatar-sparkles"],
+ ["learn-add-ons","PR #1 · menu only","Learn add-ons from the selected avatar, so strappers can copy them to another avatar.",true,"avatar-effects"],
+ ["bending-adder","PR #1","One workflow for blood, water and sparkle bending, left and right.",true,"avatar-effects"],
+ ["blood-bender-strapper","PR #1 · menu only","Blood bending from a learned template.",true,"avatar-effects"],
+ ["water-bender-strapper","PR #1 · menu only","Water bending from a learned template.",true,"avatar-effects"],
+ ["sparkle-bender-strapper","PR #1 · menu only","Sparkle bending from a learned template.",true,"avatar-sparkles"],
+ ["wing-strapper","PR #1 · menu only","Wings from a learned template.",true,"avatar-effects"],
+ ["neck-bow-strapper","PR #1 · menu only","A neck bow from a learned template.",true,"avatar-effects"],
+ ["star-effects-diagnostic","PR #1","Read-only check of star gun and star shooter sets.",true,"avatar-sparkles"],
+ ["golden-painter","PR #1","Stronger gold on copied materials, keeping texture detail.",false,"avatar-effects"],
+ ["chain-dangle-weights","PR #1","Weights shoe chain dangles without closing the links.",false,"avatar-effects"],
+ ["rgb-painter","PR #1","RGB material setup that handles neutral reflective layers.",true,"avatar-sparkles"],
+ ["gunsmith-loadout","PR #1","Previews Dubstep Gunsmith loadouts on an avatar, with Undo.",false,"avatar-effects"],
+ ["hair-weighter","PR #1 · menu only","Hair weighting helper.",true,"avatar-effects"],
+ ["spring-joint-strapper","PR #1 · menu only","Spring joints from a learned template.",true,"avatar-effects"],
+ ["copyright-logger","PR #1 · menu only","Logs where each asset came from (the sketch calls it copyright-collector).",true,"avatar-records"],
+ ["copyright-catcher","PR #1 · menu only","Flags assets with no logged source (the sketch calls it copyright-auditor).",true,"avatar-records"],
+ ["glass-animal-tool","PR #3","Prismatic glass animals.",false,"liminal-doors"],
+ ["bubble-chair-blower","PR #3","Static bubble chair prototype.",false,"liminal-doors"],
+ ["asset-ledger","design only","Rows for every asset before it ships, and credits per world.",false,"every-world"]
 ];
+const WORLDS=[["piranesi-house","Piranesi House","findastra/piranesi-house","master"],["astras-infinite-pole","Astra's Infinite Pole","findastra/astras-infinite-pole","main"],["liminal-doors","Liminal Doors","findastra/liminal-doors","claude/fresh-start-20261018 (PR #2, not merged)"]];
+const IN_WORLDS=[["floor-cutter","liminal-doors","Cuts the seven concept plates into one picture per floor along their divider lines.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/cut-floors.ps1"],["redline-sheet","liminal-doors","Lays every floor out on one numbered sheet for redlines in Procreate.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/redline-sheet.ps1"],["contact-sheet","liminal-doors","All the floors at a glance, six across.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/contact-sheet.ps1"],["web-pictures","liminal-doors","Light JPEG copies of the floors for the Collection page.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/floors-to-jpg.ps1"],["stop-01-builder","liminal-doors","Builds Pinkscape: the booth, its floor and the spawn inside it.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop01.cs"],["stop-01-sky","liminal-doors","The sunset sky, the sea of pink clouds and the cloud puffs.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop01Sky.cs"],["booth-builder","liminal-doors","Puts the K6 kiosk together in Unity: baked maps, glass and the pink phone panel.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalBooth.cs"],["blender-booth","liminal-doors","Models the K6 kiosk and payphone in Blender by hand-made rules, with baked wear.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Tools/Blender/make_phone_booth.py"],["stop-02-builder","liminal-doors","Builds Faraway Field: the ground, the pink frond grass, the sky and the doors.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs"],["field-shaders","liminal-doors","Field Ground, Soft Lit and Soft Glow: the ground, the doors and stone, and the motes.","https://github.com/findastra/liminal-doors/tree/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders"],["frond-grass","liminal-doors","Tall pink leafy fronds: wind gusts, a flutter per tuft, and bending away from you as you walk through.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/FrondGrass.shader"],["grass-push","liminal-doors","Tells the grass where your feet are each frame, so it parts for you (Udon).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Scripts/LiminalGrassPush.cs"],["door-kit","liminal-doors","Shared door pieces, the portal that fills the whole doorway, rising motes and glitter halos.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs"],["stop-03-builder","liminal-doors","Builds Pool After Closing: the tiled hall, the 220 m pool and its steps, windows, skylights, ladders and both doors.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs"],["pool-tile","liminal-doors","World-space tiles with grout and caustic light that wanders under and over the water.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolTile.shader"],["pool-water","liminal-doors","Clear turquoise water with slow ripples, glancing pink reflections and glints.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolWater.shader"],["pool-window","liminal-doors","Deep water through the windows and violet water overhead: light shafts, caustics and rising bubbles.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolWindow.shader"],["door-system","liminal-doors","Forward doors go somewhere random; the door you arrive by keeps the real way back (Udon).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Scripts/LiminalTraveler.cs"],["door-wiring","liminal-doors","Connects every door and walks a test trip through them.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/EditorUdon/Editor/LiminalDoorsTravel.cs"],["world-glow","liminal-doors","Liminal Glow: the world's own bloom, so doors and motes glow.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalWorldGlow.cs"],["desktop-test","liminal-doors","Runs the VRChat SDK's Build & Test without uploading.","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/EditorUdon/Editor/LiminalDesktopTest.cs"],["agent-queue","liminal-doors","Lets an agent drive the open Unity editor through Review/agent-queue (Astra's Infinite Pole has its own, AstraAgentQueue.cs).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalAgentQueue.cs"],["world-photos","astras-infinite-pole","Take World Photos: a fixed set of photos of the world for review; never uploads.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudePhotos.cs"],["pickup-audit","astras-infinite-pole","Exports the sea spheres and checks that every egg and glow orb is really grabbable (read-only, round 38b).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs"],["pickup-lift-out","astras-infinite-pole","Lifts pickups out of solid colliders so desktop grabbing can reach them (round 38d).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs"],["review-shots","piranesi-house","Renders fixed views of the built House for review, and runs a build or the shots from trigger files (Review/do_build, Review/do_shots).","https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Editor/HouseReview.cs"]];
+const SPARKLES=[["sparkle-sky","liminal-doors","Evening Sky sparkle layer","Twinkling sparkles in three densities, big four-point glints and a faint pink-violet nebula, none near the sun or the horizon; off unless _StarAmount, _GlintAmount or _NebulaAmount is set (stops 02 and 03).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/EveningSky.shader"],["sky-sparkles","liminal-doors","Sky sparkles","Up to 900 sparkles drifting far out over the Faraway Field against the sky, twinkling as they grow and shrink (stop 02).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs"],["field-sparkles","liminal-doors","Field sparkles","Up to 800 fine glints hanging just above the frond grass along the whole path. The grass shader itself has no glitter; this is the glitter over it (stop 02).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs"],["door-motes","liminal-doors","Door motes","Rose and gold motes rising in front of each door (LiminalDoorKit.Motes, Soft Glow material).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs"],["glitter-halo","liminal-doors","Glitter halos","A cloud of twinkling glitter round each door, thickest at the doorway, up to 700 at the pink door (LiminalDoorKit.GlitterHalo).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs"],["glitter-paint","liminal-doors","Glitter Paint shader","Door frames and leaves full of tiny mirror flecks that flash as you walk past and twinkle on their own (Astra: “the door more glittery”).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/GlitterPaint.shader"],["portal-shader","liminal-doors","Portal glitter","Sparkles that blink on and off across each portal veil (_Glitter and _GlitterColor in the Portal shader).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/Portal.shader"],["pool-bubbles","liminal-doors","Pool bubbles","Up to 700 small glowing bubbles rising out of the 220 m pool (stop 03).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs"],["hall-motes","liminal-doors","Hall motes","Up to 800 slow dust motes in the warm air of the pool hall (stop 03).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs"],["booth-sparkles","liminal-doors","Swirling booth sparkles","Gold and pink sparkles swirling up round the phone booth in a slow helix, with a glow at its base (stop 01).","https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalBooth.cs"],["unity-stable-sparkle","liminal-doors","Unity Stable/Sparkle shader","Additive HDR particle shader for glints and motes, bright enough for the bloom; the booth sparkles use it. On Unity Unicorn's main as part of shaders-shop.","https://github.com/findastra/unity-unicorn/blob/main/scripts/shaders-shop/Assets/ShadersShop/UnityStable/Sparkle.shader"],["glitter-collection","astras-infinite-pole","Glitter collection (Upgrade Glitter)","Thirteen particle effects in one set: fine glitter dust, starbursts, tiny stars, diamond shards, soft bokeh, fairy lights, falling shimmer, rising sparks, confetti flakes, orbiting glints, floating hearts, snow crystals and magic wisps.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/AstraGlitterBuilder.cs"],["glitter-controls","astras-infinite-pole","Glitter controls","The in-world glitter menu: each effect on or off, density, two hues, saturation, brightness and twinkle, shared with everyone in the instance (Udon).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Scripts/AstraGlitterControls.cs"],["glitter-gradient","astras-infinite-pole","Glitter Gradient shader","The glitter collection's particle shader: a drifting two-colour gradient, twinkle, and texture, diamond or confetti shapes.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/GlitterGradient.shader"],["soft-sparkle","astras-infinite-pole","Soft Sparkle shader","A soft additive sparkle dot, used by the stair star dust and the cloud sparkle rain.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/Sparkle.shader"],["stair-star-dust","astras-infinite-pole","Stair star dust","Star dust filling the 6.4 m drop under the stair opening (round 1b).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound1b.cs"],["bokeh-sparkles","astras-infinite-pole","Round bokeh sparkles","The round bokeh sparkles from the world's thumbnail, brought back to full size (round 3c).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound3c.cs"],["cloud-sparkle-rain","astras-infinite-pole","Cloud sparkle rain","Every cloud rains bright white sparkles that sway as they fall and ride along with it, with a switch in the menu (round 3d).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound3d.cs"],["sparkle-clouds","astras-infinite-pole","Sparkle Clouds shader","Clouds in a two-colour gradient that glitter.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/SparkleClouds.shader"],["lounge-cloud-sparkles","astras-infinite-pole","Lounge cloud sparkles","Sparkles inside every lounge cloud (the cozy clouds pass).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/AstraClaudeCozy.cs"],["sparkle-slurry","astras-infinite-pole","Sparkle slurry","A thick swirling cloud of tiny glitter round every glow orb and egg, always on, that trails when carried (300 per orb, 150 per egg; round 38).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs"],["celestial-stars","astras-infinite-pole","Celestial Sky stars","A deep-space sky with nebula clouds and constellations of stars (_Stars).","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/CelestialSky.shader"],["glitter-cloud","astras-infinite-pole","Glitter Cloud shader","Soft rounded cloud shading with twinkling glitter and a slowly shifting pastel tint per cloud; Piranesi House's Stormscape uses a copy.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/GlitterCloud.shader"],["prismatic-stair","astras-infinite-pole","Prismatic Stair shader","Dense pink glitter on the spiral stair, rainbow gradients that drift with height, and HDR sparkles for the bloom; Piranesi House's Stormscape uses a copy.","https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Shaders/PrismaticStair.shader"],["stone-sparkle","piranesi-house","Stone mica sparkle","Glints of mica in the marble and stone, from a sparkle channel in each stone texture's mask (_Sparkle in the Stone shader).","https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Shaders/Stone.shader"],["house-sparkles","piranesi-house","Sparkle and mote particles","Atlas particles with a four-ray sparkle, and warm motes rising over the lamps like embers (Piranesi/Particle; M_P_Sparkle and M_P_Mote).","https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Shaders/Particle.shader"],["colossus-glitter","piranesi-house","The Colossus's glittering hand","Two layers of glitter at the Colossus's hand in the centre hall, under the oculus spot and a narrow golden light, plus sparkle emitters in the halls.","https://github.com/findastra/piranesi-house/blob/master/ArtSource/gen/layout7.py"]];
 const THIRD=[["Unity 2022.3.22f1","the editor"],["VRChat Creator Companion","projects and packages"],["VRChat SDK","avatars and worlds"],["Blender","marble-carver, vine-bloomer, neck-blender"],["VRCFT","face tracking"],["Packages","Poiyomi, VRCFury, Modular Avatar with NDMF, lilToon, d4rkAvatarOptimizer, AudioLink, Gesture Manager, Av3Emulator, SPS Configurator"]];
-const PROGRAMS=[["Poppy","avatar project; has the Unity Unicorn menu installed (Tools › Unity Unicorn)"],["Piranesi House","world; Piranesi Nessi looks after it too"],["Liminal Doors","world; world-spawn-tool was first written from it"],["Dubstep Gunsmith","catalog site for avatar gun effects (PR #1, not merged)"]];
+const PROGRAMS=[["Poppy","avatar project; has the Unity Unicorn menu installed (Tools › Unity Unicorn)"],["Piranesi House","world; Piranesi Nessi looks after it too"],["Astra's Infinite Pole","world; Pole Puff looks after it. The cloud tools and the glitter collection came from it"],["Liminal Doors","world; world-spawn-tool was first written from it"],["Dubstep Gunsmith","catalog site for avatar gun effects (PR #1, not merged)"]];
 const TRICKS=[["make-a-prop-look-real","skills/make-a-prop-look-real/SKILL.md · uses prop-decomposer, realistic-prop-restyle"],["unity-asset-creator-trick","skills/unity-asset-creator/SKILL.md · the unity-asset-creator trick; uses unity-asset-creator, shaders-shop, unity-assets-library"],["weekly-update-from-friendly-farmer","from the sketch; to write"],["weekly-copyright-auditor","from the sketch; to write"],["vcc-package-manager","no code, only written steps (skill book section 4, VCC); to write"],["vrchat-avatar-upload","no code, only written steps (skill book section 2, uploading avatars); to write"]];
 const SCHEDULE=[["self-audit","weekly, Thursday (MOOD-KEY.md)"],["backlog run","weekly; bundles new session notes into the next task"],["tool use dates","only from real run reports; Unknown otherwise"]];
 const CONNS=[["Friendly Farmer","my status and audit, weekly","his round and the weekly update"],["Rift Rabbit","world build tasks I made from its findings","VR performance findings"],["Skill Scout","my tricks and skill book","which tricks changed and why"],["Piranesi Nessi","Unity builds of Piranesi House (planned)","world tasks (planned)"]];
@@ -315,13 +426,29 @@ function lights(item){
   p.onclick=e=>{e.preventDefault();e.stopPropagation();const v=st.lights[item]||{on:true,fix:false};if(!v.on&&!confirm("Turn "+item+" back on? On the real farm this needs your (L4) approval after a security OFF."))return;v.on=!v.on;st.lights[item]=v;save(KEY,st);paint()};
   c.onclick=e=>{e.preventDefault();e.stopPropagation();const v=st.lights[item]||{on:true,fix:false};v.fix=!v.fix;st.lights[item]=v;save(KEY,st);paint();if(v.fix)addBacklog("bug",item,item+" marked as requiring maintenance.",[])};
   paint();w.append(p,c);return w}
-function item(list,name,desc,tag,tagOk){const li=el("li");li.append(lights(name),el("span","uu-name",name),el("span","uu-desc",desc));if(tag)li.append(el("span","uu-tag"+(tagOk?" ok":""),tag));$(list).append(li)}
+function item(list,name,desc,tag,tagOk,href){const li=el("li");li.append(lights(name),el("span","uu-name",name),el("span","uu-desc",desc));if(tag)li.append(el("span","uu-tag"+(tagOk?" ok":""),tag));if(href&&/^https:\/\/github\.com\/findastra\//.test(href)){const a=el("a","uu-src","source");a.href=href;a.rel="noopener noreferrer";a.target="_blank";li.append(a)}$(list).append(li)}
 document.querySelectorAll("#uu-panels span.uu-lights[data-item]").forEach(s=>s.replaceWith(lights(s.dataset.item)));
 
 THIRD.forEach(([n,d])=>item("uu-third",n,d));
 PROGRAMS.forEach(([n,d])=>item("uu-programs",n,d));
-TOOLS_MAIN.forEach(([n,k,d])=>item("uu-tools",n,d,k,true));
-UNMERGED.forEach(([n,w,d,inPoppy])=>item("uu-unmerged",n,d,"not merged · "+w+(inPoppy?" · in Poppy's project":"")));
+// Avatar tools and world tools (Astra, 2026-10-19: "separate the page by avatar tools vs world tools"). Every tool is in one
+// panel: own-avatar and own-world tools are their own working panel (matcap, menu map, vines), so they get no row.
+const LISTS={"avatar-build":"uu-avatar-build","avatar-sparkles":"uu-avatar-sparkles","avatar-effects":"uu-avatar-effects","avatar-records":"uu-avatar-records","every-world":"uu-every-world","piranesi-house":"uu-world-piranesi-house","astras-infinite-pole":"uu-world-astras-infinite-pole","liminal-doors":"uu-world-liminal-doors"};
+const sideOf=p=>/^(avatar-|own-avatar$)/.test(p)?"avatar":"world";
+const counts={avatar:0,world:0},inPanel={};
+function put(p,fn){counts[sideOf(p)]++;if(LISTS[p]){inPanel[p]=(inPanel[p]||0)+1;fn(LISTS[p])}}
+TOOLS_MAIN.forEach(([n,k,d,p])=>put(p,l=>item(l,n,d,k+" · on main",true)));
+UNMERGED.forEach(([n,w,d,inPoppy,p])=>put(p,l=>item(l,n,d,"not merged · "+w+(inPoppy?" · in Poppy's project":""))));
+const WORLD=Object.fromEntries(WORLDS.map(([id,name,repo,ref])=>[id,{name,repo,ref}]));
+IN_WORLDS.forEach(([n,w,d,href])=>put(w,l=>item(l,n,d,"in "+WORLD[w].repo.split("/")[1]+" · "+WORLD[w].ref,false,href)));
+SPARKLES.forEach(([n,w,name,d,href])=>{const li=el("li");const desc=el("span","uu-desc");desc.append(el("b",null,name+". "),document.createTextNode(d));li.append(lights(n),el("span","uu-name",n),desc);li.append(el("span","uu-tag",WORLD[w].name));const a=el("a","uu-src","source");a.href=href;a.rel="noopener noreferrer";a.target="_blank";li.append(a);$("uu-sparkle-"+w).append(li)});
+Object.keys(LISTS).forEach(p=>{$("uu-n-"+p).textContent="· "+(inPanel[p]||0)});
+$("uu-n-sparkles").textContent="· "+SPARKLES.length+" in "+WORLDS.length+" worlds";
+$("uu-avatar-count").textContent=String(counts.avatar);$("uu-world-count").textContent=String(counts.world);
+{const w=$("uu-tools-where");w.append(document.createTextNode(TOOLS_MAIN.length+" on main, "+UNMERGED.length+" not merged yet and "+IN_WORLDS.length+" still in the worlds' own repos, on two sides below: "));
+ const a=el("button","uu-btn","Avatar tools · "+counts.avatar);a.type="button";a.dataset.gotoSide="avatar";
+ const b=el("button","uu-btn","World tools · "+counts.world);b.type="button";b.dataset.gotoSide="world";
+ w.append(a,document.createTextNode(" "),b)}
 TRICKS.forEach(([n,d])=>item("uu-tricks",n,d));
 SCHEDULE.forEach(([n,d])=>item("uu-schedule",n,d));
 CONNS.forEach(([n,s,r])=>{const f=el("fieldset","uu-conn");const lg=el("legend");lg.append(lights("connection: "+n),document.createTextNode(" "+n));f.append(lg,el("p",null,"Sends: "+s),el("p",null,"Receives: "+r),el("p",null,"Last exchange: not recorded yet"));$("uu-conns").append(f)});
@@ -347,7 +474,7 @@ $("uu-note-file").onchange=async e=>{files=[];for(const f of e.target.files){if(
 $("uu-notes").onsubmit=e=>{e.preventDefault();const t=$("uu-note-text").value.trim();if(!t&&!files.length)return;addBacklog(files.length?"screenshot":"note","unity-unicorn-session-notes",t,files);files=[];$("uu-note-files").textContent="";e.target.reset()};
 $("uu-backlog-export").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(backlog(),null,2)],{type:"application/json"}));a.download="unity-unicorn-backlog-"+today().replace(/-/g,"")+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
 function renderStatus(){const b=backlog();const last=b.entries.length?b.entries[b.entries.length-1].created.slice(0,10):"none yet";const s=$("uu-status");s.replaceChildren();
-  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-19, V0.4.6"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
+  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-19, V0.5.0"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
   const m=el("span");m.append(el("b",null,"On the map: "));const a=el("a",null,"unity-unicorn node");a.href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn";m.append(a);s.append(m)}
 $("uu-chat-open").onclick=()=>{$("uu-chat-msg").textContent="Unity Unicorn's chat bot is planned: it will ask before using your own Claude or ChatGPT account. Until then, use session notes above."};
 st.lastOpened=new Date().toISOString();save(KEY,st);
@@ -904,6 +1031,272 @@ const MM = (() => {
   drawWheel(); drawBudget();
 })();
 </script>
+<script id="uu-vine-model">
+// The vine panel's data side (Claude Opus 5.5, 2026-10-19): the palette, the three worlds and the job file that
+// vine-spawn-with-trumpet-flowers reads in Unity (unity-unicorn.vine-spawn-job/v1). The limits are the Unity tool's
+// (VineJobs20261019 in scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs). No DOM here, so tests run it.
+const VINE = (() => {
+  const PALETTE = [
+    ["#ff5a1f", "Trumpet orange"], ["#e8361c", "Scarlet"], ["#c81d25", "Crimson"], ["#ff6f61", "Coral"],
+    ["#ff8a3d", "Apricot"], ["#ffb347", "Marigold"], ["#ffd23f", "Sun yellow"], ["#fff1c1", "Cream"],
+    ["#ffffff", "White"], ["#ffd1a8", "Peach"], ["#ffe4f2", "Pearl pink"], ["#ffc2d1", "Blush"],
+    ["#ff8fb1", "Rose"], ["#f472b6", "Pink"], ["#ff4f9a", "Hot pink"], ["#ff3cc7", "Neon pink"],
+    ["#e0218a", "Magenta"], ["#b0228c", "Berry"], ["#d86bff", "Orchid"], ["#c4b5fd", "Lilac"],
+    ["#a855f7", "Violet"], ["#7c3aed", "Purple"], ["#5b5bff", "Periwinkle"], ["#3b82f6", "Morning-glory blue"],
+    ["#22d3ee", "Aqua"], ["#2ef2ff", "Neon cyan"], ["#2dd4bf", "Teal"], ["#b6ff3c", "Neon lime"],
+    ["#fde047", "Lemon"], ["#ff2bd6", "Electric pink"],
+  ];
+  const WORLDS = [["piranesi-house", "Piranesi House"], ["astras-infinite-pole", "Astra's Infinite Pole"], ["liminal-doors", "Liminal Doors"]];
+  const MAX = 10, HEX = /^#[0-9a-f]{6}$/;
+  // [lowest, highest, default, step, label]
+  const LIMITS = {
+    vines: [1, 24, 6, 1, "Vines per object"], length_m: [0.5, 12, 3.5, 0.5, "Vine length (m)"],
+    flowers_per_m: [0, 10, 3, 0.5, "Flowers per metre"], flower_size: [0.5, 2, 1, 0.1, "Flower size"],
+    leaves_per_m: [0, 24, 12, 1, "Leaves per metre"], glow: [0, 3, 0.2, 0.1, "Flower glow"],
+  };
+  const GROW = [["climb", "Climb up"], ["hang", "Hang down"], ["both", "Both"]];
+  const DEFAULTS = { vines: 6, length_m: 3.5, flowers_per_m: 3, flower_size: 1, leaves_per_m: 12, glow: 0.2, grow: "climb", seed: 20261019, leaf_color: "#336b2e" };
+  const clamp = (k, v) => { const [lo, hi, def] = LIMITS[k]; const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : def; };
+  // Add a colour, or take it out if it is already chosen; never more than 10.
+  function toggle(list, hex) {
+    const h = String(hex).toLowerCase();
+    if (!HEX.test(h)) return list;
+    if (list.includes(h)) return list.filter((c) => c !== h);
+    return list.length >= MAX ? list : [...list, h];
+  }
+  function job(world, colours, settings = {}, now = new Date()) {
+    if (!WORLDS.some(([id]) => id === world)) throw new Error("Pick a world: Piranesi House, Astra's Infinite Pole or Liminal Doors.");
+    const flower_colors = (colours || []).map((c) => String(c).toLowerCase());
+    if (flower_colors.length < 1 || flower_colors.length > MAX) throw new Error("Pick 1 to 10 flower colours.");
+    if (!flower_colors.every((c) => HEX.test(c))) throw new Error("Every flower colour must look like #ff3cc7.");
+    const leaf = String(settings.leaf_color || DEFAULTS.leaf_color).toLowerCase();
+    const seed = Number(settings.seed);
+    return {
+      schema: "unity-unicorn.vine-spawn-job/v1", tool_id: "vine-spawn-with-trumpet-flowers", world,
+      made_at: now.toISOString().replace(/\.\d+Z$/, "Z"), flower_colors,
+      settings: {
+        vines: Math.round(clamp("vines", settings.vines ?? DEFAULTS.vines)), length_m: clamp("length_m", settings.length_m ?? DEFAULTS.length_m),
+        flowers_per_m: clamp("flowers_per_m", settings.flowers_per_m ?? DEFAULTS.flowers_per_m), flower_size: clamp("flower_size", settings.flower_size ?? DEFAULTS.flower_size),
+        leaves_per_m: clamp("leaves_per_m", settings.leaves_per_m ?? DEFAULTS.leaves_per_m), glow: clamp("glow", settings.glow ?? DEFAULTS.glow),
+        grow: GROW.some(([g]) => g === settings.grow) ? settings.grow : "climb",
+        seed: Number.isInteger(seed) && seed > 0 && seed < 2147483647 ? seed : DEFAULTS.seed,
+        leaf_color: HEX.test(leaf) ? leaf : DEFAULTS.leaf_color,
+      },
+    };
+  }
+  // unity-unicorn-vine-spawn-<world>-<yyyymmdd-hhmmss>.json (UTC); the Unity tool looks for unity-unicorn-vine-spawn-*.json
+  const fileName = (j) => "unity-unicorn-vine-spawn-" + j.world + "-" + j.made_at.replace(/[-:]/g, "").replace("T", "-").replace("Z", "") + ".json";
+  return { PALETTE, WORLDS, MAX, LIMITS, GROW, DEFAULTS, toggle, job, fileName, clamp };
+})();
+</script>
+<script id="uu-vine-app">
+// The vine panel (Claude Opus 5.5, 2026-10-19). Astra: "give up to 10 options in color squares where you can just pick
+// from the color palette, then you click the tool, and it opens up in unity". Squares are buttons; text goes in with
+// textContent only. The colours, world and settings are kept in this browser.
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const KEY = "astra-pet-desk:unity-unicorn:vines:1";
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
+  let colours = Array.isArray(saved.colours) ? saved.colours.reduce((l, c) => VINE.toggle(l, c), []) : ["#ff5a1f", "#ffb347", "#ff3cc7"];
+  let world = VINE.WORLDS.some(([id]) => id === saved.world) ? saved.world : "liminal-doors";
+  const settings = { ...VINE.DEFAULTS, ...(saved.settings && typeof saved.settings === "object" ? saved.settings : {}) };
+  const nameOf = (hex) => (VINE.PALETTE.find(([h]) => h === hex) || [hex, hex])[1];
+  const keep = () => { try { localStorage.setItem(KEY, JSON.stringify({ colours, world, settings })); } catch (e) {} };
+
+  function square(hex, label, pressed, disabled) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "vn-sq"; b.style.background = hex; b.title = label; b.setAttribute("aria-label", label);
+    if (pressed != null) b.setAttribute("aria-pressed", String(pressed));
+    if (disabled) b.setAttribute("aria-disabled", "true");
+    return b;
+  }
+  function render() {
+    const chosen = $("vn-chosen"); chosen.replaceChildren();
+    for (let i = 0; i < VINE.MAX; i++) {
+      const hex = colours[i];
+      if (!hex) { const s = document.createElement("span"); s.className = "vn-slot"; s.title = "Empty: pick a colour below"; chosen.append(s); continue; }
+      const b = square(hex, nameOf(hex) + " " + hex + ": click to take it out");
+      b.onclick = () => { colours = VINE.toggle(colours, hex); update(); };
+      chosen.append(b);
+    }
+    $("vn-count").textContent = colours.length + " of " + VINE.MAX;
+    const pal = $("vn-palette"); pal.replaceChildren();
+    for (const [hex, name] of VINE.PALETTE) {
+      const on = colours.includes(hex), full = !on && colours.length >= VINE.MAX;
+      const b = square(hex, name + " " + hex + (on ? " (chosen)" : full ? " (10 chosen already)" : ""), on, full);
+      b.onclick = () => { if (!full) { colours = VINE.toggle(colours, hex); update(); } };
+      pal.append(b);
+    }
+    const worlds = $("vn-worlds"); worlds.replaceChildren();
+    for (const [id, name] of VINE.WORLDS) {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "vn-world"; b.textContent = name; b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(id === world));
+      b.onclick = () => { world = id; update(); };
+      worlds.append(b);
+    }
+    $("vn-send").disabled = colours.length === 0;
+    $("vn-send").textContent = "Open in Unity · " + VINE.WORLDS.find(([id]) => id === world)[1];
+  }
+  function update() { render(); draw(); keep(); }
+
+  function options() {
+    const box = $("vn-options"); box.replaceChildren();
+    const row = (label, input, out) => { const l = document.createElement("label"); l.textContent = label; l.htmlFor = input.id; box.append(l, input, out || document.createElement("span")); };
+    for (const [k, [lo, hi, , step, label]] of Object.entries(VINE.LIMITS)) {
+      const r = document.createElement("input"); r.type = "range"; r.id = "vn-" + k; r.min = lo; r.max = hi; r.step = step; r.value = settings[k];
+      const o = document.createElement("output"); o.htmlFor = r.id; o.textContent = String(settings[k]);
+      r.oninput = () => { settings[k] = Number(r.value); o.textContent = r.value; draw(); keep(); };
+      row(label, r, o);
+    }
+    const g = document.createElement("select"); g.id = "vn-grow";
+    for (const [v, t] of VINE.GROW) { const op = document.createElement("option"); op.value = v; op.textContent = t; op.selected = v === settings.grow; g.append(op); }
+    g.onchange = () => { settings.grow = g.value; draw(); keep(); };
+    row("Grow", g);
+    const c = document.createElement("input"); c.type = "color"; c.id = "vn-leaf"; c.value = settings.leaf_color;
+    c.oninput = () => { settings.leaf_color = c.value; draw(); keep(); };
+    row("Leaf colour", c);
+    const s = document.createElement("input"); s.type = "number"; s.id = "vn-seed"; s.min = 1; s.max = 2147483646; s.value = settings.seed;
+    const again = document.createElement("button"); again.type = "button"; again.className = "vn-btn"; again.textContent = "New";
+    s.onchange = () => { settings.seed = Math.max(1, Math.floor(Number(s.value)) || VINE.DEFAULTS.seed); draw(); keep(); };
+    again.onclick = () => { settings.seed = 1 + Math.floor(Math.random() * 2147483645); s.value = settings.seed; draw(); keep(); };
+    row("Seed", s, again);
+  }
+  function toggleBox(btn, box) {
+    btn.onclick = () => { const open = btn.getAttribute("aria-expanded") !== "true"; btn.setAttribute("aria-expanded", String(open)); $(box).hidden = !open; };
+  }
+
+  // A small picture of the vines in the chosen colours: the same idea as the Unity tool, drawn flat.
+  function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  function mix(hex, k, to) { const n = parseInt(hex.slice(1), 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255, t = to === "white" ? 255 : 0; return "rgb(" + Math.round(r + (t - r) * k) + "," + Math.round(g + (t - g) * k) + "," + Math.round(b + (t - b) * k) + ")"; }
+  function leaf(ctx, x, y, a, size, col) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(a);
+    const g = ctx.createLinearGradient(0, 0, size, 0); g.addColorStop(0, mix(col, 0.25, "black")); g.addColorStop(1, mix(col, 0.15, "white"));
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(size * 0.45, -size * 0.42, size, 0); ctx.quadraticCurveTo(size * 0.45, size * 0.42, 0, 0); ctx.fill();
+    ctx.strokeStyle = mix(col, 0.35, "black"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(1, 0); ctx.lineTo(size * 0.9, 0); ctx.stroke();
+    ctx.restore();
+  }
+  function trumpet(ctx, x, y, a, size, col, glow, bud) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(a);
+    const len = size * (bud ? 0.75 : 1.25), mouth = size * (bud ? 0.16 : 0.42);
+    if (glow > 0) { ctx.shadowColor = col; ctx.shadowBlur = glow * 9; }
+    ctx.fillStyle = settings.leaf_color; ctx.beginPath(); ctx.ellipse(1, 0, size * 0.12, size * 0.1, 0, 0, Math.PI * 2); ctx.fill();
+    const g = ctx.createLinearGradient(0, 0, len, 0); g.addColorStop(0, mix(col, 0.5, "black")); g.addColorStop(0.65, col); g.addColorStop(1, mix(col, 0.12, "white"));
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -size * 0.07);
+    ctx.quadraticCurveTo(len * 0.62, -size * 0.1, len, -mouth); ctx.lineTo(len, mouth); ctx.quadraticCurveTo(len * 0.62, size * 0.1, 0, size * 0.07); ctx.closePath(); ctx.fill();
+    if (!bud) {
+      ctx.translate(len, 0); ctx.scale(0.45, 1);
+      ctx.beginPath();
+      for (let i = 0; i <= 60; i++) { const t = (i / 60) * Math.PI * 2, r = mouth * (1 + 0.17 * Math.cos(5 * t + 0.6)); ctx.lineTo(Math.cos(t) * r, Math.sin(t) * r); }
+      ctx.closePath(); ctx.fillStyle = mix(col, 0.08, "white"); ctx.fill();
+      ctx.shadowBlur = 0;
+      const th = ctx.createRadialGradient(0, 0, 0, 0, 0, mouth * 0.8); th.addColorStop(0, "rgba(40,16,6,0.95)"); th.addColorStop(0.45, mix(col, 0.55, "black")); th.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = th; ctx.beginPath(); ctx.arc(0, 0, mouth * 0.8, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+  function draw() {
+    const c = $("vn-preview");
+    const ctx = c.getContext && c.getContext("2d");
+    if (!ctx) return;
+    const W = c.width, H = c.height;
+    ctx.fillStyle = "#1b1c20"; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = "#25262c"; ctx.lineWidth = 2;
+    for (let y = 0, row = 0; y < H; y += 36, row++) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      for (let x = row % 2 ? 0 : 45; x < W; x += 90) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 36); ctx.stroke(); }
+    }
+    const r = rng(settings.seed * 31 + colours.length * 7 + 1);
+    const n = Math.max(1, Math.min(5, Math.round(settings.vines / 2)));
+    for (let v = 0; v < n; v++) {
+      const hang = settings.grow === "hang" || (settings.grow === "both" && v % 2 === 1);
+      const pts = []; let x = W * (0.1 + (0.8 * (v + 0.5)) / n) + (r() - 0.5) * 40, y = hang ? -4 : H + 4;
+      let a = hang ? Math.PI / 2 : -Math.PI / 2; const aim = a;
+      const steps = 70, step = (H * (0.45 + 0.5 * Math.min(1, settings.length_m / 6))) / steps;
+      for (let i = 0; i <= steps; i++) { pts.push([x, y]); a += (r() - 0.5) * 0.42 + (aim - a) * 0.07; x += Math.cos(a) * step; y += Math.sin(a) * step; }
+      ctx.lineCap = "round";
+      for (let i = 1; i < pts.length; i++) {
+        ctx.strokeStyle = i < pts.length * 0.35 ? "#5b4a32" : mix(settings.leaf_color, 0.15, "black");
+        ctx.lineWidth = Math.max(1.3, 5.5 * (1 - i / pts.length));
+        ctx.beginPath(); ctx.moveTo(pts[i - 1][0], pts[i - 1][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke();
+      }
+      const ang = (i) => Math.atan2(pts[i + 1][1] - pts[i - 1][1], pts[i + 1][0] - pts[i - 1][0]);
+      if (settings.leaves_per_m > 0) {
+        const every = Math.max(2, Math.round(28 / settings.leaves_per_m));
+        for (let i = 3, k = 0; i < pts.length - 1; i += every, k++) leaf(ctx, pts[i][0], pts[i][1], ang(i) + (k % 2 ? 1.05 : -1.05) + (r() - 0.5) * 0.4, 14 + r() * 9, settings.leaf_color);
+      }
+      if (settings.flowers_per_m > 0 && colours.length) {
+        const every = Math.max(4, Math.round(34 / settings.flowers_per_m)), size = 24 * settings.flower_size;
+        const pick = () => colours[Math.floor(r() * colours.length)];
+        for (let i = Math.round(steps * 0.3); i < pts.length - 1; i += every) trumpet(ctx, pts[i][0], pts[i][1], ang(i) + (r() < 0.5 ? 1 : -1) * (0.7 + r() * 0.6), size, pick(), settings.glow, r() < 0.28);
+        const end = pts.length - 2;
+        for (let k = 0; k < 3; k++) trumpet(ctx, pts[end][0], pts[end][1], ang(end) + (k - 1) * 0.8 + (r() - 0.5) * 0.3, size, pick(), settings.glow, k === 2 && r() < 0.5);
+      }
+    }
+  }
+
+  $("vn-send").onclick = () => {
+    try {
+      const j = VINE.job(world, colours, settings);
+      const name = VINE.fileName(j);
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(j, null, 2) + "\n"], { type: "application/json" }));
+      a.download = name; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      const w = VINE.WORLDS.find(([id]) => id === world)[1];
+      $("vn-msg").textContent = "Saved " + name + " to your Downloads. With " + w + " open in Unity and the tool installed there, the vine window opens within a few seconds with these " +
+        colours.length + " colours and flashes on the taskbar. Select what to grow on there, then press Grow vines.";
+    } catch (e) { $("vn-msg").textContent = e.message; }
+  };
+  toggleBox($("vn-more"), "vn-options");
+  toggleBox($("vn-how"), "vn-howto");
+  options(); render(); draw();
+})();
+</script>
+<script id="uu-sides-app">
+// Avatar tools | World tools (Claude Opus 5.5, 2026-10-19): two tabs, one side shown at a time, and the panels you opened
+// stay open next time. Links: #avatar-tools, #world-tools or a panel's id (for example #uu-vine) open that side.
+(() => {
+  const KEY = "astra-pet-desk:unity-unicorn:sides:1";
+  let st = {};
+  try { st = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { st = {}; }
+  const keep = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} };
+  const tabs = [...document.querySelectorAll("#uu-panels .uu-side-tab")];
+  function show(side, focus) {
+    for (const t of tabs) {
+      const on = t.dataset.side === side;
+      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      if (on && focus) t.focus();
+    }
+    st.side = side; keep();
+  }
+  tabs.forEach((t, i) => {
+    t.onclick = () => show(t.dataset.side);
+    t.onkeydown = (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault(); show(tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length].dataset.side, true);
+    };
+  });
+  document.querySelectorAll("#uu-panels [data-goto-side]").forEach((b) => {
+    b.onclick = () => { show(b.dataset.gotoSide); document.getElementById("uu-sides").scrollIntoView({ behavior: "smooth", block: "start" }); };
+  });
+  const open = new Set(Array.isArray(st.open) ? st.open : []);
+  document.querySelectorAll("#uu-panels .uu-side details.uu-panel").forEach((d) => {
+    if (open.has(d.id)) d.open = true;
+    d.addEventListener("toggle", () => { if (d.open) open.add(d.id); else open.delete(d.id); st.open = [...open]; keep(); });
+  });
+  function fromHash() {
+    const hash = decodeURIComponent(location.hash.slice(1));
+    if (hash === "avatar-tools" || hash === "world-tools") { show(hash.split("-")[0]); document.getElementById("uu-sides").scrollIntoView(); return; }
+    const d = hash && document.getElementById(hash), side = d && d.closest(".uu-side");
+    if (side) { show(side.dataset.side); if (d.tagName === "DETAILS") d.open = true; d.scrollIntoView(); }
+  }
+  show(st.side === "world" ? "world" : "avatar");
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
+})();
+</script>
 </section>
 
 <header><div><p class="eyebrow">Worldbuilding desk</p><h1>Build the next world.</h1><p class="intro">Keep scene ideas, build tasks and release checks in one place.</p></div><div class="date-pill" id="today"></div></header><section class="stats" id="stats" aria-label="At a glance"></section><div class="workspace"><section class="panel"><div class="panel-head"><h2>Your desk</h2><span class="count" id="count"></span></div><div class="toolbar"><input id="search" aria-label="Search entries" placeholder="Search your desk…"><select id="filter" aria-label="Filter by status"><option value="">All statuses</option></select></div><div id="reminder" class="reminder hidden" role="status"></div><div class="records" id="records"></div><div class="exports"><button class="secondary" id="json-export">Export backup</button><button class="secondary" id="md-export">Export Markdown</button><span class="hint" id="saved">Saved only in this browser</span></div></section><section class="panel form-panel"><div class="panel-head"><h2 id="edit-title"></h2></div><form class="form" id="form"></form></section></div><section id="tool-library" class="tool-library" aria-labelledby="tool-library-title">
@@ -1013,6 +1406,14 @@ const DEFAULTS=[
     "description": "Map an avatar's real radial menu after VRCFury and Modular Avatar build it: a Unity tool exports a disposable test build's menu, icons and synced parameters, and the page draws the menu to click through with a 256-bit parameter budget per add-on.",
     "source_path": "scripts/unity-editor/menu-map-20261019.cs",
     "command_template": "Copy scripts/unity-editor/menu-map-20261019.cs into Assets/UnityUnicorn/Editor/, select the avatar, then run Tools > Unity Unicorn > menu-map"
+  },
+  {
+    "id": "vine-spawn-with-trumpet-flowers",
+    "name": "vine-spawn-with-trumpet-flowers-20261019.json",
+    "kind": "Generator",
+    "description": "Grow vines with leaves, buds and five-lobed trumpet flowers over the objects you select in Unity, in up to 10 flower colours picked as squares from a palette. Unity Unicorn's page sends the colours to the chosen world's open editor through a job file in Downloads.",
+    "source_path": "scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs",
+    "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine panel)"
   },
   {
     "id": "unity-asset-creator",
