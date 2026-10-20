@@ -95,8 +95,9 @@ Where it's installed (2026-10-19, with Astra's OK in chat):
 
 ## After the first real use (2026-10-19)
 
-The first real use, in Astra's Infinite Pole (findastra/astras-infinite-pole PR #5), found three problems. All three are
-fixed in the same file:
+The first real use, in Astra's Infinite Pole (findastra/astras-infinite-pole PR #5), found three problems (see
+[In a real world](#in-a-real-world-astras-infinite-pole-2026-10-19) and [In Liminal Doors](#in-liminal-doors-doorspace-09-2026-10-19)
+below). All three are fixed in the same file:
 
 - **Leaves and stems read nearly black in the Pole**, whatever their colour. The Pole is lit mostly by its own glowing
   materials, and the shader lit leaves only with scene light. In Liminal Doors, under a sun, the same leaves read mid-green.
@@ -116,8 +117,8 @@ fixed in the same file:
   - A floor under a roof needs 10. An open kiosk's floor sees the world only through its doorway; a bench seat sees the sky.
   - A vine stops rather than turn a corner, or crawl across a floor, into a closed-in space.
   - If an object has no open spot left, a vine may still start inside, and the Grow's report says so.
-  - Where every spot is open, vines grow exactly as before. Liminal Doors' Doorspace 09 call (by reflection, with
-    `GetMethod("Grow")`) gives the same meshes and material names as the first version.
+  - Where every spot is open, vines grow exactly as before. A 6-line copy of Liminal Doors' Doorspace 09 call (by
+    reflection, with `GetMethod("Grow")`) gave the same meshes and material names as the first version.
 - **A world with the first version:** copy the new file over the old one. The next Grow replaces the shader.
   - Vines grown before then keep their look: their materials have no Leaf glow, and the shader's default is 0.
   - With no Leaf glow, a material keeps its first name (`Vine Bloom glow 0.4.mat`). With Leaf glow it is
