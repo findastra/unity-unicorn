@@ -133,3 +133,14 @@ Their catalog files, `tools/vcc-package-manager-20261011.json` and `tools/vrchat
 - The v0.3.0-20261011 release has them, and release tags never change.
 
 When a trick is written as `skills/<name>/SKILL.md`, move it to `L2.tricks` and decide then whether its catalog card stays. `test/levels-match-page-test-20261019.mjs` checks that `pet.json` and the page's L1 and L2 lists agree, and that no item is both a tool and a trick. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Asset creator, assets library and shaders shop (0.4.6-20261019)
+
+Three Unity Stable tools Astra asked for on 2026-10-18 ("lets make this booth together and then publish those tools"). They were built and first used in Liminal Doors, and moved here unchanged on 2026-10-19. Each folder is laid out like a world project, so installing one is a single copy into the project's folder.
+
+- **unity-asset-creator**: walks one world asset through a researched 12-step checklist (plan, provenance, scale and pivot, geometry, materials, textures, colliders, lighting, effects, prefab, review in the world, export). A failed check blocks its step, and steps 3, 7 and 11 need a person. It ends by exporting the version (package, previews, checksummed manifest) and opening a pull request to the library. Code: `scripts/unity-asset-creator/`. Guide: [docs/unity-asset-creator-20261019.md](docs/unity-asset-creator-20261019.md).
+- **unity-assets-library**: the public database of finished assets and their versions, [findastra/unity-assets-library](https://github.com/findastra/unity-assets-library), indexed in `library.json`. Astra merges every version. Guide: [docs/unity-assets-library-20261019.md](docs/unity-assets-library-20261019.md).
+- **shaders-shop**: installs shaders for worlds the way Creator Companion would, after showing the files, sources and licences, and records which shaders each world uses. It also stocks our own Unity Stable shaders. Code: `scripts/shaders-shop/`. Guide: [docs/shaders-shop-20261019.md](docs/shaders-shop-20261019.md).
+- **The unity-asset-creator trick** ([skills/unity-asset-creator/SKILL.md](skills/unity-asset-creator/SKILL.md), L2): how an agent walks the checklist through the world's agent queue and publishes, and what it asks Astra first. In `pet.json` and on the page it is `unity-asset-creator-trick`, the id the hub gives it, because no item may be both a tool and a trick.
+
+Limits: tested in one world (Liminal Doors) on two assets, the phone booth and stop 1's sky, both v1.0.0 in the library. The library has no licence yet. Liminal Doors keeps its incubating copy, so change the tools here first. Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

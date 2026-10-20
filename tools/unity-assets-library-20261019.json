@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "unity-assets-library",
+      "name": "unity-assets-library-20261019.json",
+      "kind": "Library",
+      "description": "The public library of finished world assets, findastra/unity-assets-library: one folder per asset and version with the .unitypackage, previews and a checksummed manifest, indexed in library.json. Versions arrive only from unity-asset-creator's step 12, as pull requests Astra merges.",
+      "source_path": "https://github.com/findastra/unity-assets-library",
+      "command_template": "gh repo clone findastra/unity-assets-library, then read library.json (schema unity-unicorn.library/v1). To add a version, publish it from the world project: python -I Tools/unity-asset-creator/publish-asset-20261018.py --library <that clone>",
+      "requirements": [
+        "Reading is public. Adding a version is a pull request opened by unity-asset-creator's publisher, and Astra merges it."
+      ],
+      "limitations": [
+        "No licence chosen yet: until Astra picks one, ask before using an asset outside her worlds.",
+        "Two versions so far, both from Liminal Doors stop 1: liminal-doors-phone-booth 1.0.0 and liminal-doors-stop-01-sky 1.0.0 (PR #1, merged 2026-10-19).",
+        "The publisher refuses a file over 95 MB (GitHub's limit is 100 MB a file), paid store assets and any file that names a machine path."
+      ],
+      "last_used": null
+    }
+  ]
+}

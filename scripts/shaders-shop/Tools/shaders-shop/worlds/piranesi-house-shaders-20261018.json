@@ -1,0 +1,406 @@
+{
+  "schema": "unity-unicorn.world-shaders/v1",
+  "world": "Piranesi House",
+  "scanned_at": "2026-10-18T11:37:59Z",
+  "unity": "2022.3.22f1",
+  "scanned_by": "shaders-shop scan-world-shaders-20261018.py (read-only, from files)",
+  "scenes": [
+    "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+  ],
+  "shaders": [
+    {
+      "shader": "Piranesi/Cascade",
+      "shader_path": "Assets/Piranesi/Shaders/Cascade.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Cascade.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Coral",
+      "shader_path": "Assets/Piranesi/Shaders/Coral.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Table_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Sponge_Grass_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Brain_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobo_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Brain_0_olive.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Lettuce_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Maze_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Table_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Honeycomb_0_lemon.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Fire_0_lemon.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Honeycomb_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lace_0_violet.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Cauliflower_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Montipora_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobe_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Maze_0_lemon.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Lobe_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Cactus_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Mushroom_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Maze_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Crab_Blue_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cauliflower_0_violet.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Fire_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobo_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lace_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cauliflower_0_coral.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Maze_0_olive.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cactus_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Staghorn_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_BrainGrooved_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_BrainGrooved_0_olive.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Table_0_amber.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_BrainGrooved_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lettuce_0_lemon.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Fire_0_amber.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Lobo_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Staghorn_0_amber.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Brain_0_lemon.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Sponge_Barrel_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Mushroom_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobo_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobe_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lace_0_coral.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Mushroom_0_amber.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Lace_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Mushroom_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cactus_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Staghorn_0_violet.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lettuce_0_rose.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Montipora_0_amber.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cactus_0_olive.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Honeycomb_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Staghorn_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Honeycomb_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Montipora_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Coral_Table_0.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Montipora_0_violet.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_BrainGrooved_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lobe_0_olive.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Brain_0_ochre.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Lettuce_0_teal.mat",
+        "Assets/Piranesi/Generated/Materials/PMV_Coral_Cauliflower_0_rose.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Flame",
+      "shader_path": "Assets/Piranesi/Shaders/Flame.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Flame.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Foliage",
+      "shader_path": "Assets/Piranesi/Shaders/Foliage.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Pink_HibPetalPink.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Red_HibPetalRed.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ivy_Aqueduct_Leaf.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Pachira_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Pachira_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Orange_HibLeaf.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Periwinkle_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Palm_0_PalmLeaf.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Nest_grass.mat",
+        "Assets/Piranesi/Generated/Materials/PM_BeachGrass_BeachGrass.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Palm_0_PalmLeafDead.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Orange_HibPetalOrange.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Calathea_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Anthurium_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ivy_HangLine_L_Leaf.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plant_Fern_0.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Glass",
+      "shader_path": "Assets/Piranesi/Shaders/Glass.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Glass.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Glow",
+      "shader_path": "Assets/Piranesi/Shaders/Glow.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Glow.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/LightShaft",
+      "shader_path": "Assets/Piranesi/Shaders/LightShaft.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_ShaftWindow.mat",
+        "Assets/Piranesi/Generated/Materials/M_ShaftDim.mat",
+        "Assets/Piranesi/Generated/Materials/M_ShaftPalm.mat",
+        "Assets/Piranesi/Generated/Materials/M_ShaftOculus.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Ocean",
+      "shader_path": "Assets/Piranesi/Shaders/Ocean.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Ocean.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Particle",
+      "shader_path": "Assets/Piranesi/Shaders/Particle.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_P_Sparkle.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Petal.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Snow.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Leaf.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Mote.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Mist.mat",
+        "Assets/Piranesi/Generated/Materials/M_P_Drop.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Prop",
+      "shader_path": "Assets/Piranesi/Shaders/Prop.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/PM_Horse_Statue_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Pears_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Dolphin_Dolphin.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Gondola_Gold.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Barrels_2.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Palm_0_PalmBark.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Lion_Head_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Shell_ConeGlory_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Bowl_Wood_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Goblets_Brass_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Shell_ConeTextile_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Goblets_Brass_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Horse_Statue_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Boulder_01_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Treasure_Chest_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Basket_Wicker_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Lantern_Wood_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Marble_Bust_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Chess_Set_2.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Vase_Antique_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Gondola_Lacquer.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hammock_LinenCream.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ship_Dutch_2.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Candleholders_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Kiwi_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Albatross_white.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Chess_Set_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Goblets_Brass_2.mat",
+        "Assets/Piranesi/Generated/Materials/PM_SeaStar_Crown_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Pomegranate_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Shell_Lambis_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Lemon_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Lychee_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Candleholders_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Lantern_Wood_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Slide_Flume.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Lime_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ship_Dutch_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Clam_Giant_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Barrels_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Apple_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Palm_0_Coconut.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Chess_Set_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Orange_HibStem.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ivy_Aqueduct_Stem.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Elephant_Carved_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_SeaStar_Blue_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_SeaStar_Cushion_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hibiscus_Orange_HibStamen.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Ship_Dutch_1.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Jug_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Hammock_Rope.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Gondola_LinenRed.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Bucket_Wood_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Fruit_Bananas_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Nest_mud.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Plate_Carved_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Rock_SandSmall_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Dock_Planks.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Whale_Bronze_0.mat",
+        "Assets/Piranesi/Generated/Materials/PM_Barrels_0.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Sky",
+      "shader_path": "Assets/Piranesi/Shaders/Sky.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Sky.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/SkyWindow",
+      "shader_path": "Assets/Piranesi/Shaders/SkyWindow.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_SkyWindow.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/Stone",
+      "shader_path": "Assets/Piranesi/Shaders/Stone.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/M_Marble.mat",
+        "Assets/Piranesi/Generated/Materials/M_Wall.mat",
+        "Assets/Piranesi/Generated/Materials/M_Floor.mat",
+        "Assets/Piranesi/Generated/Materials/M_Stone.mat",
+        "Assets/Piranesi/Generated/Materials/M_Verde.mat",
+        "Assets/Piranesi/Generated/Materials/M_Sand.mat",
+        "Assets/Piranesi/Generated/Materials/M_Statue.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Piranesi/WaterFlow",
+      "shader_path": "Assets/Piranesi/Shaders/WaterFlow.shader",
+      "catalog_id": "in-assets",
+      "catalog_name": "inside the world's Assets folder (own or bundled; check)",
+      "license": "check",
+      "source": "Assets/Piranesi/Shaders",
+      "version": "",
+      "materials": [
+        "Assets/Piranesi/Generated/Materials/PM_AqueductWater_Flow.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "Standard",
+      "shader_path": "Resources/unity_builtin_extra",
+      "catalog_id": "unity-builtin",
+      "catalog_name": "Unity built-in",
+      "license": "unity-builtin",
+      "source": "Unity built-in",
+      "version": "",
+      "materials": [
+        "Packages/com.vrchat.worlds/Samples/UdonExampleScene/SampleAssetsSet/Materials/SampleAssets_matte.mat",
+        "Assets/Piranesi/Generated/Materials/M_Iron.mat",
+        "Packages/com.vrchat.worlds/Samples/UdonExampleScene/SampleAssetsSet/Materials/GridFloor_udon.mat",
+        "Assets/Piranesi/Generated/Materials/M_Gold.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    },
+    {
+      "shader": "FX/MirrorReflection",
+      "shader_path": "Packages/com.vrchat.base/Runtime/VRCSDK/Sample Assets/Shaders/Mirror.shader",
+      "catalog_id": "vrchat-sdk",
+      "catalog_name": "VRChat SDK shaders",
+      "license": "vrchat-sdk",
+      "source": "com.vrchat.base",
+      "version": "",
+      "materials": [
+        "Packages/com.vrchat.base/Runtime/VRCSDK/Sample Assets/Materials/MirrorReflection.mat"
+      ],
+      "scenes": [
+        "Assets/Piranesi/Scenes/PiranesiHouse.unity"
+      ]
+    }
+  ]
+}
