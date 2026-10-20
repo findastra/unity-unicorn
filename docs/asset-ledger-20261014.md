@@ -54,6 +54,10 @@ them `placeholder` and `public_ok: no`, exactly as the world's own STATUE_REGIST
 replaced with a no-copyright museum scan or Astra's own sculpt. The world is inspired by *Piranesi* (Susanna Clarke):
 declared as inspiration, with no text or characters reproduced.
 
+## Assets we created (2026-10-19)
+
+Assets Astra and her assistants made are listed in [assets-we-created-20261019.json](assets-we-created-20261019.json) with the public fields of a ledger row (creator, licence, attribution, where used), and shown on the page's assets-we-created panel. Finished ones are exported to findastra/unity-assets-library.
+
 ## Credits page (generated per world)
 
 ```markdown

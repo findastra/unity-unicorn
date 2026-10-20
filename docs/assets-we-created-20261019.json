@@ -1,0 +1,62 @@
+{
+  "schema": "unity-unicorn.assets-we-created/v1",
+  "about": "Every asset Astra and her assistants made for her avatars and worlds, grouped by what it is for and its type. One copy of a finished asset lives in findastra/unity-assets-library; this list says where each one is used. Rows follow docs/asset-ledger-20261014.md (public fields only). The page's assets-we-created panel shows the same rows (test/assets-panel-test-20261019.mjs).",
+  "updated": "2026-10-19",
+  "types": {
+    "avatar": ["effects", "outfits and accessories", "props", "shaders and looks", "rigs and face"],
+    "world": ["buildings and props", "skies", "ground and plants", "materials and shaders", "effects"]
+  },
+  "assets": [
+    {
+      "id": "liminal-doors-phone-booth",
+      "name": "Phone booth (K6)",
+      "for": "world",
+      "type": "buildings and props",
+      "version": "1.0.0",
+      "what": "A handmade pink K6 kiosk with chipped enamel, lit TELEPHONE signs, gilded crowns, pink glass with fingerprints and its own payphone, with gold and pink sparkles swirling up.",
+      "creator": "Astra (built with Claude)",
+      "license": "own-work",
+      "attribution": "Surface scans: ambientCG PaintedMetal002, Metal009, Smear002, Scratches001 (CC0)",
+      "made_in": "Liminal Doors",
+      "where_used": [
+        "Liminal Doors: stop 01, the start",
+        "Astra's Infinite Pole: all three phone booths (round 40, branch claude/k6-booths-20261019, not merged)"
+      ],
+      "library": "https://github.com/findastra/unity-assets-library/tree/main/assets/liminal-doors-phone-booth/1.0.0",
+      "library_status": "in the export pull request findastra/unity-assets-library#1, not merged",
+      "preview": "https://raw.githubusercontent.com/findastra/unity-assets-library/main/assets/liminal-doors-phone-booth/1.0.0/previews/liminal-doors-phone-booth-v1.0.0-three-quarter.png"
+    },
+    {
+      "id": "liminal-doors-stop-01-sky",
+      "name": "Stop 01 sunset sky",
+      "for": "world",
+      "type": "skies",
+      "version": "1.0.0",
+      "what": "A sunset sky dome over a 2.4 km cloud sea, with cumulus, puffs around the booth's base and a sunset reflection probe.",
+      "creator": "Astra (built with Claude)",
+      "license": "own-work",
+      "attribution": "",
+      "made_in": "Liminal Doors",
+      "where_used": ["Liminal Doors: stop 01"],
+      "library": "https://github.com/findastra/unity-assets-library/tree/main/assets/liminal-doors-stop-01-sky/1.0.0",
+      "library_status": "in the export pull request findastra/unity-assets-library#1, not merged",
+      "preview": "https://raw.githubusercontent.com/findastra/unity-assets-library/main/assets/liminal-doors-stop-01-sky/1.0.0/previews/liminal-doors-stop-01-sky-v1.0.0-three-quarter.png"
+    },
+    {
+      "id": "astras-infinite-pole-payphone-pink",
+      "name": "Pink payphone (CC0 restyle)",
+      "for": "world",
+      "type": "buildings and props",
+      "version": "",
+      "what": "Poly Haven's Korean Public Payphone 01 restyled rose pink by mask, brand marks painted out of every map, at true size (round 39).",
+      "creator": "UM JOORIN (Poly Haven); restyled by Claude for Astra",
+      "license": "CC0-1.0",
+      "attribution": "Korean Public Payphone 01 by UM JOORIN, Poly Haven (CC0)",
+      "made_in": "Astra's Infinite Pole",
+      "where_used": ["Astra's Infinite Pole: in the project, switched off since round 40 (the K6 booth has its own payphone)"],
+      "library": "",
+      "library_status": "not exported to the library",
+      "preview": ""
+    }
+  ]
+}

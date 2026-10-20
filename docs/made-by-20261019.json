@@ -1,0 +1,864 @@
+{
+  "schema": "unity-unicorn.made-by/v1",
+  "updated": "2026-10-19",
+  "about": "Who made each tool Unity Unicorn lists: made by us (Astra with an AI assistant, which one and when, from the commit that added it or a repo credit line) or made by others (programs and packages Unity Unicorn uses). 'not recorded' means no commit or credit line names the assistant. The page's made-by panel shows these rows (test/made-by-test-20261019.mjs).",
+  "ours": [
+    {
+      "id": "asset-contact-sheet",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "button-check",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-09-26",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/ClaudeButtonCheck.cs",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-collider-audit",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-06",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/ClaudeCloudRedo.cs",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-collider-validation",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-06",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/ClaudeCloudRedo.cs",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-lounge-smoothing",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-10",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "round 37, Assets/Astra/Editor/ClaudeRound37.cs",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-mesh-generator",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-06",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Tools/Blender/make_cloud_redo.py",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-physics-check",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-06",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/ClaudeCloudRedo.cs",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-sea-fusion",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-10",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Tools/Blender/fuse_sea.py",
+      "state": "on main"
+    },
+    {
+      "id": "cloud-survey",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-06",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/ClaudeCloudInspect.cs",
+      "state": "on main"
+    },
+    {
+      "id": "desktop-world-test",
+      "side": "world",
+      "made_with": "not recorded",
+      "date": "2026-09-12",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/AstraDesktopTest.cs",
+      "state": "on main"
+    },
+    {
+      "id": "face-transfer",
+      "side": "avatar",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-11",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn commit 7177509",
+      "state": "on main"
+    },
+    {
+      "id": "foreground-tool-recorder",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "house-scene-builder",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "marble-carver",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "unity-unicorn commit 1d66aef",
+      "state": "on main"
+    },
+    {
+      "id": "masonry-regeneration",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "masonry-structural-audit",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "masonry-unity-refresh",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "neck-blender",
+      "side": "avatar",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-11",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn commit 2c20a18",
+      "state": "on main"
+    },
+    {
+      "id": "no-windows-audit-tool",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "no-windows-scene-refresh",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "occlusion-bake",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "prop-decomposer",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "unity-unicorn commit 851371d",
+      "state": "on main"
+    },
+    {
+      "id": "realistic-prop-restyle",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "unity-unicorn commit 851371d",
+      "state": "on main"
+    },
+    {
+      "id": "reflection-probe-bake",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "run-unity-tool",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "scene-preview-render",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "scene-yaml-inspection",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "time-season-tide-preview",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "vine-bloomer",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "unity-unicorn commit 1d66aef",
+      "state": "on main"
+    },
+    {
+      "id": "wall-texture-rebuild",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-11",
+      "first_in": "Piranesi House",
+      "evidence": "Unity Unicorn's 2026-10-11 tool library (AGENTS.md: prepared with Codex)",
+      "state": "on main"
+    },
+    {
+      "id": "world-spawn-tool",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn commit 2ad5da5",
+      "state": "on main"
+    },
+    {
+      "id": "world-validator",
+      "side": "world",
+      "made_with": "not recorded",
+      "date": "2026-09-12",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "Assets/Astra/Editor/AstraWorldBuilder.cs (Validate World)",
+      "state": "on main"
+    },
+    {
+      "id": "matcap-palette",
+      "side": "avatar",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-19",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn commit 7d0be8b",
+      "state": "on main"
+    },
+    {
+      "id": "menu-map",
+      "side": "avatar",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-19",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn commit 1a17f86",
+      "state": "on main"
+    },
+    {
+      "id": "vine-spawn-with-trumpet-flowers",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-19",
+      "first_in": "Unity Unicorn",
+      "evidence": "unity-unicorn commit 5e81125",
+      "state": "on main"
+    },
+    {
+      "id": "unity-asset-creator",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn commit 23a62bf",
+      "state": "on main"
+    },
+    {
+      "id": "unity-assets-library",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-19",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn commit 23a62bf",
+      "state": "on main"
+    },
+    {
+      "id": "shaders-shop",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn commit 23a62bf",
+      "state": "on main"
+    },
+    {
+      "id": "sparkle-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "fan-fitter",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "learn-add-ons",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "bending-adder",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "blood-bender-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "water-bender-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "sparkle-bender-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "wing-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "neck-bow-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "star-effects-diagnostic",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "golden-painter",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "chain-dangle-weights",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "rgb-painter",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "gunsmith-loadout",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1"
+    },
+    {
+      "id": "hair-weighter",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "spring-joint-strapper",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "copyright-logger",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "copyright-catcher",
+      "side": "avatar",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-12",
+      "first_in": "Poppy",
+      "evidence": "unity-unicorn PR #1, branch codex/avatar-effects-20261012",
+      "state": "not merged · PR #1 · menu only"
+    },
+    {
+      "id": "glass-animal-tool",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-15",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn PR #3, branch codex/liminal-glass-tools-20261015",
+      "state": "not merged · PR #3"
+    },
+    {
+      "id": "bubble-chair-blower",
+      "side": "world",
+      "made_with": "OpenAI Codex (GPT-6)",
+      "date": "2026-10-15",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn PR #3, branch codex/liminal-glass-tools-20261015",
+      "state": "not merged · PR #3"
+    },
+    {
+      "id": "asset-ledger",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-14",
+      "first_in": "Unity Unicorn (design only)",
+      "evidence": "unity-unicorn commit 07da2d7",
+      "state": "not merged · design only"
+    },
+    {
+      "id": "floor-cutter",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/cut-floors.ps1",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "redline-sheet",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/redline-sheet.ps1",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "contact-sheet",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/contact-sheet.ps1",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "web-pictures",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/concept-art/tools/floors-to-jpg.ps1",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "stop-01-builder",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop01.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "stop-01-sky",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop01Sky.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "booth-builder",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalBooth.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "blender-booth",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Tools/Blender/make_phone_booth.py",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "stop-02-builder",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop02.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "field-shaders",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/tree/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "frond-grass",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/FrondGrass.shader",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "grass-push",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Scripts/LiminalGrassPush.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "door-kit",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalDoorKit.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "stop-03-builder",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalStop03.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "pool-tile",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolTile.shader",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "pool-water",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolWater.shader",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "pool-window",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Shaders/PoolWindow.shader",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "door-system",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Scripts/LiminalTraveler.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "door-wiring",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/EditorUdon/Editor/LiminalDoorsTravel.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "world-glow",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalWorldGlow.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "desktop-test",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/EditorUdon/Editor/LiminalDesktopTest.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "agent-queue",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Liminal Doors",
+      "evidence": "https://github.com/findastra/liminal-doors/blob/claude/fresh-start-20261018/Assets/LiminalDoors/Editor/LiminalAgentQueue.cs",
+      "state": "in Liminal Doors's repo"
+    },
+    {
+      "id": "world-photos",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudePhotos.cs",
+      "state": "in Astra's Infinite Pole's repo"
+    },
+    {
+      "id": "pickup-audit",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs",
+      "state": "in Astra's Infinite Pole's repo"
+    },
+    {
+      "id": "pickup-lift-out",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-18",
+      "first_in": "Astra's Infinite Pole",
+      "evidence": "https://github.com/findastra/astras-infinite-pole/blob/main/Assets/Astra/Editor/ClaudeRound38.cs",
+      "state": "in Astra's Infinite Pole's repo"
+    },
+    {
+      "id": "review-shots",
+      "side": "world",
+      "made_with": "not recorded",
+      "date": "",
+      "first_in": "Piranesi House",
+      "evidence": "https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Editor/HouseReview.cs",
+      "state": "in Piranesi House's repo"
+    }
+  ],
+  "others": [
+    {
+      "name": "Unity 2022.3.22f1",
+      "side": "both",
+      "what": "the editor every avatar and world is built in"
+    },
+    {
+      "name": "VRChat Creator Companion",
+      "side": "both",
+      "what": "creates projects and installs packages"
+    },
+    {
+      "name": "VRChat SDK",
+      "side": "both",
+      "what": "the avatar SDK in avatar projects, the worlds SDK in worlds"
+    },
+    {
+      "name": "Blender",
+      "side": "both",
+      "what": "runs marble-carver, vine-bloomer, neck-blender and the prop tools"
+    },
+    {
+      "name": "VRCFT (VRCFaceTracking)",
+      "side": "avatar",
+      "what": "face tracking; face-transfer records its builds"
+    },
+    {
+      "name": "Poiyomi",
+      "side": "avatar",
+      "what": "avatar shader; the matcap palette fills its matcap slots (also installed in Liminal Doors by shaders-shop)"
+    },
+    {
+      "name": "lilToon",
+      "side": "avatar",
+      "what": "avatar shader; also installed in Liminal Doors by shaders-shop"
+    },
+    {
+      "name": "VRCFury",
+      "side": "avatar",
+      "what": "avatar add-on builder; menu-map reads what it builds"
+    },
+    {
+      "name": "Modular Avatar (NDMF)",
+      "side": "avatar",
+      "what": "avatar add-on builder; menu-map reads what it builds"
+    },
+    {
+      "name": "d4rkAvatarOptimizer",
+      "side": "avatar",
+      "what": "shrinks an avatar's parameters and meshes at upload"
+    },
+    {
+      "name": "Gesture Manager",
+      "side": "avatar",
+      "what": "tests an avatar's menus and gestures in the editor"
+    },
+    {
+      "name": "Av3Emulator",
+      "side": "avatar",
+      "what": "tests an avatar's animator in the editor"
+    },
+    {
+      "name": "SPS Configurator",
+      "side": "avatar",
+      "what": "avatar contact setup"
+    },
+    {
+      "name": "AudioLink",
+      "side": "both",
+      "what": "music-reactive effects, on avatars and in worlds"
+    },
+    {
+      "name": "UdonSharp",
+      "side": "world",
+      "what": "world scripting; every world's Udon code is written in it"
+    },
+    {
+      "name": "USharpVideo",
+      "side": "world",
+      "what": "the video player in Astra's Infinite Pole"
+    },
+    {
+      "name": "ORL shaders",
+      "side": "world",
+      "what": "installed in Liminal Doors by shaders-shop"
+    },
+    {
+      "name": "Mochie shaders",
+      "side": "world",
+      "what": "installed in Liminal Doors by shaders-shop"
+    }
+  ]
+}
