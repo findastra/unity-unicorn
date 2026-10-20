@@ -182,11 +182,31 @@ Limits:
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
 
+## Assets we created (2026-10-19)
+
+Two panels list every asset we made, never mixed (Astra, 2026-10-19): **unity-unicorn-avatar-assets-panel** at the end of the
+Avatar tools tab and **unity-unicorn-world-assets-panel** at the end of the World tools tab, each by type: effects, outfits and accessories, props, shaders and
+looks, rigs and face; buildings and props, skies, ground and plants, materials and shaders, effects. Each card shows a
+preview, its version, its licence, where it was made and every world or avatar it is used in. The rows are
+[docs/assets-we-created-20261019.json](docs/assets-we-created-20261019.json); one copy of each finished asset lives in
+[findastra/unity-assets-library](https://github.com/findastra/unity-assets-library). First rows: the K6 phone booth
+(Liminal Doors and Astra's Infinite Pole), stop 01's sunset sky and the CC0 pink payphone. No avatar assets are listed yet.
+
+## Who made each tool (2026-10-19)
+
+Astra: "we need to distinguish whether we made the tools or somebody else made the tools." The
+**unity-unicorn-made-by-panel**, right after the L1 panel, lists every tool on the page under who made it: made by us
+(Astra with Claude Opus 5.5 or OpenAI Codex (GPT-6), with the date and the project it was first made in) or made by others
+(the programs and packages Unity Unicorn uses, each marked for avatars, worlds or both). "Made with" comes from the commit
+that added the tool or a repo's credit line; "not recorded" means none names the assistant (Astra's Infinite Pole's first
+builder scripts, 2026-09-12). The rows are [docs/made-by-20261019.json](docs/made-by-20261019.json), checked by
+`test/made-by-test-20261019.mjs`. Every tool on the page is ours; nothing made by others is listed as a tool.
+
 ## Tool panels (0.5.1-20261019)
 
 Astra, 2026-10-19: "I do want all of it to say tool panel instead of just panel". Every box on the page whose label ended in `-panel` now ends in `-tool-panel`: the four
-level panels (`unity-unicorn-L1-tool-panel` to `unity-unicorn-L4-tool-panel`) and the 12 tool panels on the Avatar tools and
-World tools sides (for example `unity-unicorn-matcap-tool-panel` and `unity-unicorn-vine-spawn-tool-panel`). The page's own
+level panels (`unity-unicorn-L1-tool-panel` to `unity-unicorn-L4-tool-panel`) and the 15 other tool panels: made-by, and
+the Avatar tools and World tools sides (for example `unity-unicorn-matcap-tool-panel` and `unity-unicorn-avatar-assets-tool-panel`). The page's own
 words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
 
 - Lights you saved on the old `-panel` labels, or the older `-module` ones, carry over to the new labels, under the same
