@@ -181,3 +181,17 @@ Limits:
 - The Liminal Doors tools and sparkles link to branch `claude/fresh-start-20261018` until liminal-doors PR #2 is merged.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Tool panels (0.5.1-20261019)
+
+Astra, 2026-10-19: "I do want all of it to say tool panel instead of just panel". Every box on the page whose label ended in `-panel` now ends in `-tool-panel`: the four
+level panels (`unity-unicorn-L1-tool-panel` to `unity-unicorn-L4-tool-panel`) and the 12 tool panels on the Avatar tools and
+World tools sides (for example `unity-unicorn-matcap-tool-panel` and `unity-unicorn-vine-spawn-tool-panel`). The page's own
+words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
+
+- Lights you saved on the old `-panel` labels, or the older `-module` ones, carry over to the new labels, under the same
+  browser storage key. The tabs and tool panels you had open stay open (they are saved by the box's id, which did not change).
+- Code names stay: the `uu-panels` section, the `uu-panel` class and the chat panel. The Unity scripts keep their own words.
+- `test/panels-test-20261019.mjs` fails if a page box label ends in `-panel` without `tool`, or a level box is called a module.
+
+Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

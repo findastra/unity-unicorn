@@ -7,7 +7,7 @@
       "kind": "Generator",
       "description": "Grow vines with leaves, buds and five-lobed trumpet flowers over the objects you select in Unity, in up to 10 flower colours picked as squares from a palette. Unity Unicorn's page sends the colours to the chosen world's open editor through a job file in Downloads.",
       "source_path": "scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs",
-      "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine panel)",
+      "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine tool panel)",
       "requirements": [
         "Unity 2022.3 (the world's project). The tool writes its own Unity Stable/Vine Bloom shader the first time.",
         "The world open in Unity with this file installed, for jobs from the page; the job file is saved to Downloads."

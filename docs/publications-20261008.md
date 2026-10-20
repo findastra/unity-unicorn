@@ -49,3 +49,10 @@ Version `0.5.0-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):
 Node tests: 53, of which 52 pass and 1 is skipped (the local seed). Python tests: 41 OK. The Unity tool's smoke test (35
 checks) and the page-job hand-off (6 checks) passed in a throwaway Unity 2022.3.22f1 project in batch mode, not in a world.
 Nothing is tagged or released.
+
+## Tool panels · 2026-10-19
+
+Version `0.5.1-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):
+
+- Every page box label that ended in `-panel` ends in `-tool-panel` (Astra, 2026-10-19; astras-pet-os#129). Saved lights
+  carry over. Nothing is tagged or released.
