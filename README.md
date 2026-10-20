@@ -106,6 +106,82 @@ Every panel's label now sits on its top border, the way Astra drew it: the cyber
 
 The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): to a developer a module is a file of code, and a box on a dashboard page is a panel ([PET-PROGRAM-FRAMEWORK.md](https://github.com/findastra/astras-pet-os/blob/main/PET-PROGRAM-FRAMEWORK.md), section 1). The four level panels are now labelled `unity-unicorn-L1-panel` to `unity-unicorn-L4-panel`, and the page's own names follow (`uu-panels`, `uu-panel`). Lights you saved on the old `-module` labels carry over to the new ones; the browser storage key keeps its name so nothing saved is lost. The face tracking modules, masonry mesh modules and Python modules elsewhere in this repo are real modules and keep the word. `test/panels-test-20261019.mjs` fails if a page box is called a module again. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
 
+## Matcap palette (0.4.3-20261019)
+
+A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 48 matcaps (Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
+
+- **matcap-palette** (Unity): Tools › Unity Unicorn › matcap-palette shows every matcap in a project the same way and puts the one you pick on a Poiyomi or lilToon material's matcap slot, with Undo and a usage receipt. Code: `scripts/unity-editor/matcap-palette-20261019.cs`.
+- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 48 from the page's own recipes.
+- Guide: [docs/matcap-palette-20261019.md](docs/matcap-palette-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Menu map (0.4.4-20261019)
+
+A new panel, **unity-unicorn-menu-map-panel**: an avatar's real radial menu, the way VRChat shows it, after VRCFury and Modular Avatar have built it. Click a wedge to open a submenu or switch a toggle; the middle is Back. Beside it, the **parameter budget**: synced bits used out of 256, the total before VRCFury's compressor, and what each add-on costs (each top menu, the compressor's own slots, and parameters the menu does not show). **Load a menu map** keeps your file in that tab only; **Try the sample** shows a made-up avatar.
+
+- **menu-map** (Unity): select the avatar and run Tools › Unity Unicorn › menu-map. It builds a disposable test copy (the SDK build step an upload runs), writes `UnityUnicornReports/menu-map-<avatar>-<time>.json` with every menu page, control, parameter and icon (PNG), deletes the copy and leaves a usage receipt. The scene is never saved. Code: `scripts/unity-editor/menu-map-20261019.cs`.
+- Sample: [docs/menu-map-sample-20261019.json](docs/menu-map-sample-20261019.json). Guide: [docs/menu-map-20261019.md](docs/menu-map-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## vcc-package-manager and vrchat-avatar-upload are tricks to write (0.4.5-20261019)
+
+Astra decided on 2026-10-19 that everything a pet program owns is a native program, a native tool (code that runs with no AI) or a native trick (a SKILL.md its AI follows) ([astras-pet-os PR #114](https://github.com/findastra/astras-pet-os/pull/114)). **vcc-package-manager** and **vrchat-avatar-upload** have no code, only written steps, so they are now tricks to write: `pet.json` moves them from `intelligence_levels.L1.tools` to `L2.tricks_to_write` with a note, and the page lists them in the L2 panel, not the L1 panel. The L1 panel now lists 34 tools on `main`, with matcap-palette and menu-map (0.4.3, 0.4.4).
+
+Their catalog files, `tools/vcc-package-manager-20261011.json` and `tools/vrchat-avatar-upload-20261011.json`, stay, with `kind` set to `Trick to write`:
+
+- The hub's System Map and its registry table (TOOLS-AND-TRICKS.md) cite them as the source of each trick.
+- With the skill book (sections 2 and 4 of [docs/skills-20261009.md](docs/skills-20261009.md)), they are the written steps each SKILL.md will be written from.
+- The tool library keeps their cards, so a real upload or package change can still be recorded with its evidence.
+- The v0.3.0-20261011 release has them, and release tags never change.
+
+When a trick is written as `skills/<name>/SKILL.md`, move it to `L2.tricks` and decide then whether its catalog card stays. `test/levels-match-page-test-20261019.mjs` checks that `pet.json` and the page's L1 and L2 lists agree, and that no item is both a tool and a trick. Changed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Asset creator, assets library and shaders shop (0.4.6-20261019)
+
+Three Unity Stable tools Astra asked for on 2026-10-18 ("lets make this booth together and then publish those tools"). They were built and first used in Liminal Doors, and moved here unchanged on 2026-10-19. Each folder is laid out like a world project, so installing one is a single copy into the project's folder.
+
+- **unity-asset-creator**: walks one world asset through a researched 12-step checklist (plan, provenance, scale and pivot, geometry, materials, textures, colliders, lighting, effects, prefab, review in the world, export). A failed check blocks its step, and steps 3, 7 and 11 need a person. It ends by exporting the version (package, previews, checksummed manifest) and opening a pull request to the library. Code: `scripts/unity-asset-creator/`. Guide: [docs/unity-asset-creator-20261019.md](docs/unity-asset-creator-20261019.md).
+- **unity-assets-library**: the public database of finished assets and their versions, [findastra/unity-assets-library](https://github.com/findastra/unity-assets-library), indexed in `library.json`. Astra merges every version. Guide: [docs/unity-assets-library-20261019.md](docs/unity-assets-library-20261019.md).
+- **shaders-shop**: installs shaders for worlds the way Creator Companion would, after showing the files, sources and licences, and records which shaders each world uses. It also stocks our own Unity Stable shaders. Code: `scripts/shaders-shop/`. Guide: [docs/shaders-shop-20261019.md](docs/shaders-shop-20261019.md).
+- **The unity-asset-creator trick** ([skills/unity-asset-creator/SKILL.md](skills/unity-asset-creator/SKILL.md), L2): how an agent walks the checklist through the world's agent queue and publishes, and what it asks Astra first. In `pet.json` and on the page it is `unity-asset-creator-trick`, the id the hub gives it, because no item may be both a tool and a trick.
+
+Limits: tested in one world (Liminal Doors) on two assets, the phone booth and stop 1's sky, both v1.0.0 in the library. The library has no licence yet. Liminal Doors keeps its incubating copy, so change the tools here first. Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Avatar tools, world tools and vines with trumpet flowers (0.5.0-20261019)
+
+Astra asked on 2026-10-19 for every tool we have built to be in a panel, for the page to be split into avatar tools and
+world tools, for a panel of the sparkles used in the worlds, and for a new vine tool with trumpet flowers in colours she picks.
+
+- **Two tabs below the L1 to L4 panels: Avatar tools and World tools.** Every tool is in exactly one panel:
+  - 22 avatar tools: building and fitting, the matcap palette, the menu map, sparkles, effects and records;
+  - 63 world tools: for every world, then made for Piranesi House, Astra's Infinite Pole and Liminal Doors, including the
+    26 still in the worlds' own repos.
+
+  Panels stay closed until you click them, and the page remembers what you opened. Guide:
+  [docs/avatar-and-world-tools-20261019.md](docs/avatar-and-world-tools-20261019.md).
+- **World sparkle tools** (`unity-unicorn-world-sparkles-panel`): 27 sparkles from the three worlds, each with its source.
+  - Liminal Doors: the sparkle sky, sparkles over the field, door motes and glitter halos, Glitter Paint, portal glitter,
+    bubbles, motes and the booth swirl.
+  - Astra's Infinite Pole: the glitter collection and controls, star dust, sparkle rain and the sparkle slurry.
+  - Piranesi House: mica, motes and the Colossus's hand.
+
+  The list is in [docs/world-sparkle-tools-20261019.json](docs/world-sparkle-tools-20261019.json).
+- **vine-spawn-with-trumpet-flowers** (`unity-unicorn-vine-spawn-panel` and a Unity window), built on vine-bloomer.
+  - Pick up to 10 flower colours as squares from a 30-colour palette, and pick the world: Piranesi House, Astra's Infinite
+    Pole or Liminal Doors.
+  - **Open in Unity** saves a job file to Downloads. The world's open Unity editor, with the tool installed, picks it up within
+    2 seconds and opens the vine window with those colours. A web page can't start Unity itself.
+  - In Unity, select walls, arches or railings and press Grow vines. Vines climb or hang, wrap round edges, and carry leaves,
+    buds and five-lobed trumpets, with their own Unity Stable/Vine Bloom shader. One Undo takes them away.
+  - Code: `scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs` (install: copy it into the world's
+    `Assets/UnityUnicorn/Editor/`). Guide: [docs/vine-spawn-with-trumpet-flowers-20261019.md](docs/vine-spawn-with-trumpet-flowers-20261019.md).
+
+Limits:
+
+- The vine tool was tested in a throwaway Unity 2022.3 project in batch mode, including a job file the page made. It is not
+  installed in any of the three worlds yet.
+- The Liminal Doors tools and sparkles link to branch `claude/fresh-start-20261018` until liminal-doors PR #2 is merged.
+
+Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
 ## Assets we created (2026-10-19)
 
 The **unity-unicorn-assets-we-created** panel on the Unity Stable page lists every asset we made for Astra's avatars and

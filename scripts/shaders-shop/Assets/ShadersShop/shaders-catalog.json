@@ -1,0 +1,523 @@
+{
+  "schema": "unity-unicorn.shaders-catalog/v1",
+  "tool": "shaders-shop",
+  "tool_version": "1.0.0",
+  "updated": "2026-10-18T11:32:44Z",
+  "shaders": [
+    {
+      "id": "poiyomi-toon",
+      "name": "Poiyomi Toon",
+      "author": "Poiyomi",
+      "license": "MIT",
+      "homepage": "https://github.com/poiyomi/PoiyomiToonShader",
+      "kind": "toon / effects",
+      "why": "The most-used VRChat toon shader: glitter, sparkle, iridescence, rim light and matcap in one material. Lock materials before upload. Heavy for Android.",
+      "install": "vpm",
+      "vpm_repo": "https://poiyomi.github.io/vpm/index.json",
+      "good_for": [
+        "avatars",
+        "props"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "toon",
+        "glitter",
+        "sparkle",
+        "iridescence",
+        "rim light",
+        "matcap",
+        "emission",
+        "dissolve"
+      ],
+      "detect_paths": [
+        "Packages/com.poiyomi.toon",
+        "Assets/_PoiyomiShaders"
+      ],
+      "shader_prefixes": [
+        ".poiyomi/",
+        "Poiyomi"
+      ],
+      "version": "10.0.25",
+      "packages": [
+        {
+          "name": "com.poiyomi.toon",
+          "version": "10.0.25",
+          "url": "https://github.com/poiyomi/PoiyomiToonShader/releases/download/v10.0.25/com.poiyomi.toon-10.0.25.zip",
+          "bytes": 72109422
+        },
+        {
+          "name": "com.poiyomi.thryeditor",
+          "version": "2.74.3",
+          "url": "https://github.com/poiyomi/ThryEditor/releases/download/2.74.3/com.poiyomi.thryeditor-2.74.3.zip",
+          "bytes": 714941
+        }
+      ],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "liltoon",
+      "name": "lilToon",
+      "author": "lilxyzw",
+      "license": "MIT",
+      "homepage": "https://github.com/lilxyzw/lilToon",
+      "kind": "toon",
+      "why": "Light, polished toon shader with rim light, two matcaps, glitter and emission; has lite variants for Android.",
+      "install": "zip",
+      "vpm_repo": "",
+      "good_for": [
+        "avatars",
+        "props"
+      ],
+      "platforms": [
+        "pc",
+        "android"
+      ],
+      "features": [
+        "toon",
+        "rim light",
+        "matcap x2",
+        "glitter",
+        "emission",
+        "outline",
+        "fur"
+      ],
+      "detect_paths": [
+        "Packages/jp.lilxyzw.liltoon",
+        "Assets/lilToon"
+      ],
+      "shader_prefixes": [
+        "lilToon",
+        "Hidden/lilToon",
+        "_lil/"
+      ],
+      "version": "2.3.4",
+      "packages": [
+        {
+          "name": "jp.lilxyzw.liltoon",
+          "version": "2.3.4",
+          "url": "https://github.com/lilxyzw/lilToon/releases/download/2.3.4/jp.lilxyzw.liltoon-2.3.4.zip",
+          "bytes": 1303279
+        }
+      ],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "orels-shaders",
+      "name": "ORL Shaders",
+      "author": "orels1",
+      "license": "MIT",
+      "homepage": "https://github.com/orels1/orels-Unity-Shaders",
+      "kind": "world PBR / toon / VFX",
+      "why": "Made for VRChat worlds: a PBR Standard with lightmap and Bakery support, a toon shader and VFX shaders. MIT (repo LICENSE).",
+      "install": "vpm",
+      "vpm_repo": "https://orels1.github.io/orels-Unity-Shaders/index.json",
+      "good_for": [
+        "worlds",
+        "props"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "standard PBR",
+        "toon",
+        "lightmaps",
+        "Bakery",
+        "parallax",
+        "VFX",
+        "glass"
+      ],
+      "detect_paths": [
+        "Packages/sh.orels.shaders"
+      ],
+      "shader_prefixes": [
+        "orels1/"
+      ],
+      "version": "7.3.1",
+      "packages": [
+        {
+          "name": "sh.orels.shaders",
+          "version": "7.3.1",
+          "url": "https://github.com/orels1/orels-Unity-Shaders/releases/download/v7.3.1/sh.orels.shaders-7.3.1.zip",
+          "bytes": 41264806
+        },
+        {
+          "name": "sh.orels.shaders.generator",
+          "version": "7.3.1",
+          "url": "https://github.com/orels1/orels-Unity-Shaders/releases/download/v7.3.1/sh.orels.shaders.generator-7.3.1.zip",
+          "bytes": 4611814
+        },
+        {
+          "name": "sh.orels.shaders.inspector",
+          "version": "7.3.1",
+          "url": "https://github.com/orels1/orels-Unity-Shaders/releases/download/v7.3.1/sh.orels.shaders.inspector-7.3.1.zip",
+          "bytes": 74267
+        }
+      ],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "mochie-shaders",
+      "name": "Mochie's Unity Shaders (free)",
+      "author": "Mochie",
+      "license": "MIT",
+      "homepage": "https://github.com/MochiesCode/Mochies-Unity-Shaders",
+      "kind": "world standard / glass / water / particles",
+      "why": "World favourite: a Standard replacement, a real glass shader, water and soft particles. Forward rendering, built-in pipeline.",
+      "install": "unitypackage",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds",
+        "props"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "standard replacement",
+        "glass",
+        "water",
+        "particles",
+        "toon",
+        "screen effects"
+      ],
+      "detect_paths": [
+        "Assets/Mochie"
+      ],
+      "shader_prefixes": [
+        "Mochie/"
+      ],
+      "version": "1.77.1",
+      "packages": [],
+      "unitypackage_url": "https://github.com/MochiesCode/Mochies-Unity-Shaders/releases/download/v1.77.1/Mochies.Unity.Shaders.v1.77.1.Free.unitypackage",
+      "unitypackage_bytes": 37638600,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "unlitwf",
+      "name": "UnlitWF",
+      "author": "whiteflare",
+      "license": "Zlib",
+      "homepage": "https://github.com/whiteflare/Unlit_WF_ShaderSuite",
+      "kind": "toon / unlit",
+      "why": "Popular in Japanese worlds: light toon/unlit shaders with real mobile versions for Android.",
+      "install": "vpm",
+      "vpm_repo": "https://whiteflare.github.io/vpm-repos/vpm.json",
+      "good_for": [
+        "worlds",
+        "avatars",
+        "props"
+      ],
+      "platforms": [
+        "pc",
+        "android"
+      ],
+      "features": [
+        "toon",
+        "unlit",
+        "matcap",
+        "rim light",
+        "mobile variants",
+        "gem",
+        "water"
+      ],
+      "detect_paths": [
+        "Packages/jp.whiteflare.unlitwf"
+      ],
+      "shader_prefixes": [
+        "UnlitWF/"
+      ],
+      "version": "2.14.0",
+      "packages": [
+        {
+          "name": "jp.whiteflare.unlitwf",
+          "version": "2.14.0",
+          "url": "https://github.com/whiteflare/Unlit_WF_ShaderSuite/releases/download/UnlitWF_Shader_20260802/jp.whiteflare.unlitwf-2.14.0.zip?",
+          "bytes": 24471480
+        },
+        {
+          "name": "jp.whiteflare.unlitwf.texpack",
+          "version": "1.3.0",
+          "url": "https://github.com/whiteflare/Unlit_WF_ShaderSuite/releases/download/UnlitWF_Shader_20241215/jp.whiteflare.unlitwf.texpack-1.3.0.zip?",
+          "bytes": 143941823
+        }
+      ],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "z3y-lit",
+      "name": "Lit (z3y)",
+      "author": "z3y",
+      "license": "MIT",
+      "homepage": "https://github.com/z3y/shaders",
+      "kind": "world PBR",
+      "why": "A Standard replacement used in many worlds (lightmaps, Bakery, LTCGI). The repository is archived (no more updates) and its last release ships source only, so it is a manual install.",
+      "install": "manual",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "standard PBR",
+        "lightmaps",
+        "Bakery",
+        "LTCGI"
+      ],
+      "detect_paths": [
+        "Packages/com.z3y.shaders",
+        "Assets/z3y"
+      ],
+      "shader_prefixes": [
+        "Lit",
+        "z3y/"
+      ],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "skyboxplus",
+      "name": "SkyboxPlus",
+      "author": "keijiro",
+      "license": "MIT",
+      "homepage": "https://github.com/keijiro/SkyboxPlus",
+      "kind": "sky",
+      "why": "Free gradient skies (up to four gradients, or three-colour hemisphere). No clouds.",
+      "install": "files",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds"
+      ],
+      "platforms": [
+        "pc",
+        "android"
+      ],
+      "features": [
+        "gradient sky",
+        "hemisphere sky",
+        "cubemap tint"
+      ],
+      "detect_paths": [
+        "Assets/ShadersShop/Imported/SkyboxPlus"
+      ],
+      "shader_prefixes": [
+        "SkyboxPlus/"
+      ],
+      "version": "master",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/keijiro/SkyboxPlus/master/Assets/SkyboxPlus/Gradients.shader",
+          "name": "Gradients.shader",
+          "bytes": 3078
+        },
+        {
+          "url": "https://raw.githubusercontent.com/keijiro/SkyboxPlus/master/Assets/SkyboxPlus/Hemisphere.shader",
+          "name": "Hemisphere.shader",
+          "bytes": 1328
+        },
+        {
+          "url": "https://raw.githubusercontent.com/keijiro/SkyboxPlus/master/LICENSE",
+          "name": "LICENSE",
+          "bytes": 0
+        }
+      ],
+      "files_dest": "Assets/ShadersShop/Imported/SkyboxPlus"
+    },
+    {
+      "id": "unity-stable-shaders",
+      "name": "Unity Stable shaders (our own)",
+      "author": "Astra (built with Claude)",
+      "license": "own-work",
+      "homepage": "",
+      "kind": "sky / clouds / sparkle / PBR props",
+      "why": "Our own shaders, made because no free sea-of-clouds sky exists (a sunset sky, a cloud sea, a sparkle shader), plus Handmade PBR for baked hand-made props: clear coat, world-space scan detail, specular occlusion (Astra, 2026-10-19: the booth looked flat on Standard).",
+      "install": "own",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "sunset sky",
+        "sea of clouds",
+        "glitter sparkle",
+        "candy paint",
+        "pink glass with fingerprints",
+        "handmade PBR with clear coat"
+      ],
+      "detect_paths": [
+        "Assets/ShadersShop/UnityStable"
+      ],
+      "shader_prefixes": [
+        "Unity Stable/"
+      ],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "unity-builtin",
+      "name": "Unity built-in",
+      "author": "Unity",
+      "license": "unity-builtin",
+      "homepage": "https://docs.unity3d.com/Manual/Built-inShaderGuide.html",
+      "kind": "baseline",
+      "why": "Always there. Standard, Skybox/Procedural and the legacy particle shaders.",
+      "install": "builtin",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds",
+        "props"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "standard PBR",
+        "procedural sky",
+        "particles"
+      ],
+      "detect_paths": [],
+      "shader_prefixes": [
+        "Standard",
+        "Skybox/",
+        "Legacy Shaders/",
+        "Particles/",
+        "Unlit/",
+        "Mobile/",
+        "UI/",
+        "Sprites/",
+        "Hidden/"
+      ],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "vrchat-sdk",
+      "name": "VRChat SDK shaders",
+      "author": "VRChat",
+      "license": "vrchat-sdk",
+      "homepage": "https://creators.vrchat.com/",
+      "kind": "baseline / mobile",
+      "why": "Come with the SDK. VRChat/Mobile/* is the recommended Android world shader with baked light.",
+      "install": "builtin",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds",
+        "avatars"
+      ],
+      "platforms": [
+        "pc",
+        "android"
+      ],
+      "features": [
+        "mobile lightmapped",
+        "toon lit (mobile)"
+      ],
+      "detect_paths": [
+        "Packages/com.vrchat.base"
+      ],
+      "shader_prefixes": [
+        "VRChat/"
+      ],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "sample-sky-shader",
+      "name": "Sample Sky Shader",
+      "author": "(Booth seller)",
+      "license": "store-personal",
+      "homepage": "https://booth.pm/en/items/8819873",
+      "kind": "sky with volumetric clouds",
+      "why": "Paid (936 JPY on Booth): raymarched volumetric clouds. Store assets never go in a repo; Astra buys and imports it herself.",
+      "install": "store",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "raymarched clouds",
+        "day/night",
+        "storm"
+      ],
+      "detect_paths": [],
+      "shader_prefixes": [],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    },
+    {
+      "id": "sorairo-sky",
+      "name": "Sorairo Sky",
+      "author": "(Booth seller)",
+      "license": "store-personal",
+      "homepage": "https://booth.pm/ja/items/8955808",
+      "kind": "sky with clouds",
+      "why": "Booth: procedural sky with clouds drifting in the wind. Its terms allow public worlds but not redistribution.",
+      "install": "store",
+      "vpm_repo": "",
+      "good_for": [
+        "worlds"
+      ],
+      "platforms": [
+        "pc"
+      ],
+      "features": [
+        "drifting clouds",
+        "silver lining"
+      ],
+      "detect_paths": [],
+      "shader_prefixes": [],
+      "version": "",
+      "packages": [],
+      "unitypackage_url": "",
+      "unitypackage_bytes": 0,
+      "files": [],
+      "files_dest": ""
+    }
+  ]
+}

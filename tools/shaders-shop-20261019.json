@@ -1,0 +1,24 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "shaders-shop",
+      "name": "shaders-shop-20261019.json",
+      "kind": "Workflow",
+      "description": "A shop of shaders for VRChat worlds: each one's licence, purpose and source, installed the way Creator Companion would after showing exactly which files come from where. It scans each world's scenes for the shaders they use, saved with the world, and stocks our own Unity Stable shaders.",
+      "source_path": "scripts/shaders-shop/",
+      "command_template": "Copy everything inside scripts/shaders-shop/ into the world project's folder (its Assets/ and Tools/ merge in), then run Unity Unicorn > Shaders Shop > Open shop window. Offline scan of another world: python -I Tools/shaders-shop/scan-world-shaders-20261018.py \"<project-path>\" --world \"<World Title>\" --catalog Assets/ShadersShop/shaders-catalog.json --out Tools/shaders-shop/worlds/<world>-shaders-{date}.json",
+      "requirements": [
+        "Unity 2022.3. Installing a VPM package recompiles the editor; the shop carries on with the rest of the list after the reload.",
+        "A person's OK for exactly the shaders installed: the window's dialog, or Review/shaders-shop/install.json with approved_by.",
+        "Python 3 for refresh-catalog-20261018.py (read-only requests to GitHub and the VPM listings) and the offline world scan."
+      ],
+      "limitations": [
+        "Store shaders (sample-sky-shader, sorairo-sky) are never downloaded: the shop opens their page, and they never go in a public repo.",
+        "The catalog was refreshed on 2026-10-18; its versions stay pinned until refresh-catalog runs again.",
+        "Install records go to Review/shaders-shop/installs.jsonl, private run history that stays out of Git."
+      ],
+      "last_used": null
+    }
+  ]
+}

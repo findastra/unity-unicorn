@@ -6,7 +6,7 @@
   "sprite": "sprite-20261008.json",
   "preview": "unity-unicorn-20261008.html",
   "status": "hatching",
-  "version": "0.4.2-20261019",
+  "version": "0.5.0-20261019",
   "source": "https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011",
   "release_tag": "v0.3.0-20261011",
   "publication_status": "source-release; verification in docs/open-arches-publication-20261011.md",
@@ -18,7 +18,7 @@
     "repository": "https://github.com/findastra/astras-pet-os"
   },
   "updated": "2026-10-19",
-  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19",
+  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; matcap palette panel, matcap-palette Unity window and PNG maker with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; menu-map panel and Unity export with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; vcc-package-manager and vrchat-avatar-upload moved from L1 tools to L2 tricks to write (astras-pet-os PR #114) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; unity-asset-creator, unity-assets-library and shaders-shop moved in from findastra/liminal-doors, and the unity-asset-creator trick, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; avatar tools and world tools on two sides of the page, the world sparkle tools panel, the Liminal Doors, Infinite Pole and Piranesi House tool panels, and vine-spawn-with-trumpet-flowers (page panel and Unity window), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19",
   "entry": "unity-unicorn-20261008.html",
   "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
   "audit": {
@@ -48,6 +48,7 @@
       "native": [
         "Poppy (avatar)",
         "Piranesi House (world)",
+        "Astra's Infinite Pole (world)",
         "Liminal Doors (world)",
         "Dubstep Gunsmith (catalog site, PR #1, not merged)"
       ],
@@ -80,12 +81,16 @@
         "scene-preview-render",
         "scene-yaml-inspection",
         "time-season-tide-preview",
-        "vcc-package-manager",
         "vine-bloomer",
-        "vrchat-avatar-upload",
         "wall-texture-rebuild",
         "world-spawn-tool",
-        "world-validator"
+        "world-validator",
+        "matcap-palette",
+        "menu-map",
+        "vine-spawn-with-trumpet-flowers",
+        "unity-asset-creator",
+        "unity-assets-library",
+        "shaders-shop"
       ],
       "tools_not_merged": {
         "PR #1 (draft, Codex)": [
@@ -115,16 +120,134 @@
         "design only": [
           "asset-ledger"
         ]
-      }
+      },
+      "sides": {
+        "note": "Astra, 2026-10-19: \"separate the page by avatar tools vs world tools\". Every id in tools and tools_not_merged is on exactly one side; the page's panels follow it.",
+        "avatar": [
+          "face-transfer",
+          "neck-blender",
+          "matcap-palette",
+          "menu-map",
+          "sparkle-strapper",
+          "fan-fitter",
+          "learn-add-ons",
+          "bending-adder",
+          "blood-bender-strapper",
+          "water-bender-strapper",
+          "sparkle-bender-strapper",
+          "wing-strapper",
+          "neck-bow-strapper",
+          "star-effects-diagnostic",
+          "golden-painter",
+          "chain-dangle-weights",
+          "rgb-painter",
+          "gunsmith-loadout",
+          "hair-weighter",
+          "spring-joint-strapper",
+          "copyright-logger",
+          "copyright-catcher"
+        ],
+        "world": [
+          "asset-contact-sheet",
+          "button-check",
+          "cloud-collider-audit",
+          "cloud-collider-validation",
+          "cloud-lounge-smoothing",
+          "cloud-mesh-generator",
+          "cloud-physics-check",
+          "cloud-sea-fusion",
+          "cloud-survey",
+          "desktop-world-test",
+          "foreground-tool-recorder",
+          "house-scene-builder",
+          "marble-carver",
+          "masonry-regeneration",
+          "masonry-structural-audit",
+          "masonry-unity-refresh",
+          "no-windows-audit-tool",
+          "no-windows-scene-refresh",
+          "occlusion-bake",
+          "prop-decomposer",
+          "realistic-prop-restyle",
+          "reflection-probe-bake",
+          "run-unity-tool",
+          "scene-preview-render",
+          "scene-yaml-inspection",
+          "time-season-tide-preview",
+          "vine-bloomer",
+          "wall-texture-rebuild",
+          "world-spawn-tool",
+          "world-validator",
+          "vine-spawn-with-trumpet-flowers",
+          "unity-asset-creator",
+          "unity-assets-library",
+          "shaders-shop",
+          "glass-animal-tool",
+          "bubble-chair-blower",
+          "asset-ledger"
+        ]
+      },
+      "tools_in_worlds": {
+        "note": "World tools built inside a world's own repo and not moved into Unity Unicorn yet. Ids follow each world's ledger (liminal-doors docs/tools-by-floor-20261019.json).",
+        "piranesi-house": {
+          "repo": "findastra/piranesi-house",
+          "ref": "master",
+          "tools": [
+            "review-shots"
+          ]
+        },
+        "astras-infinite-pole": {
+          "repo": "findastra/astras-infinite-pole",
+          "ref": "main",
+          "tools": [
+            "world-photos",
+            "pickup-audit",
+            "pickup-lift-out"
+          ]
+        },
+        "liminal-doors": {
+          "repo": "findastra/liminal-doors",
+          "ref": "claude/fresh-start-20261018",
+          "tools": [
+            "floor-cutter",
+            "redline-sheet",
+            "contact-sheet",
+            "web-pictures",
+            "stop-01-builder",
+            "stop-01-sky",
+            "booth-builder",
+            "blender-booth",
+            "stop-02-builder",
+            "field-shaders",
+            "frond-grass",
+            "grass-push",
+            "door-kit",
+            "stop-03-builder",
+            "pool-tile",
+            "pool-water",
+            "pool-window",
+            "door-system",
+            "door-wiring",
+            "world-glow",
+            "desktop-test",
+            "agent-queue"
+          ]
+        }
+      },
+      "world_sparkles": "docs/world-sparkle-tools-20261019.json"
     },
     "L2": {
       "tricks": [
-        "make-a-prop-look-real"
+        "make-a-prop-look-real",
+        "unity-asset-creator-trick"
       ],
       "tricks_to_write": [
         "weekly-update-from-friendly-farmer",
-        "weekly-copyright-auditor"
-      ]
+        "weekly-copyright-auditor",
+        "vcc-package-manager",
+        "vrchat-avatar-upload"
+      ],
+      "note": "vcc-package-manager and vrchat-avatar-upload moved here from L1.tools on 2026-10-19 (Astra's decision, astras-pet-os PR #114): they have no code, only written steps (their catalog entries in tools/ and the skill book, docs/skills-20261009.md sections 2 and 4). Each is a trick once it is written as skills/<name>/SKILL.md."
     },
     "L3": {
       "skills": [

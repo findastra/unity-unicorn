@@ -1,0 +1,28 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "unity-asset-creator",
+      "name": "unity-asset-creator-20261019.json",
+      "kind": "Workflow",
+      "description": "Walk one Unity world asset through the researched 12-step checklist, from plan and provenance to colliders, lighting and the in-world review: a failed check blocks its step. Then export a versioned package with previews and a checksummed manifest, and open a pull request to unity-assets-library.",
+      "source_path": "scripts/unity-asset-creator/",
+      "command_template": "Copy everything inside scripts/unity-asset-creator/ into the world project's folder (its Assets/ and Tools/ merge in), then run Unity Unicorn > Asset Creator > Open checklist window. To publish an export: python -I Tools/unity-asset-creator/publish-asset-20261018.py --library <clone of findastra/unity-assets-library>",
+      "requirements": [
+        "Unity 2022.3 with the VRChat Worlds SDK (built-in render pipeline); the asset is one prefab in its own folder.",
+        "Python 3, git and a signed-in GitHub CLI to publish. gh started from Python may say it is not signed in; the script then prints the gh pr create command to run from the shell.",
+        "Astra's own review in the world (step 11) before an export, and her merge for every library pull request."
+      ],
+      "limitations": [
+        "Steps 3, 7 and 11 need a person's confirmation note, and a warning passes only with a note that says why it is acceptable here.",
+        "The checks enforce budgets and rules for one asset; they do not judge looks. The checklist's Craft section and Astra's review decide that.",
+        "Incubated in findastra/liminal-doors (branch claude/fresh-start-20261018) and copied here unchanged on 2026-10-19; the booth and the sky are the only assets through it so far."
+      ],
+      "last_used": {
+        "date": "2026-10-19",
+        "evidence": "Exported liminal-doors-phone-booth v1.0.0 and liminal-doors-stop-01-sky v1.0.0 (manifest exported_at 2026-10-19T14:06:53Z and 14:06:54Z), published in findastra/unity-assets-library PR #1, merged 2026-10-19.",
+        "evidence_type": "published export"
+      }
+    }
+  ]
+}
