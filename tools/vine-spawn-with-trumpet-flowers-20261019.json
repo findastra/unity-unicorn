@@ -17,10 +17,10 @@
         "Vines grow over meshes (no colliders needed); one mesh per selected object, up to 150,000 triangles per Grow."
       ],
       "last_used": {
-        "completed_at": "2026-10-20T04:18:08Z",
+        "completed_at": "2026-10-20T04:27:06Z",
         "status": "completed",
-        "evidence_type": "usage receipt",
-        "evidence": "unity-unicorn.tool-usage/v1 receipt: vines grown on 3 objects in Astra's Infinite Pole after a job from this page, taken by the open editor 2.4 s after it reached Downloads (findastra/astras-infinite-pole PR #5)."
+        "evidence_type": "build report",
+        "evidence": "Liminal Doors' Doorspace 09 (Upside-Down Conservatory) build grew 72 hanging vine meshes with this tool; the build report completed 2026-10-19 22:27:06 -06:00 (findastra/liminal-doors PR #2, commit a72cad8, docs/handoff-claude-20261019-doorspaces.md). Earlier the same evening: a usage receipt from Astra's Infinite Pole, 2026-10-20T04:18:08Z (findastra/astras-infinite-pole PR #5)."
       }
     }
   ]
