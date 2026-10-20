@@ -996,7 +996,7 @@ const MM = (() => {
       const li = el("li"), sw = el("span", "mm-sw"); sw.style.background = g.bits > 0 ? color : "#3a3c44";
       const name = el("span", null, g.name);
       const extra = [g.synced + " synced", g.local + " local"];
-      if (g.folded) extra.push(g.folded + (g.folded === 1 ? " bit" : " bits") + " folded into the compressor");
+      if (g.folded) extra.push("up to " + g.folded + (g.folded === 1 ? " bit" : " bits") + " folded into the compressor");
       name.append(el("small", null, extra.join(" · ")));
       li.append(sw, name, el("span", "mm-bits", g.bits + (g.bits === 1 ? " bit" : " bits")));
       list.append(li);
