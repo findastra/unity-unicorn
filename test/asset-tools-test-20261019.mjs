@@ -53,11 +53,12 @@ test('the three tools and the trick are registered in pet.json and on the page, 
     assert.ok(!Object.values(L1.tools_not_merged).flat().includes(id), `${id} is merged`);
   }
   assert.deepEqual(L1.tools.slice(-3), TOOLS, 'unity-assets-library sits right below unity-asset-creator');
-  assert.ok(L2.tricks.includes('unity-asset-creator'));
+  assert.ok(L2.tricks.includes('unity-asset-creator-trick'), 'the trick is listed by its own id');
+  assert.ok(!L2.tricks.includes('unity-asset-creator'), 'no item is both a tool and a trick');
   const html = read('unity-unicorn-20261008.html');
   const main = JSON.parse(/const TOOLS_MAIN=(\[.*?\]\]);/.exec(html)[1]).map((t) => t[0]);
   assert.deepEqual(main.slice(-3), TOOLS);
-  assert.ok(/const TRICKS=\[.*\["unity-asset-creator","skills\/unity-asset-creator\/SKILL\.md/.test(html));
+  assert.ok(/const TRICKS=\[.*\["unity-asset-creator-trick","skills\/unity-asset-creator\/SKILL\.md/.test(html));
 });
 
 test('nothing that moved in names a machine path or holds a key', () => {
