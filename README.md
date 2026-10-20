@@ -173,11 +173,16 @@ world tools, for a panel of the sparkles used in the worlds, and for a new vine 
     buds and five-lobed trumpets, with their own Unity Stable/Vine Bloom shader. One Undo takes them away.
   - Code: `scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs` (install: copy it into the world's
     `Assets/UnityUnicorn/Editor/`). Guide: [docs/vine-spawn-with-trumpet-flowers-20261019.md](docs/vine-spawn-with-trumpet-flowers-20261019.md).
+  - Fixed the same day, after its first real use in Astra's Infinite Pole:
+    - **Leaf glow** keeps stems and leaves green in a world lit mostly by glowing materials.
+    - Flower glow starts at 0.8.
+    - The window opens in the middle of Unity, and its squares wrap to its width.
+    - Vines start only where the object is open to the world, so they climb a phone kiosk's outside, not its inside glass.
 
 Limits:
 
-- The vine tool was tested in a throwaway Unity 2022.3 project in batch mode, including a job file the page made. It is not
-  installed in any of the three worlds yet.
+- The vine tool and its fixes were tested in a throwaway Unity 2022.3 project, including a job file the page made. Its
+  first real use, in Astra's Infinite Pole (findastra/astras-infinite-pole PR #5), was before the fixes.
 - The Liminal Doors tools and sparkles link to branch `claude/fresh-start-20261018` until liminal-doors PR #2 is merged.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

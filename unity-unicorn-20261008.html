@@ -298,6 +298,7 @@
 #uu-vine .vn-opts select,#uu-vine .vn-opts input[type=number]{width:auto;min-width:120px}
 #uu-vine .vn-opts input[type=color]{width:52px;height:26px;border:1px solid var(--edge);border-radius:6px;background:none;padding:0}
 #uu-vine .vn-how p{margin:8px 0 0}
+#uu-vine .vn-optnote{grid-column:1/-1;margin:2px 0 0;line-height:1.45}
 @media (max-width:760px){#uu-vine .vn-top{grid-template-columns:1fr}#uu-vine .vn-opts{grid-template-columns:auto minmax(0,1fr) 44px}}
 </style>
   <div class="vn-case">
@@ -1091,10 +1092,11 @@ const VINE = (() => {
   const LIMITS = {
     vines: [1, 24, 6, 1, "Vines per object"], length_m: [0.5, 12, 3.5, 0.5, "Vine length (m)"],
     flowers_per_m: [0, 10, 3, 0.5, "Flowers per metre"], flower_size: [0.5, 2, 1, 0.1, "Flower size"],
-    leaves_per_m: [0, 24, 12, 1, "Leaves per metre"], glow: [0, 3, 0.2, 0.1, "Flower glow"],
+    leaves_per_m: [0, 24, 12, 1, "Leaves per metre"], glow: [0, 3, 0.8, 0.1, "Flower glow"], leaf_glow: [0, 1, 0.4, 0.05, "Leaf glow"],
   };
   const GROW = [["climb", "Climb up"], ["hang", "Hang down"], ["both", "Both"]];
-  const DEFAULTS = { vines: 6, length_m: 3.5, flowers_per_m: 3, flower_size: 1, leaves_per_m: 12, glow: 0.2, grow: "climb", seed: 20261019, leaf_color: "#336b2e" };
+  // Flower glow was 0.2 until the first real use (Astra's Infinite Pole, 2026-10-19), where petals read dark and leaves black.
+  const DEFAULTS = { vines: 6, length_m: 3.5, flowers_per_m: 3, flower_size: 1, leaves_per_m: 12, glow: 0.8, leaf_glow: 0.4, grow: "climb", seed: 20261019, leaf_color: "#336b2e" };
   const clamp = (k, v) => { const [lo, hi, def] = LIMITS[k]; const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : def; };
   // Add a colour, or take it out if it is already chosen; never more than 10.
   function toggle(list, hex) {
@@ -1117,6 +1119,7 @@ const VINE = (() => {
         vines: Math.round(clamp("vines", settings.vines ?? DEFAULTS.vines)), length_m: clamp("length_m", settings.length_m ?? DEFAULTS.length_m),
         flowers_per_m: clamp("flowers_per_m", settings.flowers_per_m ?? DEFAULTS.flowers_per_m), flower_size: clamp("flower_size", settings.flower_size ?? DEFAULTS.flower_size),
         leaves_per_m: clamp("leaves_per_m", settings.leaves_per_m ?? DEFAULTS.leaves_per_m), glow: clamp("glow", settings.glow ?? DEFAULTS.glow),
+        leaf_glow: clamp("leaf_glow", settings.leaf_glow ?? DEFAULTS.leaf_glow),
         grow: GROW.some(([g]) => g === settings.grow) ? settings.grow : "climb",
         seed: Number.isInteger(seed) && seed > 0 && seed < 2147483647 ? seed : DEFAULTS.seed,
         leaf_color: HEX.test(leaf) ? leaf : DEFAULTS.leaf_color,
@@ -1139,7 +1142,11 @@ const VINE = (() => {
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
   let colours = Array.isArray(saved.colours) ? saved.colours.reduce((l, c) => VINE.toggle(l, c), []) : ["#ff5a1f", "#ffb347", "#ff3cc7"];
   let world = VINE.WORLDS.some(([id]) => id === saved.world) ? saved.world : "liminal-doors";
-  const settings = { ...VINE.DEFAULTS, ...(saved.settings && typeof saved.settings === "object" ? saved.settings : {}) };
+  const old = saved.settings && typeof saved.settings === "object" ? saved.settings : {};
+  const settings = { ...VINE.DEFAULTS, ...old };
+  // Settings saved before Leaf glow existed that still have the old Flower glow default (0.2) get the new one; a glow
+  // chosen on purpose is kept.
+  if (!("leaf_glow" in old) && old.glow === 0.2) settings.glow = VINE.DEFAULTS.glow;
   const nameOf = (hex) => (VINE.PALETTE.find(([h]) => h === hex) || [hex, hex])[1];
   const keep = () => { try { localStorage.setItem(KEY, JSON.stringify({ colours, world, settings })); } catch (e) {} };
 
@@ -1200,6 +1207,9 @@ const VINE = (() => {
     s.onchange = () => { settings.seed = Math.max(1, Math.floor(Number(s.value)) || VINE.DEFAULTS.seed); draw(); keep(); };
     again.onclick = () => { settings.seed = 1 + Math.floor(Math.random() * 2147483645); s.value = settings.seed; draw(); keep(); };
     row("Seed", s, again);
+    const note = document.createElement("p"); note.className = "vn-optnote";
+    note.textContent = "Flower glow and Leaf glow give petals, and stems and leaves, a light of their own, so they keep their colours in a world lit mostly by glowing materials, like Astra's Infinite Pole. 0 means scene light only.";
+    box.append(note);
   }
   function toggleBox(btn, box) {
     btn.onclick = () => { const open = btn.getAttribute("aria-expanded") !== "true"; btn.setAttribute("aria-expanded", String(open)); $(box).hidden = !open; };
@@ -1211,6 +1221,7 @@ const VINE = (() => {
   function leaf(ctx, x, y, a, size, col) {
     ctx.save(); ctx.translate(x, y); ctx.rotate(a);
     const g = ctx.createLinearGradient(0, 0, size, 0); g.addColorStop(0, mix(col, 0.25, "black")); g.addColorStop(1, mix(col, 0.15, "white"));
+    if (settings.leaf_glow > 0) { ctx.shadowColor = col; ctx.shadowBlur = settings.leaf_glow * 7; }
     ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(size * 0.45, -size * 0.42, size, 0); ctx.quadraticCurveTo(size * 0.45, size * 0.42, 0, 0); ctx.fill();
     ctx.strokeStyle = mix(col, 0.35, "black"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(1, 0); ctx.lineTo(size * 0.9, 0); ctx.stroke();
     ctx.restore();
