@@ -1,5 +1,6 @@
-// Panels, not modules (Astra, 2026-10-19): a bordered box on the page is a panel; a module is a file of code.
-// Checks the page's labels and names, and that lights saved on the old -module labels carry over.
+// Panels, not modules (Astra, 2026-10-19): a bordered box on the page is a panel; a module is a file of code. And tool
+// panels since the same day (Astra: "I do want all of it to say tool panel instead of just panel").
+// Checks the page's labels and names, and that lights saved on the old -module and -panel labels carry over.
 // Claude Opus 5.5 (claude-opus-5-5), 2026-10-19.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -17,13 +18,25 @@ const section = between(html, '<section id="uu-panels"', '</section>');
 const script = between(section, '<script>', '</script>').slice('<script>'.length, -'</script>'.length);
 const KEY = 'astra-pet-desk:unity-unicorn:modules:1';
 const LEVELS = ['L1', 'L2', 'L3', 'L4'];
+// Every label on a box of the page, from its lights: <span class="uu-lights" data-item="label"></span>label
+const LABELS = [...section.matchAll(/<span class="uu-lights" data-item="([^"]+)"><\/span>([^<]+)</g)].map((m) => [m[1], m[2]]);
 
-test('the four level panels are labelled unity-unicorn-L1-panel to -L4-panel', () => {
+test('the four level panels are labelled unity-unicorn-L1-tool-panel to -L4-tool-panel', () => {
   assert.ok(section, 'the page has a uu-panels section');
   for (const l of LEVELS) {
-    assert.ok(section.includes(`data-item="unity-unicorn-${l}-panel"></span>unity-unicorn-${l}-panel<`), `${l} panel label`);
+    assert.ok(section.includes(`data-item="unity-unicorn-${l}-tool-panel"></span>unity-unicorn-${l}-tool-panel<`), `${l} tool panel label`);
   }
   assert.ok((section.match(/<details class="uu-panel"/g) || []).length >= 8, 'every box is a details.uu-panel');
+});
+
+test('every box label that ends in panel says tool-panel, and its light has the same name', () => {
+  const panels = LABELS.filter(([item]) => item.endsWith('panel'));
+  assert.ok(panels.length >= 16, 'the four level panels and the tool panels on the two sides');
+  for (const [item, text] of panels) {
+    assert.match(item, /^unity-unicorn-[A-Za-z0-9-]+-tool-panel$/, item);
+    assert.equal(text, item, 'the label and its light have one name');
+  }
+  assert.doesNotMatch(section, />Add to the L1 panel<|Click a panel to open it/);
 });
 
 test('no page box is called a module', () => {
@@ -63,30 +76,49 @@ function boot(saved) {
   return { stored: () => JSON.parse(storage.get(KEY)), lightsFor };
 }
 
-test('lights saved on the old -module labels carry over to the panel labels', () => {
+test('lights saved on the old -module labels carry over to the tool panel labels', () => {
   const app = boot({ lights: { 'unity-unicorn-L2-module': { on: false, fix: true }, 'unity-unicorn-cyberhome': { on: true, fix: true } }, added: [], lastOpened: null });
   const lights = app.stored().lights;
-  assert.deepEqual(lights['unity-unicorn-L2-panel'], { on: false, fix: true });
+  assert.deepEqual(lights['unity-unicorn-L2-tool-panel'], { on: false, fix: true });
   assert.equal(lights['unity-unicorn-L2-module'], undefined);
   assert.deepEqual(lights['unity-unicorn-cyberhome'], { on: true, fix: true });
-  const [power, care] = app.lightsFor('unity-unicorn-L2-panel').children;
+  const [power, care] = app.lightsFor('unity-unicorn-L2-tool-panel').children;
   assert.equal(power.attrs['aria-pressed'], 'false');
   assert.equal(care.attrs['aria-pressed'], 'true');
-  assert.equal(power.title, 'unity-unicorn-L2-panel: off');
+  assert.equal(power.title, 'unity-unicorn-L2-tool-panel: off');
 });
 
-test('a light already saved on a panel label is not overwritten by an old one', () => {
-  const app = boot({ lights: { 'unity-unicorn-L1-module': { on: false, fix: false }, 'unity-unicorn-L1-panel': { on: true, fix: true } }, added: [], lastOpened: null });
+test('lights saved on the old -panel labels carry over to the tool panel labels, on every box', () => {
+  const old = Object.fromEntries(LABELS.filter(([item]) => item.endsWith('-tool-panel'))
+    .map(([item]) => [item.replace(/-tool-panel$/, '-panel'), { on: false, fix: true }]));
+  const app = boot({ lights: old, added: [], lastOpened: null });
   const lights = app.stored().lights;
-  assert.deepEqual(lights['unity-unicorn-L1-panel'], { on: true, fix: true });
-  assert.equal(lights['unity-unicorn-L1-module'], undefined);
+  for (const [o] of Object.entries(old)) {
+    const n = o.replace(/-panel$/, '-tool-panel');
+    assert.deepEqual(lights[n], { on: false, fix: true }, n);
+    assert.equal(lights[o], undefined, o);
+    const [power, care] = app.lightsFor(n).children;
+    assert.equal(power.attrs['aria-pressed'], 'false', n);
+    assert.equal(care.attrs['aria-pressed'], 'true', n);
+  }
 });
 
-test('a first visit starts with every panel light on and working', () => {
+test('a light already saved on a tool panel label is not overwritten by an older one', () => {
+  const app = boot({ lights: {
+    'unity-unicorn-L1-module': { on: false, fix: false }, 'unity-unicorn-L1-panel': { on: false, fix: true }, 'unity-unicorn-L1-tool-panel': { on: true, fix: true },
+    'unity-unicorn-L3-module': { on: false, fix: false }, 'unity-unicorn-L3-panel': { on: true, fix: true },
+  }, added: [], lastOpened: null });
+  const lights = app.stored().lights;
+  assert.deepEqual(lights['unity-unicorn-L1-tool-panel'], { on: true, fix: true });
+  assert.deepEqual(lights['unity-unicorn-L3-tool-panel'], { on: true, fix: true }, 'the -panel light is newer than the -module one');
+  for (const o of ['L1-module', 'L1-panel', 'L3-module', 'L3-panel']) assert.equal(lights['unity-unicorn-' + o], undefined, o);
+});
+
+test('a first visit starts with every tool panel light on and working', () => {
   const app = boot();
-  for (const l of LEVELS) {
-    const [power, care] = app.lightsFor(`unity-unicorn-${l}-panel`).children;
-    assert.equal(power.attrs['aria-pressed'], 'true');
-    assert.equal(care.attrs['aria-pressed'], 'false');
+  for (const [item] of LABELS.filter(([i]) => i.endsWith('-tool-panel'))) {
+    const [power, care] = app.lightsFor(item).children;
+    assert.equal(power.attrs['aria-pressed'], 'true', item);
+    assert.equal(care.attrs['aria-pressed'], 'false', item);
   }
 });

@@ -4,7 +4,7 @@ Astra asked (2026-10-19) for "a panel on Unity Unicorn that is matcap palettes, 
 look through them like a makeup palette when we are choosing them", with a bunch sourced and ready. A matcap ("material
 capture") is a picture of a lit ball; a matcap shader paints it onto a model by which way each point faces you.
 
-## On the page: unity-unicorn-matcap-panel
+## On the page: unity-unicorn-matcap-tool-panel
 
 - A graphite compact of round pans, one per matcap, with neon edges. Families: Metal, Candy, Holo, Glass, Toon, Neon,
   Soft, Sparkle, plus ★ Favourites and Yours.

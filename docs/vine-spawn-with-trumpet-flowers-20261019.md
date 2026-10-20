@@ -8,7 +8,7 @@ Infinite Pole, and Liminal Doors."
 It is built on [vine-bloomer](vine-bloomer-20261011.md). vine-bloomer drapes a Blender ivy mantle over whole buildings in
 Piranesi House. This tool grows single vines in Unity over the objects you pick, with leaves, buds and trumpet flowers.
 
-## On the page: unity-unicorn-vine-spawn-panel
+## On the page: unity-unicorn-vine-spawn-tool-panel
 
 It's on the **World tools** side of Unity Unicorn's page.
 

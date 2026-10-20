@@ -19,8 +19,8 @@ const script = between(section, '<script>', '</script>').slice('<script>'.length
 
 test('avatar assets sit in the Avatar tools tab and world assets in the World tools tab, never together', () => {
   const at = (s) => section.indexOf(s), avatarTab = at('id="uu-side-avatar"'), worldTab = at('id="uu-side-world"');
-  assert.ok(section.includes('data-item="unity-unicorn-avatar-assets-panel"></span>unity-unicorn-avatar-assets-panel<'));
-  assert.ok(section.includes('data-item="unity-unicorn-world-assets-panel"></span>unity-unicorn-world-assets-panel<'));
+  assert.ok(section.includes('data-item="unity-unicorn-avatar-assets-tool-panel"></span>unity-unicorn-avatar-assets-tool-panel<'));
+  assert.ok(section.includes('data-item="unity-unicorn-world-assets-tool-panel"></span>unity-unicorn-world-assets-tool-panel<'));
   assert.ok(at('id="uu-assets-avatar"') > avatarTab && at('id="uu-assets-avatar"') < worldTab, 'avatar assets are in the avatar tab');
   assert.ok(at('id="uu-assets-world"') > worldTab, 'world assets are in the world tab');
   assert.ok(!section.includes('unity-unicorn-assets-we-created<'), 'no mixed assets panel is left');

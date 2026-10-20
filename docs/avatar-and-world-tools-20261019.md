@@ -14,20 +14,20 @@ such as `#uu-vine` or `#uu-p-sparkles`. The L1 panel now says how many tools the
 Every tool is in exactly one panel. A tool that has its own working panel (matcap-palette, menu-map and
 vine-spawn-with-trumpet-flowers) is that panel and has no row.
 
-| Side | Panel | What is in it |
+| Side | Tool panel | What is in it |
 |---|---|---|
-| Avatar | `unity-unicorn-avatar-build-panel` | face-transfer, neck-blender |
-| Avatar | `unity-unicorn-matcap-panel` | matcap-palette (moved here, unchanged) |
-| Avatar | `unity-unicorn-menu-map-panel` | menu-map (moved here, unchanged) |
-| Avatar | `unity-unicorn-avatar-sparkles-panel` | sparkle-strapper, fan-fitter, sparkle-bender-strapper, star-effects-diagnostic, rgb-painter (PR #1, not merged) |
-| Avatar | `unity-unicorn-avatar-effects-panel` | the other 11 effect and add-on tools of PR #1 |
-| Avatar | `unity-unicorn-avatar-records-panel` | copyright-logger, copyright-catcher (PR #1) |
-| World | `unity-unicorn-vine-spawn-panel` | vine-spawn-with-trumpet-flowers ([guide](vine-spawn-with-trumpet-flowers-20261019.md)) |
-| World | `unity-unicorn-world-sparkles-panel` | 27 sparkles from the three worlds (below) |
-| World | `unity-unicorn-every-world-panel` | tools for any world: world-spawn-tool, world-validator, desktop-world-test, the bakes, props, unity-asset-creator, unity-assets-library, shaders-shop, the two runners, asset-ledger |
-| World | `unity-unicorn-piranesi-house-panel` | the house builder, masonry, open arches, tides, wall textures, vine-bloomer, marble-carver, and Review Shots from its repo |
-| World | `unity-unicorn-infinite-pole-panel` | the seven cloud tools, and from its repo: Take World Photos and round 38's pickup audit and lift-out |
-| World | `unity-unicorn-liminal-doors-panel` | the 22 tools still in Liminal Doors' repo (its ledger), and glass-animal-tool and bubble-chair-blower (PR #3) |
+| Avatar | `unity-unicorn-avatar-build-tool-panel` | face-transfer, neck-blender |
+| Avatar | `unity-unicorn-matcap-tool-panel` | matcap-palette (moved here, unchanged) |
+| Avatar | `unity-unicorn-menu-map-tool-panel` | menu-map (moved here, unchanged) |
+| Avatar | `unity-unicorn-avatar-sparkles-tool-panel` | sparkle-strapper, fan-fitter, sparkle-bender-strapper, star-effects-diagnostic, rgb-painter (PR #1, not merged) |
+| Avatar | `unity-unicorn-avatar-effects-tool-panel` | the other 11 effect and add-on tools of PR #1 |
+| Avatar | `unity-unicorn-avatar-records-tool-panel` | copyright-logger, copyright-catcher (PR #1) |
+| World | `unity-unicorn-vine-spawn-tool-panel` | vine-spawn-with-trumpet-flowers ([guide](vine-spawn-with-trumpet-flowers-20261019.md)) |
+| World | `unity-unicorn-world-sparkles-tool-panel` | 27 sparkles from the three worlds (below) |
+| World | `unity-unicorn-every-world-tool-panel` | tools for any world: world-spawn-tool, world-validator, desktop-world-test, the bakes, props, unity-asset-creator, unity-assets-library, shaders-shop, the two runners, asset-ledger |
+| World | `unity-unicorn-piranesi-house-tool-panel` | the house builder, masonry, open arches, tides, wall textures, vine-bloomer, marble-carver, and Review Shots from its repo |
+| World | `unity-unicorn-infinite-pole-tool-panel` | the seven cloud tools, and from its repo: Take World Photos and round 38's pickup audit and lift-out |
+| World | `unity-unicorn-liminal-doors-tool-panel` | the 22 tools still in Liminal Doors' repo (its ledger), and glass-animal-tool and bubble-chair-blower (PR #3) |
 
 Counts on 2026-10-19: 22 avatar tools; 63 world tools (34 on `main` here, 3 not merged here, 26 still in the worlds' own
 repos); 27 sparkles.
