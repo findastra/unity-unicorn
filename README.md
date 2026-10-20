@@ -215,3 +215,33 @@ words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
 - `test/panels-test-20261019.mjs` fails if a page box label ends in `-panel` without `tool`, or a level box is called a module.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## VR asset closet (0.5.2-20261019)
+
+**[vr-asset-closet-20261019.html](vr-asset-closet-20261019.html)**: your VR closet, where every avatar, outfit and
+accessory hangs as a picture card on clothing rails. It is built from **My VR Closet** by Dev
+([XxdevilishxX/Vr-Asset-Closet](https://github.com/XxdevilishxX/Vr-Asset-Closet)) and restyled for Unity Stable.
+
+- **Its own page, opened from a tool panel.** Astra, 2026-10-19: pet programs are control panels, and they manage
+  websites when things get too big for a panel (PET-PROGRAM-FRAMEWORK.md, section 3). The closet is too big for one, so
+  it is a page of its own: a native program of Unity Stable. **unity-unicorn-vr-asset-closet-tool-panel**, at the end of
+  the Avatar tools side, shows how many items, photos, favorites and outfits it holds and has **Open the closet**.
+- **From her closet:** the rails and hangers, search, favorites (the heart), outfits you build from pieces, rails you
+  add yourself, photos (drop a VRChat screenshot on an item) and her twinkling stars.
+- **Changed to fit Unity Stable:** the graphite and neon look; the rails of her desktop app (Avatars, Bases, Tops,
+  Bottoms, Dresses, Sets, Shoes, Hair, Accessories, Flow Toys, Skins & Textures, Decals); items without a photo get her
+  name card; **Export backup** and **Import backup**, as elsewhere on Unity Stable (import also reads the `closet.json`
+  of her desktop app). The first time it opens, the Avatars rail holds the 14 avatar thumbnails in `art/avatars/`.
+- **Left out:** what a page cannot do (reading her `D:` folder, opening an item in File Explorer) and her colour theme
+  picker.
+- `test/vr-asset-closet-test-20261019.mjs` checks the page and the tool panel, and runs the closet's data rules and the
+  panel's counting.
+
+Limits:
+
+- The closet is saved in this browser only (the tool panel reads the same save). Export a backup to keep it or move it.
+- Photos are shrunk to 360 px, and a browser keeps about 5 MB for a page, so a closet holds roughly 200 photos.
+- Items imported from her desktop app have no photos here (they are files on her PC), so they show name cards.
+- Dev's VR Closet is hers (L1, 3rd party programs); this page is her code, changed for Unity Stable and credited to her.
+
+Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

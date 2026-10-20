@@ -1,0 +1,375 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VR asset closet · Unity Stable</title>
+<!-- The VR asset closet, a native program of Unity Stable (Unity Unicorn's pet program). It has its own page because it is too big for a tool panel (Astra, 2026-10-19: pet programs are control panels; PET-PROGRAM-FRAMEWORK.md, section 3). Unity Stable's unity-unicorn-vr-asset-closet-tool-panel shows its counts and opens it. Built from Dev's VR Closet (XxdevilishxX/Vr-Asset-Closet, her index.html of 2026-10-19) and restyled: her rails and hangers, favorites, outfits, search, rails you add, photos and twinkling stars; her desktop parts (the D: folder scan, Show in folder) and her theme picker are left out. By Astra, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19. -->
+<style>
+:root{color-scheme:dark;--ink:#eef0f4;--muted:#b7bfcc}
+*{box-sizing:border-box}
+body{margin:0;background:#252a33;color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}
+a{color:#9fd0ff}
+.cl-page{max-width:1180px;margin:0 auto;padding:16px clamp(10px,3vw,28px) 40px}
+.cl-top{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+.cl-back{font:600 13px ui-monospace,Consolas,monospace;text-decoration:none}
+.cl-label{font:600 11px/1.4 ui-monospace,Consolas,monospace;color:var(--muted)}
+.cl-foot{margin:14px 4px 0;color:var(--muted);font-size:12px}
+</style>
+<style>
+#uu-closet{--cl-case:#26272b;--cl-card:#1b1c20;--cl-line:#3a3c44;--cl-pink:#ff3cc7;--cl-cyan:#2ef2ff}
+#uu-closet .cl-case{position:relative;overflow:hidden;background:linear-gradient(160deg,#2c2d33,var(--cl-case) 55%,#202126);border:1px solid var(--cl-line);border-radius:22px;padding:16px 16px 20px;margin-top:6px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #ff3cc722,0 0 30px #2ef2ff14}
+#uu-closet .cl-sky{position:absolute;inset:0;pointer-events:none;z-index:0}
+#uu-closet .cl-sky svg{position:absolute;opacity:.3;animation:cl-tw var(--t,4s) ease-in-out var(--dl,0s) infinite}
+#uu-closet .cl-in{position:relative;z-index:1}
+@keyframes cl-tw{0%,100%{opacity:.05;transform:scale(.6) rotate(var(--r,0deg))}50%{opacity:.45;transform:scale(1.1) rotate(var(--r,0deg))}}
+#uu-closet .cl-title{margin:2px 0;font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.02em;color:var(--ink);text-shadow:0 0 12px #ff3cc755}
+#uu-closet .cl-by{margin:0 0 12px;color:var(--muted);font-size:12px}
+#uu-closet .cl-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#uu-closet .cl-bar input[type=search]{flex:1 1 200px;width:auto;min-width:0;background:var(--cl-card);color:var(--ink);border:1px solid var(--cl-line);border-radius:10px;padding:9px 12px}
+#uu-closet .cl-btn{border:1px solid var(--cl-line);background:#2f3138;color:var(--ink);padding:8px 13px;border-radius:10px;cursor:pointer;font-weight:600;font-size:13px}
+#uu-closet .cl-btn:hover{border-color:var(--cl-cyan)}
+#uu-closet .cl-btn.cl-main{background:var(--cl-pink);border-color:var(--cl-pink);color:#1b0b17;box-shadow:0 0 12px #ff3cc766}
+#uu-closet .cl-btn.cl-danger{color:#ff7a90}
+#uu-closet .cl-chips{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none;scroll-behavior:smooth}
+#uu-closet .cl-chips::-webkit-scrollbar{display:none}
+#uu-closet .cl-chip{flex:none;border:1px solid var(--cl-line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 13px;cursor:pointer;font-size:13px}
+#uu-closet .cl-chip[aria-pressed=true]{background:var(--cl-cyan);color:#06222a;border-color:var(--cl-cyan);box-shadow:0 0 10px #2ef2ff55;font-weight:700}
+#uu-closet .cl-tabs .cl-chip{flex:1;text-align:center;font-weight:700}
+#uu-closet .cl-tabs .cl-chip[aria-pressed=true]{background:var(--cl-pink);border-color:var(--cl-pink);color:#1b0b17;box-shadow:0 0 10px #ff3cc766}
+#uu-closet .cl-sec{margin-top:22px}
+#uu-closet h5{margin:0 0 2px;font-size:16px;font-weight:750;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+#uu-closet h5 small{font-weight:400;font-size:12px;color:var(--muted)}
+#uu-closet .cl-slider{position:relative}
+#uu-closet .cl-rail{position:relative;display:flex;gap:14px;overflow-x:auto;padding:30px 4px 12px;scrollbar-width:none;scroll-behavior:smooth}
+#uu-closet .cl-rail::-webkit-scrollbar{display:none}
+#uu-closet .cl-railwrap::before{content:"";position:absolute;left:0;right:0;top:12px;height:4px;border-radius:3px;background:linear-gradient(90deg,#9ea4b3,#e8ebf2 50%,#9ea4b3);box-shadow:0 0 8px #2ef2ff88}
+#uu-closet .cl-arrow{position:absolute;top:122px;transform:translateY(-50%);z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--cl-line);background:#2f3138;color:var(--ink);font-size:22px;line-height:1;padding:0;cursor:pointer;box-shadow:0 4px 14px #0008;display:grid;place-items:center}
+#uu-closet .cl-arrow:hover{background:var(--cl-cyan);border-color:var(--cl-cyan);color:#06222a}
+#uu-closet .cl-arrow.cl-prev{left:-6px}
+#uu-closet .cl-arrow.cl-next{right:-6px}
+#uu-closet .cl-chipwrap .cl-arrow{top:29px;width:30px;height:30px;font-size:18px}
+#uu-closet .cl-item{flex:none;width:140px;position:relative}
+#uu-closet .cl-hanger{position:absolute;left:50%;top:-22px;margin-left:-14px;width:28px;height:24px;stroke:#d4d8e2;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#uu-closet .cl-open{display:block;width:100%;border:0;background:none;padding:0;cursor:pointer;text-align:left;color:var(--ink)}
+#uu-closet .cl-pic{display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--cl-card);border:1px solid var(--cl-line)}
+#uu-closet .cl-open:hover .cl-pic,#uu-closet .cl-open:focus-visible .cl-pic{border-color:var(--cl-pink);box-shadow:0 0 12px #ff3cc766}
+#uu-closet .cl-pic img{width:100%;height:100%;object-fit:cover;display:block}
+#uu-closet .cl-nm{display:block;margin-top:6px;font-weight:600;font-size:13px;line-height:1.25;overflow-wrap:anywhere}
+#uu-closet .cl-heart{position:absolute;right:6px;top:6px;width:32px;height:32px;border-radius:50%;border:0;background:#000a;color:#fff;font-size:18px;line-height:32px;padding:0;cursor:pointer}
+#uu-closet .cl-heart[aria-pressed=true]{background:var(--cl-pink);color:#1b0b17;box-shadow:0 0 10px #ff3cc799}
+#uu-closet .cl-empty{color:var(--muted);padding:6px 4px 0;margin:0;font-size:13px}
+#uu-closet .cl-none{text-align:center;color:var(--muted);padding:40px 10px}
+#uu-closet .cl-look{display:flex;gap:8px;flex-wrap:wrap;padding:6px 0;min-height:20px}
+#uu-closet .cl-tile{border:0;background:none;padding:0;cursor:pointer;width:90px;text-align:left;color:var(--ink)}
+#uu-closet .cl-tile img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;border:1px solid var(--cl-line);display:block;background:var(--cl-card)}
+#uu-closet .cl-tile[aria-pressed=true] img{outline:2px solid var(--cl-pink);outline-offset:1px;box-shadow:0 0 10px #ff3cc788}
+#uu-closet .cl-tn{display:block;font-size:12px;line-height:1.2;margin-top:3px;overflow-wrap:anywhere}
+#uu-closet .cl-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px}
+#uu-closet .cl-pick .cl-tile{width:auto}
+#uu-closet .cl-outfit{background:#1f2025;border:1px solid var(--cl-line);border-radius:14px;padding:12px;margin-top:12px}
+#uu-closet .cl-outfit h6{margin:0 0 6px;font-size:14px;color:var(--ink)}
+#uu-closet .cl-mini{width:58px}
+#uu-closet .cl-mini img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
+#uu-closet input.cl-oname{width:100%;background:var(--cl-card);color:var(--ink);border:1px solid var(--cl-line);border-radius:9px;padding:9px}
+#uu-closet dialog{border:1px solid var(--cl-line);border-radius:16px;padding:0;width:min(440px,calc(100% - 24px));background:var(--cl-case);color:var(--ink);box-shadow:0 0 30px #ff3cc733}
+#uu-closet dialog::backdrop{background:#0b0c10b3}
+#uu-closet dialog form{padding:18px;display:grid;gap:12px}
+#uu-closet dialog label{display:grid;gap:4px;font-weight:600;font-size:13px}
+#uu-closet dialog input[type=text],#uu-closet dialog select,#uu-closet dialog textarea{width:100%;background:var(--cl-card);color:var(--ink);border:1px solid var(--cl-line);border-radius:9px;padding:9px}
+#uu-closet .cl-drop{border:2px dashed var(--cl-line);border-radius:12px;min-height:150px;display:grid;place-items:center;text-align:center;color:var(--muted);cursor:pointer;overflow:hidden;background:var(--cl-card);padding:8px}
+#uu-closet .cl-drop.cl-over{border-color:var(--cl-pink)}
+#uu-closet .cl-drop img{width:100%;max-height:280px;object-fit:contain;display:block}
+#uu-closet .cl-row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+#uu-closet .cl-hint{font-size:12px;color:var(--muted);margin:0}
+#uu-closet [hidden]{display:none!important}
+#uu-closet :focus-visible{outline:2px solid var(--cl-cyan);outline-offset:2px}
+@media (max-width:700px){#uu-closet .cl-case{padding:12px 10px 16px;border-radius:16px}#uu-closet .cl-item{width:118px}#uu-closet .cl-arrow{top:107px}}
+@media (prefers-reduced-motion:reduce){#uu-closet .cl-sky svg{animation:none}#uu-closet .cl-rail,#uu-closet .cl-chips{scroll-behavior:auto}}
+</style>
+</head><body><div class="cl-page">
+<div class="cl-top"><a class="cl-back" href="unity-unicorn-20261008.html#uu-p-vr-asset-closet">‹ Unity Stable</a><span class="cl-label">unity-stable · vr-asset-closet v1.0 // 20261019</span></div>
+<main id="uu-closet">
+<div class="cl-case"><div class="cl-sky" id="cl-sky" aria-hidden="true"></div><div class="cl-in">
+  <p class="cl-title">My VR closet</p>
+  <p class="cl-by">Built from Dev's VR Closet (<a href="https://github.com/XxdevilishxX/Vr-Asset-Closet" target="_blank" rel="noopener noreferrer">XxdevilishxX/Vr-Asset-Closet</a>) and restyled for Unity Stable. Saved only in this browser: export a backup to keep it.</p>
+  <div class="cl-bar">
+    <input type="search" id="cl-q" placeholder="Search avatars and outfits" aria-label="Search the closet">
+    <button class="cl-btn cl-main" type="button" id="cl-add">Add item</button>
+    <button class="cl-btn" type="button" id="cl-addrail">Add rail</button>
+    <button class="cl-btn" type="button" id="cl-export">Export backup</button>
+    <button class="cl-btn" type="button" id="cl-import">Import backup</button>
+    <input type="file" id="cl-import-file" accept="application/json,.json" hidden>
+  </div>
+  <div class="cl-chips cl-tabs" id="cl-tabs" role="group" aria-label="Closet sections"></div>
+  <div class="cl-chips" id="cl-chips" role="group" aria-label="Rails"></div>
+  <div id="cl-rails"></div>
+</div></div>
+<dialog id="cl-dlg" aria-label="Closet item">
+  <form id="cl-f" method="dialog">
+    <div class="cl-drop" id="cl-drop" tabindex="0" role="button" aria-label="Choose a picture"></div>
+    <input type="file" id="cl-file" accept="image/*" hidden>
+    <label>Name<input type="text" id="cl-name" required maxlength="80" placeholder="星 Hoodie, Fox avatar…"></label>
+    <label>Rail<select id="cl-cat"></select></label>
+    <label>Notes<textarea id="cl-note" rows="2" maxlength="300" placeholder="Where it's from, which avatar it fits…"></textarea></label>
+    <p class="cl-hint">No picture? It gets a name card. Drop a VRChat screenshot on it any time.</p>
+    <div class="cl-row">
+      <button type="button" class="cl-btn cl-danger" id="cl-del" hidden>Delete</button>
+      <button type="button" class="cl-btn" id="cl-cancel">Cancel</button>
+      <button type="submit" class="cl-btn cl-main">Save item</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="cl-cdlg" aria-label="New rail">
+  <form id="cl-cf" method="dialog">
+    <label>New rail name<input type="text" id="cl-cname" required maxlength="40" placeholder="Props, Tails, Wings…"></label>
+    <p class="cl-hint" id="cl-cerr" hidden>There's already a rail with that name.</p>
+    <div class="cl-row">
+      <button type="button" class="cl-btn" id="cl-ccancel">Cancel</button>
+      <button type="submit" class="cl-btn cl-main">Add rail</button>
+    </div>
+  </form>
+</dialog>
+<script id="uu-closet-core">
+// The closet's data rules, with no page in them, so test/vr-asset-closet-test-20261019.mjs can run them.
+globalThis.UUCloset=(()=>{
+const SCHEMA="unity-unicorn-closet/v1";
+// The rails of Dev's desktop closet (her main.js), in her order.
+const CATS=["Avatars","Bases","Tops","Bottoms","Dresses","Sets","Shoes","Hair","Accessories","Flow Toys","Skins & Textures","Decals"];
+// Astra's avatars from art/avatars (the avatar tracker's thumbnails), hung on the Avatars rail the first time.
+const AVATARS=[["akalii","Akalii"],["anarchy","Anarchy"],["fae","Fae"],["leilin","Leilin"],["meep","Meep"],["nya-opti","Nya (opti)","PC optimized"],["nya-vrcft","Nya (VRCFT)","with face tracking"],["obsi-opti","Obsi (opti)","optimized"],["obsi-vrcft","Obsi (VRCFT)","with face tracking"],["onyx","Onyx"],["poppy","Poppy"],["ryuu","Ryuu"],["tisha","Tisha"],["zhora","Zhora"]];
+const PAL=["#ff3cc7","#2ef2ff","#b26bff","#39ff9c","#ffd23f","#ff7a3c","#4d7cff"];
+const newId=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const str=(v,max)=>typeof v==="string"?v.trim().slice(0,max):"";
+// A photo is a picture the page made itself (data:image) or one of the avatar thumbnails in this repo; nothing else loads.
+const imgOk=s=>typeof s==="string"&&(/^data:image\/(png|jpeg|gif|webp);base64,[A-Za-z0-9+/=]+$/.test(s)||/^art\/avatars\/[a-z0-9-]+-\d{8}\.jpg$/.test(s));
+// Dev's name card for items with no photo: the initials on a neon-to-graphite card.
+function nameCard(name){
+  const n=String(name||"?");let h=0;for(let i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))>>>0;
+  const c1=PAL[h%PAL.length],ini=n.replace(/[^A-Za-z0-9 ]/g,"").split(" ").filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join("")||"?";
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c1+'"/><stop offset=".85" stop-color="#1b1c20"/></linearGradient></defs><rect width="300" height="400" fill="url(#g)"/><text x="150" y="235" font-family="Segoe UI,system-ui,sans-serif" font-weight="800" font-size="120" fill="#fff" fill-opacity=".92" text-anchor="middle">'+ini+'</text></svg>';
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+function seed(){return {schema:SCHEMA,cats:CATS.slice(),items:AVATARS.map(([f,n,note])=>({id:"avatar-"+f,name:n,cat:"Avatars",note:note||"",img:"art/avatars/"+f+"-20261009.jpg",fav:false})),outfits:[]}}
+// Reads a saved closet or a backup (Dev's closet.json too) into the shape the page uses. Paths on someone's PC are left out.
+function clean(raw){
+  if(!raw||typeof raw!=="object"||!Array.isArray(raw.items))return null;
+  const cats=[],find=n=>cats.find(x=>x.toLowerCase()===n.toLowerCase());
+  const addCat=c=>{const n=str(c,40);if(!n)return "";if(!find(n))cats.push(n);return find(n)};
+  (Array.isArray(raw.cats)?raw.cats:[]).forEach(addCat);
+  const items=[],seen=new Set();
+  raw.items.slice(0,2000).forEach(it=>{
+    if(!it||typeof it!=="object")return;const name=str(it.name,80);if(!name)return;
+    let id=str(it.id,40);if(!id||seen.has(id))id=newId();seen.add(id);
+    items.push({id,name,cat:addCat(it.cat)||addCat("Accessories"),note:str(it.note,300),img:imgOk(it.img)?it.img:"",fav:it.fav===true});
+  });
+  if(!cats.length)CATS.forEach(addCat);
+  const outfits=(Array.isArray(raw.outfits)?raw.outfits:[]).slice(0,500).filter(o=>o&&typeof o==="object")
+    .map(o=>({id:str(o.id,40)||newId(),name:str(o.name,60)||"Untitled outfit",ids:(Array.isArray(o.ids)?o.ids:[]).filter(x=>typeof x==="string"&&seen.has(x))}));
+  return {schema:SCHEMA,cats,items,outfits};
+}
+return {SCHEMA,CATS,AVATARS,imgOk,nameCard,seed,clean,newId};
+})();
+</script>
+<script id="uu-closet-app">
+// Dev's closet page, in Unity Stable: same rails, favorites and outfits, saved in this browser.
+(()=>{
+const C=globalThis.UUCloset,KEY="astra-pet-desk:unity-unicorn:closet:1";
+const $=i=>document.getElementById(i);
+let S=null;
+try{S=C.clean(JSON.parse(localStorage.getItem(KEY)))}catch(e){S=null}
+if(!S){S=C.seed();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+let filter="All",editing=null,img="",tab="closet",pickCat="All",draft={name:"",ids:[],edit:null};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));return true}catch(e){alert("This browser has no room left to save the closet. Export a backup, then remove a few photos.");return false}}
+const src=it=>it.img||C.nameCard(it.name);
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function btn(c,x){const b=el("button",c,x);b.type="button";return b}
+function hanger(){
+  const s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("viewBox","0 0 28 24");s.setAttribute("aria-hidden","true");s.setAttribute("class","cl-hanger");
+  const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d","M14 2a3 3 0 0 1 1 5.8c-.7.3-1 .9-1 1.6V11M14 11 2 20h24z");s.appendChild(p);return s;
+}
+// Arrows that slide a row (a rail, or the rail buttons) by about a screenful; each hides at its end of the row.
+function arrows(r,label,cls){
+  const w=el("div","cl-slider "+(cls||"cl-railwrap")),p=btn("cl-arrow cl-prev","‹"),n=btn("cl-arrow cl-next","›");
+  p.setAttribute("aria-label","Slide "+label+" left");n.setAttribute("aria-label","Slide "+label+" right");
+  const go=d=>r.scrollBy({left:d*Math.max(160,r.clientWidth-160)});
+  p.onclick=()=>go(-1);n.onclick=()=>go(1);
+  r.addEventListener("scroll",()=>syncRail(w),{passive:true});
+  w._row=r;w.append(p,r,n);return w;
+}
+function syncRail(w){const r=w._row,max=r.scrollWidth-r.clientWidth;w.querySelector(".cl-prev").hidden=r.scrollLeft<=2;w.querySelector(".cl-next").hidden=r.scrollLeft>=max-2}
+function syncArrows(){document.querySelectorAll("#uu-closet .cl-slider").forEach(syncRail)}
+function renderChips(){
+  const c=$("cl-chips");c.textContent="";
+  ["All"].concat(S.cats).forEach(n=>{const b=btn("cl-chip",n);b.setAttribute("aria-pressed",String(n===filter));b.onclick=()=>{filter=n;render()};c.appendChild(b)});
+}
+function card(it,onopen){
+  const d=el("div","cl-item");d.appendChild(hanger());
+  const b=btn("cl-open"),pic=el("span","cl-pic"),im=document.createElement("img");im.src=src(it);im.alt=it.name;im.loading="lazy";pic.appendChild(im);
+  b.append(pic,el("span","cl-nm",it.name));b.onclick=onopen;d.appendChild(b);
+  const h=btn("cl-heart",it.fav?"♥":"♡");h.setAttribute("aria-pressed",String(!!it.fav));h.setAttribute("aria-label",(it.fav?"Remove from":"Add to")+" favorites: "+it.name);
+  h.onclick=e=>{e.stopPropagation();it.fav=!it.fav;save();render()};d.appendChild(h);return d;
+}
+function tile(it,on,sel){
+  const b=btn("cl-tile");b.setAttribute("aria-pressed",String(!!sel));
+  const im=document.createElement("img");im.src=src(it);im.alt="";im.loading="lazy";b.append(im,el("span","cl-tn",it.name));b.onclick=on;return b;
+}
+function heading(text,count,word){const h=el("h5",null,text);h.appendChild(el("small",null,count+" "+word+(count===1?"":"s")));return h}
+function renderCloset(){
+  renderChips();
+  const q=$("cl-q").value.trim().toLowerCase(),box=$("cl-rails");box.textContent="";
+  const fav=tab==="fav",cats=(fav||filter==="All")?S.cats:[filter];let shown=0;
+  cats.forEach(cat=>{
+    const list=S.items.filter(i=>i.cat===cat&&(!fav||i.fav)&&(!q||(i.name+" "+(i.note||"")).toLowerCase().includes(q)));
+    if((q||fav)&&!list.length)return;
+    shown+=list.length;
+    const sec=el("div","cl-sec");sec.appendChild(heading(cat,list.length,"item"));
+    if(!list.length)sec.appendChild(el("p","cl-empty","Nothing on this rail yet. Add an item to hang it here."));
+    else{const r=el("div","cl-rail");list.forEach(it=>r.appendChild(card(it,()=>openDlg(it))));sec.appendChild(arrows(r,cat))}
+    box.appendChild(sec);
+  });
+  syncArrows();
+  if(q&&!shown)box.appendChild(el("p","cl-none","No items match “"+$("cl-q").value.trim()+"”. Try a shorter search."));
+  if(!q&&fav&&!shown)box.appendChild(el("p","cl-none","No favorites yet. Tap the heart on any item to save it here."));
+}
+function toggleDraft(id){const k=draft.ids.indexOf(id);if(k>=0)draft.ids.splice(k,1);else draft.ids.push(id);renderOutfits()}
+function renderOutfits(){
+  const box=$("cl-rails");box.textContent="";
+  const byId={};S.items.forEach(i=>{byId[i.id]=i});
+  const picked=draft.ids.map(id=>byId[id]).filter(Boolean);
+  const s1=el("div","cl-sec");s1.appendChild(el("h5",null,draft.edit?"Edit outfit":"Build an outfit"));
+  const look=el("div","cl-look");
+  if(!picked.length)look.appendChild(el("p","cl-empty","Tap pieces below to add them to your outfit."));
+  picked.forEach(it=>{const t=tile(it,()=>toggleDraft(it.id),true);t.setAttribute("aria-label","Remove "+it.name);look.appendChild(t)});
+  s1.appendChild(look);
+  const nm=el("input","cl-oname");nm.type="text";nm.placeholder="Name this outfit";nm.maxLength=60;nm.value=draft.name;nm.setAttribute("aria-label","Outfit name");nm.oninput=()=>{draft.name=nm.value};s1.appendChild(nm);
+  const row=el("div","cl-bar");row.style.marginTop="10px";
+  const sv=btn("cl-btn cl-main",draft.edit?"Update outfit":"Save outfit");
+  sv.onclick=()=>{
+    if(!picked.length){alert("Add at least one piece first.");return}
+    const name=draft.name.trim()||"Untitled outfit",ids=picked.map(i=>i.id);
+    const ex=draft.edit?S.outfits.find(o=>o.id===draft.edit):null;
+    if(ex){ex.name=name;ex.ids=ids}else S.outfits.push({id:C.newId(),name,ids});
+    save();draft={name:"",ids:[],edit:null};renderOutfits();
+  };
+  const cl=btn("cl-btn",draft.edit?"Cancel":"Clear");cl.onclick=()=>{draft={name:"",ids:[],edit:null};renderOutfits()};
+  row.append(sv,cl);s1.appendChild(row);
+  const s2=el("div","cl-sec");s2.appendChild(el("h5",null,"Pick pieces"));
+  if(!S.items.length)s2.appendChild(el("p","cl-empty","No items yet. Add some on the Closet tab first."));
+  else{
+    const cc=el("div","cl-chips");
+    ["All"].concat(S.cats).forEach(n=>{const b=btn("cl-chip",n);b.setAttribute("aria-pressed",String(n===pickCat));b.onclick=()=>{pickCat=n;renderOutfits()};cc.appendChild(b)});
+    s2.appendChild(arrows(cc,"rails","cl-chipwrap"));
+    const g=el("div","cl-pick");
+    S.items.filter(i=>pickCat==="All"||i.cat===pickCat).forEach(it=>g.appendChild(tile(it,()=>toggleDraft(it.id),draft.ids.includes(it.id))));
+    s2.appendChild(g);
+  }
+  const s3=el("div","cl-sec");s3.appendChild(heading("Saved outfits",S.outfits.length,"outfit"));
+  if(!S.outfits.length)s3.appendChild(el("p","cl-empty","No saved outfits yet. Build one above and tap Save outfit."));
+  S.outfits.forEach(o=>{
+    const c=el("div","cl-outfit");c.appendChild(el("h6",null,o.name));
+    const lk=el("div","cl-look"),have=o.ids.map(id=>byId[id]).filter(Boolean);
+    if(!have.length)lk.appendChild(el("p","cl-empty","The items in this outfit were deleted."));
+    have.forEach(it=>{const m=el("span","cl-mini"),im=document.createElement("img");im.src=src(it);im.alt=it.name;m.appendChild(im);lk.appendChild(m)});
+    c.appendChild(lk);
+    const r=el("div","cl-bar"),eb=btn("cl-btn","Edit"),db=btn("cl-btn cl-danger","Delete");
+    eb.onclick=()=>{draft={name:o.name,ids:have.map(i=>i.id),edit:o.id};renderOutfits();$("cl-tabs").scrollIntoView({block:"start",behavior:"smooth"})};
+    db.onclick=()=>{if(confirm('Delete the outfit "'+o.name+'"?')){S.outfits=S.outfits.filter(x=>x!==o);if(draft.edit===o.id)draft={name:"",ids:[],edit:null};save();renderOutfits()}};
+    r.append(eb,db);c.appendChild(r);s3.appendChild(c);
+  });
+  box.append(s1,s2,s3);
+  syncArrows();
+}
+function render(){
+  const tabs=$("cl-tabs");tabs.textContent="";
+  [["closet","Closet"],["fav","Favorites"],["outfits","Outfits"]].forEach(([k,label])=>{const b=btn("cl-chip",label);b.setAttribute("aria-pressed",String(tab===k));b.onclick=()=>{tab=k;render()};tabs.appendChild(b)});
+  $("cl-chips").parentNode.hidden=tab!=="closet";$("cl-q").hidden=tab==="outfits";
+  if(tab==="outfits")renderOutfits();else renderCloset();
+}
+function setPreview(){
+  const d=$("cl-drop");d.textContent="";
+  if(img){const i=document.createElement("img");i.src=img;i.alt="Preview";d.appendChild(i)}
+  else d.textContent="Tap to choose a picture, or drop one here";
+}
+function openDlg(it){
+  editing=it||null;img=it?it.img:"";
+  $("cl-name").value=it?it.name:"";$("cl-note").value=it?(it.note||""):"";
+  const s=$("cl-cat");s.textContent="";
+  S.cats.forEach(c=>{const o=el("option",null,c);o.value=c;s.appendChild(o)});
+  s.value=it?it.cat:(filter!=="All"?filter:S.cats[0]);
+  $("cl-del").hidden=!it;setPreview();$("cl-dlg").showModal();
+}
+// Photos are shrunk to 360 px so a whole closet fits in the browser's storage.
+function shrink(file,cb){
+  const fr=new FileReader();
+  fr.onload=()=>{const im=new Image();im.onload=()=>{
+    const k=Math.min(1,360/Math.max(im.width,im.height)),c=document.createElement("canvas");
+    c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.8));
+  };im.src=fr.result};fr.readAsDataURL(file);
+}
+function pick(f){if(f&&f.type.startsWith("image/"))shrink(f,d=>{img=d;setPreview()})}
+const drop=$("cl-drop");
+drop.onclick=()=>$("cl-file").click();
+drop.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();$("cl-file").click()}};
+$("cl-file").onchange=e=>{pick(e.target.files[0]);e.target.value=""};
+["dragover","dragenter"].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.add("cl-over")}));
+["dragleave","drop"].forEach(n=>drop.addEventListener(n,e=>{e.preventDefault();drop.classList.remove("cl-over")}));
+drop.addEventListener("drop",e=>pick(e.dataTransfer.files[0]));
+$("cl-add").onclick=()=>openDlg(null);
+$("cl-cancel").onclick=()=>$("cl-dlg").close();
+$("cl-f").onsubmit=e=>{
+  e.preventDefault();
+  const data={name:$("cl-name").value.trim().slice(0,80),cat:$("cl-cat").value,note:$("cl-note").value.trim().slice(0,300),img:C.imgOk(img)?img:""};
+  if(!data.name)return;
+  if(editing)Object.assign(editing,data);else S.items.push(Object.assign({id:C.newId(),fav:false},data));
+  save();$("cl-dlg").close();render();
+};
+$("cl-del").onclick=()=>{
+  if(editing&&confirm("Delete “"+editing.name+"”?")){const gone=editing.id;S.items=S.items.filter(i=>i!==editing);S.outfits.forEach(o=>{o.ids=o.ids.filter(id=>id!==gone)});draft.ids=draft.ids.filter(id=>id!==gone);save();$("cl-dlg").close();render()}
+};
+$("cl-q").oninput=render;
+$("cl-ccancel").onclick=()=>$("cl-cdlg").close();
+$("cl-addrail").onclick=()=>{$("cl-cname").value="";$("cl-cerr").hidden=true;$("cl-cdlg").showModal()};
+$("cl-cname").oninput=()=>{$("cl-cerr").hidden=true};
+$("cl-cf").onsubmit=e=>{
+  e.preventDefault();const n=$("cl-cname").value.trim().slice(0,40);if(!n)return;
+  if(S.cats.some(c=>c.toLowerCase()===n.toLowerCase())){$("cl-cerr").hidden=false;return}
+  S.cats.push(n);save();$("cl-cdlg").close();
+  tab="closet";filter="All";$("cl-q").value="";render();   // show every rail, then go to the new one at the bottom
+  const secs=document.querySelectorAll("#cl-rails .cl-sec");if(secs.length)secs[secs.length-1].scrollIntoView({behavior:"smooth",block:"center"});
+};
+// Backups, as on the rest of Unity Stable. Import also reads Dev's closet.json; its photos are files on her PC, so those items get name cards.
+const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver"}).format(new Date()).replace(/-/g,"");
+$("cl-export").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:"application/json"}));a.download="unity-unicorn-closet-"+today()+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+$("cl-import").onclick=()=>$("cl-import-file").click();
+$("cl-import-file").onchange=e=>{
+  const f=e.target.files[0];e.target.value="";if(!f)return;
+  if(f.size>20e6){alert(f.name+" is over 20 MB, which is too big for a closet backup.");return}
+  const fr=new FileReader();
+  fr.onload=()=>{
+    let d=null;try{d=C.clean(JSON.parse(fr.result))}catch(err){d=null}
+    if(!d){alert(f.name+" is not a closet backup.");return}
+    const plain=d.items.filter(i=>!i.img).length;
+    if(!confirm("Replace this closet with "+d.items.length+" items and "+d.outfits.length+" outfits from "+f.name+"?"+(plain?" "+plain+" of them have no photo here and will show a name card.":"")))return;
+    const old=S;S=d;if(!save())S=old;filter="All";tab="closet";render();
+  };
+  fr.readAsText(f);
+};
+// Dev's twinkling stars, inside the closet only, in Unity Stable's neon.
+(()=>{
+  const NS="http://www.w3.org/2000/svg",sky=$("cl-sky");let seed=7;
+  const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+  for(let n=0;n<30;n++){
+    const spark=n%3!==0,size=spark?8+rnd()*12:2+rnd()*3,s=document.createElementNS(NS,"svg");
+    s.setAttribute("viewBox","0 0 24 24");s.style.width=s.style.height=size+"px";
+    s.style.left=(rnd()*97)+"%";s.style.top=(rnd()*97)+"%";s.style.fill=n%2?"#ff3cc7":"#2ef2ff";
+    s.style.setProperty("--t",(2+rnd()*3).toFixed(1)+"s");s.style.setProperty("--dl",(-rnd()*6).toFixed(1)+"s");s.style.setProperty("--r",spark?Math.round(rnd()*30-15)+"deg":"0deg");
+    const p=document.createElementNS(NS,spark?"path":"circle");
+    if(spark)p.setAttribute("d","M12 0C13 7 17 11 24 12 17 13 13 17 12 24 11 17 7 13 0 12 7 11 11 7 12 0Z");else{p.setAttribute("cx","12");p.setAttribute("cy","12");p.setAttribute("r","10")}
+    s.appendChild(p);sky.appendChild(s);
+  }
+})();
+(()=>{const c=$("cl-chips"),at=c.nextSibling,par=c.parentNode;par.insertBefore(arrows(c,"rails","cl-chipwrap"),at)})();
+window.addEventListener("resize",syncArrows);
+render();
+})();
+</script>
+</main>
+<p class="cl-foot">By Astra · built from <a href="https://github.com/XxdevilishxX/Vr-Asset-Closet" target="_blank" rel="noopener noreferrer">Dev's VR Closet</a> · <a href="https://github.com/findastra/unity-unicorn">Source</a></p>
+</div></body></html>
