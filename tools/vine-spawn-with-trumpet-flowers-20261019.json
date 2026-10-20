@@ -16,7 +16,12 @@
         "A web page cannot start Unity or write into a project: the page saves a job file, and the open editor picks it up within 2 seconds.",
         "Vines grow over meshes (no colliders needed); one mesh per selected object, up to 150,000 triangles per Grow."
       ],
-      "last_used": null
+      "last_used": {
+        "completed_at": "2026-10-20T04:18:08Z",
+        "status": "completed",
+        "evidence_type": "usage receipt",
+        "evidence": "unity-unicorn.tool-usage/v1 receipt: vines grown on 3 objects in Astra's Infinite Pole after a job from this page, taken by the open editor 2.4 s after it reached Downloads (findastra/astras-infinite-pole PR #5)."
+      }
     }
   ]
 }
