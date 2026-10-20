@@ -108,10 +108,10 @@ The bordered, collapsible boxes on the page are **panels** (Astra, 2026-10-19): 
 
 ## Matcap palette (0.4.3-20261019)
 
-A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 48 matcaps (Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
+A new panel, **unity-unicorn-matcap-panel**: every matcap as a round pan in a graphite compact, like a makeup palette. Pick one to see it big on a sphere and on a ring you can turn, try a hue and tint, favourite it, or save it as a PNG for Unity. Its 54 matcaps (Liminal, Metal, Candy, Holo, Glass, Toon, Neon, Soft, Sparkle) are drawn from math, so they are yours to use anywhere; **Load my matcaps** shows your own files too, in that tab only.
 
 - **matcap-palette** (Unity): Tools › Unity Unicorn › matcap-palette shows every matcap in a project the same way and puts the one you pick on a Poiyomi or lilToon material's matcap slot, with Undo and a usage receipt. Code: `scripts/unity-editor/matcap-palette-20261019.cs`.
-- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 48 from the page's own recipes.
+- PNGs: `node scripts/matcap-palette/make-matcaps-20261019.mjs <out-folder>` writes the 54 from the page's own recipes.
 - Guide: [docs/matcap-palette-20261019.md](docs/matcap-palette-20261019.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
 
 ## Menu map (0.4.4-20261019)
@@ -208,3 +208,17 @@ Astra: "we need to distinguish whether we made the tools or somebody else made t
 that added the tool or a repo's credit line; "not recorded" means none names the assistant (Astra's Infinite Pole's first
 builder scripts, 2026-09-12). The rows are [docs/made-by-20261019.json](docs/made-by-20261019.json), checked by
 `test/made-by-test-20261019.mjs`. Every tool on the page is ours; nothing made by others is listed as a tool.
+
+## Tool panels (0.5.1-20261019)
+
+Astra, 2026-10-19: "I do want all of it to say tool panel instead of just panel". Every box on the page whose label ended in `-panel` now ends in `-tool-panel`: the four
+level panels (`unity-unicorn-L1-tool-panel` to `unity-unicorn-L4-tool-panel`) and the 15 other tool panels: made-by, and
+the Avatar tools and World tools sides (for example `unity-unicorn-matcap-tool-panel` and `unity-unicorn-avatar-assets-tool-panel`). The page's own
+words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
+
+- Lights you saved on the old `-panel` labels, or the older `-module` ones, carry over to the new labels, under the same
+  browser storage key. The tabs and tool panels you had open stay open (they are saved by the box's id, which did not change).
+- Code names stay: the `uu-panels` section, the `uu-panel` class and the chat panel. The Unity scripts keep their own words.
+- `test/panels-test-20261019.mjs` fails if a page box label ends in `-panel` without `tool`, or a level box is called a module.
+
+Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

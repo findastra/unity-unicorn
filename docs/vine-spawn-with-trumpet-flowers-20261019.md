@@ -8,7 +8,7 @@ Infinite Pole, and Liminal Doors."
 It is built on [vine-bloomer](vine-bloomer-20261011.md). vine-bloomer drapes a Blender ivy mantle over whole buildings in
 Piranesi House. This tool grows single vines in Unity over the objects you pick, with leaves, buds and trumpet flowers.
 
-## On the page: unity-unicorn-vine-spawn-panel
+## On the page: unity-unicorn-vine-spawn-tool-panel
 
 It's on the **World tools** side of Unity Unicorn's page.
 
@@ -60,8 +60,12 @@ Copy `scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs` into the
 (or any Editor folder). That one file is the whole tool. The first time you grow vines, it writes its shader to
 `Assets/UnityUnicorn/Shaders/Unity Stable Vine Bloom.shader`.
 
-Not installed in any world yet. Liminal Doors was being built in its open editor while this was made, and the other two
-were not touched.
+Where it's installed (2026-10-19, with Astra's OK in chat):
+
+- **Astra's Infinite Pole:** findastra/astras-infinite-pole PR #5, with vines on three spots Astra picked.
+- **Piranesi House:** findastra/piranesi-house PR #2. It compiles; nothing has been grown there yet.
+- **Liminal Doors:** findastra/liminal-doors PR #2 (commit a72cad8), installed by the session building that world. Its
+  Doorspace 09, the Upside-Down Conservatory, has 72 hanging vine lines (see below).
 
 ## In Unity: Tools › Unity Unicorn › vine-spawn-with-trumpet-flowers
 
@@ -177,7 +181,38 @@ with no Leaf glow), `unity-vine-window-open.png` and `unity-vine-window-smallest
   - the squares, the 10-colour limit (the 11th is disabled), taking colours out, the world picker and the job file's contents.
   - The download was caught in the page, so nothing was saved to Downloads.
 
-Not checked: the tool installed in a real world, Unity's window opening in front of you from a real download, and a browser
-whose downloads ask where to save. Pictures of the test renders are in `docs/screenshots-20261019/`.
+Pictures of the test renders are in `docs/screenshots-20261019/`.
+
+## In a real world (Astra's Infinite Pole, 2026-10-19)
+
+- **The hand-off, for real:**
+  - On this page (`main`), I picked 5 colours and Astra's Infinite Pole, and pressed **Open in Unity**.
+  - The job reached Downloads at 21:48:30.1.
+  - The world's open editor moved it to `UnityUnicornReports/jobs/` at 21:48:32.5, 2.4 s later.
+  - It opened this window with those 5 colours.
+- **Grow:** one Grow on the banner phone booth, the DJ booth and the lounge bench made 185 trumpet flowers, 66 buds and
+  62,409 triangles. One Undo took it all away, and Redo put it back. The usage receipt was completed at 2026-10-20T04:18:08Z.
+- **Found:**
+  - With the page's default Flower glow 0.2, the petals read dark violet in a world lit mostly by its own glow. 1.5 shows
+    the colours.
+  - Leaves and stems stay nearly black there whatever their colour, because the shader lights them only with scene light.
+  - On a phone kiosk, vines can climb inside, up the inner glass.
+  - The window opens too narrow: the palette and the job note are cut off on the right.
+- **Not checked:** a browser whose downloads ask where to save, and the VRChat client.
+
+## In Liminal Doors (Doorspace 09, 2026-10-19)
+
+- **Used by its build script.** Doorspace 09's builder calls the tool by reflection with these settings:
+  - Hang, 3 vines per object, length 5 m (and 1.7 m), 4.5 flowers and 22 leaves per metre;
+  - Flower glow 0.35, flower size 1.2, up to 300,000 triangles;
+  - colours #ff6fae #e040fb #9d6bff #fff4fb #ffb38a.
+- **How it was grown:**
+  - A hanging vine only dangles a little in the air, so each vine trails down a glass strip.
+  - True-to-life leaves read as wisps across a 16 m room, so the vines were grown at 1/1.7 size and scaled up 1.7x about
+    each strip's top.
+- **Result:** 72 meshes and 254,241 triangles. The build report completed at 2026-10-19 22:27:06 -06:00
+  (2026-10-20T04:27:06Z). That is the tool's `last_used`, the later of the two runs.
+- **Found:** with a directional sun in the scene, the leaves render mid-green, not black. So the dark leaves in the Pole
+  come from its lighting. With glow 0.35, the petals read pink, magenta and lilac.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.

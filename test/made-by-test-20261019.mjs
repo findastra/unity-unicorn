@@ -31,5 +31,5 @@ test('each row says what it is for and who made it, and agrees with pet.json sid
 test('the page shows the same rows, in its made-by panel', () => {
   const line = html.split('\n').find((l) => l.startsWith('const MADE_BY='));
   assert.deepEqual(JSON.parse(line.slice('const MADE_BY='.length).replace(/;$/, '')), made);
-  assert.ok(html.includes('data-item="unity-unicorn-made-by-panel"></span>unity-unicorn-made-by-panel<'));
+  assert.ok(html.includes('data-item="unity-unicorn-made-by-tool-panel"></span>unity-unicorn-made-by-tool-panel<'));
 });

@@ -1,8 +1,8 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unity Unicorn · Astra</title><style>*{box-sizing:border-box} :root{color-scheme:light;font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:#332934;background:#f4f0f1;--accent:#9170cb;--line:#e5dde1;--soft:#f8f4f6}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{outline-offset:4px}button{cursor:pointer}.shell{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}.rail{background:#291f2b;color:#eee3ea;padding:28px 22px;display:flex;flex-direction:column;gap:24px}.brand{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#d1adc3}.pet-well{background:radial-gradient(ellipse,#5c4056 0%,#342637 65%);border:1px solid #6a4b61;border-radius:24px;aspect-ratio:1/1;display:grid;place-items:center}.pet-well img{width:87%;height:auto;aspect-ratio:1/1;object-fit:contain;image-rendering:pixelated}.rail h2{font-size:20px;line-height:1.25;margin:0}.rail p{font-size:13px;color:#c9b6c3}.rail label{font-size:12px;color:#d6c1d0}.rail select{width:100%;background:#3b2d3d;color:#fff;border:1px solid #73546b;border-radius:9px;padding:8px;margin-top:5px}.rail footer{margin-top:auto;font-size:11px;color:#b49dab}.rail a{color:#ebc6df}.main{padding:40px clamp(20px,4vw,58px);max-width:1500px;width:100%;margin:auto}.eyebrow{font-size:11px;letter-spacing:.17em;font-weight:750;text-transform:uppercase;color:var(--accent);margin:0 0 12px}header{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}h1{font-size:clamp(27px,3.5vw,43px);letter-spacing:-.045em;line-height:1.15;margin:0 0 13px;font-weight:680;max-width:690px}.intro{max-width:630px;color:#796a76;margin:0}.date-pill{flex-shrink:0;border:1px solid var(--line);border-radius:30px;padding:9px 14px;font-size:12px;color:#7a6775;white-space:nowrap;margin-top:4px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 26px}.stat{border:1px solid var(--line);background:#fff;border-radius:15px;padding:19px 22px}.stat strong{font-size:29px;font-weight:620;letter-spacing:-.04em;display:block}.stat span{font-size:12px;color:#8b7b87}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:22px;align-items:start}.panel{border:1px solid var(--line);background:white;border-radius:18px;overflow:hidden}.panel-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.panel-head h2{font-size:17px;margin:0;font-weight:650}.count{font-size:11px;color:#8d7c88}.toolbar{padding:15px 20px;display:flex;gap:10px;border-bottom:1px solid var(--line)}.toolbar input{min-width:0;flex:1}.toolbar input,.toolbar select,.form input,.form select,.form textarea{border:1px solid #ded4da;border-radius:9px;background:#fff;color:#352a34;padding:9px 11px;width:100%}.toolbar select{width:135px}.toolbar input:focus,.form input:focus,.form textarea:focus{border-color:var(--accent)}.records{min-height:300px}.record{padding:20px 22px;border-bottom:1px solid #eee8ec}.record:last-child{border:0}.record-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.record h3{font-size:15px;font-weight:640;line-height:1.4;margin:0}.badge{border:1px solid #e2d6df;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;white-space:nowrap;color:var(--accent);background:var(--soft)}.details{display:flex;flex-wrap:wrap;gap:7px 15px;font-size:12px;color:#877482;margin:9px 0}.details a{color:var(--accent);max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.notes{font-size:13px;color:#685a65;margin:10px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.record-actions{display:flex;gap:15px;align-items:center;margin-top:13px}.text-btn{border:0;padding:0;background:none;color:var(--accent);font-size:12px;font-weight:650}.delete{color:#998994;font-weight:400}.empty{text-align:center;padding:65px 24px;color:#a1919d}.empty strong{display:block;font-size:17px;font-weight:550;color:#66525f;margin-bottom:7px}.empty p{max-width:280px;margin:auto;font-size:13px}.form{padding:20px;display:grid;gap:14px}.field label{display:block;font-size:12px;font-weight:600;margin-bottom:6px;color:#776372}.form textarea{resize:vertical;min-height:72px}.form .row{display:flex;gap:8px}.primary{width:100%;border:0;border-radius:10px;background:var(--accent);color:white;font-weight:650;padding:11px 15px}.secondary{border:1px solid #ded4da;background:white;border-radius:9px;padding:8px 12px;color:#71616e;font-size:12px}.hint{font-size:11px;color:#9b8996;margin:0}.exports{display:flex;gap:8px;padding:16px 20px;border-top:1px solid var(--line);flex-wrap:wrap}.connection{margin-top:22px;padding:16px 20px;border:1px dashed #d8c9d3;border-radius:12px;color:#8a7582;font-size:12px}.connection strong{font-weight:650;color:#66535f}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#312433;color:#fff;padding:11px 18px;border-radius:12px;box-shadow:0 5px 25px #21102522;max-width:min(90vw,560px);font-size:13px;z-index:20}.toast button{border:0;background:transparent;color:#ffd0ed;text-decoration:underline;margin-left:15px} .hidden{display:none!important}.reminder{background:#f3ede1;border-bottom:1px solid #e9ddc7;padding:12px 20px;font-size:12px;color:#897244}@media(max-width:1100px){.workspace{grid-template-columns:minmax(0,1fr) 280px}.rail{padding:24px 17px}.shell{grid-template-columns:185px minmax(0,1fr)}.main{padding:28px 24px}.date-pill{display:none}}@media(max-width:820px){.shell{display:block}.rail{display:grid;grid-template-columns:70px 1fr;gap:12px 18px;padding:20px}.brand{grid-column:1/-1}.pet-well{width:70px;border-radius:15px;grid-row:2/4;align-self:center}.rail h2{align-self:end}.rail p{margin:0}.rail label,.rail footer{display:none}.workspace{grid-template-columns:1fr}.form-panel{order:-1}.form{grid-template-columns:1fr 1fr}.form .wide{grid-column:1/-1}.stats{gap:8px}.stat{padding:15px}.stat strong{font-size:24px}.main{padding:24px 16px}.toolbar{padding:14px;flex-wrap:wrap}}@media(prefers-reduced-motion:no-preference){button{transition:filter .15s,background .15s}button:hover{filter:brightness(.96)}}</style><style id="tool-library-style">
 .tool-library{margin-top:32px}.tool-heading{display:flex;justify-content:space-between;gap:18px;align-items:start}.tool-heading h2{font-size:24px;letter-spacing:-.03em;margin:0 0 7px}.tool-heading p{margin:0;color:#796a76;max-width:710px;font-size:13px}.tool-actions{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0}.tool-actions button{width:auto}.tool-search{width:100%;border:1px solid #ded4da;border-radius:9px;padding:10px 12px;margin:0 0 15px;background:white}.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.tool-card{border:1px solid var(--line);border-radius:16px;background:white;padding:20px;min-width:0}.tool-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.tool-card h3{font-size:15px;margin:0 0 8px;overflow-wrap:anywhere}.tool-description{font-size:14px;line-height:1.55;color:#796a76;margin:0 0 14px}.tool-date{font-size:19px;font-weight:650;color:#4e3e60;margin:8px 0 1px}.tool-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#8a758d;margin:0}.tool-evidence,.tool-project,.tool-source{font-size:12px;color:#796a76;overflow-wrap:anywhere;margin:8px 0}.tool-card details{margin-top:12px;border-top:1px solid #eee8ec;padding-top:10px;font-size:12px}.tool-card summary{cursor:pointer;font-weight:650;color:#77618d}.tool-command{white-space:pre-wrap;word-break:break-word;background:#f7f3fa;border:1px solid #e7deef;border-radius:8px;padding:10px;font:11px/1.5 ui-monospace,Consolas,monospace;color:#55445f}.tool-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tool-buttons button{font-size:11px}.tool-limit{font-size:11px;color:#927d83;margin:10px 0 0}.tool-counts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.tool-counts span{background:#f4eff8;border-radius:20px;padding:3px 9px;font-size:11px;color:#6c5484}.tool-finding{border-left:3px solid #b9a2d7;padding-left:11px;margin:14px 0}.tool-finding strong{display:block}.tool-finding p{margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere}.tool-error{border-color:#c87c7c}.tool-warning{border-color:#c6aa67}.tool-empty{grid-column:1/-1;padding:20px;text-align:center;color:#796a76}.tool-help{font-size:12px;margin:12px 0;color:#796a76}.tool-help ol{padding-left:22px}.tool-help li{margin:7px 0}.tool-status{min-height:20px;font-size:12px;color:#6d5684;margin:10px 0}.tool-history{padding-left:20px;font-size:12px;color:#796a76}.tool-history li{margin:6px 0}@media(max-width:900px){.tool-grid{grid-template-columns:1fr}.tool-heading{display:block}}
 </style><script>/* Pet pictures live in findastra/astras-pet-os (one art source, Flash Audit A58). Offline, read them from the hub folder next to this repo. */document.addEventListener('error',function(e){var t=e.target,h='https://raw.githubusercontent.com/findastra/astras-pet-os/main/';if(t&&t.tagName==='IMG'&&t.src.indexOf(h)===0&&!t.getAttribute('data-hub-local')){t.setAttribute('data-hub-local','1');t.src='../astras-pet-os/'+t.src.slice(h.length);}},true);</script></head><body><div class="shell"><aside class="rail"><div class="brand">Astra's PetOS</div><div class="pet-well"><img id="pet" src="https://raw.githubusercontent.com/findastra/astras-pet-os/main/art/frames/unity-unicorn/idle.png" alt="Unity Unicorn, idle"></div><h2>Unity Unicorn</h2><p>One small companion.<br>A little more room to think.</p><label>Companion mood<select id="mood" aria-label="Companion mood"></select></label><footer>Version 0.3.0-20261011<br><a href="https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011" target="_blank" rel="noopener">Public source release</a><br>Made by Astra.</footer></aside><main class="main">
-<!-- unity-unicorn framework panels (PET-PROGRAM-FRAMEWORK.md section 3, Astra's sketch of 2026-10-18). Claude Opus 5.5 (claude-opus-5-5), 2026-10-18. Panels, not modules (Astra, 2026-10-19): to a developer a module is a file of code; a bordered box on a page is a panel. -->
-<section id="uu-panels" aria-label="Unity Stable pet program panels">
+<!-- unity-unicorn framework panels (PET-PROGRAM-FRAMEWORK.md section 3, Astra's sketch of 2026-10-18). Claude Opus 5.5 (claude-opus-5-5), 2026-10-18. Panels, not modules (Astra, 2026-10-19): to a developer a module is a file of code; a bordered box on a page is a panel. Tool panels since the same day (Astra: "I do want all of it to say tool panel instead of just panel"): every label that ended in -panel ends in -tool-panel. -->
+<section id="uu-panels" aria-label="Unity Stable pet program tool panels">
 <style>
 #uu-panels{--slate:#252a33;--slate2:#2e3440;--ink:#eef0f4;--muted:#b7bfcc;--edge:#5a6475;--on:#3fbf6f;--off:#d9534f;--ok:#4a8fe7;--fix:#e8c33a;--conn:#c58be0;background:var(--slate);color:var(--ink);border-radius:18px;padding:18px;margin:0 0 34px;font-size:14px}
 #uu-panels a{color:#9fd0ff}
@@ -78,7 +78,7 @@
     <img id="uu-home-pet" alt="Unity Unicorn, idle" width="256" height="256">
   </div>
   <div>
-    <h2 class="uu-title">Unity Stable<small>V0.5.0 // 20261019</small></h2>
+    <h2 class="uu-title">Unity Stable<small>V0.5.1 // 20261019</small></h2>
     <fieldset><legend class="uu-label">unity-stable-pet-program-quick-summary</legend>
       <p style="margin:4px 0 0">Unity Stable is the pet program run by you and Unity Unicorn. It is a dashboard that presents the health of, and organizes, your world and avatar programs and the tools and tricks used to manage them, which are always created with the intention of preserving the authenticity, creativity and provenance of all artists' work.</p>
     </fieldset>
@@ -86,7 +86,7 @@
   </div>
 </div>
 
-<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-panel"></span>unity-unicorn-L1-panel<span class="uu-what">programs and tools (no AI needed)</span></summary>
+<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-tool-panel"></span>unity-unicorn-L1-tool-panel<span class="uu-what">programs and tools (no AI needed)</span></summary>
   <h4>3rd party programs</h4><ul class="uu-items" id="uu-third"></ul>
   <h4>Your programs</h4><ul class="uu-items" id="uu-programs"></ul>
   <h4>Your tools</h4><p class="uu-note" id="uu-tools-where" style="margin:0"></p>
@@ -99,31 +99,31 @@
     </div>
     <div style="display:grid;gap:6px;align-content:start">
       <select id="uu-add-kind" aria-label="Kind"><option value="tool">Your tool</option><option value="program">Your program</option><option value="third">3rd party program</option></select>
-      <button class="uu-btn" type="submit">Add to the L1 panel</button>
+      <button class="uu-btn" type="submit">Add to the L1 tool panel</button>
     </div>
   </form>
   <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
 </details>
 
-<details class="uu-panel" open id="uu-p-made-by"><summary><span class="uu-lights" data-item="unity-unicorn-made-by-panel"></span>unity-unicorn-made-by-panel<span class="uu-what">who made each tool: us, or somebody else</span></summary>
+<details class="uu-panel" open id="uu-p-made-by"><summary><span class="uu-lights" data-item="unity-unicorn-made-by-tool-panel"></span>unity-unicorn-made-by-tool-panel<span class="uu-what">who made each tool: us, or somebody else</span></summary>
   <p class="uu-note" id="uu-made-summary"></p>
   <h4>Made by us (Astra with an AI assistant)</h4><div id="uu-made-ours"></div>
   <h4>Made by others (programs and packages Unity Unicorn uses)</h4><ul class="uu-items" id="uu-made-others"></ul>
   <p class="uu-note">"Made with" comes from the commit that added the tool or a repo's credit line; "not recorded" means none names the assistant. The list is <code>docs/made-by-20261019.json</code>.</p>
 </details>
 
-<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-panel"></span>unity-unicorn-L2-panel<span class="uu-what">what the pet program does by itself</span></summary>
+<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-tool-panel"></span>unity-unicorn-L2-tool-panel<span class="uu-what">what the pet program does by itself</span></summary>
   <h4>Your tricks</h4><ul class="uu-items" id="uu-tricks"></ul>
   <p class="uu-note">vcc-package-manager and vrchat-avatar-upload are tricks to write, not tools (Astra, 2026-10-19): they have no code, only written steps. Their catalog cards stay in the tool library below, marked Trick to write, so a real run can still be recorded.</p>
   <h4>Schedule</h4><ul class="uu-items" id="uu-schedule"></ul>
   <h4>Pets it talks to</h4><div class="uu-conns" id="uu-conns"></div>
 </details>
 
-<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L3-panel"></span>unity-unicorn-L3-panel<span class="uu-what">agentic harness and your AI model</span></summary>
+<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L3-tool-panel"></span>unity-unicorn-L3-tool-panel<span class="uu-what">agentic harness and your AI model</span></summary>
   <ul class="uu-items" id="uu-l3"></ul>
 </details>
 
-<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L4-panel"></span>unity-unicorn-L4-panel<span class="uu-what">you, the verified human</span></summary>
+<details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L4-tool-panel"></span>unity-unicorn-L4-tool-panel<span class="uu-what">you, the verified human</span></summary>
   <ul class="uu-items" id="uu-l4"></ul>
 </details>
 
@@ -132,11 +132,11 @@
   <button type="button" class="uu-side-tab" role="tab" id="uu-tab-world" data-side="world" aria-controls="uu-side-world" aria-selected="false" tabindex="-1">World tools <b id="uu-world-count"></b></button>
 </div>
 <div class="uu-side" id="uu-side-avatar" data-side="avatar" role="tabpanel" aria-labelledby="uu-tab-avatar">
-<p class="uu-side-lede">For avatars: fit them, colour them, map their menus and add effects. Click a panel to open it.</p>
-<details class="uu-panel" id="uu-p-avatar-build"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-build-panel"></span>unity-unicorn-avatar-build-panel<span class="uu-what">build and fit avatars: face tracking and the neck seam <span class="uu-count" id="uu-n-avatar-build"></span></span></summary>
+<p class="uu-side-lede">For avatars: fit them, colour them, map their menus and add effects. Click a tool panel to open it.</p>
+<details class="uu-panel" id="uu-p-avatar-build"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-build-tool-panel"></span>unity-unicorn-avatar-build-tool-panel<span class="uu-what">build and fit avatars: face tracking and the neck seam <span class="uu-count" id="uu-n-avatar-build"></span></span></summary>
   <ul class="uu-items" id="uu-avatar-build"></ul>
 </details>
-<details class="uu-panel" id="uu-matcap"><summary><span class="uu-lights" data-item="unity-unicorn-matcap-panel"></span>unity-unicorn-matcap-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
+<details class="uu-panel" id="uu-matcap"><summary><span class="uu-lights" data-item="unity-unicorn-matcap-tool-panel"></span>unity-unicorn-matcap-tool-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
 <style>
 #uu-matcap{--mc-case:#26272b;--mc-well:#1b1c20;--mc-pink:#ff3cc7;--mc-cyan:#2ef2ff}
 #uu-matcap .mc-case{background:linear-gradient(160deg,#2c2d33,var(--mc-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #ff3cc722,0 0 30px #2ef2ff14}
@@ -187,9 +187,9 @@
     <label class="mc-btn">Load my matcaps <input type="file" id="mc-files" accept="image/*" multiple hidden></label>
     <span class="uu-note" style="margin:0">Your own files stay in this browser tab; nothing is uploaded.</span>
   </div>
-  <p class="uu-note">These 48 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
+  <p class="uu-note">These 54 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
 </details>
-<details class="uu-panel" id="uu-menumap"><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
+<details class="uu-panel" id="uu-menumap"><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-tool-panel"></span>unity-unicorn-menu-map-tool-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
 <style>
 #uu-menumap{--mm-case:#26272b;--mm-well:#1b1c20;--mm-pink:#ff3cc7;--mm-cyan:#2ef2ff;--mm-lime:#b6ff3c;--mm-red:#ff4d5e}
 #uu-menumap .mm-case{background:linear-gradient(160deg,#2c2d33,var(--mm-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #2ef2ff1c,0 0 30px #ff3cc714}
@@ -253,23 +253,23 @@
   </div>
   <p class="uu-note">In Unity, select the avatar and run <b>Tools › Unity Unicorn › menu-map</b>: it builds a throwaway test copy (VRCFury and Modular Avatar included), writes <code>UnityUnicornReports/menu-map-&lt;avatar&gt;-&lt;time&gt;.json</code> and deletes the copy. Load that file here.</p>
 </details>
-<details class="uu-panel" id="uu-p-avatar-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-sparkles-panel"></span>unity-unicorn-avatar-sparkles-panel<span class="uu-what">avatar sparkles: sparks on hands and feet, sparkle bending, stars and RGB fans (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-sparkles"></span></span></summary>
+<details class="uu-panel" id="uu-p-avatar-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-sparkles-tool-panel"></span>unity-unicorn-avatar-sparkles-tool-panel<span class="uu-what">avatar sparkles: sparks on hands and feet, sparkle bending, stars and RGB fans (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-sparkles"></span></span></summary>
   <ul class="uu-items" id="uu-avatar-sparkles"></ul>
 </details>
-<details class="uu-panel" id="uu-p-avatar-effects"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-effects-panel"></span>unity-unicorn-avatar-effects-panel<span class="uu-what">avatar effects and add-ons: bending, wings, bows, gold, chains, hair and spring joints (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-effects"></span></span></summary>
+<details class="uu-panel" id="uu-p-avatar-effects"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-effects-tool-panel"></span>unity-unicorn-avatar-effects-tool-panel<span class="uu-what">avatar effects and add-ons: bending, wings, bows, gold, chains, hair and spring joints (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-effects"></span></span></summary>
   <ul class="uu-items" id="uu-avatar-effects"></ul>
 </details>
-<details class="uu-panel" id="uu-p-avatar-records"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-records-panel"></span>unity-unicorn-avatar-records-panel<span class="uu-what">where each avatar asset came from (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-records"></span></span></summary>
+<details class="uu-panel" id="uu-p-avatar-records"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-records-tool-panel"></span>unity-unicorn-avatar-records-tool-panel<span class="uu-what">where each avatar asset came from (PR #1, not merged) <span class="uu-count" id="uu-n-avatar-records"></span></span></summary>
   <ul class="uu-items" id="uu-avatar-records"></ul>
 </details>
-<details class="uu-panel" id="uu-p-avatar-assets"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-assets-panel"></span>unity-unicorn-avatar-assets-panel<span class="uu-what">avatar assets we created, by type</span></summary>
+<details class="uu-panel" id="uu-p-avatar-assets"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-assets-tool-panel"></span>unity-unicorn-avatar-assets-tool-panel<span class="uu-what">avatar assets we created, by type</span></summary>
   <div id="uu-assets-avatar"></div>
   <p class="uu-note">Every avatar asset we make goes here with where it is used. The list is <code>docs/assets-we-created-20261019.json</code>.</p>
 </details>
 </div>
 <div class="uu-side" id="uu-side-world" data-side="world" role="tabpanel" aria-labelledby="uu-tab-world" hidden>
-<p class="uu-side-lede">For worlds: Piranesi House, Astra's Infinite Pole, Liminal Doors and the next one. Click a panel to open it.</p>
-<details class="uu-panel" id="uu-vine"><summary><span class="uu-lights" data-item="unity-unicorn-vine-spawn-panel"></span>unity-unicorn-vine-spawn-panel<span class="uu-what">vine-spawn-with-trumpet-flowers: vines with trumpet flowers in up to 10 colours, opened in a world's Unity</span></summary>
+<p class="uu-side-lede">For worlds: Piranesi House, Astra's Infinite Pole, Liminal Doors and the next one. Click a tool panel to open it.</p>
+<details class="uu-panel" id="uu-vine"><summary><span class="uu-lights" data-item="unity-unicorn-vine-spawn-tool-panel"></span>unity-unicorn-vine-spawn-tool-panel<span class="uu-what">vine-spawn-with-trumpet-flowers: vines with trumpet flowers in up to 10 colours, opened in a world's Unity</span></summary>
 <style>
 #uu-vine{--vn-case:#26272b;--vn-well:#1b1c20;--vn-pink:#ff3cc7;--vn-cyan:#2ef2ff}
 #uu-vine .vn-case{background:linear-gradient(160deg,#2c2d33,var(--vn-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #00000040,0 10px 30px #00000055}
@@ -330,25 +330,25 @@
   </div>
   <p class="uu-note">Built on vine-bloomer (the Blender ivy mantle of Piranesi House). This one grows single vines in Unity over the objects you pick, with leaves, buds and five-lobed trumpet flowers, and its own Unity Stable/Vine Bloom shader. Your colours and world stay in this browser.</p>
 </details>
-<details class="uu-panel" id="uu-p-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-world-sparkles-panel"></span>unity-unicorn-world-sparkles-panel<span class="uu-what">world sparkle tools: every sparkle, glitter and mote used in the three worlds <span class="uu-count" id="uu-n-sparkles"></span></span></summary>
+<details class="uu-panel" id="uu-p-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-world-sparkles-tool-panel"></span>unity-unicorn-world-sparkles-tool-panel<span class="uu-what">world sparkle tools: every sparkle, glitter and mote used in the three worlds <span class="uu-count" id="uu-n-sparkles"></span></span></summary>
   <h4>Liminal Doors · 11</h4><ul class="uu-items" id="uu-sparkle-liminal-doors"></ul>
   <h4>Astra's Infinite Pole · 13</h4><ul class="uu-items" id="uu-sparkle-astras-infinite-pole"></ul>
   <h4>Piranesi House · 3</h4><ul class="uu-items" id="uu-sparkle-piranesi-house"></ul>
   <p class="uu-note">Each sparkle links to its source on GitHub: Liminal Doors' are on branch claude/fresh-start-20261018 (liminal-doors PR #2, not merged yet), Astra's Infinite Pole's on its main and Piranesi House's on its master. The same list is in docs/world-sparkle-tools-20261019.json, for other pages to read.</p>
 </details>
-<details class="uu-panel" id="uu-p-every-world"><summary><span class="uu-lights" data-item="unity-unicorn-every-world-panel"></span>unity-unicorn-every-world-panel<span class="uu-what">for every world: spawn, check, test, bake, props, assets and shaders <span class="uu-count" id="uu-n-every-world"></span></span></summary>
+<details class="uu-panel" id="uu-p-every-world"><summary><span class="uu-lights" data-item="unity-unicorn-every-world-tool-panel"></span>unity-unicorn-every-world-tool-panel<span class="uu-what">for every world: spawn, check, test, bake, props, assets and shaders <span class="uu-count" id="uu-n-every-world"></span></span></summary>
   <ul class="uu-items" id="uu-every-world"></ul>
 </details>
-<details class="uu-panel" id="uu-p-piranesi-house"><summary><span class="uu-lights" data-item="unity-unicorn-piranesi-house-panel"></span>unity-unicorn-piranesi-house-panel<span class="uu-what">made for Piranesi House: the house builder, masonry, open arches, tides, ivy and marble <span class="uu-count" id="uu-n-piranesi-house"></span></span></summary>
+<details class="uu-panel" id="uu-p-piranesi-house"><summary><span class="uu-lights" data-item="unity-unicorn-piranesi-house-tool-panel"></span>unity-unicorn-piranesi-house-tool-panel<span class="uu-what">made for Piranesi House: the house builder, masonry, open arches, tides, ivy and marble <span class="uu-count" id="uu-n-piranesi-house"></span></span></summary>
   <ul class="uu-items" id="uu-world-piranesi-house"></ul>
 </details>
-<details class="uu-panel" id="uu-p-astras-infinite-pole"><summary><span class="uu-lights" data-item="unity-unicorn-infinite-pole-panel"></span>unity-unicorn-infinite-pole-panel<span class="uu-what">made for Astra's Infinite Pole: clouds you can stand on, pickups and photos <span class="uu-count" id="uu-n-astras-infinite-pole"></span></span></summary>
+<details class="uu-panel" id="uu-p-astras-infinite-pole"><summary><span class="uu-lights" data-item="unity-unicorn-infinite-pole-tool-panel"></span>unity-unicorn-infinite-pole-tool-panel<span class="uu-what">made for Astra's Infinite Pole: clouds you can stand on, pickups and photos <span class="uu-count" id="uu-n-astras-infinite-pole"></span></span></summary>
   <ul class="uu-items" id="uu-world-astras-infinite-pole"></ul>
 </details>
-<details class="uu-panel" id="uu-p-liminal-doors"><summary><span class="uu-lights" data-item="unity-unicorn-liminal-doors-panel"></span>unity-unicorn-liminal-doors-panel<span class="uu-what">made for Liminal Doors: concept art, the stops, the booth, doors, grass and the pool <span class="uu-count" id="uu-n-liminal-doors"></span></span></summary>
+<details class="uu-panel" id="uu-p-liminal-doors"><summary><span class="uu-lights" data-item="unity-unicorn-liminal-doors-tool-panel"></span>unity-unicorn-liminal-doors-tool-panel<span class="uu-what">made for Liminal Doors: concept art, the stops, the booth, doors, grass and the pool <span class="uu-count" id="uu-n-liminal-doors"></span></span></summary>
   <ul class="uu-items" id="uu-world-liminal-doors"></ul>
 </details>
-<details class="uu-panel" id="uu-p-world-assets"><summary><span class="uu-lights" data-item="unity-unicorn-world-assets-panel"></span>unity-unicorn-world-assets-panel<span class="uu-what">world assets we created, by type</span></summary>
+<details class="uu-panel" id="uu-p-world-assets"><summary><span class="uu-lights" data-item="unity-unicorn-world-assets-tool-panel"></span>unity-unicorn-world-assets-tool-panel<span class="uu-what">world assets we created, by type</span></summary>
   <div id="uu-assets-world"></div>
   <p class="uu-note">One copy of each finished asset lives in <a href="https://github.com/findastra/unity-assets-library">unity-assets-library</a>, exported by unity-asset-creator; each card says where it is used. The list is <code>docs/assets-we-created-20261019.json</code>.</p>
 </details>
@@ -397,7 +397,7 @@
 <script>
 (()=>{
 const ART="https://raw.githubusercontent.com/findastra/astras-pet-os/main/art/frames/unity-unicorn/";
-const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison.","every-world"],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes.","every-world"],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes.","astras-infinite-pole"],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline.","astras-infinite-pole"],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes.","astras-infinite-pole"],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets.","astras-infinite-pole"],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks.","astras-infinite-pole"],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement.","astras-infinite-pole"],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them.","astras-infinite-pole"],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow.","every-world"],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has.","avatar-build"],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash.","every-world"],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene.","piranesi-house"],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs.","piranesi-house"],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry.","piranesi-house"],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams.","piranesi-house"],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity.","piranesi-house"],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials.","avatar-build"],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages.","piranesi-house"],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions.","piranesi-house"],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene.","every-world"],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders.","every-world"],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set.","every-world"],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting.","every-world"],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file).","every-world"],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials.","piranesi-house"],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings.","every-world"],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor.","piranesi-house"],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning.","piranesi-house"],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage.","piranesi-house"],["world-spawn-tool","Generator","Spawn a new VRChat world.","every-world"],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets.","every-world"],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page panel and Unity window).","own-avatar"],["menu-map","Audit","An avatar's built radial menu to click through, with the 256-bit synced parameter budget and what each add-on costs (page panel and Unity export).","own-avatar"],["vine-spawn-with-trumpet-flowers","Generator","Vines with trumpet flowers in up to 10 colours, grown over the objects you select in Unity; the page panel sends a world its colours (page panel and Unity window).","own-world"],["unity-asset-creator","Workflow","Walk a world asset through the researched 12-step checklist, then export each version and publish it to unity-assets-library by pull request.","every-world"],["unity-assets-library","Library","The public library of finished world assets (findastra/unity-assets-library): every asset and version, indexed in library.json.","every-world"],["shaders-shop","Workflow","Install shaders for worlds after showing their files, sources and licences, and track which shaders each world uses.","every-world"]];
+const TOOLS_MAIN=[["asset-contact-sheet","Preview","Render a compact visual inventory of supported meshes and materials for comparison.","every-world"],["button-check","Audit","Inspect supported buttons and controls for missing targets, incorrect event wiring or unexpected state changes.","every-world"],["cloud-collider-audit","Audit","Inspect the invisible support slabs beneath cloud surfaces and describe proposed changes.","astras-infinite-pole"],["cloud-collider-validation","Audit","Check rebuilt cloud support slabs against the visible top surface and outer outline.","astras-infinite-pole"],["cloud-lounge-smoothing","Editor","Smooth grouped cloud puffs into more continuous lounge, furniture and platform shapes.","astras-infinite-pole"],["cloud-mesh-generator","Generator","Build connected cloud shapes from overlapping lobes, with controlled silhouettes and mesh budgets.","astras-infinite-pole"],["cloud-physics-check","Audit","Probe cloud tops, undersides and side walls using the available physics checks.","astras-infinite-pole"],["cloud-sea-fusion","Generator","Join groups of cloud billows into continuous cloud-sea forms while preserving their intended placement.","astras-infinite-pole"],["cloud-survey","Audit","Inventory cloud objects, mesh references and their place in the scene before changing them.","astras-infinite-pole"],["desktop-world-test","Build","Build the current world for a local VRChat desktop test using its existing workflow.","every-world"],["face-transfer","Workflow","Keep a private log of each avatar's face tracking build: which VRCFT OSC standard its parameters use, which module drives them, and which blendshapes its face FBX has.","avatar-build"],["foreground-tool-recorder","Utility","Run a supported synchronous tool and record its actual completion time, exit result and optional output hash.","every-world"],["house-scene-builder","Editor","Assemble generated architecture, materials, environmental systems and interactions into the procedural house scene.","piranesi-house"],["marble-carver","Generator","Turn scans of real museum statues into weathered marble figures in Blender, adding sea wear, salt streaks, tide stains and lichen, then baking albedo and roughness onto the scan's own UVs.","piranesi-house"],["masonry-regeneration","Generator","Rebuild the existing procedural masonry modules with coherent surface coordinates and open-arch geometry.","piranesi-house"],["masonry-structural-audit","Audit","Check generated masonry for conflicting brick directions, duplicate faces, broken openings and texture seams.","piranesi-house"],["masonry-unity-refresh","Editor","Refresh existing masonry mesh assets and their authored material mapping in Unity.","piranesi-house"],["neck-blender","Generator","Hide the seam where a separate head mesh meets the body: paint the face's skin colour into a copy of the body texture around the neck, and fade matcap and rim out at the line on both materials.","avatar-build"],["no-windows-audit-tool","Audit","Inspect architectural meshes for glazing, bars, obstructed arches and raised sills that interrupt tidal passages.","piranesi-house"],["no-windows-scene-refresh","Editor","Apply the open-arch repair to the saved Unity scene and remove obsolete window-seat interactions.","piranesi-house"],["occlusion-bake","Build","Bake visibility data that helps Unity avoid drawing hidden parts of the scene.","every-world"],["prop-decomposer","Audit","Take a real reference prop apart in Blender: its parts, true sizes, soft-edge widths and material zones, with hero, side and exploded renders.","every-world"],["realistic-prop-restyle","Generator","Restyle a CC0 reference prop for a world by mask: shift its colours while keeping scratches and grime, paint out brand marks in every map, decimate to budget and export a Unity Standard texture set.","every-world"],["reflection-probe-bake","Build","Refresh the scene reflection probes after changes that affect nearby geometry or lighting.","every-world"],["run-unity-tool","Utility","The runner that starts a supported tool and records its real run (scripts/run-unity-tool-20261011.py; no catalog file).","every-world"],["scene-preview-render","Preview","Assemble a supported generated layout and render an offline overview of its architecture and materials.","piranesi-house"],["scene-yaml-inspection","Audit","Read supported serialized Unity scene data to inspect object references, transforms and saved component settings.","every-world"],["time-season-tide-preview","Preview","Preview time of day, seasonal effects and tide height in the Unity editor.","piranesi-house"],["vine-bloomer","Generator","Render a tileable ivy mantle in Blender from scanned leaves, with normals, occlusion and a per-leaf rank for gradual thinning.","piranesi-house"],["wall-texture-rebuild","Generator","Rebuild the wall color, surface-mask and normal textures with complete repeating coverage.","piranesi-house"],["world-spawn-tool","Generator","Spawn a new VRChat world.","every-world"],["world-validator","Audit","Inspect supported world references, missing scripts, walkable surfaces and configured content budgets.","every-world"],["matcap-palette","Editor","Every matcap as a round pan, like a makeup palette: try one on a sphere and put it on a material (page tool panel and Unity window).","own-avatar"],["menu-map","Audit","An avatar's built radial menu to click through, with the 256-bit synced parameter budget and what each add-on costs (page tool panel and Unity export).","own-avatar"],["vine-spawn-with-trumpet-flowers","Generator","Vines with trumpet flowers in up to 10 colours, grown over the objects you select in Unity; the page's tool panel sends a world its colours (page tool panel and Unity window).","own-world"],["unity-asset-creator","Workflow","Walk a world asset through the researched 12-step checklist, then export each version and publish it to unity-assets-library by pull request.","every-world"],["unity-assets-library","Library","The public library of finished world assets (findastra/unity-assets-library): every asset and version, indexed in library.json.","every-world"],["shaders-shop","Workflow","Install shaders for worlds after showing their files, sources and licences, and track which shaders each world uses.","every-world"]];
 const UNMERGED=[
  ["sparkle-strapper","PR #1","Phawksea's Sparks on hands and feet, with separate controls and a continuous RGB option.",true,"avatar-sparkles"],
  ["fan-fitter","PR #1","Every supplied stock fan colour on both hands, one active per hand, and the RGB fan fix.",true,"avatar-sparkles"],
@@ -435,13 +435,15 @@ const L3=[["Seat","not shown live yet: the presence link is not built. When a ch
 const L4=[["Approval waiting","merge unity-unicorn PR #1 (sparkle-strapper, fan-fitter and the other avatar effect tools)"],["Approval waiting","merge unity-unicorn PR #3 (glass-animal-tool, bubble-chair-blower)"],["Always yours","the VRChat copyright agreement at upload"],["Grants","none recorded yet (Iron Gates is planned)"],["Keys","none: no agent key system yet (API Fairy shows them once built)"],["Requires maintenance","every item you mark yellow on this page"],["Pet passport","pedigree: Astra's PetOS · stamps: v0.3.0-20261011 source release · vaccination card: none · vet records: none"]];
 const MOODS=[["alarmed","an active alarm or a security breach"],["sick","too many broken tools, or a broken pet program"],["curious","an agent needs your OK or input"],["worried","missed runs or checks, failed audits, token overuse"],["happy","new work pushed, a suggestion, or work ready"],["sad","not opened in more than two weeks"],["idle","open, and you haven't interacted lately"],["blink","open, and you've interacted lately"],["sleep","running in the background"]];
 
-// The storage key keeps its old name, so lights and added items saved before the panels rename stay.
+// The storage key keeps its old name, so lights and added items saved before the panels and tool panels renames stay.
 const KEY="astra-pet-desk:unity-unicorn:modules:1", BL="unity-unicorn-backlog";
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const st=load(KEY,{lights:{},added:[],lastOpened:null});
-// Lights saved under the old labels (unity-unicorn-L1-module to -L4-module, until 2026-10-19) move to the panel labels.
-["L1","L2","L3","L4"].forEach(l=>{const o="unity-unicorn-"+l+"-module",n="unity-unicorn-"+l+"-panel";if(st.lights&&st.lights[o]){if(!st.lights[n])st.lights[n]=st.lights[o];delete st.lights[o]}});
+// Lights saved under older labels move to the tool panel labels: unity-unicorn-L1-module to -L4-module (until 2026-10-19),
+// then unity-unicorn-L1-panel and the other -panel labels (until the tool panels, later the same day). A newer label wins.
+const RENAMED=["L1","L2","L3","L4","avatar-build","matcap","menu-map","avatar-sparkles","avatar-effects","avatar-records","vine-spawn","world-sparkles","every-world","piranesi-house","infinite-pole","liminal-doors","made-by","avatar-assets","world-assets"];
+RENAMED.forEach(p=>{const n="unity-unicorn-"+p+"-tool-panel";["-panel","-module"].forEach(s=>{const o="unity-unicorn-"+p+s;if(st.lights&&st.lights[o]){if(!st.lights[n])st.lights[n]=st.lights[o];delete st.lights[o]}})});
 const $=id=>document.getElementById(id);
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
 function lights(item){
@@ -503,7 +505,7 @@ function renderAssets(){const A=ASSETS_WE_CREATED;["avatar","world"].forEach(sid
       grid.append(c)});box.append(grid)})})}
 function renderAdded(){$("uu-added").replaceChildren();if(!st.added.length){$("uu-added").append(el("li","uu-desc","Nothing yet. Add a tool or program below as you make it."));return}
   st.added.forEach(a=>{const li=el("li");li.append(lights(a.name),el("span","uu-name",a.name),el("span","uu-desc",a.desc||""));li.append(el("span","uu-tag",{tool:"your tool",program:"your program",third:"3rd party"}[a.kind]+" · added "+a.date));if(a.link&&/^https:\/\//.test(a.link)){const l=el("a",null,"link");l.href=a.link;l.rel="noopener noreferrer";l.target="_blank";li.append(l)}$("uu-added").append(li)})}
-$("uu-add").onsubmit=e=>{e.preventDefault();const a={name:$("uu-add-name").value.trim(),desc:$("uu-add-desc").value.trim(),link:$("uu-add-link").value.trim(),kind:$("uu-add-kind").value,date:today()};if(!a.name)return;st.added.push(a);save(KEY,st);addBacklog("change request","unity-unicorn-L1-panel","Added "+a.kind+" "+a.name+": "+a.desc+(a.link?" ("+a.link+")":""),[]);renderAdded();e.target.reset()};
+$("uu-add").onsubmit=e=>{e.preventDefault();const a={name:$("uu-add-name").value.trim(),desc:$("uu-add-desc").value.trim(),link:$("uu-add-link").value.trim(),kind:$("uu-add-kind").value,date:today()};if(!a.name)return;st.added.push(a);save(KEY,st);addBacklog("change request","unity-unicorn-L1-tool-panel","Added "+a.kind+" "+a.name+": "+a.desc+(a.link?" ("+a.link+")":""),[]);renderAdded();e.target.reset()};
 
 function today(){return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver"}).format(new Date())}
 function backlog(){return load(BL,{schema:"unity-unicorn-backlog/v1",entries:[]})}
@@ -515,7 +517,7 @@ $("uu-note-file").onchange=async e=>{files=[];for(const f of e.target.files){if(
 $("uu-notes").onsubmit=e=>{e.preventDefault();const t=$("uu-note-text").value.trim();if(!t&&!files.length)return;addBacklog(files.length?"screenshot":"note","unity-unicorn-session-notes",t,files);files=[];$("uu-note-files").textContent="";e.target.reset()};
 $("uu-backlog-export").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(backlog(),null,2)],{type:"application/json"}));a.download="unity-unicorn-backlog-"+today().replace(/-/g,"")+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
 function renderStatus(){const b=backlog();const last=b.entries.length?b.entries[b.entries.length-1].created.slice(0,10):"none yet";const s=$("uu-status");s.replaceChildren();
-  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-19, V0.5.0"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
+  [["Data","Astra (this browser)"],["Last entry",last],["Updated","2026-10-19, V0.5.1"],["Seat","not shown live yet"]].forEach(([k,v])=>{const sp=el("span");sp.append(el("b",null,k+": "),document.createTextNode(v));s.append(sp)});
   const m=el("span");m.append(el("b",null,"On the map: "));const a=el("a",null,"unity-unicorn node");a.href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn";m.append(a);s.append(m)}
 $("uu-chat-open").onclick=()=>{$("uu-chat-msg").textContent="Unity Unicorn's chat bot is planned: it will ask before using your own Claude or ChatGPT account. Until then, use session notes above."};
 st.lastOpened=new Date().toISOString();save(KEY,st);
@@ -523,68 +525,84 @@ renderAdded();renderAssets();renderMadeBy();renderBacklog();renderStatus();
 })();
 </script>
 <script id="uu-matcap-recipes">
-// Matcap palette recipes (Claude Opus 5.5, 2026-10-19). Every matcap here is drawn from math, not copied from anywhere, so
-// the PNGs it makes are Astra's to use and share. One source: the page draws them, and
+// Matcap palette recipes (Claude Opus 5.5, 2026-10-19; richer second pass the same day at Astra's ask: "grandiose and
+// liminal and interesting ... really beautiful textures and not plainness"). Every matcap here is drawn from math, not
+// copied from anywhere, so the PNGs it makes are Astra's to use and share. One source: the page draws them, and
 // scripts/matcap-palette/make-matcaps-20261019.mjs reads this same block to write the PNGs for Unity.
 // x is right and y is up on the sphere, both from -1 to 1. MC.shade returns [r, g, b] from 0 to 1, or null outside the circle.
-const MC_FAMILIES = ["Metal", "Candy", "Holo", "Glass", "Toon", "Neon", "Soft", "Sparkle"];
+//
+// Layers any recipe can use on top of its model:
+//   env:     a mirror world — sky with sun, clouds and haze, a tiled floor running to the horizon (liminal pools and halls)
+//   marble:  [scale, sharpness, colour, strength] veins through the surface
+//   nebula:  [scale, colourA, colourB, strength] cloudy colour drifting through the body
+//   core:    [colour, strength, power] a glow deep inside, like light caught in glass
+//   flake:   [density, amount, hue?] metallic flake glints
+//   coat:    [sharpness, strength] a second, sharper clear-coat highlight
+const MC_FAMILIES = ["Liminal", "Metal", "Candy", "Holo", "Glass", "Toon", "Neon", "Soft", "Sparkle"];
 const MC_RECIPES = [
-  // Metal: a mirror ball of a studio sky and floor, with a bright horizon line.
-  {id: "chrome", name: "Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#9aa7b8"], gnd: ["#3a3f48", "#0d0f13"], spec: [60, 0.6]},
-  {id: "black-chrome", name: "Black Chrome", family: "Metal", model: "env", sky: ["#8c93a0", "#2b2f37"], gnd: ["#111317", "#000000"], lineK: 0.9, spec: [80, 0.8]},
-  {id: "gold", name: "Gold", family: "Metal", model: "env", sky: ["#fff3c4", "#e0a63b"], gnd: ["#6b3f0c", "#1d0f02"], line: "#fff1b8", spec: [50, 0.5, 0], specC: "#fff7d6"},
-  {id: "rose-gold", name: "Rose Gold", family: "Metal", model: "env", sky: ["#ffe6dc", "#e8a08c"], gnd: ["#7a3f36", "#240f0d"], line: "#ffe3d6", spec: [50, 0.5]},
-  {id: "silver-satin", name: "Silver Satin", family: "Metal", model: "env", sky: ["#f2f4f7", "#a9b0ba"], gnd: ["#5a606a", "#24272d"], soft: 0.35, lineK: 0.25, spec: [12, 0.35]},
-  {id: "gunmetal", name: "Gunmetal", family: "Metal", model: "env", sky: ["#b9c1cc", "#5b6470"], gnd: ["#262a31", "#0b0c0f"], soft: 0.2, spec: [30, 0.45]},
-  {id: "copper", name: "Copper", family: "Metal", model: "env", sky: ["#ffd9b8", "#d0783f"], gnd: ["#5a2810", "#170803"], line: "#ffd2a8", spec: [40, 0.5]},
-  {id: "holo-chrome", name: "Holo Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#b9a7ff"], gnd: ["#47306b", "#0f0a1c"], line: "#9ff6ff", lineK: 0.9, fresTint: "#ff8ad8", fresK: 0.5, spec: [70, 0.6]},
-  // Candy: glossy coloured plastic, sweet and shiny.
-  {id: "bubblegum", name: "Bubblegum", family: "Candy", base: "#ff7ec8", shadow: "#a01a6e", spec: [40, 0.9], rimS: ["#ffd1ee", 0.5, 3]},
-  {id: "lilac-jelly", name: "Lilac Jelly", family: "Candy", base: "#b48cff", shadow: "#4b2a9a", spec: [50, 0.9], rimS: ["#f0e2ff", 0.7, 2.5], fill: 0.4},
-  {id: "peach-gloss", name: "Peach Gloss", family: "Candy", base: "#ffb08a", shadow: "#a8452a", spec: [45, 0.85], rimS: ["#fff0e0", 0.45, 3]},
-  {id: "mint-candy", name: "Mint Candy", family: "Candy", base: "#7af0c6", shadow: "#167a5c", spec: [45, 0.85], rimS: ["#e6fff6", 0.5, 3]},
-  {id: "cherry-lacquer", name: "Cherry Lacquer", family: "Candy", base: "#e01b4c", shadow: "#4a0012", spec: [90, 1.0], rimS: ["#ff9ab3", 0.35, 3]},
-  {id: "lemon-drop", name: "Lemon Drop", family: "Candy", base: "#ffe45c", shadow: "#a5791a", spec: [45, 0.8], rimS: ["#fffbe0", 0.45, 3]},
-  // Holo: thin-film colour that shifts with the angle, like opal, oil and soap bubbles.
-  {id: "opal", name: "Opal", family: "Holo", model: "film", base: "#f4f1ff", h0: 0.55, span: 0.9, sat: 0.35, filmK: 0.7, amb: 0.7, spec: [40, 0.5]},
-  {id: "oil-slick", name: "Oil Slick", family: "Holo", model: "film", base: "#14121c", h0: 0.7, span: 1.6, sat: 0.85, val: 0.9, filmK: 0.95, amb: 0.45, spec: [60, 0.6]},
-  {id: "unicorn-pearl", name: "Unicorn Pearl", family: "Holo", model: "film", base: "#fff6fb", h0: 0.85, span: 0.7, sat: 0.3, filmK: 0.8, amb: 0.75, spec: [30, 0.45]},
-  {id: "soap-bubble", name: "Soap Bubble", family: "Holo", model: "film", base: "#1c2230", h0: 0.15, span: 2.2, sat: 0.6, filmK: 1, amb: 0.35, swirl: 0.4, spec: [120, 1.0]},
-  {id: "prism", name: "Prism", family: "Holo", model: "film", base: "#ffffff", h0: 0, span: 1, swirl: 1.0, swirl2: 0.6, sat: 0.7, filmK: 0.9, amb: 0.6, spec: [80, 0.7]},
-  {id: "holo-foil", name: "Holo Foil", family: "Holo", model: "film", base: "#d9dde6", h0: 0.3, span: 1.3, swirl: 0.8, sat: 0.65, filmK: 0.9, amb: 0.65, sparkle: [26, 0.8, 0.8], sparkleHue: 1, spec: [50, 0.5]},
-  // Glass: deep colour with a bright rim, like glass and gems.
-  {id: "sapphire", name: "Sapphire Glass", family: "Glass", base: "#1d3fd6", shadow: "#020a3a", amb: 0.15, spec: [150, 1.2], rimS: ["#8fd2ff", 1.1, 2.2]},
-  {id: "amethyst", name: "Amethyst", family: "Glass", base: "#8a3fd6", shadow: "#1d0638", amb: 0.15, spec: [150, 1.2], rimS: ["#e2b8ff", 1.1, 2.2]},
-  {id: "emerald", name: "Emerald", family: "Glass", base: "#14a86b", shadow: "#002616", amb: 0.15, spec: [150, 1.2], rimS: ["#a8ffd8", 1.0, 2.2]},
-  {id: "ice", name: "Ice", family: "Glass", base: "#bfe9ff", shadow: "#3a6a8a", amb: 0.45, spec: [90, 1.0], rimS: ["#ffffff", 0.9, 1.8], fresTint: "#e8fbff", fresK: 0.4},
-  {id: "moonstone", name: "Moonstone", family: "Glass", model: "film", base: "#dfe6f2", h0: 0.58, span: 0.35, sat: 0.4, filmK: 0.55, amb: 0.6, rimS: ["#c9e4ff", 0.8, 2.4], spec: [40, 0.35]},
-  // Toon: flat bands of light, for cel-shaded looks.
-  {id: "toon-pink", name: "Toon Pink", family: "Toon", base: "#ff9ccf", shadow: "#b84d8a", toon: 2, shadowLift: 0.75, amb: 0, spec: [30, 0.9], toonSpec: 1},
-  {id: "toon-lavender", name: "Toon Lavender", family: "Toon", base: "#c4b0ff", shadow: "#7058c4", toon: 2, shadowLift: 0.8, amb: 0, spec: [30, 0.8], toonSpec: 1},
-  {id: "toon-skin", name: "Toon Skin", family: "Toon", base: "#ffe1d1", shadow: "#e09a8c", toon: 2, shadowLift: 0.9, amb: 0, rimS: ["#ffffff", 0.35, 4]},
-  {id: "toon-3-step", name: "Toon 3 Step", family: "Toon", base: "#9ad8ff", shadow: "#2f6fa8", toon: 3, shadowLift: 0.6, amb: 0, spec: [40, 0.9], toonSpec: 1},
-  {id: "anime-hair", name: "Anime Hair Sheen", family: "Toon", base: "#3a2f4a", shadow: "#120c1c", toon: 2, shadowLift: 0.7, amb: 0.1, spec: [6, 0.9], specL: [0, 0.9, 0.45], toonSpec: 1, specC: "#c8b8e8"},
+  // Liminal: mirror balls of places that feel like a dream you have been to before.
+  {id: "pink-sunset-pool", name: "Pink Sunset Pool", family: "Liminal", model: "env", sky: ["#ffd6ec", "#ff7eb6", "#7a4cc2"], sun: ["#fff1c9", 0.35, 0.25, 9, 1.2], clouds: ["#ffe9f4", 0.55, 3.2], floor: ["#9fe9ff", "#6fc8ee", "#ffffff", 6], haze: "#ffc4e1", coat: [260, 0.6]},
+  {id: "backrooms-glow", name: "Backrooms Glow", family: "Liminal", model: "env", sky: ["#f3e7a3", "#d8c66a", "#a8954a"], sun: ["#fffbe6", 0, 0.9, 30, 0.8], floor: ["#b9a55a", "#9c8a45", "#e6d58a", 9], haze: "#efe1a0", coat: [200, 0.3]},
+  {id: "dreamcore-sky", name: "Dreamcore Sky", family: "Liminal", model: "env", sky: ["#bfe6ff", "#6fb7ff", "#2a4fbf"], sun: ["#ffffff", -0.3, 0.45, 14, 1.0], clouds: ["#ffffff", 0.8, 2.6], floor: ["#e9f4ff", "#c7dcf2", "#ffffff", 5], haze: "#e8f5ff", coat: [300, 0.5]},
+  {id: "vaporwave-mall", name: "Vaporwave Mall", family: "Liminal", model: "env", sky: ["#ffb3f0", "#b06cff", "#3b1a7a"], sun: ["#ffe36b", 0, 0.12, 6, 1.4], floor: ["#2ef2ff", "#ff3cc7", "#1a1033", 7], haze: "#ff9ae6", coat: [240, 0.6]},
+  {id: "moon-pool", name: "Moon Pool", family: "Liminal", model: "env", sky: ["#3a4a8a", "#141c45", "#05071a"], sun: ["#e8f0ff", 0.4, 0.55, 60, 1.6], clouds: ["#7d8ccc", 0.35, 3.5], stars: 34, floor: ["#2b6f8f", "#174a63", "#9fe0ff", 6], haze: "#28356e", coat: [320, 0.7]},
+  {id: "endless-hallway", name: "Endless Hallway", family: "Liminal", model: "env", sky: ["#f2efe9", "#d9d3c9", "#b8b0a2"], sun: ["#ffffff", 0, 0.75, 18, 0.9], floor: ["#e8e2d6", "#cfc6b4", "#9f9584", 12], haze: "#f4f1ea", coat: [260, 0.4]},
+  {id: "aurora-lake", name: "Aurora Lake", family: "Liminal", model: "env", sky: ["#6dffd3", "#1d6b8a", "#0a1430"], aurora: ["#7dffb0", "#c46bff"], stars: 28, floor: ["#14324a", "#0d2236", "#6dffd3", 5], haze: "#1d4a6a", coat: [300, 0.7]},
+  {id: "cathedral-opal", name: "Cathedral Opal", family: "Liminal", model: "env", sky: ["#fff4fb", "#d7c2ff", "#8a6fd0"], sun: ["#ffffff", -0.2, 0.7, 12, 1.1], clouds: ["#fdeaff", 0.5, 2.2], floor: ["#f2e6ff", "#d8c6f2", "#ffd6f5", 4], haze: "#efe2ff", film: [0.75, 0.6], coat: [280, 0.6]},
+  // Metal: polished worlds, not flat gradients.
+  {id: "chrome", name: "Studio Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#c4ccd8", "#7b8698"], sun: ["#ffffff", -0.45, 0.55, 40, 1.4], floor: ["#3a3f48", "#22262d", "#5a6270", 8], haze: "#aeb7c4", coat: [400, 0.5]},
+  {id: "black-chrome", name: "Black Chrome", family: "Metal", model: "env", sky: ["#9aa2b0", "#3a3f4a", "#121418"], sun: ["#ffffff", -0.4, 0.5, 70, 1.6], floor: ["#0b0c10", "#050608", "#2c3038", 10], haze: "#2a2e36", coat: [500, 0.8]},
+  {id: "gold", name: "Molten Gold", family: "Metal", model: "env", sky: ["#fff6d1", "#f0bd52", "#8a5512"], sun: ["#fffbe9", -0.4, 0.55, 30, 1.3], clouds: ["#fff0b8", 0.35, 3], floor: ["#5e370b", "#2d1904", "#c98a2e", 7], haze: "#e8b25a", flake: [70, 0.35], coat: [400, 0.5]},
+  {id: "rose-gold", name: "Rose Gold", family: "Metal", model: "env", sky: ["#ffece4", "#efab96", "#8a4a40"], sun: ["#fff6f0", -0.4, 0.55, 30, 1.2], clouds: ["#ffe2d8", 0.35, 3], floor: ["#6b3530", "#331816", "#d88f80", 7], haze: "#eeb0a0", flake: [70, 0.3], coat: [380, 0.5]},
+  {id: "gunmetal", name: "Brushed Gunmetal", family: "Metal", model: "env", sky: ["#c6ced9", "#6a7380", "#2c3139"], sun: ["#ffffff", -0.5, 0.5, 20, 0.9], floor: ["#262a31", "#16191e", "#4b525e", 9], haze: "#7c8592", brush: 0.6, coat: [200, 0.3]},
+  {id: "holo-chrome", name: "Holo Chrome", family: "Metal", model: "env", sky: ["#ffffff", "#c9b8ff", "#5a3c9a"], sun: ["#ffffff", -0.4, 0.5, 40, 1.3], floor: ["#2a1a4a", "#120a24", "#9ff6ff", 7], haze: "#b7a2ff", film: [0.5, 0.8], coat: [400, 0.6]},
+  // Candy: glossy and deep, with a glow inside.
+  {id: "bubblegum", name: "Bubblegum", family: "Candy", base: "#ff6fc1", shadow: "#8a0f5c", core: ["#ffd1ee", 0.5, 3], spec: [60, 1.0], coat: [400, 0.8], rimS: ["#ffc2ea", 0.6, 2.5]},
+  {id: "lilac-jelly", name: "Lilac Jelly", family: "Candy", base: "#a77bff", shadow: "#3a1a8a", core: ["#f2e6ff", 0.7, 2], nebula: [2.2, "#ff8ad8", "#6fb7ff", 0.25], spec: [70, 1.0], coat: [450, 0.9], rimS: ["#f0e2ff", 0.8, 2.2]},
+  {id: "peach-gloss", name: "Peach Gloss", family: "Candy", base: "#ffa47c", shadow: "#9a3818", core: ["#fff0dc", 0.5, 3], spec: [60, 0.9], coat: [400, 0.7], rimS: ["#ffe6d0", 0.5, 2.6]},
+  {id: "mint-candy", name: "Mint Swirl", family: "Candy", base: "#6ff0c4", shadow: "#0f6a50", marble: [3.0, 6, "#ffffff", 0.75], spec: [60, 0.9], coat: [400, 0.7], rimS: ["#e6fff6", 0.5, 2.6]},
+  {id: "cherry-lacquer", name: "Cherry Lacquer", family: "Candy", base: "#d8143f", shadow: "#3a0010", core: ["#ff6a8a", 0.6, 1.6], spec: [120, 1.2], coat: [600, 1.0], rimS: ["#ff9ab3", 0.45, 2.6]},
+  {id: "lemon-drop", name: "Lemon Drop", family: "Candy", base: "#ffe04a", shadow: "#9a6a10", core: ["#fffbe0", 0.6, 2], flake: [80, 0.25], spec: [60, 0.9], coat: [400, 0.7]},
+  // Holo: thin film, opal fire and oil.
+  {id: "opal", name: "Fire Opal", family: "Holo", model: "film", base: "#f6f2ff", h0: 0.55, span: 0.9, sat: 0.45, filmK: 0.75, amb: 0.7, nebula: [3.0, "#ff8ad8", "#7dffd3", 0.45], flake: [60, 0.4, 1], spec: [50, 0.6], coat: [400, 0.6]},
+  {id: "oil-slick", name: "Oil Slick", family: "Holo", model: "film", base: "#0e0c16", h0: 0.7, span: 1.8, sat: 0.9, val: 0.95, filmK: 1, amb: 0.4, marble: [2.2, 3, "#000000", 0.35], spec: [80, 0.7], coat: [500, 0.8]},
+  {id: "unicorn-pearl", name: "Unicorn Pearl", family: "Holo", model: "film", base: "#fff6fb", h0: 0.85, span: 0.8, sat: 0.35, filmK: 0.85, amb: 0.75, nebula: [2.5, "#ffd1f2", "#c9f4ff", 0.35], spec: [40, 0.5], coat: [350, 0.6]},
+  {id: "soap-bubble", name: "Soap Bubble", family: "Holo", model: "film", base: "#141a26", h0: 0.15, span: 2.4, sat: 0.7, filmK: 1, amb: 0.3, swirl: 0.6, marble: [1.6, 2, "#ffffff", 0.2], spec: [160, 1.2], coat: [700, 1.0]},
+  {id: "prism", name: "Prism", family: "Holo", model: "film", base: "#ffffff", h0: 0, span: 1.2, swirl: 1.2, swirl2: 0.7, sat: 0.75, filmK: 0.95, amb: 0.6, flake: [50, 0.5, 1], spec: [90, 0.8], coat: [500, 0.7]},
+  {id: "holo-foil", name: "Holo Foil", family: "Holo", model: "film", base: "#d9dde6", h0: 0.3, span: 1.4, swirl: 0.9, sat: 0.7, filmK: 0.95, amb: 0.65, flake: [90, 0.9, 1], brush: 0.5, spec: [60, 0.6], coat: [400, 0.5]},
+  // Glass: light caught inside.
+  {id: "sapphire", name: "Sapphire Depths", family: "Glass", base: "#1d3fd6", shadow: "#020a3a", amb: 0.1, core: ["#6fd6ff", 0.4, 1.4], nebula: [2.6, "#7d5bff", "#2ef2ff", 0.35], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#9fdcff", 1.2, 2.0]},
+  {id: "amethyst", name: "Amethyst Geode", family: "Glass", base: "#7a2fd0", shadow: "#16042e", amb: 0.1, core: ["#ffb8ff", 0.45, 1.5], marble: [4.0, 5, "#f0d0ff", 0.4], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#e2b8ff", 1.1, 2.0]},
+  {id: "emerald", name: "Emerald Pool", family: "Glass", base: "#0f9e66", shadow: "#00200f", amb: 0.1, core: ["#b8ffd8", 0.35, 1.5], nebula: [2.4, "#2ef2ff", "#b6ff2e", 0.3], spec: [160, 1.3], coat: [700, 1.0], rimS: ["#a8ffd8", 1.0, 2.0]},
+  {id: "ice", name: "Glacier Ice", family: "Glass", base: "#8fcdf0", shadow: "#1f4a6a", amb: 0.3, marble: [3.5, 7, "#ffffff", 0.55], core: ["#ffffff", 0.15, 2], spec: [120, 1.1], coat: [600, 0.9], rimS: ["#ffffff", 0.9, 1.8]},
+  {id: "moonstone", name: "Moonstone", family: "Glass", model: "film", base: "#c4cfe2", h0: 0.58, span: 0.4, sat: 0.45, filmK: 0.6, amb: 0.6, core: ["#a8d4ff", 0.25, 1.5], nebula: [2.0, "#c9e4ff", "#ffffff", 0.35], rimS: ["#c9e4ff", 0.9, 2.2], spec: [50, 0.4], coat: [400, 0.6]},
+  // Toon: clean bands, with a little style.
+  {id: "toon-pink", name: "Toon Pink", family: "Toon", base: "#ff9ccf", shadow: "#b84d8a", toon: 2, shadowLift: 0.75, amb: 0, spec: [30, 0.9], toonSpec: 1, rimS: ["#ffe0f2", 0.9, 5]},
+  {id: "toon-lavender", name: "Toon Lavender", family: "Toon", base: "#c4b0ff", shadow: "#6a4fc0", toon: 2, shadowLift: 0.8, amb: 0, spec: [30, 0.8], toonSpec: 1, rimS: ["#ffffff", 0.8, 5]},
+  {id: "toon-skin", name: "Toon Skin", family: "Toon", base: "#ffe1d1", shadow: "#e09a8c", toon: 2, shadowLift: 0.9, amb: 0, rimS: ["#ff9aa6", 0.5, 4]},
+  {id: "toon-3-step", name: "Toon 3 Step", family: "Toon", base: "#9ad8ff", shadow: "#2f6fa8", toon: 3, shadowLift: 0.6, amb: 0, spec: [40, 0.9], toonSpec: 1, rimS: ["#ffffff", 0.7, 5]},
+  {id: "anime-hair", name: "Anime Hair Sheen", family: "Toon", base: "#3a2f4a", shadow: "#120c1c", toon: 2, shadowLift: 0.7, amb: 0.1, spec: [6, 0.9], specL: [0, 0.9, 0.45], toonSpec: 1, specC: "#c8b8e8", brush: 0.4},
   {id: "toon-ink", name: "Toon Ink", family: "Toon", base: "#f4f4f6", shadow: "#26272b", toon: 2, shadowLift: 0.1, amb: 0, rimS: ["#26272b", 2.0, 6]},
-  // Neon: graphite with a glowing edge (Astra's gray with neon accents).
-  {id: "neon-pink", name: "Neon Pink Rim", family: "Neon", model: "neon", rim: "#ff3cc7", spec: [60, 0.4]},
-  {id: "neon-cyan", name: "Neon Cyan Rim", family: "Neon", model: "neon", rim: "#2ef2ff", spec: [60, 0.4]},
-  {id: "neon-lime", name: "Neon Lime Rim", family: "Neon", model: "neon", rim: "#b6ff2e", spec: [60, 0.4]},
-  {id: "neon-violet", name: "Neon Violet Rim", family: "Neon", model: "neon", rim: "#a35bff", spec: [60, 0.4]},
-  {id: "synthwave", name: "Synthwave", family: "Neon", model: "neon", rim: "#ff3cc7", rim2: "#2ef2ff", splitY: 1, rimK: 1.6, spec: [60, 0.4]},
-  {id: "plasma", name: "Plasma", family: "Neon", model: "neon", base: "#1b1030", rim: "#ff5c3c", rim2: "#a35bff", rimK: 1.8, rimP: 1.6, spec: [40, 0.5], specC: "#ffd0f0"},
+  // Neon: graphite with glowing edges (Astra's gray with neon accents), now with depth inside.
+  {id: "neon-pink", name: "Neon Pink Rim", family: "Neon", model: "neon", rim: "#ff3cc7", nebula: [2.4, "#3a1030", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-cyan", name: "Neon Cyan Rim", family: "Neon", model: "neon", rim: "#2ef2ff", nebula: [2.4, "#0a2a33", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-lime", name: "Neon Lime Rim", family: "Neon", model: "neon", rim: "#b6ff2e", nebula: [2.4, "#1f330a", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "neon-violet", name: "Neon Violet Rim", family: "Neon", model: "neon", rim: "#a35bff", nebula: [2.4, "#22103a", "#26272b", 0.6], spec: [60, 0.4], coat: [500, 0.5]},
+  {id: "synthwave", name: "Synthwave Grid", family: "Neon", model: "env", sky: ["#ff3cc7", "#6a1f9a", "#12061f"], sun: ["#ffd23c", 0, 0.12, 5, 1.6], floor: ["#12061f", "#08020f", "#2ef2ff", 8], haze: "#ff3cc7", coat: [400, 0.6]},
+  {id: "plasma", name: "Plasma Core", family: "Neon", model: "neon", base: "#1b1030", rim: "#ff5c3c", rim2: "#a35bff", rimK: 1.8, rimP: 1.6, core: ["#ff8ad8", 0.9, 2.5], nebula: [3, "#ff5c3c", "#a35bff", 0.5], spec: [40, 0.5], specC: "#ffd0f0"},
   // Soft: skin, satin, velvet and latex.
-  {id: "porcelain", name: "Porcelain", family: "Soft", base: "#f7f1ee", shadow: "#b8a39c", amb: 0.35, spec: [25, 0.35], rimS: ["#ffffff", 0.25, 3]},
-  {id: "blush", name: "Blush", family: "Soft", base: "#ffc9c4", shadow: "#c46a6a", amb: 0.3, fill: 0.35, rimS: ["#ff9aa6", 0.4, 2.5]},
-  {id: "warm-skin", name: "Warm Skin", family: "Soft", base: "#e6a983", shadow: "#8a4a33", amb: 0.3, spec: [20, 0.2], rimS: ["#ffd2b8", 0.3, 3]},
-  {id: "velvet", name: "Velvet", family: "Soft", base: "#6a1b5a", shadow: "#1c0418", amb: 0.2, rimS: ["#ff9ae6", 1.2, 1.6]},
-  {id: "latex", name: "Latex Black", family: "Soft", base: "#141418", shadow: "#000000", amb: 0.2, spec: [140, 1.4], rimS: ["#6b6f7c", 0.6, 3]},
-  {id: "satin", name: "Satin", family: "Soft", base: "#d7cdf0", shadow: "#6b5a9a", amb: 0.35, spec: [8, 0.5], specL: [0.2, 0.9, 0.4], rimS: ["#ffffff", 0.3, 3]},
-  // Sparkle: glitter and stars.
-  {id: "glitter-pink", name: "Glitter Pink", family: "Sparkle", base: "#ff5fb8", shadow: "#6a0f45", amb: 0.25, spec: [40, 0.5], sparkle: [34, 0.72, 1.4], sparkleHue: 0},
-  {id: "glitter-rainbow", name: "Glitter Rainbow", family: "Sparkle", base: "#3b2a5a", shadow: "#0c0618", amb: 0.25, spec: [40, 0.5], sparkle: [34, 0.7, 1.6], sparkleHue: 1},
-  {id: "galaxy", name: "Galaxy", family: "Sparkle", model: "galaxy", n1: "#ff3cc7", n2: "#2ef2ff", stars: 20},
-  {id: "starlight", name: "Starlight Silver", family: "Sparkle", model: "env", sky: ["#ffffff", "#aab4c8"], gnd: ["#2c3240", "#080a10"], soft: 0.25, sparkle: [28, 0.82, 1.2], spec: [40, 0.4]},
-  {id: "sparkle-bending", name: "Sparkle Bending", family: "Sparkle", model: "galaxy", base: "#24123d", n1: "#c46bff", n2: "#4fd7ff", rim: "#ff8ad8", stars: 26}
+  {id: "porcelain", name: "Porcelain", family: "Soft", base: "#f7f1ee", shadow: "#b8a39c", amb: 0.35, core: ["#fff8f4", 0.3, 2], spec: [25, 0.35], coat: [500, 0.5], rimS: ["#ffffff", 0.25, 3]},
+  {id: "blush", name: "Blush", family: "Soft", base: "#ffc9c4", shadow: "#c46a6a", amb: 0.3, fill: 0.35, core: ["#ff9aa6", 0.4, 1.5], rimS: ["#ff9aa6", 0.5, 2.5]},
+  {id: "warm-skin", name: "Warm Skin", family: "Soft", base: "#e6a983", shadow: "#8a4a33", amb: 0.3, core: ["#ff9a7a", 0.45, 1.4], spec: [20, 0.2], rimS: ["#ffd2b8", 0.3, 3]},
+  {id: "velvet", name: "Crushed Velvet", family: "Soft", base: "#6a1b5a", shadow: "#1c0418", amb: 0.2, nebula: [5, "#2a0624", "#b03a96", 0.45], rimS: ["#ff9ae6", 1.3, 1.6]},
+  {id: "latex", name: "Latex Black", family: "Soft", base: "#141418", shadow: "#000000", amb: 0.2, spec: [160, 1.5], coat: [800, 1.0], rimS: ["#6b6f7c", 0.6, 3]},
+  {id: "satin", name: "Satin", family: "Soft", base: "#d7cdf0", shadow: "#6b5a9a", amb: 0.35, brush: 0.5, spec: [8, 0.5], specL: [0.2, 0.9, 0.4], rimS: ["#ffffff", 0.3, 3]},
+  // Sparkle: glitter, galaxies and stars.
+  {id: "glitter-pink", name: "Glitter Pink", family: "Sparkle", base: "#ff5fb8", shadow: "#6a0f45", amb: 0.25, spec: [40, 0.5], flake: [110, 1.1], sparkle: [34, 0.72, 1.4], coat: [500, 0.6]},
+  {id: "glitter-rainbow", name: "Glitter Rainbow", family: "Sparkle", base: "#3b2a5a", shadow: "#0c0618", amb: 0.25, spec: [40, 0.5], flake: [110, 1.3, 1], sparkle: [34, 0.7, 1.6, 1], coat: [500, 0.6]},
+  {id: "galaxy", name: "Galaxy", family: "Sparkle", model: "galaxy", n1: "#ff3cc7", n2: "#2ef2ff", stars: 22, coat: [500, 0.5]},
+  {id: "starlight", name: "Starlight Silver", family: "Sparkle", model: "env", sky: ["#ffffff", "#aab4c8", "#3a4458"], sun: ["#ffffff", -0.4, 0.5, 40, 1.2], floor: ["#2c3240", "#14181f", "#8f9ab0", 8], haze: "#8f9ab0", flake: [100, 0.9], sparkle: [28, 0.82, 1.2], coat: [400, 0.5]},
+  {id: "sparkle-bending", name: "Sparkle Bending", family: "Sparkle", model: "galaxy", base: "#24123d", n1: "#c46bff", n2: "#4fd7ff", rim: "#ff8ad8", stars: 26, flake: [90, 0.6, 1], coat: [500, 0.5]}
 ];
 
 const MC = (() => {
@@ -598,9 +616,54 @@ const MC = (() => {
     h = (((h % 1) + 1) % 1) * 6; const i = Math.floor(h), f = h - i, p = v * (1 - s), q = v * (1 - s * f), t = v * (1 - s * (1 - f));
     return [[v, t, p], [q, v, p], [p, v, t], [p, q, v], [t, p, v], [v, p, q]][i % 6];
   };
-  const hash = (x, y) => { const h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); };
+  const fract = (v) => v - Math.floor(v);
+  const hash = (x, y) => fract(Math.sin(x * 127.1 + y * 311.7) * 43758.5453);
+  function noise(x, y) {
+    const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy, u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
+    const a = hash(ix, iy), b = hash(ix + 1, iy), c = hash(ix, iy + 1), d = hash(ix + 1, iy + 1);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  function fbm(x, y, o = 5) { let s = 0, a = 0.5, f = 1; for (let i = 0; i < o; i++) { s += a * noise(x * f + i * 13.7, y * f - i * 7.3); f *= 2.03; a *= 0.5; } return s / 0.97; }
   const unit = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
   const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
+  // The mirror world for env matcaps: sky, sun, clouds, aurora, stars, then a tiled floor running to a hazy horizon.
+  function world(R, r) {
+    const t = r[1], haze = hex(R.haze || R.sky[1]);
+    if (t >= 0) {
+      let c = mix(hex(R.sky[1]), hex(R.sky[0]), cl(Math.pow(t, 0.55)));
+      if (R.sky[2]) c = mix(c, hex(R.sky[2]), cl((t - 0.55) * 2.2));
+      if (R.stars) {
+        const N = R.stars, u = r[0] / (t + 0.35) * N, v = t * N * 2, gx = Math.floor(u), gy = Math.floor(v);
+        if (hash(gx + 5, gy + 9) > 0.86) { const fx = u - gx - 0.5, fy = v - gy - 0.5; c = add(c, [1, 1, 1], 1.2 * Math.exp(-(fx * fx + fy * fy) * 40) * cl(t * 3)); }
+      }
+      if (R.aurora) {
+        const w = Math.sin(r[0] * 5 + fbm(r[0] * 2, t * 3) * 4) * 0.5 + 0.5, band = Math.exp(-Math.pow((t - 0.35 - 0.12 * w) * 6, 2));
+        c = add(c, mix(hex(R.aurora[0]), hex(R.aurora[1]), w), 0.9 * band * (0.5 + 0.5 * fbm(r[0] * 6, t * 2)));
+      }
+      if (R.clouds) {
+        const [cc, ck, cs] = R.clouds, u = r[0] / (t + 0.12), v = 1 / (t + 0.12);
+        const d = cl((fbm(u * cs * 0.5, v * cs * 0.35) - 0.45) * 2.4);
+        c = mix(c, hex(cc), d * ck * cl(t * 4));
+      }
+      if (R.sun) {
+        const [sc0, sx, sy, sp, sk] = R.sun, s = unit([sx, sy, Math.sqrt(Math.max(0, 1 - sx * sx - sy * sy))]);
+        const g = Math.max(0, dot(r, s));
+        c = add(c, hex(sc0), sk * (Math.pow(g, sp * 8) * 2 + Math.pow(g, sp) * 0.35));
+      }
+      return mix(haze, c, cl(t * 6 + 0.15));
+    }
+    // floor: perspective tiles, with grout lines and a soft reflection of the sky near the horizon
+    const f = R.floor || ["#333333", "#222222", "#555555", 8];
+    const depth = -t, u = r[0] / (depth + 0.04), v = 1 / (depth + 0.04), n = f[3] / 8;
+    const gu = fract(u * n), gv = fract(v * n * 0.5), check = (Math.floor(u * n) + Math.floor(v * n * 0.5)) & 1;
+    let c = check ? hex(f[0]) : hex(f[1]);
+    c = mix(c, c, 0);
+    const line = Math.max(Math.exp(-Math.min(gu, 1 - gu) * 60), Math.exp(-Math.min(gv, 1 - gv) * 60));
+    c = mix(c, hex(f[2]), line * cl(depth * 2.5));
+    c = add(c, hex(f[0]), 0.15 * fbm(u * 0.6, v * 0.3, 3));
+    return mix(haze, c, cl(Math.pow(depth, 0.6) * 1.6));
+  }
 
   function shade(R, x, y) {
     const d = x * x + y * y;
@@ -609,13 +672,9 @@ const MC = (() => {
     const ref = [2 * z * x, 2 * z * y, 2 * z * z - 1]; // the view direction mirrored by the surface
     let c;
     if (R.model === "env") {
-      const t = ref[1], soft = R.soft || 0.08;
-      const sky = mix(hex(R.sky[1]), hex(R.sky[0]), cl(Math.pow(Math.max(0, t), 0.7)));
-      const gnd = mix(hex(R.gnd[0]), hex(R.gnd[1]), cl(Math.pow(Math.max(0, -t), 0.6)));
-      c = mix(gnd, sky, cl(0.5 + t / (2 * soft)));
-      c = add(c, hex(R.line || "#ffffff"), (R.lineK ?? 0.6) * Math.exp(-Math.abs(t - 0.02) * 40));
+      c = world(R, ref);
     } else if (R.model === "film") {
-      const h = (R.h0 || 0) + (1 - z) * (R.span || 1) + x * (R.swirl || 0.15) + y * (R.swirl2 || 0);
+      const h = (R.h0 || 0) + (1 - z) * (R.span || 1) + x * (R.swirl || 0.15) + y * (R.swirl2 || 0) + 0.25 * fbm(x * 2 + 3, y * 2);
       c = mix(hex(R.base || "#ffffff"), hsv(h, R.sat ?? 0.55, R.val ?? 1), cl((R.filmK ?? 0.85) * (0.35 + 0.65 * Math.pow(1 - z, 0.8))));
       const amb = R.amb ?? 0.55;
       c = sc(c, amb + (1 - amb) * Math.max(0, dot(n, unit([-0.5, 0.6, 0.62]))));
@@ -623,10 +682,12 @@ const MC = (() => {
       c = sc(hex(R.base || "#26272b"), 0.6 + 0.6 * Math.max(0, dot(n, unit([-0.4, 0.7, 0.6]))));
       const rim = R.rim2 ? mix(hex(R.rim), hex(R.rim2), cl(0.5 + 0.5 * (R.splitY ? y : x))) : hex(R.rim);
       c = add(c, rim, (R.rimK || 1.4) * Math.pow(1 - z, R.rimP || 2.2));
+      c = add(c, rim, 0.25 * Math.exp(-Math.pow((1 - z - 0.35) * 7, 2)));
     } else if (R.model === "galaxy") {
       c = hex(R.base || "#120d22");
-      const neb = 0.5 + 0.5 * Math.sin(x * 3.1 + Math.sin(y * 4.2) * 1.7) * Math.cos(y * 2.3 - x * 1.3);
-      c = add(c, mix(hex(R.n1), hex(R.n2), cl(0.5 + 0.5 * x)), 0.55 * neb * neb);
+      const neb = fbm(x * 2.2 + 1, y * 2.2 - 2), arms = 0.5 + 0.5 * Math.sin(Math.atan2(y, x) * 2 + Math.hypot(x, y) * 7 + neb * 3);
+      c = add(c, mix(hex(R.n1), hex(R.n2), cl(0.5 + 0.5 * x + 0.3 * (neb - 0.5))), 0.9 * neb * neb * (0.4 + 0.8 * arms));
+      c = add(c, [1, 0.95, 1], 0.6 * Math.exp(-d * 9));
       c = add(c, hex(R.rim || "#b48cff"), 0.9 * Math.pow(1 - z, 2.5));
     } else {
       const base = hex(R.base), amb = R.amb ?? 0.25;
@@ -636,29 +697,52 @@ const MC = (() => {
       c = mix(shadow, base, cl(dif * (1 - amb) + amb));
       c = add(c, base, Math.max(0, dot(n, unit([0.7, -0.2, 0.5]))) * (R.fill ?? 0.25));
     }
+    if (R.film) c = mix(c, hsv(R.film[0] + (1 - z) * 1.3 + x * 0.3, 0.6, 1), R.film[1] * Math.pow(1 - z, 1.2));
+    if (R.nebula) {
+      const [s, a, b, k] = R.nebula, q = fbm(x * s + 4.1, y * s + 1.7), w = fbm(x * s * 1.7 - q * 2, y * s * 1.7 + q * 2);
+      c = mix(c, mix(hex(a), hex(b), w), k * cl(q * 1.4 - 0.1));
+    }
+    if (R.marble) {
+      const [s, sharp, col, k] = R.marble, vein = Math.abs(Math.sin((x * 1.3 + y) * s * 2 + fbm(x * s, y * s) * 6));
+      c = mix(c, hex(col), k * Math.pow(1 - vein, sharp));
+    }
+    if (R.brush) c = sc(c, 1 + R.brush * 0.18 * (fbm(x * 1.5, y * 60, 2) - 0.5));
+    if (R.core) c = add(c, hex(R.core[0]), R.core[1] * Math.pow(z, R.core[2] || 2) * (0.6 + 0.4 * fbm(x * 3, y * 3, 3)));
     if (R.spec) {
       let k = Math.pow(Math.max(0, dot(ref, unit(R.specL || [-0.45, 0.6, 0.66]))), R.spec[0]) * R.spec[1];
       if (R.toonSpec) k = k > 0.45 * R.spec[1] ? R.spec[1] : 0;
       c = add(c, hex(R.specC || "#ffffff"), k);
     }
+    if (R.coat) {
+      const g = Math.max(0, dot(ref, unit([-0.5, 0.7, 0.5])));
+      c = add(c, [1, 1, 1], Math.pow(g, R.coat[0]) * R.coat[1] * 1.6 + Math.pow(Math.max(0, dot(ref, unit([0.6, -0.5, 0.6]))), R.coat[0] * 0.5) * R.coat[1] * 0.25);
+    }
     if (R.rimS) c = add(c, hex(R.rimS[0]), R.rimS[1] * Math.pow(1 - z, R.rimS[2] || 3));
     if (R.fresTint) c = mix(c, hex(R.fresTint), cl(Math.pow(1 - z, 3) * (R.fresK || 0.6)));
+    if (R.flake) {
+      const [N, k, rainbow] = R.flake, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx * 1.7, gy * 3.1);
+      if (h > 0.55) {
+        const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5, tilt = Math.pow(hash(gy, gx), 6);
+        c = add(c, rainbow ? hsv(hash(gx, gy * 2), 0.55, 1) : [1, 0.97, 0.9], k * tilt * Math.exp(-(fx * fx + fy * fy) * 6));
+      }
+    }
     if (R.sparkle) {
-      const [N, th, k] = R.sparkle, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx, gy);
+      const [N, th, k, rainbow] = R.sparkle, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N), h = hash(gx, gy);
       if (h > th) {
         const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5;
-        c = add(c, R.sparkleHue ? hsv(hash(gy, gx), 0.6, 1) : [1, 1, 1], k * Math.exp(-(fx * fx + fy * fy) * 18) * (h - th) / (1 - th) * 2);
+        const g = Math.exp(-(fx * fx + fy * fy) * 18) + 0.5 * Math.exp(-Math.abs(fx) * 30 - Math.abs(fy) * 5) + 0.5 * Math.exp(-Math.abs(fy) * 30 - Math.abs(fx) * 5);
+        c = add(c, rainbow || R.sparkleHue ? hsv(hash(gy, gx), 0.6, 1) : [1, 1, 1], k * g * (h - th) / (1 - th) * 2);
       }
     }
-    if (R.stars) {
+    if (R.stars && R.model !== "env") {
       const N = R.stars, gx = Math.floor((x + 1) * N), gy = Math.floor((y + 1) * N);
-      if (hash(gx + 7, gy + 3) > 0.9) {
+      if (hash(gx + 7, gy + 3) > 0.88) {
         const fx = (x + 1) * N - gx - 0.5, fy = (y + 1) * N - gy - 0.5;
-        const g = 1.4 * Math.exp(-(fx * fx + fy * fy) * 30) + 0.5 * Math.exp(-Math.abs(fx) * 26 - Math.abs(fy) * 4) + 0.5 * Math.exp(-Math.abs(fy) * 26 - Math.abs(fx) * 4);
-        c = add(c, [1, 1, 1], g);
+        c = add(c, [1, 1, 1], 1.4 * Math.exp(-(fx * fx + fy * fy) * 30) + 0.5 * Math.exp(-Math.abs(fx) * 26 - Math.abs(fy) * 4) + 0.5 * Math.exp(-Math.abs(fy) * 26 - Math.abs(fx) * 4));
       }
     }
-    return [cl(c[0]), cl(c[1]), cl(c[2])];
+    // a soft filmic roll-off so bright layers glow instead of clipping flat
+    return c.map((v) => (v <= 0.8 ? cl(v) : 0.8 + 0.2 * (1 - Math.exp(-(v - 0.8) * 5))));
   }
 
   // Hue turn and tint, the way Poiyomi's matcap colour and hue shift change a matcap.
@@ -1457,7 +1541,7 @@ const DEFAULTS=[
     "id": "matcap-palette",
     "name": "matcap-palette-20261019.json",
     "kind": "Editor",
-    "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 48 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
+    "description": "Browse matcaps as round pans, like a makeup palette: Unity Unicorn's 54 drawn matcaps on its page, and every matcap texture in a Unity project in its editor window. Preview one on a sphere and put it on a material's matcap slot, with Undo.",
     "source_path": "scripts/unity-editor/matcap-palette-20261019.cs",
     "command_template": "Copy scripts/unity-editor/matcap-palette-20261019.cs into Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > matcap-palette"
   },
@@ -1475,7 +1559,7 @@ const DEFAULTS=[
     "kind": "Generator",
     "description": "Grow vines with leaves, buds and five-lobed trumpet flowers over the objects you select in Unity, in up to 10 flower colours picked as squares from a palette. Unity Unicorn's page sends the colours to the chosen world's open editor through a job file in Downloads.",
     "source_path": "scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs",
-    "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine panel)"
+    "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine tool panel)"
   },
   {
     "id": "unity-asset-creator",

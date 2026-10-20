@@ -104,7 +104,7 @@ test('the page puts every row in its own panel, once, on the right side', () => 
   for (const [n, w] of SPARKLES) assert.equal(rows.get(n), 'uu-sparkle-' + w, n);
   // the tools that are their own panel sit on their side
   const at = (s) => section.indexOf(s);
-  for (const [label, side] of [['unity-unicorn-matcap-panel', 'avatar'], ['unity-unicorn-menu-map-panel', 'avatar'], ['unity-unicorn-vine-spawn-panel', 'world']]) {
+  for (const [label, side] of [['unity-unicorn-matcap-tool-panel', 'avatar'], ['unity-unicorn-menu-map-tool-panel', 'avatar'], ['unity-unicorn-vine-spawn-tool-panel', 'world']]) {
     const p = at(`data-item="${label}"`);
     assert.ok(side === 'world' ? p > at('id="uu-side-world"') : p > at('id="uu-side-avatar"') && p < at('id="uu-side-world"'), label + ' on the ' + side + ' side');
   }

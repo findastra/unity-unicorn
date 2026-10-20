@@ -18,7 +18,7 @@ vm.runInContext(block('uu-menumap-sample') + block('uu-menumap-model') + ';this.
 const { MM, MM_SAMPLE } = ctx;
 
 test('the menu-map panel is a labelled uu-panel inside the panels section', () => {
-  assert.ok(section.includes('data-item="unity-unicorn-menu-map-panel"></span>unity-unicorn-menu-map-panel<'));
+  assert.ok(section.includes('data-item="unity-unicorn-menu-map-tool-panel"></span>unity-unicorn-menu-map-tool-panel<'));
   for (const id of ['mm-file', 'mm-sample', 'mm-radial', 'mm-crumbs', 'mm-detail', 'mm-total', 'mm-meter', 'mm-groups', 'mm-plist']) {
     assert.ok(section.includes(`id="${id}"`), id);
   }

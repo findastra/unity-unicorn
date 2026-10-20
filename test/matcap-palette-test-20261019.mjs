@@ -11,14 +11,14 @@ const sectionStart = html.indexOf('<section id="uu-panels"');
 const section = html.slice(sectionStart, html.indexOf('</section>', sectionStart));
 
 test('the matcap panel is a labelled uu-panel inside the panels section', () => {
-  assert.ok(section.includes('data-item="unity-unicorn-matcap-panel"></span>unity-unicorn-matcap-panel<'));
+  assert.ok(section.includes('data-item="unity-unicorn-matcap-tool-panel"></span>unity-unicorn-matcap-tool-panel<'));
   for (const id of ['mc-sphere', 'mc-ring', 'mc-pans', 'mc-filters', 'mc-search', 'mc-files', 'mc-save', 'mc-fav']) {
     assert.ok(section.includes(`id="${id}"`), id);
   }
 });
 
-test('48 recipes with unique, file-safe ids in known families', () => {
-  assert.ok(MC_RECIPES.length >= 48, 'at least 48 matcaps');
+test('54 recipes with unique, file-safe ids in known families', () => {
+  assert.ok(MC_RECIPES.length >= 54, 'at least 54 matcaps');
   const ids = MC_RECIPES.map((r) => r.id);
   assert.equal(new Set(ids).size, ids.length, 'ids are unique');
   for (const r of MC_RECIPES) {
