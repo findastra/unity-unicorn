@@ -1,0 +1,22 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "vine-spawn-with-trumpet-flowers",
+      "name": "vine-spawn-with-trumpet-flowers-20261019.json",
+      "kind": "Generator",
+      "description": "Grow vines with leaves, buds and five-lobed trumpet flowers over the objects you select in Unity, in up to 10 flower colours picked as squares from a palette. Unity Unicorn's page sends the colours to the chosen world's open editor through a job file in Downloads.",
+      "source_path": "scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs",
+      "command_template": "Copy scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs into the world's Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > vine-spawn-with-trumpet-flowers (or press Open in Unity in the page's vine panel)",
+      "requirements": [
+        "Unity 2022.3 (the world's project). The tool writes its own Unity Stable/Vine Bloom shader the first time.",
+        "The world open in Unity with this file installed, for jobs from the page; the job file is saved to Downloads."
+      ],
+      "limitations": [
+        "A web page cannot start Unity or write into a project: the page saves a job file, and the open editor picks it up within 2 seconds.",
+        "Vines grow over meshes (no colliders needed); one mesh per selected object, up to 150,000 triangles per Grow."
+      ],
+      "last_used": null
+    }
+  ]
+}

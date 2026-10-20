@@ -144,3 +144,40 @@ Three Unity Stable tools Astra asked for on 2026-10-18 ("lets make this booth to
 - **The unity-asset-creator trick** ([skills/unity-asset-creator/SKILL.md](skills/unity-asset-creator/SKILL.md), L2): how an agent walks the checklist through the world's agent queue and publishes, and what it asks Astra first. In `pet.json` and on the page it is `unity-asset-creator-trick`, the id the hub gives it, because no item may be both a tool and a trick.
 
 Limits: tested in one world (Liminal Doors) on two assets, the phone booth and stop 1's sky, both v1.0.0 in the library. The library has no licence yet. Liminal Doors keeps its incubating copy, so change the tools here first. Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Avatar tools, world tools and vines with trumpet flowers (0.5.0-20261019)
+
+Astra asked on 2026-10-19 for every tool we have built to be in a panel, for the page to be split into avatar tools and
+world tools, for a panel of the sparkles used in the worlds, and for a new vine tool with trumpet flowers in colours she picks.
+
+- **Two tabs below the L1 to L4 panels: Avatar tools and World tools.** Every tool is in exactly one panel:
+  - 22 avatar tools: building and fitting, the matcap palette, the menu map, sparkles, effects and records;
+  - 63 world tools: for every world, then made for Piranesi House, Astra's Infinite Pole and Liminal Doors, including the
+    26 still in the worlds' own repos.
+
+  Panels stay closed until you click them, and the page remembers what you opened. Guide:
+  [docs/avatar-and-world-tools-20261019.md](docs/avatar-and-world-tools-20261019.md).
+- **World sparkle tools** (`unity-unicorn-world-sparkles-panel`): 27 sparkles from the three worlds, each with its source.
+  - Liminal Doors: the sparkle sky, sparkles over the field, door motes and glitter halos, Glitter Paint, portal glitter,
+    bubbles, motes and the booth swirl.
+  - Astra's Infinite Pole: the glitter collection and controls, star dust, sparkle rain and the sparkle slurry.
+  - Piranesi House: mica, motes and the Colossus's hand.
+
+  The list is in [docs/world-sparkle-tools-20261019.json](docs/world-sparkle-tools-20261019.json).
+- **vine-spawn-with-trumpet-flowers** (`unity-unicorn-vine-spawn-panel` and a Unity window), built on vine-bloomer.
+  - Pick up to 10 flower colours as squares from a 30-colour palette, and pick the world: Piranesi House, Astra's Infinite
+    Pole or Liminal Doors.
+  - **Open in Unity** saves a job file to Downloads. The world's open Unity editor, with the tool installed, picks it up within
+    2 seconds and opens the vine window with those colours. A web page can't start Unity itself.
+  - In Unity, select walls, arches or railings and press Grow vines. Vines climb or hang, wrap round edges, and carry leaves,
+    buds and five-lobed trumpets, with their own Unity Stable/Vine Bloom shader. One Undo takes them away.
+  - Code: `scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs` (install: copy it into the world's
+    `Assets/UnityUnicorn/Editor/`). Guide: [docs/vine-spawn-with-trumpet-flowers-20261019.md](docs/vine-spawn-with-trumpet-flowers-20261019.md).
+
+Limits:
+
+- The vine tool was tested in a throwaway Unity 2022.3 project in batch mode, including a job file the page made. It is not
+  installed in any of the three worlds yet.
+- The Liminal Doors tools and sparkles link to branch `claude/fresh-start-20261018` until liminal-doors PR #2 is merged.
+
+Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
