@@ -37,6 +37,14 @@ The installed Cage HTML and ignored private sidecar additionally passed all ten 
 
 2026-10-11: Synced tool-library interface from the pet hub; no local inventory or execution records included.
 
+## world-spawn-tool 0.2.0 · 2026-10-19
+
+With Claude Opus 5.5 (`claude-opus-5-5`). Step 3 builds the Unity skeleton from VCC's World template and the cached
+VRChat SDK instead of copying a reference world, and `--reference` is gone. When gh can't sign in from Python, the
+read-only checks use GitHub's public API and the write steps print the gh command for the shell. The pet's version is
+unchanged. Python tests: 24 OK, offline. One throwaway run from the real template 1.5.0 and SDK 3.10.5 unpacked every
+SDK file into a temp folder, which was then deleted. No skeleton has been opened in Unity. Nothing is tagged or released.
+
 ## Avatar tools and world tools · 2026-10-19
 
 Version `0.5.0-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):

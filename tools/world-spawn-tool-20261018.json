@@ -5,18 +5,24 @@
       "id": "world-spawn-tool",
       "name": "world-spawn-tool-20261018.json",
       "kind": "Generator",
-      "description": "Spawn a new VRChat world: first a public GitHub repo, then a cute one-line link in the Findastra profile README by pull request, then the Unity project skeleton. Preview by default. Before the next world, change its skeleton step to start from VCC's World template (Astra, 2026-10-18).",
+      "description": "Spawn a new VRChat world: first a public GitHub repo, then a cute one-line link in the Findastra profile README by pull request, then a fresh Unity project skeleton from VCC's World template and the cached VRChat SDK. Never copies another world. Preview by default.",
       "source_path": "scripts/world-spawn-tool/world-spawn-tool-20261018.py",
       "command_template": "python scripts/world-spawn-tool/world-spawn-tool-20261018.py --name \"<World Title>\" --summary \"<cute one-line summary>\" --check",
       "requirements": [
-        "Python 3 and a signed-in GitHub CLI for --create-repo and --profile-pr.",
+        "Python 3 and git. gh for --create-repo and --profile-pr; when gh can't see its sign-in from Python, the tool prints the gh command to run from the shell.",
+        "VRChat Creator Companion, with its World template and the SDK zips in its Repos cache, for --apply.",
         "Astra's OK for a new public repo; the profile change is a pull request she merges."
       ],
       "limitations": [
-        "--apply still copies the skeleton from a reference world; Astra's rule since 2026-10-18 is to start fresh from VCC's World template, so change --apply before the next world.",
-        "Offline tests only; no Unity run is recorded."
+        "Steps 4 to 6 (pieces Astra names, the first import, git) are still done by hand.",
+        "Unity can't import the SDK under a --dest-root that is too deep while Windows long paths are off; the preview warns.",
+        "Offline tests only; no Unity run of a spawned skeleton is recorded."
       ],
-      "last_used": null
+      "last_used": {
+        "date": "2026-10-19",
+        "evidence": "Mommy's World, steps 1 and 2 only, with 0.1.0: the tool derived mommys-world and placed the profile line; gh ran from the shell. findastra/mommys-world (public) and profile PR findastra/findastra#10 (not merged), recorded in findastra/mommys-world PR #1, docs/handoff-claude-20261019-seed.md.",
+        "evidence_type": "handoff"
+      }
     }
   ]
 }
