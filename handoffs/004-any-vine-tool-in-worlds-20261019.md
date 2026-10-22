@@ -48,9 +48,15 @@ page-to-Unity hand-off for real. She OK'd each world in chat. Then she picked wh
    - Then fast-forward to `origin/main`. Otherwise git refuses to overwrite the untracked files.
 3. Do the same in Piranesi House when Codex's branch is next updated from `master`. To drop the re-saved Udon assets:
    close Unity, then run `git checkout -- Assets ProjectSettings`. The untracked tool files stay.
-4. When the tool-fixes PR merges, copy the new `vine-spawn-with-trumpet-flowers-20261019.cs` into each world's
-   `Assets/UnityUnicorn/Editor/`. Check that the Pole's leaves are no longer black, and that Doorspace 09's build still runs
-   (it calls `VineBuilder20261019.Grow` by reflection).
+4. When the tool-fixes PR (findastra/unity-unicorn #25) merges, copy the new `vine-spawn-with-trumpet-flowers-20261019.cs`
+   into each world's `Assets/UnityUnicorn/Editor/`.
+   - Leaf glow is 0 unless turned up, so worlds with a sun keep their look. The Pole's leaves stay black until you either:
+     - grow again with the window's **Use Flower glow 1.5 and Leaf glow 0.4**; or
+     - after one Grow with the new file has replaced the shader, set Leaf glow 0.4 on the Pole's
+       `Assets/UnityUnicorn/Generated/Vines/Vine Bloom glow 1.5.mat`.
+   - The vines grown inside the K6 kiosk stay until they are deleted and grown again.
+   - Check that Doorspace 09's build still runs; it calls `VineBuilder20261019.Grow` by reflection. A copy of its call gave
+     the same vines in #25's tests.
 
 ## Done when
 

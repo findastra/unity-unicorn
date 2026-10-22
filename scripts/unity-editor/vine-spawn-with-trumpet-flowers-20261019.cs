@@ -15,6 +15,13 @@
 // the taskbar. A job never grows anything by itself. Jobs for another world stay where they are, for that world's editor.
 // Each Grow writes a usage receipt to UnityUnicornReports/ so the tool library can show real last-use dates.
 // Install: copy this file into Assets/UnityUnicorn/Editor/ (or any Editor folder) of the world's project.
+//
+// After the first real use, in Astra's Infinite Pole (Claude Opus 5.5, 2026-10-19): leaves and stems can have a Leaf glow of
+// their own, for a world lit mostly by glowing materials, where they read black (it is 0 unless you turn it up, so vines in a
+// world with a sun look as they did); Flower glow starts at 0.4, not 0.2; the window offers the Pole's glows, opens centred and
+// roomy, and its squares wrap to its width; and vines start only where the object is open to the world, so on a phone kiosk
+// they climb the outside, not up the inside glass. VineBuilder20261019.Grow and the VineSettings20261019 fields keep their
+// names and types: Liminal Doors calls Grow by name through reflection (GetMethod("Grow"), so never add a second Grow).
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +37,7 @@ using Object = UnityEngine.Object;
 namespace UnityUnicorn
 {
     // The job file the page writes (schema unity-unicorn.vine-spawn-job/v1). The page always sends every setting; a job
-    // without settings gets the defaults.
+    // without settings gets the defaults, and so does a setting a job made before it existed lacks (leaf_glow).
     [Serializable]
     public sealed class VineJob20261019
     {
@@ -45,6 +52,7 @@ namespace UnityUnicorn
     {
         public int vines, seed;
         public float length_m, flowers_per_m, leaves_per_m, glow, flower_size;
+        public float leaf_glow = -1f;                                           // -1: not in the job (made before Leaf glow)
         public string grow, leaf_color;
     }
 
@@ -53,7 +61,7 @@ namespace UnityUnicorn
     public sealed class VineSettings20261019
     {
         public int vinesPerObject = 6, seed = 20261019;
-        public float lengthM = 3.5f, flowersPerM = 3f, leavesPerM = 12f, glow = 0.2f, flowerSize = 1f;
+        public float lengthM = 3.5f, flowersPerM = 3f, leavesPerM = 12f, glow = 0.4f, leafGlow = 0f, flowerSize = 1f;
         public VineGrow20261019 grow = VineGrow20261019.Climb;
         public Color leafColor = new Color(0.20f, 0.42f, 0.18f);
         public int maxTriangles = 150000;
@@ -89,6 +97,11 @@ namespace UnityUnicorn
             return "";
         }
 
+        // Worlds lit mostly by their own glowing materials, and the glows that read right there: in the Pole, petals were dark at
+        // Flower glow 0.2 and fine at 1.5, and leaves were black with no Leaf glow. The page's GLOW_WORLDS says the same.
+        public static readonly string[] LitByGlow = { "astras-infinite-pole" };
+        public const float LitByGlowFlowerGlow = 1.5f, LitByGlowLeafGlow = 0.4f;
+
         public static void SetThisWorld(string id) => EditorPrefs.SetString(PrefKey, id ?? "");
         static string PrefKey => "UnityUnicorn.VineSpawn.World." + Application.dataPath.GetHashCode().ToString("x");
         public static string NameOf(string id) { int i = Array.IndexOf(Ids, id); return i >= 0 ? Names[i] : "an unknown world"; }
@@ -109,12 +122,20 @@ namespace UnityUnicorn
                 var info = new FileInfo(path);
                 if (!info.Exists) { why = "gone"; return false; }
                 if (info.Length > MaxBytes) { why = "bigger than 64 KB"; return false; }
-                var text = File.ReadAllText(path);
-                job = JsonUtility.FromJson<VineJob20261019>(text);
-                if (job != null) job.settingsMissing = !text.Contains("\"settings\"");
+                job = FromText(File.ReadAllText(path));
             }
             catch (Exception e) { why = "not a job file (" + e.GetType().Name + ")"; return false; }
             return Check(job, out why);
+        }
+
+        // JsonUtility reads a missing number as 0, and 0 is a real Leaf glow, so a job that doesn't name one is marked -1.
+        public static VineJob20261019 FromText(string text)
+        {
+            var job = JsonUtility.FromJson<VineJob20261019>(text);
+            if (job == null) return null;
+            job.settingsMissing = !text.Contains("\"settings\"");
+            if (job.settings != null && !Regex.IsMatch(text, "\"leaf_glow\"\\s*:")) job.settings.leaf_glow = -1f;
+            return job;
         }
 
         public static bool Check(VineJob20261019 job, out string why)
@@ -140,6 +161,7 @@ namespace UnityUnicorn
             s.flowersPerM = Mathf.Clamp(j.flowers_per_m, 0f, 10f);              // 0 here means no flowers (or no leaves, or no glow)
             s.leavesPerM = Mathf.Clamp(j.leaves_per_m, 0f, 24f);
             s.glow = Mathf.Clamp(j.glow, 0f, 3f);
+            if (j.leaf_glow >= 0) s.leafGlow = Mathf.Clamp(j.leaf_glow, 0f, 1f);     // a job from before Leaf glow keeps the default
             if (j.flower_size > 0) s.flowerSize = Mathf.Clamp(j.flower_size, 0.5f, 2f);
             if (j.seed != 0) s.seed = j.seed;
             s.grow = j.grow == "hang" ? VineGrow20261019.Hang : j.grow == "both" ? VineGrow20261019.Both : VineGrow20261019.Climb;
@@ -166,8 +188,13 @@ namespace UnityUnicorn
             set => EditorPrefs.SetString("UnityUnicorn.VineSpawn.Folder", value ?? "");
         }
 
+        // For test runs in a throwaway project: look only in its own UnityUnicornInbox/, so a test never takes a real job
+        // from Downloads that a world's open editor is waiting for.
+        public static bool OnlyProjectInbox;
+
         public static IEnumerable<string> Folders()
         {
+            if (OnlyProjectInbox) return new[] { Path.GetFullPath("UnityUnicornInbox") };
             var list = new List<string> { Downloads(), Path.GetFullPath("UnityUnicornInbox") };
             if (!string.IsNullOrEmpty(CustomFolder)) list.Add(CustomFolder);
             return list.Where(f => !string.IsNullOrEmpty(f)).Distinct(StringComparer.OrdinalIgnoreCase);
@@ -247,22 +274,39 @@ namespace UnityUnicorn
         const string ColoursPref = "UnityUnicorn.VineSpawn.Colours";
 
         [MenuItem("Tools/Unity Unicorn/vine-spawn-with-trumpet-flowers", false, 47)]
-        public static void Open()
+        public static void Open() => Summon().Show();
+
+        // A new window opens in the middle of Unity's main window, big enough for the palette in two rows and the job note.
+        // In the Pole the first one opened at its 420-wide minimum, off to one side, and the right of the palette was cut off.
+        public const float OpenWidth = 600, OpenHeight = 720;
+        static VineSpawnWindow20261019 Summon()
         {
+            bool fresh = !HasOpenInstances<VineSpawnWindow20261019>();
             var w = GetWindow<VineSpawnWindow20261019>("Vines + trumpets");
-            w.minSize = new Vector2(420, 520);
-            w.Show();
+            w.minSize = new Vector2(340, 440);
+            if (fresh) w.position = Centred(OpenWidth, OpenHeight);
+            return w;
         }
+
+        static Rect Centred(float width, float height)
+        {
+            var main = EditorGUIUtility.GetMainWindowPosition();
+            if (main.width < 400 || main.height < 300) return new Rect(120, 120, width, height);
+            width = Mathf.Min(width, main.width - 40); height = Mathf.Min(height, main.height - 80);
+            return new Rect(main.x + (main.width - width) / 2, main.y + (main.height - height) / 2, width, height);
+        }
+
+        // How many squares fit across: the window's width less room for the scroll bar, so nothing is ever cut off.
+        public static int Columns(float width, float cell) => Mathf.Max(1, (int)((width - 4) / cell));
 
         public static void OpenWithJob(VineJob20261019 job, string fileName)
         {
-            var w = GetWindow<VineSpawnWindow20261019>("Vines + trumpets");
-            w.minSize = new Vector2(420, 520);
+            var w = Summon();
             w.colours.Clear(); w.colours.AddRange(VineJobs20261019.Colours(job));
             w.s = VineJobs20261019.Settings(job);
             w.SaveColours();
             w.jobNote = "From Unity Unicorn's page, " + DateTime.Now.ToString("HH:mm") + ": " + job.flower_colors.Length + " colour" + (job.flower_colors.Length == 1 ? "" : "s") +
-                        " for " + VineWorlds20261019.NameOf(job.world) + " (" + fileName + "). Select what to grow on, then press Grow vines.";
+                        " for " + VineWorlds20261019.NameOf(job.world) + ". Select what to grow on, then press Grow vines.\nJob file: " + fileName;
             w.Show(); w.Focus();
             w.ShowNotification(new GUIContent("Vine job from the page"));
             FlashTaskbar();
@@ -291,9 +335,12 @@ namespace UnityUnicorn
         {
             EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), Graphite);
             var title = new GUIStyle(EditorStyles.boldLabel) { fontSize = 14, normal = { textColor = Color.white } };
-            var label = new GUIStyle(EditorStyles.boldLabel) { normal = { textColor = new Color(0.93f, 0.94f, 0.96f) } };
+            var label = new GUIStyle(EditorStyles.boldLabel) { wordWrap = true, normal = { textColor = new Color(0.93f, 0.94f, 0.96f) } };
             var muted = new GUIStyle(EditorStyles.miniLabel) { wordWrap = true, normal = { textColor = new Color(0.72f, 0.75f, 0.8f) } };
-            scroll = EditorGUILayout.BeginScrollView(scroll);
+            // Everything is laid out to this width, so a long file name or folder can't push the window wider than it is.
+            float wide = Mathf.Max(120f, EditorGUIUtility.currentViewWidth - 26f);
+            void Text(string text, GUIStyle style) => GUILayout.Label(text, style, GUILayout.Width(wide));
+            scroll = EditorGUILayout.BeginScrollView(scroll, false, false, GUIStyle.none, GUI.skin.verticalScrollbar, GUIStyle.none);
             GUILayout.Space(6);
             GUILayout.Label("Vines with trumpet flowers", title);
             var world = VineWorlds20261019.ThisWorld();
@@ -306,18 +353,19 @@ namespace UnityUnicorn
                 if (now != at) VineWorlds20261019.SetThisWorld(now == 0 ? "" : VineWorlds20261019.Ids[now - 1]);
             }
             if (world.Length == 0) EditorGUILayout.HelpBox("Choose this project's world, so jobs from Unity Unicorn's page for it open here.", MessageType.Info);
-            if (jobNote.Length > 0) GUILayout.Label(jobNote, muted);
+            if (jobNote.Length > 0) Text(jobNote, muted);
 
             GUILayout.Space(8);
-            GUILayout.Label("Flower colours (" + colours.Count + " of 10; click one to take it out)", label);
-            var row = GUILayoutUtility.GetRect(position.width - 20, 34);
+            Text("Flower colours (" + colours.Count + " of 10; click one to take it out)", label);
+            int across = Columns(wide, 36), lines = Mathf.Max(1, Mathf.CeilToInt(colours.Count / (float)across));
+            var row = GUILayoutUtility.GetRect(1, lines * 36f, GUILayout.ExpandWidth(true));
             for (int i = 0; i < colours.Count; i++)
-                if (Square(new Rect(row.x + 4 + i * 36, row.y + 2, 30, 30), colours[i], false, "#" + ColorUtility.ToHtmlStringRGB(colours[i]))) { colours.RemoveAt(i); SaveColours(); GUIUtility.ExitGUI(); }
+                if (Square(new Rect(row.x + 4 + (i % across) * 36, row.y + 2 + (i / across) * 36, 30, 30), colours[i], false, "#" + ColorUtility.ToHtmlStringRGB(colours[i]))) { colours.RemoveAt(i); SaveColours(); GUIUtility.ExitGUI(); }
             if (colours.Count == 0) GUI.Label(row, "  Pick colours from the palette below.", muted);
 
             GUILayout.Label("Palette", label);
-            int n = VineWorlds20261019.Palette.GetLength(0), cols = Mathf.Max(5, (int)((position.width - 24) / 30));
-            var grid = GUILayoutUtility.GetRect(position.width - 20, Mathf.Ceil(n / (float)cols) * 30 + 4);
+            int n = VineWorlds20261019.Palette.GetLength(0), cols = Columns(wide, 30);
+            var grid = GUILayoutUtility.GetRect(1, Mathf.Ceil(n / (float)cols) * 30 + 4, GUILayout.ExpandWidth(true));
             for (int i = 0; i < n; i++)
             {
                 var c = VineJobs20261019.Parse(VineWorlds20261019.Palette[i, 0]);
@@ -333,7 +381,7 @@ namespace UnityUnicorn
             }
 
             GUILayout.Space(6);
-            more = EditorGUILayout.Foldout(more, "More: vines, length, flowers, leaves", true);
+            more = EditorGUILayout.Foldout(more, "More: vines, length, flowers, leaves, glow", true);
             if (more)
             {
                 s.vinesPerObject = EditorGUILayout.IntSlider("Vines per object", s.vinesPerObject, 1, 24);
@@ -344,6 +392,7 @@ namespace UnityUnicorn
                 s.leavesPerM = EditorGUILayout.Slider("Leaves per metre", s.leavesPerM, 0f, 24f);
                 s.leafColor = EditorGUILayout.ColorField("Leaf colour", s.leafColor);
                 s.glow = EditorGUILayout.Slider("Flower glow", s.glow, 0f, 3f);
+                s.leafGlow = EditorGUILayout.Slider(new GUIContent("Leaf glow", "Stems and leaves keep this much of their colour with no scene light. 0 (scene light only) is right for a world with a sun; about 0.4 for a world lit mostly by glowing materials."), s.leafGlow, 0f, 1f);
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     s.seed = EditorGUILayout.IntField("Seed", s.seed);
@@ -351,20 +400,27 @@ namespace UnityUnicorn
                 }
             }
 
+            if (Array.IndexOf(VineWorlds20261019.LitByGlow, world) >= 0 && s.leafGlow < VineWorlds20261019.LitByGlowLeafGlow)
+            {
+                Text(VineWorlds20261019.NameOf(world) + " is lit mostly by glowing materials: with Leaf glow " + s.leafGlow.ToString("0.##") + " the leaves read black there.", muted);
+                if (GUILayout.Button("Use Flower glow " + VineWorlds20261019.LitByGlowFlowerGlow + " and Leaf glow " + VineWorlds20261019.LitByGlowLeafGlow, GUILayout.Width(Mathf.Min(wide, 300))))
+                { s.glow = VineWorlds20261019.LitByGlowFlowerGlow; s.leafGlow = VineWorlds20261019.LitByGlowLeafGlow; }
+            }
+
             GUILayout.Space(8);
             var targets = Selection.gameObjects.Where(g => g.scene.IsValid() && g.GetComponentsInChildren<MeshFilter>().Any(f => f.sharedMesh)).ToArray();
             if (targets.Length == 0) EditorGUILayout.HelpBox("Select the walls, arches, railings or columns to grow on (objects with a mesh, in the scene).", MessageType.Info);
-            else GUILayout.Label("Grows on " + targets.Length + " selected object" + (targets.Length == 1 ? "" : "s") + ": " + string.Join(", ", targets.Take(4).Select(t => t.name)) + (targets.Length > 4 ? " …" : ""), muted);
+            else Text("Grows on " + targets.Length + " selected object" + (targets.Length == 1 ? "" : "s") + ": " + string.Join(", ", targets.Take(4).Select(t => t.name)) + (targets.Length > 4 ? " …" : ""), muted);
             using (new EditorGUI.DisabledScope(targets.Length == 0 || colours.Count == 0))
             {
                 var old = GUI.backgroundColor; GUI.backgroundColor = Pink;
                 if (GUILayout.Button("Grow vines", GUILayout.Height(30))) Grow(targets);
                 GUI.backgroundColor = old;
             }
-            if (note.Length > 0) GUILayout.Label(note, muted);
+            if (note.Length > 0) Text(note, muted);
 
             GUILayout.Space(10);
-            GUILayout.Label("Jobs from the page: looking in " + string.Join(" and ", VineInbox20261019.Folders()) + " every 2 s (last " + VineInbox20261019.LastLook + ").", muted);
+            Text("Jobs from the page: looking in " + string.Join(" and ", VineInbox20261019.Folders()) + " every 2 s (last " + VineInbox20261019.LastLook + ").", muted);
             using (new EditorGUILayout.HorizontalScope())
             {
                 if (GUILayout.Button("Look for jobs now", GUILayout.Width(140)) && !VineInbox20261019.LookNow(true)) ShowNotification(new GUIContent("No job for " + VineWorlds20261019.NameOf(world)));
@@ -423,7 +479,21 @@ namespace UnityUnicorn
         public const string ShaderName = "Unity Stable/Vine Bloom";
 
         sealed class Surface { public GameObject owner, temp; public MeshCollider col; public Vector3[] v; public Vector3[] nrm; public int[] t; public float[] cum; public float area; }
-        sealed class Shoot { public Vector3 p, n, dir; public float length, radius; public int depth; public bool climb; }
+        sealed class Shoot { public Vector3 p, n, dir; public float length, radius; public int depth; public bool climb, inside; }
+
+        // How open a spot is to the world: the share of 13 directions out of its face that meet none of the selected objects
+        // within Reach. Inside a closed phone kiosk every way out meets glass, floor or roof (0); an outer wall is about 1, an
+        // inside corner about a half. Vines start and grow only where at least MinOpen is open (7 of 13); at 0.3 a vine still
+        // started on the floor just inside an open kiosk door and climbed the inner glass. A floor under a roof needs
+        // CoveredMinOpen: an open kiosk's floor sees the world through its doorway, a bench seat sees the sky. Where every spot
+        // is open, roots are chosen exactly as before, so a world's build that grows vines again gets the same vines.
+        public const float Reach = 3f, MinOpen = 0.5f, CoveredMinOpen = 0.75f;
+
+        static bool ClosedIn(List<Surface> all, Vector3 q, Vector3 n, out float open)
+        {
+            open = Openness(all, q, n, out bool roofed);
+            return open < MinOpen || (open < CoveredMinOpen && n.y > 0.7f && roofed);
+        }
 
         sealed class Builder
         {
@@ -432,7 +502,7 @@ namespace UnityUnicorn
             public readonly List<Vector2> uv = new List<Vector2>();
             public readonly List<Vector2> sway = new List<Vector2>();
             public readonly List<int> t = new List<int>();
-            public int leaves, flowers, buds, vines; public float metres;
+            public int leaves, flowers, buds, vines, insideRoots; public float metres;
             public int Triangles => t.Count / 3;
             public int Add(Vector3 p, Color col, Vector2 u, float w) { v.Add(p); c.Add(col); uv.Add(u); sway.Add(new Vector2(w, 0)); return v.Count - 1; }
             public void Tri(int a, int b, int d) { t.Add(a); t.Add(b); t.Add(d); }
@@ -453,7 +523,7 @@ namespace UnityUnicorn
                 foreach (var go in targets) surfaces.AddRange(SurfacesOf(go));
                 if (surfaces.Count == 0) throw new InvalidOperationException("None of the selected objects has a readable mesh.");
                 Physics.SyncTransforms();
-                var material = VineMaterial(s.glow);
+                var material = VineMaterial(s.glow, s.leafGlow);
                 Directory.CreateDirectory(OutDir);
                 int budget = s.maxTriangles;
                 foreach (var go in targets)
@@ -465,10 +535,11 @@ namespace UnityUnicorn
                     for (int i = 0; i < s.vinesPerObject && b.Triangles < budget; i++)
                     {
                         bool climb = s.grow == VineGrow20261019.Climb || (s.grow == VineGrow20261019.Both && rnd.NextDouble() < 0.6);
-                        if (!PickRoot(own, climb, roots, rnd, out var p, out var n)) continue;
+                        if (!PickRoot(own, surfaces, climb, roots, rnd, out var p, out var n, out var inside)) continue;
                         roots.Add(p);
+                        if (inside) b.insideRoots++;
                         var queue = new Queue<Shoot>();
-                        queue.Enqueue(new Shoot { p = p + n * Lift, n = n, dir = StartDir(n, climb, rnd), length = s.lengthM * Lerp(0.7f, 1.15f, rnd), radius = 1f, depth = 0, climb = climb });
+                        queue.Enqueue(new Shoot { p = p + n * Lift, n = n, dir = StartDir(n, climb, rnd), length = s.lengthM * Lerp(0.7f, 1.15f, rnd), radius = 1f, depth = 0, climb = climb, inside = inside });
                         while (queue.Count > 0 && b.Triangles < budget) GrowShoot(queue.Dequeue(), queue, surfaces, s, flowerColours, rnd, b, budget);
                         b.vines++;
                     }
@@ -486,6 +557,7 @@ namespace UnityUnicorn
                     made++;
                     report.Add(go.name + ": " + b.vines + " vines, " + b.metres.ToString("0.0") + " m, " + b.leaves + " leaves, " + b.flowers + " trumpet flowers, " + b.buds + " buds, " +
                                b.Triangles + " triangles -> " + path);
+                    if (b.insideRoots > 0) report.Add(go.name + ": " + b.insideRoots + " vine" + (b.insideRoots == 1 ? "" : "s") + " had to start on an inner face, because no outer face was free.");
                 }
                 if (budget <= 0) report.Add("Stopped at the " + s.maxTriangles + "-triangle limit for one Grow; select fewer objects or lower the counts.");
             }
@@ -534,11 +606,14 @@ namespace UnityUnicorn
             }
         }
 
-        // A random point on the object, weighted by area: low on its sides for climbing vines, high for hanging ones.
-        static bool PickRoot(List<Surface> own, bool climb, List<Vector3> taken, System.Random rnd, out Vector3 p, out Vector3 n)
+        // A random point on the object, weighted by area: low on its sides for climbing vines, high for hanging ones, and open to
+        // the world. The lowest point of a phone kiosk is its floor, inside; in the Pole the vines started there and climbed the
+        // inner glass. Now a spot that is closed in is skipped, and only used when the object has no open spot left (inside).
+        static bool PickRoot(List<Surface> own, List<Surface> all, bool climb, List<Vector3> taken, System.Random rnd, out Vector3 p, out Vector3 n, out bool inside)
         {
-            p = n = Vector3.zero;
-            float total = own.Sum(x => x.area), best = float.MaxValue; bool found = false;
+            p = n = Vector3.zero; inside = false;
+            float total = own.Sum(x => x.area), best = float.MaxValue, bestInside = float.MaxValue; bool found = false;
+            Vector3 ip = Vector3.zero, iN = Vector3.zero;
             for (int k = 0; k < 24; k++)
             {
                 float pick = (float)rnd.NextDouble() * total; var surf = own[0];
@@ -550,9 +625,40 @@ namespace UnityUnicorn
                 var q = surf.v[surf.t[tri * 3]] + a * (surf.v[surf.t[tri * 3 + 1]] - surf.v[surf.t[tri * 3]]) + b * (surf.v[surf.t[tri * 3 + 2]] - surf.v[surf.t[tri * 3]]);
                 if (taken.Any(o => (o - q).sqrMagnitude < 0.16f)) continue;
                 float score = (climb ? q.y : -q.y) + (float)rnd.NextDouble() * 0.6f;
+                if (score >= best) continue;                              // can't win: no need to look around
+                if (ClosedIn(all, q, nn, out _)) { if (score < bestInside) { bestInside = score; ip = q; iN = nn; } continue; }
                 if (score < best) { best = score; p = q; n = nn; found = true; }
             }
+            if (!found && bestInside < float.MaxValue) { p = ip; n = iN; inside = true; return true; }
             return found;
+        }
+
+        // The 13 ways out of a face: straight out, then 6 at 40° and 6 at 72° from it. straight: the way straight out is blocked.
+        static float Openness(List<Surface> all, Vector3 q, Vector3 n, out bool straight)
+        {
+            var t1 = Vector3.Cross(n, Mathf.Abs(n.y) < 0.9f ? Vector3.up : Vector3.right).normalized;
+            var t2 = Vector3.Cross(n, t1);
+            var from = q + n * 0.02f;
+            straight = Blocked(all, from, n, Reach);
+            int open = straight ? 0 : 1;
+            for (int ring = 0; ring < 2; ring++)
+            {
+                float tilt = (ring == 0 ? 40f : 72f) * Mathf.Deg2Rad;
+                for (int k = 0; k < 6; k++)
+                {
+                    float az = (k * 60f + ring * 30f) * Mathf.Deg2Rad;
+                    var d = n * Mathf.Cos(tilt) + (t1 * Mathf.Cos(az) + t2 * Mathf.Sin(az)) * Mathf.Sin(tilt);
+                    if (!Blocked(all, from, d, Reach)) open++;
+                }
+            }
+            return open / 13f;
+        }
+
+        static bool Blocked(List<Surface> surfaces, Vector3 from, Vector3 dir, float length)
+        {
+            var ray = new Ray(from, dir);
+            foreach (var x in surfaces) if (x.col.Raycast(ray, out _, length)) return true;
+            return false;
         }
 
         static Vector3 StartDir(Vector3 n, bool climb, System.Random rnd)
@@ -574,14 +680,19 @@ namespace UnityUnicorn
             {
                 wander = Vector3.ProjectOnPlane(wander + RandomUnit(rnd) * 0.45f, n).normalized;
                 var want = Vector3.ProjectOnPlane(grow, n);
-                if (want.sqrMagnitude < 0.02f) want = dir;                       // on a floor or a roof: carry on across it
+                bool flat = want.sqrMagnitude < 0.02f;
+                if (flat) want = dir;                                              // on a floor or a roof: carry on across it
+                // across a floor, through a doorway, into a closed-in space: stop (checked every other step)
+                if (flat && !sh.inside && (i & 1) == 0 && i > 0 && ClosedIn(surfaces, p, n, out _)) break;
                 dir = Vector3.ProjectOnPlane(dir * 0.6f + want.normalized * 0.3f + wander * 0.3f, n).normalized;
                 if (dir.sqrMagnitude < 0.5f) break;
                 var next = p + dir * Step;
                 bool attached = true;
                 if (Cast(surfaces, p, dir, Step + Lift, out var hit))              // a wall ahead (an inside corner): climb onto it
                 {
-                    var nn = hit.normal; dir = Vector3.ProjectOnPlane(n, nn).normalized; if (dir.sqrMagnitude < 0.5f) dir = Vector3.ProjectOnPlane(grow, nn).normalized;
+                    var nn = hit.normal;
+                    if (!sh.inside && ClosedIn(surfaces, hit.point, nn, out _)) break;   // not into a closed-in space
+                    dir = Vector3.ProjectOnPlane(n, nn).normalized; if (dir.sqrMagnitude < 0.5f) dir = Vector3.ProjectOnPlane(grow, nn).normalized;
                     n = nn; next = hit.point + n * Lift;
                 }
                 else if (Cast(surfaces, next + n * Step * 0.5f, -n, Step * 1.6f + Lift, out hit))   // still on the surface
@@ -590,7 +701,9 @@ namespace UnityUnicorn
                 }
                 else if (Cast(surfaces, next - n * (Lift + Step), -dir, Step * 1.8f, out hit))     // over an outside edge: wrap round it
                 {
-                    var nn = hit.normal; var turned = Vector3.ProjectOnPlane(-n, nn).normalized; if (turned.sqrMagnitude < 0.5f) turned = Vector3.ProjectOnPlane(grow, nn).normalized;
+                    var nn = hit.normal;
+                    if (!sh.inside && ClosedIn(surfaces, hit.point, nn, out _)) break;   // not round a door frame into a kiosk
+                    var turned = Vector3.ProjectOnPlane(-n, nn).normalized; if (turned.sqrMagnitude < 0.5f) turned = Vector3.ProjectOnPlane(grow, nn).normalized;
                     float across = Vector3.Dot(turned, n);
                     if (across < -0.2f)                                            // the corner itself, so the stem bends round the edge
                     {
@@ -613,7 +726,7 @@ namespace UnityUnicorn
                 if (sh.depth < 2 && i > 4 && i < steps - 6 && rnd.NextDouble() < 0.045 * (sh.depth == 0 ? 1.5 : 0.8))
                 {
                     var side = Quaternion.AngleAxis((rnd.NextDouble() < 0.5 ? -1 : 1) * Lerp(35f, 70f, rnd), n) * dir;
-                    queue.Enqueue(new Shoot { p = p, n = n, dir = side.normalized, length = (steps - i) * Step * Lerp(0.3f, 0.6f, rnd), radius = sh.radius * 0.62f, depth = sh.depth + 1, climb = sh.climb });
+                    queue.Enqueue(new Shoot { p = p, n = n, dir = side.normalized, length = (steps - i) * Step * Lerp(0.3f, 0.6f, rnd), radius = sh.radius * 0.62f, depth = sh.depth + 1, climb = sh.climb, inside = sh.inside });
                 }
             }
             if (pts.Count < 3) return;
@@ -788,24 +901,31 @@ namespace UnityUnicorn
         static Color Linear(Color c, float petal) { var l = QualitySettings.activeColorSpace == ColorSpace.Linear ? c.linear : c; l.a = petal; return l; }
         static string Safe(string s) => Regex.Replace(string.IsNullOrEmpty(s) ? "Untitled" : s, @"[^\w\- ]", "_");
 
-        // One shared material; the shader is written the first time, so installing is one file.
-        static Material VineMaterial(float glow)
+        // One shared material per glow pair; the shader is written the first time, so installing is one file. A world that
+        // has the first shader (no Leaf glow) gets this one in its place; its vines keep their look, because the shader's
+        // Leaf glow is 0 unless a material sets it. With no Leaf glow the material keeps its first name, so a world's build
+        // that grows vines again reuses its material.
+        static Material VineMaterial(float glow, float leafGlow)
         {
             var shader = Shader.Find(ShaderName);
-            if (!shader)
+            if (!shader || shader.FindPropertyIndex("_LeafGlow") < 0)
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(ShaderPath));
-                File.WriteAllText(ShaderPath, ShaderSource);
-                AssetDatabase.ImportAsset(ShaderPath, ImportAssetOptions.ForceSynchronousImport);
-                shader = AssetDatabase.LoadAssetAtPath<Shader>(ShaderPath);
+                var at = shader ? AssetDatabase.GetAssetPath(shader) : "";
+                if (!at.EndsWith(".shader", StringComparison.OrdinalIgnoreCase)) at = ShaderPath;
+                Directory.CreateDirectory(Path.GetDirectoryName(at));
+                File.WriteAllText(at, ShaderSource);
+                AssetDatabase.ImportAsset(at, ImportAssetOptions.ForceSynchronousImport);
+                shader = AssetDatabase.LoadAssetAtPath<Shader>(at);
             }
             if (!shader) throw new InvalidOperationException("Could not load the " + ShaderName + " shader.");
-            var path = OutDir + "/Vine Bloom glow " + glow.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + ".mat";
+            var inv = System.Globalization.CultureInfo.InvariantCulture;
+            var path = OutDir + "/Vine Bloom glow " + glow.ToString("0.0", inv) + (leafGlow > 0 ? " leaf " + leafGlow.ToString("0.00", inv) : "") + ".mat";
             Directory.CreateDirectory(OutDir);
             var mat = AssetDatabase.LoadAssetAtPath<Material>(path);
             if (!mat) { mat = new Material(shader) { enableInstancing = true }; AssetDatabase.CreateAsset(mat, path); }
             mat.shader = shader;
             mat.SetFloat("_Glow", glow);
+            mat.SetFloat("_LeafGlow", leafGlow);
             EditorUtility.SetDirty(mat);
             return mat;
         }
@@ -823,10 +943,13 @@ namespace UnityUnicorn
         }
 
         // Unity Stable/Vine Bloom: vertex colours lit by Unity's Standard lighting, both sides of leaves and petals lit,
-        // petals (vertex alpha 1) can glow, and leaf and flower tips sway a little (uv2.x = how free a point is).
+        // petals (vertex alpha 1) glow by Flower glow and stems and leaves (alpha 0) by Leaf glow, so they keep their colour
+        // where there is little scene light, and leaf and flower tips sway a little (uv2.x = how free a point is).
         const string ShaderSource =
 @"// Unity Stable shaders (Unity Unicorn), written by vine-spawn-with-trumpet-flowers, Claude Opus 5.5, 2026-10-19.
 // Own work for Astra; free to use in her worlds. Vertex colours, Standard lighting, two-sided, petals glow, tips sway.
+// Second version, the same day: Leaf glow gives stems and leaves a light of their own (they read black in a world lit
+// mostly by glowing materials).
 Shader ""Unity Stable/Vine Bloom""
 {
     Properties
@@ -834,7 +957,8 @@ Shader ""Unity Stable/Vine Bloom""
         _Tint (""Tint"", Color) = (1,1,1,1)
         _Gloss (""Stem and leaf gloss"", Range(0,1)) = 0.32
         _PetalGloss (""Petal gloss"", Range(0,1)) = 0.5
-        _Glow (""Flower glow"", Range(0,3)) = 0.2
+        _Glow (""Flower glow"", Range(0,3)) = 0.4
+        _LeafGlow (""Leaf glow"", Range(0,1)) = 0
         _Sway (""Sway (m)"", Range(0,0.05)) = 0.006
         _SwaySpeed (""Sway speed"", Range(0,4)) = 1.2
     }
@@ -846,7 +970,7 @@ Shader ""Unity Stable/Vine Bloom""
         #pragma surface surf Standard vertex:vert addshadow fullforwardshadows
         #pragma target 3.0
         #pragma multi_compile_instancing
-        fixed4 _Tint; half _Gloss, _PetalGloss, _Glow, _Sway, _SwaySpeed;
+        fixed4 _Tint; half _Gloss, _PetalGloss, _Glow, _LeafGlow, _Sway, _SwaySpeed;
         struct Input { float4 color : COLOR; float facing : VFACE; };
         void vert(inout appdata_full v)
         {
@@ -862,7 +986,7 @@ Shader ""Unity Stable/Vine Bloom""
             o.Albedo = IN.color.rgb * _Tint.rgb;
             o.Smoothness = lerp(_Gloss, _PetalGloss, petal);
             o.Metallic = 0;
-            o.Emission = IN.color.rgb * _Glow * petal;
+            o.Emission = o.Albedo * lerp(_LeafGlow, _Glow, petal);
             o.Normal = float3(0, 0, IN.facing > 0 ? 1 : -1);
         }
         ENDCG

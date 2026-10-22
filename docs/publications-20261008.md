@@ -45,6 +45,14 @@ Version `0.5.0-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):
 - There's a world sparkle tools panel.
 - vine-spawn-with-trumpet-flowers is new. Its page panel saves a job file to Downloads, and the open Unity editor of the
   chosen world reads it. The page still doesn't execute commands or connect to Unity.
+- The same day, after its first real use in Astra's Infinite Pole, with no version change:
+  - Leaf glow (an optional `leaf_glow` in the job, still schema v1; 0 unless turned up, offered for the Pole);
+  - Flower glow 0.4;
+  - the window opening centred and wrapping;
+  - vines starting and growing only where the object is open to the world.
+
+  Node tests: 64, of which 63 pass and 1 is skipped. The smoke test (60 checks), the page-job hand-off (7) and the window
+  pictures passed in a throwaway project, not in a world.
 
 Node tests: 53, of which 52 pass and 1 is skipped (the local seed). Python tests: 41 OK. The Unity tool's smoke test (35
 checks) and the page-job hand-off (6 checks) passed in a throwaway Unity 2022.3.22f1 project in batch mode, not in a world.

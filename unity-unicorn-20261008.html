@@ -298,6 +298,7 @@
 #uu-vine .vn-opts select,#uu-vine .vn-opts input[type=number]{width:auto;min-width:120px}
 #uu-vine .vn-opts input[type=color]{width:52px;height:26px;border:1px solid var(--edge);border-radius:6px;background:none;padding:0}
 #uu-vine .vn-how p{margin:8px 0 0}
+#uu-vine .vn-optnote{grid-column:1/-1;margin:2px 0 0;line-height:1.45}
 @media (max-width:760px){#uu-vine .vn-top{grid-template-columns:1fr}#uu-vine .vn-opts{grid-template-columns:auto minmax(0,1fr) 44px}}
 </style>
   <div class="vn-case">
@@ -317,6 +318,7 @@
       <button type="button" class="vn-btn" id="vn-more" aria-expanded="false" aria-controls="vn-options">More</button>
       <button type="button" class="vn-btn" id="vn-how" aria-expanded="false" aria-controls="vn-howto">How it reaches Unity</button>
     </div>
+    <p class="uu-note" id="vn-hint" hidden><span id="vn-hint-text"></span> <button type="button" class="vn-btn" id="vn-hint-use"></button></p>
     <p class="uu-note" id="vn-msg" role="status"></p>
     <div class="vn-opts" id="vn-options" hidden></div>
     <div class="uu-note vn-how" id="vn-howto" hidden>
@@ -1175,10 +1177,14 @@ const VINE = (() => {
   const LIMITS = {
     vines: [1, 24, 6, 1, "Vines per object"], length_m: [0.5, 12, 3.5, 0.5, "Vine length (m)"],
     flowers_per_m: [0, 10, 3, 0.5, "Flowers per metre"], flower_size: [0.5, 2, 1, 0.1, "Flower size"],
-    leaves_per_m: [0, 24, 12, 1, "Leaves per metre"], glow: [0, 3, 0.2, 0.1, "Flower glow"],
+    leaves_per_m: [0, 24, 12, 1, "Leaves per metre"], glow: [0, 3, 0.4, 0.1, "Flower glow"], leaf_glow: [0, 1, 0, 0.05, "Leaf glow"],
   };
   const GROW = [["climb", "Climb up"], ["hang", "Hang down"], ["both", "Both"]];
-  const DEFAULTS = { vines: 6, length_m: 3.5, flowers_per_m: 3, flower_size: 1, leaves_per_m: 12, glow: 0.2, grow: "climb", seed: 20261019, leaf_color: "#336b2e" };
+  // Flower glow was 0.2 until the first real use (2026-10-19). In Liminal Doors, under a sun, leaves read green with no Leaf
+  // glow and a Doorspace chose Flower glow 0.35; Astra's Infinite Pole is lit mostly by glowing materials, where petals read
+  // dark at 0.2 and leaves black, so it gets its own glows (GLOW_WORLDS; the Unity tool's VineWorlds20261019.LitByGlow).
+  const DEFAULTS = { vines: 6, length_m: 3.5, flowers_per_m: 3, flower_size: 1, leaves_per_m: 12, glow: 0.4, leaf_glow: 0, grow: "climb", seed: 20261019, leaf_color: "#336b2e" };
+  const GLOW_WORLDS = { "astras-infinite-pole": { glow: 1.5, leaf_glow: 0.4 } };
   const clamp = (k, v) => { const [lo, hi, def] = LIMITS[k]; const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : def; };
   // Add a colour, or take it out if it is already chosen; never more than 10.
   function toggle(list, hex) {
@@ -1201,6 +1207,7 @@ const VINE = (() => {
         vines: Math.round(clamp("vines", settings.vines ?? DEFAULTS.vines)), length_m: clamp("length_m", settings.length_m ?? DEFAULTS.length_m),
         flowers_per_m: clamp("flowers_per_m", settings.flowers_per_m ?? DEFAULTS.flowers_per_m), flower_size: clamp("flower_size", settings.flower_size ?? DEFAULTS.flower_size),
         leaves_per_m: clamp("leaves_per_m", settings.leaves_per_m ?? DEFAULTS.leaves_per_m), glow: clamp("glow", settings.glow ?? DEFAULTS.glow),
+        leaf_glow: clamp("leaf_glow", settings.leaf_glow ?? DEFAULTS.leaf_glow),
         grow: GROW.some(([g]) => g === settings.grow) ? settings.grow : "climb",
         seed: Number.isInteger(seed) && seed > 0 && seed < 2147483647 ? seed : DEFAULTS.seed,
         leaf_color: HEX.test(leaf) ? leaf : DEFAULTS.leaf_color,
@@ -1209,7 +1216,7 @@ const VINE = (() => {
   }
   // unity-unicorn-vine-spawn-<world>-<yyyymmdd-hhmmss>.json (UTC); the Unity tool looks for unity-unicorn-vine-spawn-*.json
   const fileName = (j) => "unity-unicorn-vine-spawn-" + j.world + "-" + j.made_at.replace(/[-:]/g, "").replace("T", "-").replace("Z", "") + ".json";
-  return { PALETTE, WORLDS, MAX, LIMITS, GROW, DEFAULTS, toggle, job, fileName, clamp };
+  return { PALETTE, WORLDS, MAX, LIMITS, GROW, DEFAULTS, GLOW_WORLDS, toggle, job, fileName, clamp };
 })();
 </script>
 <script id="uu-vine-app">
@@ -1223,7 +1230,11 @@ const VINE = (() => {
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
   let colours = Array.isArray(saved.colours) ? saved.colours.reduce((l, c) => VINE.toggle(l, c), []) : ["#ff5a1f", "#ffb347", "#ff3cc7"];
   let world = VINE.WORLDS.some(([id]) => id === saved.world) ? saved.world : "liminal-doors";
-  const settings = { ...VINE.DEFAULTS, ...(saved.settings && typeof saved.settings === "object" ? saved.settings : {}) };
+  const old = saved.settings && typeof saved.settings === "object" ? saved.settings : {};
+  const settings = { ...VINE.DEFAULTS, ...old };
+  // Settings saved before Leaf glow existed that still have the old Flower glow default (0.2) get the new one (0.4); a glow
+  // chosen on purpose is kept.
+  if (!("leaf_glow" in old) && old.glow === 0.2) settings.glow = VINE.DEFAULTS.glow;
   const nameOf = (hex) => (VINE.PALETTE.find(([h]) => h === hex) || [hex, hex])[1];
   const keep = () => { try { localStorage.setItem(KEY, JSON.stringify({ colours, world, settings })); } catch (e) {} };
 
@@ -1260,6 +1271,14 @@ const VINE = (() => {
     }
     $("vn-send").disabled = colours.length === 0;
     $("vn-send").textContent = "Open in Unity · " + VINE.WORLDS.find(([id]) => id === world)[1];
+    // a world lit mostly by glowing materials: offer its glows while the leaves would read black there
+    const lit = VINE.GLOW_WORLDS[world], name = VINE.WORLDS.find(([id]) => id === world)[1];
+    $("vn-hint").hidden = !lit || settings.leaf_glow >= lit.leaf_glow;
+    if (lit) {
+      $("vn-hint-text").textContent = name + " is lit mostly by glowing materials: with Leaf glow " + settings.leaf_glow + " the leaves read black there.";
+      $("vn-hint-use").textContent = "Use Flower glow " + lit.glow + " and Leaf glow " + lit.leaf_glow;
+      $("vn-hint-use").onclick = () => { settings.glow = lit.glow; settings.leaf_glow = lit.leaf_glow; options(); update(); };
+    }
   }
   function update() { render(); draw(); keep(); }
 
@@ -1269,7 +1288,7 @@ const VINE = (() => {
     for (const [k, [lo, hi, , step, label]] of Object.entries(VINE.LIMITS)) {
       const r = document.createElement("input"); r.type = "range"; r.id = "vn-" + k; r.min = lo; r.max = hi; r.step = step; r.value = settings[k];
       const o = document.createElement("output"); o.htmlFor = r.id; o.textContent = String(settings[k]);
-      r.oninput = () => { settings[k] = Number(r.value); o.textContent = r.value; draw(); keep(); };
+      r.oninput = () => { settings[k] = Number(r.value); o.textContent = r.value; if (k === "leaf_glow") render(); draw(); keep(); };
       row(label, r, o);
     }
     const g = document.createElement("select"); g.id = "vn-grow";
@@ -1284,6 +1303,9 @@ const VINE = (() => {
     s.onchange = () => { settings.seed = Math.max(1, Math.floor(Number(s.value)) || VINE.DEFAULTS.seed); draw(); keep(); };
     again.onclick = () => { settings.seed = 1 + Math.floor(Math.random() * 2147483645); s.value = settings.seed; draw(); keep(); };
     row("Seed", s, again);
+    const note = document.createElement("p"); note.className = "vn-optnote";
+    note.textContent = "Flower glow and Leaf glow give petals, and stems and leaves, a light of their own. In a world with a sun, leave Leaf glow at 0 (scene light only). In a world lit mostly by glowing materials, like Astra's Infinite Pole, try Flower glow 1.5 and Leaf glow 0.4.";
+    box.append(note);
   }
   function toggleBox(btn, box) {
     btn.onclick = () => { const open = btn.getAttribute("aria-expanded") !== "true"; btn.setAttribute("aria-expanded", String(open)); $(box).hidden = !open; };
@@ -1295,6 +1317,7 @@ const VINE = (() => {
   function leaf(ctx, x, y, a, size, col) {
     ctx.save(); ctx.translate(x, y); ctx.rotate(a);
     const g = ctx.createLinearGradient(0, 0, size, 0); g.addColorStop(0, mix(col, 0.25, "black")); g.addColorStop(1, mix(col, 0.15, "white"));
+    if (settings.leaf_glow > 0) { ctx.shadowColor = col; ctx.shadowBlur = settings.leaf_glow * 7; }
     ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(size * 0.45, -size * 0.42, size, 0); ctx.quadraticCurveTo(size * 0.45, size * 0.42, 0, 0); ctx.fill();
     ctx.strokeStyle = mix(col, 0.35, "black"); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(1, 0); ctx.lineTo(size * 0.9, 0); ctx.stroke();
     ctx.restore();
