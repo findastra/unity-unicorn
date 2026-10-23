@@ -37,6 +37,8 @@ ap.add_argument("--height", type=float, default=None,
 ap.add_argument("--facets", type=int, default=420, help="how many flat faces the cut version has")
 ap.add_argument("--style", choices=("cut", "smooth"), default="cut")
 ap.add_argument("--tint", default="#ffffff", help="glass tint, hex")
+ap.add_argument("--cut-below", type=float, default=0.0,
+                help="cut away the scan below this fraction of its height (a taxidermy plinth, a scan table), 0 = keep all")
 ap.add_argument("--source", default="", help="where the scan came from (URL or museum)")
 ap.add_argument("--licence", default="", help="the scan's licence, e.g. CC0 or CC BY 4.0 (author)")
 ap.add_argument("--render", action="store_true")
@@ -97,6 +99,15 @@ for o in [o for o in scn.objects if o is not ob]:
     bpy.data.objects.remove(o)
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 ob.data.materials.clear()
+if A.cut_below > 0:
+    # the plinth a taxidermy mount stands on, or the table it was scanned on: sliced off, the remesh closes the cut
+    zs = [v.co.z for v in ob.data.vertices]
+    cut_z = min(zs) + (max(zs) - min(zs)) * A.cut_below
+    bm = bmesh.new(); bm.from_mesh(ob.data)
+    geom = bm.verts[:] + bm.edges[:] + bm.faces[:]
+    bmesh.ops.bisect_plane(bm, geom=geom, plane_co=(0, 0, cut_z), plane_no=(0, 0, 1), clear_inner=True)
+    bm.to_mesh(ob.data); bm.free()
+    print("CUT below z=%.4f (%.0f%% of the scan's height)" % (cut_z, A.cut_below * 100))
 # stand on the ground, at the origin, --height tall
 zs = [v.co.z for v in ob.data.vertices]
 s = A.height / (max(zs) - min(zs))

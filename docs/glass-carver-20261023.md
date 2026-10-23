@@ -36,6 +36,8 @@ blender --background --python scripts/glass-carver/glass-carver-20261023.py -- \
   the cut style (default 420).
 - `--style cut` flat facets, hard edges, a hair of bevel; `--style smooth` keeps the scan's curves, polished.
 - `--tint "#ffd9ec"` colours the glass; clear is the default.
+- `--cut-below 0.12` slices off the bottom 12% of the scan (a taxidermy plinth or scan table) before the remesh closes
+  the cut; look at the check render and adjust.
 - `--render` writes `<animal>-<date>-check.png` on a dark stage with a sun and eight sparkle lights; `--video` a 6 s
   turntable. Cycles on the HIP GPU, 96 samples, 90 s cap per frame. `builtin:monkey` as `--scan` is a pipeline test
   only, never a finished animal.
@@ -72,3 +74,11 @@ blender --background --python scripts/glass-carver/glass-carver-20261023.py -- \
 | 5 | Clear or a colour? | Clear, with rainbow fire |
 
 The command above therefore drops `--height 0.22`; the fox comes out 40 cm tall.
+
+## Scans found so far (2026-10-23)
+
+| Animal | Scan | Licence | Notes |
+|---|---|---|---|
+| Fox (01) | "test scan of taxidermy fox", Jakob.Normand, Sketchfab `b961f8be18fd4765be1fccfe47ee2512` | CC BY (credit the author; commercial use allowed) | A real standing red fox mount on a wooden plinth, 1 M triangles, RealityScan. Needs `--cut-below` for the plinth. Waiting on Astra's OK and her Sketchfab download. |
+| Hare (02) | "NSMT-M32036 Snow Shoe Hare Taxidermy", National Museum of Nature and Science Tokyo, Sketchfab `c6a6981ab52247b397409febc1a61f42` | CC BY-NC | Non-commercial: avoid for a public world unless Astra says otherwise. No CC0 / CC BY hare found yet. |
+| Axolotl (03) | none | | No real-axolotl scan on Sketchfab's free set; Astra's photos (question 1, option B) or a museum CT scan. |
