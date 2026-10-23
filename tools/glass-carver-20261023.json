@@ -1,0 +1,13 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "glass-carver",
+      "name": "glass-carver-20261023.json",
+      "kind": "Generator",
+      "description": "Turn a real animal scan into a little cut-crystal animal: one watertight solid, re-cut into a few hundred flat facets with a hair of bevel (or polished smooth), the Rainbow Maker's three-colour glass for Blender renders, an FBX for Unity, and a record of the scan's source and licence. Made for Liminal Doors' glass animals, one behind every door; LiminalGlassAnimals.cs places them with the LiminalDoors/Crystal shader.",
+      "source_path": "scripts/glass-carver/glass-carver-20261023.py",
+      "command_template": "blender --background --python scripts/glass-carver/glass-carver-20261023.py -- --scan \"<scan-file>\" --name <Animal> --out \"<project-path>/Assets/LiminalDoors/GlassAnimals\" --height 0.22 --style cut --source \"<where the scan came from>\" --licence \"<its licence>\" --render"
+    }
+  ]
+}

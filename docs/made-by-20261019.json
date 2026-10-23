@@ -121,6 +121,15 @@
       "state": "on main"
     },
     {
+      "id": "glass-carver",
+      "side": "world",
+      "made_with": "Claude Fable 5.1",
+      "date": "2026-10-23",
+      "first_in": "Liminal Doors",
+      "evidence": "unity-unicorn PR #28 (draft)",
+      "state": "in a pull request"
+    },
+    {
       "id": "marble-carver",
       "side": "world",
       "made_with": "Claude Opus 5.5",
