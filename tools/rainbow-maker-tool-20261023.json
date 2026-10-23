@@ -1,0 +1,17 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "rainbow-maker-tool",
+      "name": "rainbow-maker-tool-20261023.json",
+      "kind": "Editor",
+      "description": "Give a group of surfaces the Rainbow Maker's cut-crystal glass: select objects in Unity and one menu puts the UnityUnicorn/RainbowMakerGlass material on every renderer (three-colour refraction read from the room's reflection probe, sun sparkle, tint and sliders). A Blender script applies the same three-glass crystal for renders and exports. Material only; geometry is the geographic-statue-converter's job.",
+      "source_path": "scripts/unity-editor/rainbow-maker-tool-20261023.cs",
+      "command_template": "Unity menu: Tools > Unity Unicorn > rainbow-maker-tool > Make selection crystal. Blender: blender --background --python scripts/rainbow-maker-tool/rainbow-maker-tool-20261023.py -- --mesh \"<file>\" --out \"<folder>\" --render",
+      "requirements": [
+        "Unity 2022.3 Built-in Render Pipeline; install the editor script and rainbow-maker-tool-20261023.shader.",
+        "A baked reflection probe in the room for the glass to look through."
+      ]
+    }
+  ]
+}

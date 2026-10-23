@@ -117,6 +117,9 @@
           "glass-animal-tool",
           "bubble-chair-blower"
         ],
+        "PR #28 (draft, Claude)": [
+          "rainbow-maker-tool"
+        ],
         "design only": [
           "asset-ledger"
         ]
@@ -184,6 +187,7 @@
           "shaders-shop",
           "glass-animal-tool",
           "bubble-chair-blower",
+          "rainbow-maker-tool",
           "asset-ledger"
         ]
       },

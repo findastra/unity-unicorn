@@ -76,6 +76,12 @@ Two world-building tools for the Piranesi House, with step scripts under `script
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
+## Rainbow maker tool (2026-10-23)
+
+- **rainbow-maker-tool**: give a group of surfaces the Rainbow Maker's cut-crystal glass. In Unity, select objects and one menu puts the `UnityUnicorn/RainbowMakerGlass` material on every renderer (three-colour refraction read from the room's reflection probe, sun sparkle, sliders); in Blender, the same three-glass crystal for renders and exports. Material only: shape is for Astra's planned geographic-statue-converter, and the two together make a crystal wolf. Guide: [docs/rainbow-maker-tool-20261023.md](docs/rainbow-maker-tool-20261023.md).
+
+Added with Claude Fable 5.1 (`claude-fable-5-1`), 2026-10-23.
+
 ## Neck blender (2026-10-11)
 
 - **neck-blender**: hides the line where a separate head mesh meets the body. It paints the face's skin colour into a copy of the body texture around the neck and fades matcap and rim out at the line on both materials, all weighted from the real geometry in Blender, with backups. Guide: [docs/neck-blender-20261011.md](docs/neck-blender-20261011.md).
