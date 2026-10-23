@@ -32,7 +32,8 @@ ap = argparse.ArgumentParser(prog="glass-carver")
 ap.add_argument("--scan", required=True, help="scan file (.obj .fbx .glb .gltf .stl .ply) or builtin:monkey for a pipeline test")
 ap.add_argument("--name", required=True, help='the animal, e.g. "Fox"')
 ap.add_argument("--out", required=True)
-ap.add_argument("--height", type=float, default=0.22, help="finished height in metres")
+ap.add_argument("--height", type=float, default=None,
+                help="finished height in metres (default: the animal's life size, from LIFE_SIZE below)")
 ap.add_argument("--facets", type=int, default=420, help="how many flat faces the cut version has")
 ap.add_argument("--style", choices=("cut", "smooth"), default="cut")
 ap.add_argument("--tint", default="#ffffff", help="glass tint, hex")
@@ -42,6 +43,22 @@ ap.add_argument("--render", action="store_true")
 ap.add_argument("--video", action="store_true")
 ap.add_argument("--still-frame", type=int, default=20)
 A = ap.parse_args(argv)
+# Astra, 2026-10-23: the glass animals are life size, like the prismatic wolf she saw in VRChat. Adult standing
+# height in metres, top of the head or back in a natural pose (the scan is scaled uniformly to it). The insects, the
+# gecko and the firefly come out a few centimetres tall: that is their life size.
+LIFE_SIZE = {
+    "fox": 0.40, "hare": 0.35, "axolotl": 0.06, "raccoon": 0.30, "gecko": 0.03, "crane": 1.10, "moth": 0.05,
+    "frog": 0.08, "hummingbird": 0.09, "ibex": 0.95, "cat": 0.25, "manta ray": 0.45, "hedgehog": 0.12,
+    "lynx": 0.60, "seahorse": 0.20, "heron": 1.00, "dragonfly": 0.03, "snow leopard": 0.60, "raven": 0.30,
+    "octopus": 0.40, "deer": 1.00, "firefly": 0.015, "kangaroo": 1.50, "scarab": 0.03, "praying mantis": 0.08,
+    "flamingo": 1.30, "jellyfish": 0.40, "butterfly": 0.06, "red panda": 0.35, "swan": 1.00, "otter": 0.30,
+    "sandpiper": 0.20, "dolphin": 0.60, "kingfisher": 0.17, "wolf": 0.80,
+}
+if A.height is None:
+    key = A.name.lower()
+    if key not in LIFE_SIZE:
+        sys.exit("glass-carver: no life size on record for %r; pass --height <metres>" % A.name)
+    A.height = LIFE_SIZE[key]
 STAMP = datetime.datetime.now().astimezone().strftime("%Y%m%d")   # Astra's PC runs on America/Denver
 slug = A.name.lower().replace(" ", "-")
 os.makedirs(A.out, exist_ok=True)

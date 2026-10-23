@@ -29,10 +29,11 @@ Downloads happen on Astra's PC with her OK for each one; stage them in the Downl
 ```
 blender --background --python scripts/glass-carver/glass-carver-20261023.py -- \
   --scan "<Downloads>/fox-scan.glb" --name Fox --out "<liminal-doors>/Assets/LiminalDoors/GlassAnimals" \
-  --height 0.22 --facets 420 --style cut --source "Sketchfab: <author>, <url>" --licence "CC BY 4.0" --render
+  --facets 420 --style cut --source "Sketchfab: <author>, <url>" --licence "CC BY 4.0" --render
 ```
 
-- `--height` metres (default 0.22, a hand-sized ornament). `--facets` flat faces for the cut style (default 420).
+- `--height` metres (default: the animal's life size from the script's `LIFE_SIZE` table). `--facets` flat faces for
+  the cut style (default 420).
 - `--style cut` flat facets, hard edges, a hair of bevel; `--style smooth` keeps the scan's curves, polished.
 - `--tint "#ffd9ec"` colours the glass; clear is the default.
 - `--render` writes `<animal>-<date>-check.png` on a dark stage with a sun and eight sparkle lights; `--video` a 6 s
@@ -60,7 +61,14 @@ blender --background --python scripts/glass-carver/glass-carver-20261023.py -- \
 - Under 4000 triangles per animal (Quest budget); the default cut lands around 2000.
 - Licence recorded; nothing placed in the world from an unknown source.
 
-## Open questions (2026-10-23)
+## Astra's answers (2026-10-23)
 
-Astra's answers decide the defaults: scan source, cut or smooth, size, which animal first, clear or tinted. The deck
-is linked from the Liminal Doors handoff card for the glass animals; until then the defaults above are provisional.
+| # | Question | Answer |
+|---|---|---|
+| 1 | Where do the scans come from? | Museum and public scans (Smithsonian, Sketchfab CC0 / CC BY, Poly Haven); Astra OKs each download |
+| 2 | Cut crystal or smooth glass? | Cut crystal |
+| 3 | How big? | **Life size**, like the prismatic wolf she saw in VRChat (not the 22 cm ornament that was recommended). `LIFE_SIZE` in the script holds a height per animal; `--height` overrides it. Insects, the gecko and the firefly come out a few centimetres tall. |
+| 4 | Which animal first? | The fox, Doorspace 01 |
+| 5 | Clear or a colour? | Clear, with rainbow fire |
+
+The command above therefore drops `--height 0.22`; the fox comes out 40 cm tall.
