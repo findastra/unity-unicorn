@@ -6,7 +6,7 @@
 <style>
 #uu-panels{--slate:#252a33;--slate2:#2e3440;--ink:#eef0f4;--muted:#b7bfcc;--edge:#5a6475;--on:#3fbf6f;--off:#d9534f;--ok:#4a8fe7;--fix:#e8c33a;--conn:#c58be0;background:var(--slate);color:var(--ink);border-radius:18px;padding:18px;margin:0 0 34px;font-size:14px}
 #uu-panels a{color:#9fd0ff}
-#uu-panels .uu-top{display:grid;grid-template-columns:184px minmax(0,1fr);gap:16px;align-items:start;margin-top:10px}
+#uu-panels .uu-top{--square:220px;--line:#9a9ca6;display:grid;grid-template-columns:var(--square) minmax(0,1fr) var(--square);gap:28px;align-items:end;margin:12px 0 6px}#uu-panels .uu-box{position:relative;border:1px solid var(--line);min-width:0}#uu-panels .uu-legend{position:absolute;top:-.75em;left:10px;max-width:calc(100% - 20px);padding:0 6px;background:var(--slate);font:12px/1.3 ui-monospace,Consolas,monospace;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#uu-panels .uu-square{aspect-ratio:1/1;container-type:size;display:flex;flex-direction:column;padding:20px 12px 12px}#uu-panels .uu-map{justify-content:center}#uu-panels .uu-den{position:relative;flex:1;min-height:0;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:30px 4px 4px}#uu-panels .uu-den>.uu-lights{position:absolute;top:9px;left:9px;z-index:2}#uu-panels .uu-den img{width:auto;height:auto;max-width:86%;max-height:100%;image-rendering:pixelated}#uu-panels h2.uu-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px;font-size:clamp(24px,3vw,34px)}#uu-panels h2.uu-title small{margin-left:0;font:400 clamp(13px,1.4vw,16px) ui-monospace,Consolas,monospace}#uu-panels .uu-titleblock{padding-top:6px;min-width:0}#uu-panels .uu-summary{margin-top:22px;padding:16px 16px 10px}#uu-panels .uu-summary p{margin:0}#uu-panels .uu-map-link{display:grid;justify-items:center;gap:6px;color:var(--ink);text-align:center;text-decoration:none;font-size:13.5px;line-height:1.35}#uu-panels .uu-map-link:hover span,#uu-panels .uu-map-link:focus-visible span{text-decoration:underline}#uu-panels .uu-map svg{width:auto;max-width:100%;height:clamp(40px,calc(100cqh - 64px),150px)}#uu-panels .uu-map circle{fill:none;stroke:var(--line);stroke-width:1.5}#uu-panels .uu-map .core{fill:var(--line)}#uu-panels .uu-map .node{fill:#3ff3ff;stroke:#111}#uu-panels .uu-status{margin:0 0 10px}@media (max-width:1000px){#uu-panels .uu-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 14px}#uu-panels .uu-top>.uu-square{width:min(240px,calc((100% - 14px)/2))}#uu-panels .uu-top>.uu-cyber{order:1}#uu-panels .uu-top>.uu-map{order:2}#uu-panels .uu-top>.uu-titleblock{order:3;flex:0 0 100%;margin-top:26px}}@media (max-width:760px){#uu-panels .uu-top>.uu-box{padding-left:10px;padding-right:10px}#uu-panels .uu-top .uu-legend{top:auto;bottom:calc(100% - .7em);left:6px;max-width:calc(100% - 12px);white-space:normal;overflow:visible;font-size:11px}}
 #uu-panels .uu-home{position:relative;border:1px solid var(--edge);border-radius:12px;aspect-ratio:1/1;background:radial-gradient(ellipse,#3b4558 0%,#232833 70%);display:grid;place-items:center;padding-top:18px}
 #uu-panels .uu-home img{width:82%;image-rendering:pixelated}
 #uu-panels .uu-edge{position:absolute;top:-7px;left:8px;padding:0 6px;background:var(--slate);white-space:nowrap}
@@ -68,22 +68,28 @@
 #uu-panels .uu-asset img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#1c2028}
 #uu-panels .uu-asset p{margin:0;font-size:12px;color:var(--muted)}
 #uu-panels .uu-asset .uu-name{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-@media (max-width:700px){#uu-panels .uu-top,#uu-panels .uu-row{grid-template-columns:1fr}#uu-panels .uu-home{max-width:200px}}
+@media (max-width:700px){#uu-panels .uu-row{grid-template-columns:1fr}#uu-panels .uu-home{max-width:200px}}
 </style>
 
+<!-- The first three panels, matched to Wonderland Launchpad's (Astra, 2026-10-23): the cyberhome and the System Map box
+     are two squares of one size, the title between them with its version on the same line and the quick summary
+     fitted below. Nothing else under the title: the status line moved to the top of the L2 tool panel. -->
 <div class="uu-top">
-  <div class="uu-home" aria-label="unity-unicorn-cyberhome">
-    <span class="uu-label uu-edge">unity-unicorn-cyberhome</span>
-    <span class="uu-lights" data-item="unity-unicorn-cyberhome"></span>
-    <img id="uu-home-pet" alt="Unity Unicorn, idle" width="256" height="256">
+  <section class="uu-box uu-square uu-cyber" aria-label="unity-unicorn-cyberhome">
+    <span class="uu-legend">unity-unicorn-cyberhome</span>
+    <div class="uu-den"><span class="uu-lights" data-item="unity-unicorn-cyberhome"></span><img id="uu-home-pet" alt="Unity Unicorn, idle" width="256" height="256"></div>
+  </section>
+  <div class="uu-titleblock">
+    <h2 class="uu-title"><span>Unity Stable</span><small>v0.5.1 // 20261019</small></h2>
+    <section class="uu-box uu-summary" aria-label="unity-stable-quick-summary">
+      <span class="uu-legend">unity-stable-quick-summary</span>
+      <p>Unity Stable is the pet program run by you and Unity Unicorn. It is a dashboard that presents the health of, and organizes, your world and avatar programs and the tools and tricks used to manage them, which are always created with the intention of preserving the authenticity, creativity and provenance of all artists' work.</p>
+    </section>
   </div>
-  <div>
-    <h2 class="uu-title">Unity Stable<small>V0.5.1 // 20261019</small></h2>
-    <fieldset><legend class="uu-label">unity-stable-pet-program-quick-summary</legend>
-      <p style="margin:4px 0 0">Unity Stable is the pet program run by you and Unity Unicorn. It is a dashboard that presents the health of, and organizes, your world and avatar programs and the tools and tricks used to manage them, which are always created with the intention of preserving the authenticity, creativity and provenance of all artists' work.</p>
-    </fieldset>
-    <div class="uu-status" id="uu-status" style="margin-top:10px"></div>
-  </div>
+  <section class="uu-box uu-square uu-map" aria-label="astras-pet-os-system-map">
+    <span class="uu-legend">astras-pet-os-system-map</span>
+    <a class="uu-map-link" href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn"><svg viewBox="-6 -6 132 132" role="img" aria-label="The System Map's rings, with Unity Stable on ring 3"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="40"/><circle cx="60" cy="60" r="24"/><circle class="core" cx="60" cy="60" r="8"/><circle class="node" cx="116" cy="60" r="7"/></svg><span>Open Unity Stable on the System Map</span></a>
+  </section>
 </div>
 
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L1-tool-panel"></span>unity-unicorn-L1-tool-panel<span class="uu-what">programs and tools (no AI needed)</span></summary>
@@ -113,6 +119,7 @@
 </details>
 
 <details class="uu-panel" open><summary><span class="uu-lights" data-item="unity-unicorn-L2-tool-panel"></span>unity-unicorn-L2-tool-panel<span class="uu-what">what the pet program does by itself</span></summary>
+  <div class="uu-status" id="uu-status"></div>
   <h4>Your tricks</h4><ul class="uu-items" id="uu-tricks"></ul>
   <p class="uu-note">vcc-package-manager and vrchat-avatar-upload are tricks to write, not tools (Astra, 2026-10-19): they have no code, only written steps. Their catalog cards stay in the tool library below, marked Trick to write, so a real run can still be recorded.</p>
   <h4>Schedule</h4><ul class="uu-items" id="uu-schedule"></ul>
