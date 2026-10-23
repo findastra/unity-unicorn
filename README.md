@@ -76,9 +76,9 @@ Two world-building tools for the Piranesi House, with step scripts under `script
 
 Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
 
-## Glass carver (2026-10-23)
+## Rainbow maker tool (2026-10-23)
 
-- **glass-carver**: little cut-crystal animals from real animal scans, for Liminal Doors (one hides behind every door). The scan is made one solid, re-cut into flat facets or polished smooth, given three-colour glass for Blender renders, and exported as FBX with its source and licence. Guide: [docs/glass-carver-20261023.md](docs/glass-carver-20261023.md). Codex's draft glass-animal-tool (PR #3) is the Unity-side prismatic workshop; glass-carver is the scan-to-crystal step before it.
+- **rainbow-maker-tool**: give a group of surfaces the Rainbow Maker's cut-crystal glass. In Unity, select objects and one menu puts the `UnityUnicorn/RainbowMakerGlass` material on every renderer (three-colour refraction read from the room's reflection probe, sun sparkle, sliders); in Blender, the same three-glass crystal for renders and exports. Material only: shape is for Astra's planned geographic-statue-converter, and the two together make a crystal wolf. Guide: [docs/rainbow-maker-tool-20261023.md](docs/rainbow-maker-tool-20261023.md).
 
 Added with Claude Fable 5.1 (`claude-fable-5-1`), 2026-10-23.
 
