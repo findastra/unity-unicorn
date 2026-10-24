@@ -222,3 +222,237 @@ words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
 - `test/panels-test-20261019.mjs` fails if a page box label ends in `-panel` without `tool`, or a level box is called a module.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Tool names and categories (0.5.3-20261024)
+
+Astra, 2026-10-24: "its a spawner if it mades 3D objects, its a painter if it changes existing object surfaces". A tool's
+name is what it works on, then its category's word (`vine-spawn`, `crystal-reflection-painter`, `marble-carver`).
+
+- `docs/tool-categories-20261024.json` gives each of the 85 tools on the page one category: spawner and painter
+  (Astra's), and carver, strapper, builder, mover, checker, viewer, keeper and runner (proposed, waiting on her OK).
+- The new `unity-unicorn-tool-names-tool-panel` shows the naming rule, each category with its tools, and the open
+  questions. Every tool row on the Avatar tools and World tools sides starts with its category.
+- Existing tools keep their names. The rule is in the skill book under `my-preferred-nomenclature`.
+- `test/tool-categories-test-20261024.mjs` fails if a tool has no category or the page and the list differ.
+
+## Tool renames (Astra, 2026-10-24)
+
+Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it works on>-<category word>`, the category words being spawn, painter, carver, strapper, builder, mover, checker, viewer, keeper and runner (see Tool names and categories above). 70 of the 85 tools get a new name; 15 already fit and keep theirs. The same list is `renames` in `docs/tool-categories-20261024.json`. This table is the plan: the files, Unity menus and world repos are not renamed yet.
+
+### spawner (`-spawn`): makes new 3D objects
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `cloud-mesh-generator` | **`cloud-spawn`** | unity-unicorn |
+| `masonry-regeneration` | **`masonry-spawn`** | unity-unicorn |
+| `vine-spawn-with-trumpet-flowers` | **`trumpet-vine-spawn`** | unity-unicorn |
+| `glass-animal-tool` | **`glass-animal-spawn`** | unity-unicorn PR #3 (not merged) |
+| `bubble-chair-blower` | **`bubble-chair-spawn`** | unity-unicorn PR #3 (not merged) |
+| `stop-01-sky` | **`pinkscape-sky-spawn`** | liminal-doors |
+| `blender-booth` | **`k6-booth-spawn`** | liminal-doors |
+| `door-kit` | **`door-spawn`** | liminal-doors |
+
+### painter (`-painter`): changes the surfaces of objects that already exist: colours, textures, materials and shaders
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `neck-blender` | **`neck-seam-painter`** | unity-unicorn |
+| `realistic-prop-restyle` | **`prop-restyle-painter`** | unity-unicorn |
+| `vine-bloomer` | **`ivy-texture-painter`** | unity-unicorn |
+| `wall-texture-rebuild` | **`wall-texture-painter`** | unity-unicorn |
+| `matcap-palette` | **`matcap-painter`** | unity-unicorn |
+| `field-shaders` | **`field-painter`** | liminal-doors |
+| `frond-grass` | **`frond-grass-painter`** | liminal-doors |
+| `pool-tile` | **`pool-tile-painter`** | liminal-doors |
+| `pool-water` | **`pool-water-painter`** | liminal-doors |
+| `pool-window` | **`pool-window-painter`** | liminal-doors |
+| `world-glow` | **`glow-painter`** | liminal-doors |
+| `golden-painter` | `golden-painter` (no change) | unity-unicorn PR #1 (not merged) |
+| `rgb-painter` | `rgb-painter` (no change) | unity-unicorn PR #1 (not merged) |
+
+### carver (`-carver`): changes the shape, weights or placement of objects that already exist
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `cloud-lounge-smoothing` | **`cloud-lounge-carver`** | unity-unicorn |
+| `cloud-sea-fusion` | **`cloud-sea-carver`** | unity-unicorn |
+| `no-windows-scene-refresh` | **`open-arch-carver`** | unity-unicorn |
+| `chain-dangle-weights` | **`chain-dangle-carver`** | unity-unicorn PR #1 (not merged) |
+| `hair-weighter` | **`hair-weight-carver`** | unity-unicorn PR #1 (not merged) |
+| `pickup-lift-out` | **`pickup-lift-carver`** | astras-infinite-pole |
+| `marble-carver` | `marble-carver` (no change) | unity-unicorn |
+
+### strapper (`-strapper`): puts a ready-made add-on onto an avatar: wings, bending, sparks, a face tracking module
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `face-transfer` | **`face-tracking-strapper`** | unity-unicorn |
+| `fan-fitter` | **`fan-strapper`** | unity-unicorn PR #1 (not merged) |
+| `bending-adder` | **`bending-strapper`** | unity-unicorn PR #1 (not merged) |
+| `gunsmith-loadout` | **`gunsmith-loadout-strapper`** | unity-unicorn PR #1 (not merged) |
+| `sparkle-strapper` | `sparkle-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `blood-bender-strapper` | `blood-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `water-bender-strapper` | `water-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `sparkle-bender-strapper` | `sparkle-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `wing-strapper` | `wing-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `neck-bow-strapper` | `neck-bow-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `spring-joint-strapper` | `spring-joint-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+
+### builder (`-builder`): puts pieces together into a scene, a stop, a test build or a bake
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `desktop-world-test` | **`desktop-test-builder`** | unity-unicorn |
+| `desktop-test` | **`liminal-desktop-test-builder`** | liminal-doors |
+| `masonry-unity-refresh` | **`masonry-refresh-builder`** | unity-unicorn |
+| `occlusion-bake` | **`occlusion-bake-builder`** | unity-unicorn |
+| `reflection-probe-bake` | **`reflection-probe-builder`** | unity-unicorn |
+| `world-spawn-tool` | **`world-project-builder`** | unity-unicorn |
+| `door-wiring` | **`door-wiring-builder`** | liminal-doors |
+| `house-scene-builder` | `house-scene-builder` (no change) | unity-unicorn |
+| `stop-01-builder` | `stop-01-builder` (no change) | liminal-doors |
+| `stop-02-builder` | `stop-02-builder` (no change) | liminal-doors |
+| `stop-03-builder` | `stop-03-builder` (no change) | liminal-doors |
+| `booth-builder` | `booth-builder` (no change) | liminal-doors |
+
+### mover (`-mover`): makes things move or react in the world while people play (Udon)
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `grass-push` | **`grass-push-mover`** | liminal-doors |
+| `door-system` | **`door-travel-mover`** | liminal-doors |
+
+### checker (`-checker`): looks and reports; changes nothing
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `button-check` | **`button-checker`** | unity-unicorn |
+| `cloud-collider-audit` | **`cloud-collider-checker`** | unity-unicorn |
+| `cloud-collider-validation` | **`cloud-outline-checker`** | unity-unicorn |
+| `cloud-physics-check` | **`cloud-physics-checker`** | unity-unicorn |
+| `cloud-survey` | **`cloud-survey-checker`** | unity-unicorn |
+| `masonry-structural-audit` | **`masonry-checker`** | unity-unicorn |
+| `no-windows-audit-tool` | **`open-arch-checker`** | unity-unicorn |
+| `prop-decomposer` | **`prop-reference-checker`** | unity-unicorn |
+| `scene-yaml-inspection` | **`scene-yaml-checker`** | unity-unicorn |
+| `world-validator` | **`world-checker`** | unity-unicorn |
+| `menu-map` | **`avatar-menu-checker`** | unity-unicorn |
+| `star-effects-diagnostic` | **`star-effects-checker`** | unity-unicorn PR #1 (not merged) |
+| `copyright-catcher` | **`copyright-checker`** | unity-unicorn PR #1 (not merged) |
+| `pickup-audit` | **`pickup-checker`** | astras-infinite-pole |
+
+### viewer (`-viewer`): makes pictures for review: renders, previews, contact sheets and photos
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `asset-contact-sheet` | **`asset-sheet-viewer`** | unity-unicorn |
+| `scene-preview-render` | **`scene-preview-viewer`** | unity-unicorn |
+| `time-season-tide-preview` | **`time-season-tide-viewer`** | unity-unicorn |
+| `floor-cutter` | **`concept-floor-viewer`** | liminal-doors |
+| `redline-sheet` | **`redline-sheet-viewer`** | liminal-doors |
+| `contact-sheet` | **`floor-sheet-viewer`** | liminal-doors |
+| `web-pictures` | **`web-picture-viewer`** | liminal-doors |
+| `world-photos` | **`world-photo-viewer`** | astras-infinite-pole |
+| `review-shots` | **`piranesi-review-viewer`** | piranesi-house |
+
+### keeper (`-keeper`): keeps records and libraries: where things came from, what was made, what is installed
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `unity-assets-library` | **`asset-library-keeper`** | unity-unicorn |
+| `shaders-shop` | **`shader-keeper`** | unity-unicorn |
+| `learn-add-ons` | **`add-on-template-keeper`** | unity-unicorn PR #1 (not merged) |
+| `copyright-logger` | **`copyright-keeper`** | unity-unicorn PR #1 (not merged) |
+| `asset-ledger` | **`asset-ledger-keeper`** | unity-unicorn design only (not merged) |
+
+### runner (`-runner`): runs other tools or walks a list of steps
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `foreground-tool-recorder` | **`foreground-tool-runner`** | unity-unicorn |
+| `run-unity-tool` | **`unity-tool-runner`** | unity-unicorn |
+| `unity-asset-creator` | **`asset-checklist-runner`** | unity-unicorn |
+| `agent-queue` | **`agent-queue-runner`** | liminal-doors |
+
+## Tool colours and the world-building toolset (Astra, 2026-10-24)
+
+Astra: "this needs to be what the Unity Stable actually looks like where these tools are. Clicking on each opens
+information about them, and you can send to world". The `unity-unicorn-world-building-toolset`, inside the L1 tool panel (native tools are L1), shows every tool in its
+category's colour. The colours run like a rainbow, red to purple, then pink: from the tools that change the most to the
+ones that change nothing.
+
+| Colour | Category | Family |
+|---|---|---|
+| red `#ff4d4d` | spawner | warm: changes objects |
+| orange `#ff8a2b` | carver | warm: changes objects |
+| yellow `#ffe14d` | painter | warm: changes objects |
+| green `#4dff7a` | strapper | green: adds onto things |
+| teal `#2bf5d0` | mover | green: adds onto things |
+| blue `#3da5ff` | builder | blue: assembles |
+| indigo `#6e6bff` | checker | purple: only looks |
+| violet `#b26bff` | viewer | purple: only looks |
+| light pink `#ff8fdc` | keeper | pink: tools about tools |
+| hot pink `#ff3db8` | runner | pink: tools about tools |
+
+- 28 tools do two or three jobs (`also` in `docs/tool-categories-20261024.json`) and get a split chip, main job first.
+- Clicking a tool opens what it does, its jobs, where it lives, who made it and a **Send to world** (or **Send to
+  avatar**) menu. Send saves `unity-unicorn-send-<tool>-<target>-<date>-<time>.json` to Downloads and adds a backlog
+  note; only vine-spawn's Unity window reads jobs today, so the others wait for their receivers.
+- Worlds and avatars get their own project panels next.
+
+## Made-by in each tool card (Astra, 2026-10-24)
+
+Astra: "this information to go inside the individual tool dropdown cards in an obvious way, and get rid of this panel
+after". The made-by tool panel is gone. Opening a tool in the world-building toolset now shows, first, a box with who
+made it (made by us with Claude Opus 5.5, OpenAI Codex (GPT-6), or assistant not recorded), the date, the project it was
+first used in and whether it is on main. The 18 programs and packages made by others open inside the 3rd party program
+pills (Packages lists each package). The rows are still `docs/made-by-20261019.json`.
+
+The colour key and the category boxes have their own backdrop again, a third shade between the page's slate and the
+toolset's darker backdrop (Astra: "more intuitive as backdrop colors").
+
+## Standard panels, as on Wonderland Launchpad (Astra, 2026-10-24)
+
+Astra: "make this into a panel or tool matching the standards. and where are all of the other panels that Wonderland
+Launchpad has that this is missing? I feel like 'standard' panels need a different border style, like the very top
+panel has dots instead of lines". The page now runs in Rift Rabbit's order: `unity-stable-editorial-status-panel`
+(dashed cyan) · the cyberhome, title and System Map squares · Unity Stable's own panels
+(`unity-unicorn-worldbuilding-desk-tool-panel`, the tool names, the Avatar tools | World tools sides) ·
+`unity-unicorn-intelligence-levels-panel` with the light key around L1 to L4 · `unity-unicorn-rwx-panel` · session
+notes, emotions, clicker training · `unity-unicorn-friends-list-panel` · the unified footer.
+
+- The old white worldbuilding desk is now a dark tool panel; the old tool library is `unity-unicorn-tool-library`,
+  inside L1 under the world-building toolset.
+- L4 is five boxes: `approvals-waiting-on-you`, `grants`, `keys`, `unity-unicorn-required-maintenance`, `pet-id`.
+- R W X shows the grants that hold for every pet, from the hub's `system-map.json` (access).
+- The pets it talks to moved from L2 into the friends list.
+- Standard panels have a dotted border; Unity Stable's own panels keep a solid line.
+
+## On the hub's pet program frame, each tool once (Astra, 2026-10-24)
+
+Astra: "cross reference all of the work we did last night on rift rabbit/wonderland launchpad ... the entire layout of
+the page"; "fix where there is redundant things going on. Do not delete any of the work"; "dont change the colors!!!".
+
+- The page is now the hub's generated Unity Unicorn page (`apps/pet-programs/unity-unicorn-20261018.html` in
+  astras-pet-os), so it has last night's Wonderland Launchpad layout: the editorial status panel, the cyberhome and
+  System Map squares with the title between them, `unity-unicorn-intelligence-levels-panel` with L1 to L4 control
+  panels, L4's five boxes, R W X, session notes, emotions, clicker training, the friends list and the unified footer,
+  all with the hub's names. The shared stylesheet and script are copied beside the page
+  (`pet-program-page-20261018.css`, `pet-program-page-20261018.js`, `words-mode-20261019.js`,
+  `developer-words-20261019.js`); copy them again when the hub changes them.
+- Unity Stable keeps its own graphite grays over the hub's default pink.
+- Unity Stable's own tools are in the L1 control panel under "Native tools · 85", and each tool is listed once, in
+  `unity-unicorn-world-building-toolset`. What used to repeat it is folded into each tool's card: what the eight list
+  panels on the Avatar | World tabs said it was made for, and its run record (definition file, last completed use,
+  command and source) from `unity-unicorn-tool-library`. The naming rule and open questions moved into the toolset.
+  The tool library keeps Import and Export and the two tricks to write; the tabs keep the working tools (matcap,
+  menu-map, vine), the world sparkles and the assets; the worldbuilding desk and "Added tonight" are under them.
+- Standard panels are dotted; Unity Stable's own panels have a solid line.
+
+## Tools look like tools; the tool maker (Astra, 2026-10-24)
+
+In the L1 control panel's Native tools, every tool and toolset follows the tool rule: rounded corners on the tool
+background (Astra: "tools have subtools, then toolsets have tools and subtools"). The Avatar tools | World tools tabs
+are gone; the same choice is a filter inside `unity-unicorn-world-building-toolset` (All · 85, Avatar tools · 22,
+World tools · 63), and both sides' working tools show one after another. "Added tonight" is
+`unity-unicorn-tool-maker`, right under the toolset: write down a tool or program idea the moment you have it.

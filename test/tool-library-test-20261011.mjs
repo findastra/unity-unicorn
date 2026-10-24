@@ -60,7 +60,8 @@ test('older saved catalog cards receive new names and summaries without changing
 });
 
 test('scripts parse and page loading preserves the legacy planning desk and does not create usage', () => {
-  for (const m of html.matchAll(/<script(?:[^>]*)>([\s\S]*?)<\/script>/g)) new vm.Script(m[1]);
+  // the hub frame's pet-program-data block is JSON, not a script (2026-10-24)
+  for (const m of html.matchAll(/<script(?![^>]*application\/json)(?:[^>]*)>([\s\S]*?)<\/script>/g)) new vm.Script(m[1]);
   const storage = new Map([[deskKey, '[{"id":"existing-task","title":"Existing notes"}]']]);
   const app = boot(storage);
   assert.equal(app.writes(), 0);
