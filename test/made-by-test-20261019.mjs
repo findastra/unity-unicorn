@@ -28,8 +28,13 @@ test('each row says what it is for and who made it, and agrees with pet.json sid
   for (const o of made.others) assert.ok(['avatar', 'world', 'both'].includes(o.side) && o.what, o.name);
 });
 
-test('the page shows the same rows, in its made-by panel', () => {
+// Since 2026-10-24 the made-by panel is gone: who made each tool opens first in that tool's card in the world-building
+// toolset, and what each program made by others does opens in its 3rd party pill (Astra: "this information to go inside
+// the individual tool dropdown cards in an obvious way, and get rid of this panel after").
+test('the page carries the same rows, in each tool card and 3rd party pill, with no made-by panel', () => {
   const line = html.split('\n').find((l) => l.startsWith('const MADE_BY='));
   assert.deepEqual(JSON.parse(line.slice('const MADE_BY='.length).replace(/;$/, '')), made);
-  assert.ok(html.includes('data-item="unity-unicorn-made-by-tool-panel"></span>unity-unicorn-made-by-tool-panel<'));
+  assert.ok(!html.includes('unity-unicorn-made-by-tool-panel<'), 'no made-by panel');
+  assert.ok(html.includes('const m=made[old],box=el("div","uu-tc-made")') && html.includes('inf.prepend(box)'), 'made-by first in each tool card');
+  assert.ok(html.includes('"Made by others: "'), 'made by others in the 3rd party pills');
 });

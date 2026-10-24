@@ -399,3 +399,14 @@ ones that change nothing.
   avatar**) menu. Send saves `unity-unicorn-send-<tool>-<target>-<date>-<time>.json` to Downloads and adds a backlog
   note; only vine-spawn's Unity window reads jobs today, so the others wait for their receivers.
 - Worlds and avatars get their own project panels next.
+
+## Made-by in each tool card (Astra, 2026-10-24)
+
+Astra: "this information to go inside the individual tool dropdown cards in an obvious way, and get rid of this panel
+after". The made-by tool panel is gone. Opening a tool in the world-building toolset now shows, first, a box with who
+made it (made by us with Claude Opus 5.5, OpenAI Codex (GPT-6), or assistant not recorded), the date, the project it was
+first used in and whether it is on main. The 18 programs and packages made by others open inside the 3rd party program
+pills (Packages lists each package). The rows are still `docs/made-by-20261019.json`.
+
+The colour key and the category boxes have their own backdrop again, a third shade between the page's slate and the
+toolset's darker backdrop (Astra: "more intuitive as backdrop colors").

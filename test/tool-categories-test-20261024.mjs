@@ -54,7 +54,7 @@ test('every tool is in one related group, and the toolset sorts by group, then A
 test('L1 shows 3rd party and native programs as pills with a count, like Wonderland Launchpad', () => {
   assert.ok(html.includes('3rd party programs · <span id="uu-n-third"></span></h4><ul class="uu-pills" id="uu-third">'));
   assert.ok(html.includes('Native programs · <span id="uu-n-programs"></span></h4><ul class="uu-pills" id="uu-programs">'));
-  assert.ok(html.includes('THIRD.forEach(([n,d])=>pill("uu-third",n,d));'));
+  assert.ok(html.includes('THIRD.forEach(([n,d])=>{const o=otherOf(n);pill("uu-third",n,'));
 });
 
 test('the world-building toolset, inside the L1 tool panel, draws every tool with its colours and a send button', () => {
@@ -63,7 +63,7 @@ test('the world-building toolset, inside the L1 tool panel, draws every tool wit
   const l1 = html.indexOf('unity-unicorn-L1-tool-panel<'), toolset = html.indexOf('unity-unicorn-world-building-toolset<');
   assert.ok(l1 > 0 && toolset > l1 && toolset < html.indexOf('id="uu-add"', l1), 'toolset inside L1');
   assert.ok(!html.includes('unity-unicorn-tools-tool-panel'), 'the old label is gone');
-  assert.ok(html.includes('renderMadeBy();renderToolNames();renderToolChart();'));
+  assert.ok(html.includes('renderAssets();renderToolNames();renderToolChart();'));
   assert.ok(html.includes('schema:"unity-unicorn.send-tool-job/v1"'));
 });
 

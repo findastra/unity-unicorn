@@ -61,7 +61,12 @@
    groupings") on one dark backdrop ("this tool should be all on one dark backdrop"): no box has a fill of its own. */
 #uu-panels details#uu-p-tools{background:#1b1d22}
 #uu-panels details#uu-p-tools>summary{background:#1b1d22}
-#uu-panels details#uu-p-tools .uu-tc-leg,#uu-panels details#uu-p-tools .uu-tc-cat{background:transparent;border:1px solid #2f323a}
+#uu-panels details#uu-p-tools .uu-tc-leg,#uu-panels details#uu-p-tools .uu-tc-cat{background:#262a32;border:1px solid #343844}
+/* Backdrop colours give the groupings back (Astra, 2026-10-24: "more intuitive as backdrop colors, so just use a newer
+   3rd color for these groupings"): the page's slate, the toolset's darker backdrop, and a third, lighter shade for the
+   colour key and the category boxes. */
+#uu-panels .uu-tc-made{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:2px 0 8px;padding:6px 10px;border-radius:8px;background:#1b1d22;border:1px solid #3a3f4b;color:var(--ink)}
+#uu-panels .uu-tc-made span:not(.uu-tag){color:var(--muted)}
 #uu-panels details#uu-p-tools .uu-tc-cat{border-left:4px solid}
 #uu-panels details.uu-tc-tool>summary:hover{background:#25272e}
 #uu-panels .uu-tc-send select{background:#2a2d34;color:var(--ink);border:1px solid var(--edge);border-radius:8px;padding:5px 8px}
@@ -153,13 +158,6 @@
     </div>
   </form>
   <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
-</details>
-
-<details class="uu-panel" open id="uu-p-made-by"><summary><span class="uu-lights" data-item="unity-unicorn-made-by-tool-panel"></span>unity-unicorn-made-by-tool-panel<span class="uu-what">who made each tool: us, or somebody else</span></summary>
-  <p class="uu-note" id="uu-made-summary"></p>
-  <h4>Made by us (Astra with an AI assistant)</h4><div id="uu-made-ours"></div>
-  <h4>Made by others (programs and packages Unity Unicorn uses)</h4><ul class="uu-items" id="uu-made-others"></ul>
-  <p class="uu-note">"Made with" comes from the commit that added the tool or a repo's credit line; "not recorded" means none names the assistant. The list is <code>docs/made-by-20261019.json</code>.</p>
 </details>
 
 <details class="uu-panel" open id="uu-p-tool-names"><summary><span class="uu-lights" data-item="unity-unicorn-tool-names-tool-panel"></span>unity-unicorn-tool-names-tool-panel<span class="uu-what">how tools are named, and every tool's category</span></summary>
@@ -522,7 +520,9 @@ function pill(list,name,desc){const li=el("li","uu-pill");li.tabIndex=0;li.setAt
   li.append(lights(name),el("span","uu-pill-name",name),el("span","uu-pill-desc",desc));
   const flip=()=>{const o=li.classList.toggle("open");li.setAttribute("aria-expanded",String(o))};
   li.onclick=e=>{if(!e.target.closest("button"))flip()};li.onkeydown=e=>{if((e.key==="Enter"||e.key===" ")&&e.target===li){e.preventDefault();flip()}};$(list).append(li)}
-THIRD.forEach(([n,d])=>pill("uu-third",n,d));
+// Made by others: each 3rd party pill opens with what it does (docs/made-by-20261019.json); Packages lists each package.
+const OTHERS=MADE_BY.others,otherOf=n=>OTHERS.find(o=>o.name===n||o.name.startsWith(n+" ")),MAIN3=THIRD.map(t=>t[0]).filter(n=>n!=="Packages").map(otherOf).filter(Boolean);
+THIRD.forEach(([n,d])=>{const o=otherOf(n);pill("uu-third",n,n==="Packages"?"Made by others: "+OTHERS.filter(x=>!MAIN3.includes(x)).map(x=>x.name+" ("+x.what+")").join("; ")+".":"Made by others: "+(o?o.what:d)+".")});
 PROGRAMS.forEach(([n,d])=>pill("uu-programs",n,d));
 $("uu-n-third").textContent=THIRD.length;$("uu-n-programs").textContent=PROGRAMS.length;
 // Avatar tools and world tools (Astra, 2026-10-19: "separate the page by avatar tools vs world tools"). Every tool is in one
@@ -581,7 +581,12 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
       if(nw!==old)s.append(el("span","uu-tc-old",old));if(cats.length>1)s.append(el("span","uu-tc-also","+ "+cats.slice(1).join(" + ")));d.append(s);
       const inf=el("div","uu-tc-info");inf.append(el("p",null,t.desc),el("p",null,"Jobs: "+cats.map((x,i)=>x+(i?"":" (main)")).join(" + ")+" · for "+(t.side==="avatar"?"avatars":"worlds")+" · group: "+T.groups[old]),
         el("p",null,"Lives in: "+t.where+(nw!==old?" · still called "+old+" there until the rename":"")));
-      if(made[old])inf.append(el("p",null,"Made with: "+made[old].made_with+(made[old].date?", "+made[old].date:"")));
+      // Who made it, first thing in the card (Astra, 2026-10-24: the made-by tool panel's information "to go inside the
+      // individual tool dropdown cards in an obvious way, and get rid of this panel after").
+      if(made[old]){const m=made[old],box=el("div","uu-tc-made");
+        box.append(el("b",null,m.made_with==="not recorded"?"Made by us · assistant not recorded":"Made by us with "+m.made_with),
+          el("span",null,[m.date?"made "+m.date:"",m.first_in?"first in "+m.first_in:""].filter(Boolean).join(" · ")),el("span","uu-tag"+(m.state==="on main"?" ok":""),m.state));
+        inf.prepend(box)}
       if(t.href&&/^https:\/\/github\.com\/findastra\//.test(t.href)){const a=el("a","uu-src","source");a.href=t.href;a.rel="noopener noreferrer";a.target="_blank";const p=el("p");p.append(a);inf.append(p)}
       const row=el("div","uu-tc-send"),sel=el("select");sel.setAttribute("aria-label","Send "+nw+" to");
       const targets=t.side==="avatar"?PROGRAMS.filter(p=>/^avatar/.test(p[1])).map(p=>[p[0].toLowerCase().replace(/[^a-z0-9]+/g,"-"),p[0]]):WORLDS.map(w=>[w[0],w[1]]);
@@ -599,12 +604,6 @@ function renderToolNames(){const T=TOOL_CATEGORIES;$("uu-names-rule").textConten
     box.append(el("p","uu-note",c.means+" Example: "+c.example+"."));const ul=el("ul","uu-items");
     const li=el("li");li.append(el("span","uu-desc",names.join(", ")||"None yet."));ul.append(li);box.append(ul)});
   const q=$("uu-names-questions");q.replaceChildren();T.questions.forEach(t=>{const li=el("li");li.append(el("span","uu-desc",t));q.append(li)})}
-function renderMadeBy(){const M=MADE_BY,SIDE={avatar:"for avatars",world:"for worlds",both:"for avatars and worlds"};
-  const box=$("uu-made-ours");box.replaceChildren();const groups=[...new Set(M.ours.map(o=>o.made_with))];
-  groups.forEach(g=>{const rows=M.ours.filter(o=>o.made_with===g);box.append(el("h4",null,(g==="not recorded"?"Assistant not recorded":"Made with "+g)+" · "+rows.length));const ul=el("ul","uu-items");
-    rows.forEach(o=>{const li=el("li");li.append(el("span","uu-mb-name",o.id),el("span","uu-desc",[SIDE[o.side],o.date?"made "+o.date:"",o.first_in?"first in "+o.first_in:""].filter(Boolean).join(" · ")),el("span","uu-tag"+(o.state==="on main"?" ok":""),o.state));ul.append(li)});box.append(ul)});
-  const oth=$("uu-made-others");oth.replaceChildren();M.others.forEach(o=>{const li=el("li");li.append(el("span","uu-mb-name",o.name),el("span","uu-desc",o.what),el("span","uu-tag ok",SIDE[o.side]));oth.append(li)});
-  $("uu-made-summary").textContent=M.ours.length+" tools made by us ("+groups.map(g=>M.ours.filter(o=>o.made_with===g).length+" "+(g==="not recorded"?"assistant not recorded":"with "+g)).join(", ")+"), and "+M.others.length+" programs and packages made by others."}
 function renderAssets(){const A=ASSETS_WE_CREATED;["avatar","world"].forEach(side=>{const box=$("uu-assets-"+side);box.replaceChildren();
   A.types[side].forEach(type=>{box.append(el("h4",null,type));const rows=A.assets.filter(a=>a.for===side&&a.type===type);
     if(!rows.length){box.append(el("p","uu-note","None yet."));return}
@@ -632,7 +631,7 @@ function renderStatus(){const b=backlog();const last=b.entries.length?b.entries[
   const m=el("span");m.append(el("b",null,"On the map: "));const a=el("a",null,"unity-unicorn node");a.href="https://findastra.github.io/astras-pet-os/system-map-20261012.html#node=unity-unicorn";m.append(a);s.append(m)}
 $("uu-chat-open").onclick=()=>{$("uu-chat-msg").textContent="Unity Unicorn's chat bot is planned: it will ask before using your own Claude or ChatGPT account. Until then, use session notes above."};
 st.lastOpened=new Date().toISOString();save(KEY,st);
-renderAdded();renderAssets();renderMadeBy();renderToolNames();renderToolChart();renderBacklog();renderStatus();
+renderAdded();renderAssets();renderToolNames();renderToolChart();renderBacklog();renderStatus();
 })();
 </script>
 <script id="uu-matcap-recipes">
