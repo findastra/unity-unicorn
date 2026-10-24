@@ -222,3 +222,15 @@ words follow: "Add to the L1 tool panel" and "Click a tool panel to open it".
 - `test/panels-test-20261019.mjs` fails if a page box label ends in `-panel` without `tool`, or a level box is called a module.
 
 Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
+
+## Tool names and categories (0.5.3-20261024)
+
+Astra, 2026-10-24: "its a spawner if it mades 3D objects, its a painter if it changes existing object surfaces". A tool's
+name is what it works on, then its category's word (`vine-spawn`, `crystal-reflection-painter`, `marble-carver`).
+
+- `docs/tool-categories-20261024.json` gives each of the 85 tools on the page one category: spawner and painter
+  (Astra's), and carver, strapper, builder, mover, checker, viewer, keeper and runner (proposed, waiting on her OK).
+- The new `unity-unicorn-tool-names-tool-panel` shows the naming rule, each category with its tools, and the open
+  questions. Every tool row on the Avatar tools and World tools sides starts with its category.
+- Existing tools keep their names. The rule is in the skill book under `my-preferred-nomenclature`.
+- `test/tool-categories-test-20261024.mjs` fails if a tool has no category or the page and the list differ.
