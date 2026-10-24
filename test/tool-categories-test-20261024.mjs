@@ -51,44 +51,53 @@ test('every tool is in one related group, and the toolset sorts by group, then A
   assert.ok(html.includes('.sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)))'));
 });
 
-test('L1 shows 3rd party and native programs as pills with a count, like Wonderland Launchpad', () => {
-  assert.ok(html.includes('3rd party programs · <span id="uu-n-third"></span></h4><ul class="uu-pills" id="uu-third">'));
-  assert.ok(html.includes('Native programs · <span id="uu-n-programs"></span></h4><ul class="uu-pills" id="uu-programs">'));
-  assert.ok(html.includes('THIRD.forEach(([n,d])=>{const o=otherOf(n);pill("uu-third",n,'));
+// Since 2026-10-24 the page is the hub's pet program frame (last night's Wonderland Launchpad layout), with Unity
+// Stable's own tools in its L1 control panel, each listed once.
+test('L1 is the hub frame: programs as pills with a count, then the native tools, each once', () => {
+  assert.ok(html.includes('<h3>3rd party programs · 6</h3><ul class="items"><li class="pill">'));
+  assert.ok(!html.includes('class="side-avatar"') && !html.includes('class="side-world"'), 'the hub pills for the tools are replaced by the toolset');
+  assert.ok(html.includes('<section class="wide uu"><h3>Native tools · 85</h3>'));
+  for (const k of ['avatar-build', 'avatar-sparkles', 'avatar-effects', 'avatar-records', 'every-world', 'piranesi-house', 'astras-infinite-pole', 'liminal-doors'])
+    assert.ok(!html.includes(`id="uu-p-${k}"`), k + ' list panel folded into the cards');
+  assert.ok(html.includes('el("p",null,"Made for: "+(MADE_FOR[t.panel]'), 'made for, in each card');
+  assert.ok(html.includes('<script id="uu-fold-library">'), 'run records open in each card');
+  assert.ok(html.includes('<link rel="stylesheet" href="pet-program-page-20261018.css">') && html.includes('<script src="pet-program-page-20261018.js"></script>'));
+  assert.ok(html.includes(':root{--slate:#252a33;'), 'Unity Stable keeps its grays');
 });
 
 test('the world-building toolset, inside the L1 tool panel, draws every tool with its colours and a send button', () => {
   assert.ok(html.includes('data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<'));
   // native tools are L1, so the toolset sits inside the L1 tool panel, before the panel closes
   const l1 = html.indexOf('unity-unicorn-L1-control-panel<'), toolset = html.indexOf('unity-unicorn-world-building-toolset<');
-  assert.ok(l1 > 0 && toolset > l1 && toolset < html.indexOf('id="uu-add"', l1), 'toolset inside L1');
+  assert.ok(l1 > 0 && toolset > l1 && toolset < html.indexOf('unity-unicorn-L2-control-panel<'), 'toolset inside L1');
   assert.ok(!html.includes('unity-unicorn-tools-tool-panel'), 'the old label is gone');
   assert.ok(html.includes('renderAssets();renderToolNames();renderToolChart();'));
   assert.ok(html.includes('schema:"unity-unicorn.send-tool-job/v1"'));
 });
 
-test('the page shows the same list in its tool-names tool panel, and a category on every tool row', () => {
+test('the page carries the same list, and the naming rule and open questions sit in the toolset', () => {
   const line = html.split('\n').find((l) => l.startsWith('const TOOL_CATEGORIES='));
   assert.deepEqual(JSON.parse(line.slice('const TOOL_CATEGORIES='.length).replace(/;$/, '')), cats);
-  assert.ok(html.includes('data-item="unity-unicorn-tool-names-tool-panel"></span>unity-unicorn-tool-names-tool-panel<'));
-  assert.ok(html.includes('item(l,n,d,cat(n)+"on main",true)'));
-  assert.ok(html.includes('item(l,n,d,cat(n)+"not merged · "'));
-  assert.ok(html.includes('item(l,n,d,cat(n)+"in "+WORLD'));
+  assert.ok(!html.includes('unity-unicorn-tool-names-tool-panel<'), 'the tool-names panel is folded into the toolset');
+  const ts = html.indexOf('id="uu-p-tools"'), lib = html.indexOf('id="uu-p-library"');
+  for (const id of ['uu-names-rule', 'uu-names-questions']) { const i = html.indexOf(`id="${id}"`); assert.ok(i > ts && i < lib, id + ' inside the toolset'); }
 });
 
 // Wonderland Launchpad's standard panels (Astra, 2026-10-24: "where are all of the other panels that Wonderland
 // Launchpad has"), dotted because they are standard; the old desk and tool library are dark tool panels now.
 test('the standard panels are there, in Wonderland Launchpad order, with dotted borders', () => {
-  const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-intelligence-levels-panel',
-    'unity-unicorn-L1-control-panel', 'unity-unicorn-world-building-toolset', 'unity-unicorn-tool-library', 'unity-unicorn-avatar-build-tool-panel',
-    'unity-unicorn-world-assets-tool-panel', 'unity-unicorn-tool-names-tool-panel', 'unity-unicorn-worldbuilding-desk-tool-panel',
-    'unity-unicorn-L2-control-panel', 'unity-unicorn-L4-control-panel', 'approvals-waiting-on-you', 'grants', 'keys',
-    'unity-unicorn-required-maintenance', 'pet-id', 'unity-unicorn-rwx-panel', 'unity-unicorn-session-notes', 'unity-unicorn-friends-list-panel', 'astras-pet-os-unified-footer'];
+  const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-cyberhome-panel', 'unity-stable-quick-summary-panel', 'unity-unicorn-system-map-panel',
+    'unity-unicorn-intelligence-levels-panel', 'unity-unicorn-L1-control-panel', 'unity-unicorn-world-building-toolset', 'unity-unicorn-tool-library',
+    'unity-unicorn-matcap-tool-panel', 'unity-unicorn-world-assets-tool-panel', 'unity-unicorn-worldbuilding-desk-tool-panel',
+    'unity-unicorn-L2-control-panel', 'unity-unicorn-L3-control-panel', 'unity-unicorn-L4-control-panel', 'approvals-waiting-on-you', 'grants', 'keys',
+    'unity-unicorn-required-maintenance', 'pet-id', 'unity-unicorn-rwx-panel', 'unity-unicorn-session-notes-panel', 'unity-unicorn-emotions-panel',
+    'unity-unicorn-clicker-training-panel', 'unity-unicorn-friends-list-panel', 'unity-unicorn-unified-footer-panel'];
+  for (const l of order) assert.equal(html.split(l + '<').length - html.split(l + '</a>').length, 1, l + ' once (links to it aside)');
   let at = -1;
-  for (const l of order) { const i = html.indexOf(l + '<'); assert.ok(i > at, l + ' in order'); at = i; }
+  for (const l of order) { const i = html.search(new RegExp(l + '<(?!/a>)')); assert.ok(i > at, l + ' in order'); at = i; }
   // tools are never outside a control panel (Astra, 2026-10-24): every tool panel sits between L1 and L2
   const l1 = html.indexOf('unity-unicorn-L1-control-panel<'), l2 = html.indexOf('unity-unicorn-L2-control-panel<');
   for (const m of html.matchAll(/data-item="(unity-unicorn-[a-z0-9-]+-tool-panel)"/g)) assert.ok(m.index > l1 && m.index < l2, m[1] + ' inside L1');
-  assert.ok(html.includes('#uu-panels details.uu-panel.uu-std,#uu-panels .uu-box.uu-std{border-style:dotted'));
+  assert.ok(html.includes('details.panel:not(.editorial){border-style:dotted'));
   assert.ok(!html.includes('<p class="eyebrow">Worldbuilding desk'), 'the old white desk header is gone');
 });

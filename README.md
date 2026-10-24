@@ -427,3 +427,24 @@ notes, emotions, clicker training · `unity-unicorn-friends-list-panel` · the u
 - R W X shows the grants that hold for every pet, from the hub's `system-map.json` (access).
 - The pets it talks to moved from L2 into the friends list.
 - Standard panels have a dotted border; Unity Stable's own panels keep a solid line.
+
+## On the hub's pet program frame, each tool once (Astra, 2026-10-24)
+
+Astra: "cross reference all of the work we did last night on rift rabbit/wonderland launchpad ... the entire layout of
+the page"; "fix where there is redundant things going on. Do not delete any of the work"; "dont change the colors!!!".
+
+- The page is now the hub's generated Unity Unicorn page (`apps/pet-programs/unity-unicorn-20261018.html` in
+  astras-pet-os), so it has last night's Wonderland Launchpad layout: the editorial status panel, the cyberhome and
+  System Map squares with the title between them, `unity-unicorn-intelligence-levels-panel` with L1 to L4 control
+  panels, L4's five boxes, R W X, session notes, emotions, clicker training, the friends list and the unified footer,
+  all with the hub's names. The shared stylesheet and script are copied beside the page
+  (`pet-program-page-20261018.css`, `pet-program-page-20261018.js`, `words-mode-20261019.js`,
+  `developer-words-20261019.js`); copy them again when the hub changes them.
+- Unity Stable keeps its own graphite grays over the hub's default pink.
+- Unity Stable's own tools are in the L1 control panel under "Native tools · 85", and each tool is listed once, in
+  `unity-unicorn-world-building-toolset`. What used to repeat it is folded into each tool's card: what the eight list
+  panels on the Avatar | World tabs said it was made for, and its run record (definition file, last completed use,
+  command and source) from `unity-unicorn-tool-library`. The naming rule and open questions moved into the toolset.
+  The tool library keeps Import and Export and the two tricks to write; the tabs keep the working tools (matcap,
+  menu-map, vine), the world sparkles and the assets; the worldbuilding desk and "Added tonight" are under them.
+- Standard panels are dotted; Unity Stable's own panels have a solid line.

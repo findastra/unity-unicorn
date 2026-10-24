@@ -1,0 +1,645 @@
+/* Every pet program page, from Astra's sketch of 2026-10-18 (PET-PROGRAM-FRAMEWORK.md, section 3). The page shows the
+   structure, not a finished look (Astra, 2026-10-18): thin light lines on slate, each panel's label set into its top
+   border with no marks after it, the emotion bubbles labelled the same way, every panel collapsible.
+   One copy for every page spawned by the Friendly Farmer's pet program spawner. Claude Opus 5.5, 2026-10-18. */
+/* Dark raspberry pink with raspberry-purple pink lines (Astra, 2026-10-23: "make the background color dark pink and
+   the line colors change aesthetically please, like a raspberrypurply pink"). */
+:root {
+  --slate: #3d1530; --slate-2: #2f0f25; --chalk: #fbe9f2; --chalk-dim: #d9a9c4; --line: #c94f93; --line-dim: #8a3a6f;
+  --on: #4fb35a; --off: #d9534f; --care: #6cc7e8; --fix: #e8c547; --planned: #8c8a80;
+  --link: #ffd9a0; --connection: #f2a07b;
+  --label: ui-monospace, Consolas, 'Cascadia Mono', monospace;
+  --text: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* The outer margin (Astra's quiet page frame, 2026-10-14): about 0.75 inch (72 CSS px) on a big screen, less as the
+     window narrows, 16px on a phone. CSS inches are not real inches on every screen. */
+  --gutter: clamp(20px, 6vw, 72px);
+}
+* { box-sizing: border-box; }
+html { background: var(--slate); }
+body { margin: 0; color: var(--chalk); background: var(--slate); font: 15px/1.5 var(--text); }
+a { color: var(--link); }
+a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visible, textarea:focus-visible, label.file:focus-within { outline: 2px solid var(--fix); outline-offset: 2px; }
+code { font: 12px var(--label); color: var(--chalk-dim); }
+.page { max-width: calc(1180px + 2 * var(--gutter)); margin: 0 auto; padding: var(--gutter) var(--gutter) 120px; }
+
+/* Panels: a thin bordered box with its label set into the top border. Clicking the label folds it. */
+/* One padding for every panel, the same on all four sides, square corners (Astra, 2026-10-23: "panel spacing should be
+   unified always too and square"). */
+:root { --pad: 20px;
+  /* One background for every tool: pills, the cyberhome and System Map tools, the chat (Astra, 2026-10-23: "the
+     'tool' background color needs to be unified"). */
+  --tool-bg: rgba(255, 255, 255, .05); --tool-bg-hover: rgba(255, 255, 255, .08); }
+.panel { position: relative; border: 1px solid var(--line); border-radius: 0; padding: var(--pad); margin: 30px 0 0; }
+/* The label and its lights are centred on the border line, whatever the label's size (Astra, 2026-10-23: "check for
+   alignment issues", on rift-rabbit-update-history sitting above its line). A label that wraps grows upward, its last
+   line on the border, so it never runs into the panel's words (Astra, 2026-10-23: "still an awkward lack of space
+   between panel title and next body text"): half of 13px x 1.3 is 8.45px. */
+.panel > summary { position: absolute; top: 0; transform: translateY(calc(-100% + 8.45px)); left: 14px; list-style: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 8px; max-width: calc(100% - 28px); }
+.panel > summary::-webkit-details-marker { display: none; }
+/* Only the label cuts the border, a space each side; its lights sit on the line with nothing behind them (2026-10-22). */
+.panel > summary .legend { font: 13px/1.3 var(--label); color: var(--chalk); overflow-wrap: anywhere; background: var(--slate); padding: 0 6px; }
+/* No lights on a panel, only on tools (Astra, 2026-10-23). A small arrow after the label shows the panel folds, like
+   Halo List's: right while folded, down while open. No-break spaces join it to the last word, so it never wraps onto a
+   line of its own. */
+.panel > summary .legend::after { content: "\00A0\00A0\25B8"; font-size: 10px; color: var(--chalk-dim); }
+.panel[open] > summary .legend::after { content: "\00A0\00A0\25BE"; }
+.panel > summary:hover .legend::after { color: var(--fix); }
+/* <home>-editorial-status-panel (Astra, 2026-10-23): a dashed pink box at the top, like Halo List's header alert. */
+/* Its own neon, so L3's note never reads as part of the page (Astra, 2026-10-23: "status panel needs to be a distinct
+   neon color and much shorter"). */
+/* It starts at the page's gutter, like the sides, and sits as far above the header as the header sits above the next
+   panel, 30px border to border (Astra, 2026-10-24: "1 and 2 seem different sizes ... 3 and 4 should be same distance"). */
+.panel.editorial { border: 1px dashed #3ff0ff; color: #c9fbff; margin: 0 0 37px; box-shadow: 0 0 10px rgba(63, 240, 255, .25), inset 0 0 10px rgba(63, 240, 255, .08); font-size: 13.5px; line-height: 1.45; }
+.panel.editorial > summary .legend { color: #3ff0ff; }
+.panel.editorial p { margin: 0; }
+.panel.editorial p + p { margin-top: 4px; }
+.panel.editorial .editorial-by { color: #7fe7f0; font-size: 12px; }
+.panel:not([open]) { padding: 14px var(--pad) 0; }
+.panel .panel { margin-top: 26px; }
+
+h1 { font: 700 clamp(30px, 5vw, 48px)/1.15 var(--text); margin: 0 0 6px; }
+h2, h3, h4 { font-weight: 600; margin: 0 0 6px; }
+h3 { font-size: 15px; } h4 { font-size: 13.5px; margin-top: 10px; }
+.version { font: 400 clamp(15px, 2vw, 20px) var(--label); color: var(--chalk-dim); white-space: nowrap; }
+/* The title: the pet program's name and its version on one line, the version to its right (Astra, 2026-10-20: "no
+   matter how big it is"), smaller than before (her marked-up screenshot: "SMALLER"). The page script makes the name
+   smaller, down to 20px, until both fit between the cyberhome and the System Map box; past that the version goes on
+   its own line below the name (Astra, 2026-10-21: "these always stay together on one line until too collapsed,
+   version line then goes below"). Nothing else is listed under it. */
+.title h1 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 12px; font-size: clamp(24px, 3vw, 34px); }
+.title .version { font-size: clamp(13px, 1.4vw, 16px); }
+.title-name { min-width: 0; overflow-wrap: anywhere; }
+.title h1.fits .title-name { white-space: nowrap; flex: none; }
+.title h1.fits.stacked .title-name { flex: 0 0 100%; }
+/* The name itself is always one line (Astra, 2026-10-20: "ALWAYS 1 LINE"): too long even at 14px on its own line, it
+   is cut with "…". */
+.title h1.fits.clipped .title-name { flex: 0 1 100%; overflow: hidden; text-overflow: ellipsis; }
+.title .version { flex: none; }
+.small { font-size: 12.5px; color: var(--chalk-dim); }
+.empty { color: var(--chalk-dim); font-style: italic; margin: 4px 0; }
+.tag { font-size: 11px; border: 1px solid var(--chalk-dim); border-radius: 9px; padding: 0 6px; color: var(--chalk-dim); white-space: nowrap; }
+.label { display: block; margin-left: 50px; }
+
+/* Cyberhome top left, title in the middle, the way back to the System Map top right (Astra, 2026-10-19; A60). The
+   cyberhome and the System Map box are always two squares of one size (Astra, 2026-10-19: "the cyber home box be the
+   same length as the system map box"; 2026-10-21: "should always be a square ... they can push together or stack, but
+   when this happens the title goes below them both"). On a computer --square, their side, is the title column's
+   height (the page script sets it, between 210 and 260px, so a label still fits on the border), and the header ends
+   at the bottom of the title's buttons (#163) unless that is shorter; 220px without the script. Folded, each box is
+   only as tall as its label. */
+/* Snug around their tool and picture (Astra, 2026-10-23: "make their squares fit them snugly"); a label too long wraps up onto the border. */
+.top { --square: 180px; display: grid; grid-template-columns: var(--square) minmax(0, 1fr) var(--square); gap: 28px; align-items: start; }
+/* The squares start at the same height as the title, one each side (Astra, 2026-10-23: "make those panels squares that
+   start at the same height as the title and the just move left or right"; before, 2026-10-22, their bottoms lined up). */
+/* A flex column: inside a details box, Chrome resolves the container units only then. Nothing is clipped at the box
+   itself, so its label stays whole on the border; the den clips the pet. */
+/* Snug around the tool and the picture (Astra, 2026-10-23: "too much space still"): the tool, one pad, the picture in a
+   60px slot, the panel's own pad. */
+.top > .cyberhome[open], .top > .system-map[open] { display: flex; flex-direction: column; }
+.top > .system-map[open] { justify-content: flex-start; }
+/* Their labels keep to one line on the border: a little smaller and closer to the corner than other panels'. */
+.top > .panel > summary { left: 10px; max-width: calc(100% - 20px); transform: translateY(calc(-100% + 7.15px)); }
+.top > .panel > summary .legend { font-size: 11px; white-space: normal; }
+.system-map .map-link { display: grid; justify-items: center; gap: 6px; color: var(--chalk); text-align: center; text-decoration: none; font-size: 13.5px; line-height: 1.35; }
+.system-map .map-link:hover span, .system-map .map-link:focus-visible span { text-decoration: underline; }
+.system-map .small { text-align: center; margin: 8px 0 0; overflow-wrap: anywhere; }
+/* The first related pets, under the map's node, only when the square has room for them; the related pets panel has
+   all of them (Astra, 2026-10-20). */
+.map-related { list-style: none; margin: 12px 0 0; padding: 0; display: flex; justify-content: center; gap: 8px; }
+.map-related li { width: 64px; }
+.map-related a, .map-related-static { display: grid; justify-items: center; gap: 2px; color: var(--chalk); text-decoration: none; text-align: center; font-size: 11px; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
+.map-related a:hover span, .map-related a:focus-visible span { text-decoration: underline; }
+.map-related .mini, .map-related .no-art { width: 36px; height: 36px; image-rendering: pixelated; }
+.map-related .no-art { display: grid; place-items: center; border: 1px dashed var(--line); font-size: 8px; }
+.system-map .map-related-all { margin-top: 6px; }
+.map-related, .system-map .map-related-all { display: none; }
+@container (min-height: 300px) { .map-related { display: flex; } .system-map .map-related-all { display: block; } }
+/* The map's rings as tall as the pet in the cyberhome (Astra, 2026-10-23: "make the system map icon the same size as the rabbit"). */
+.rings { width: 56px; height: 56px; }
+.rings circle { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.rings .core { fill: var(--line); }
+.rings .node { fill: var(--link); stroke: #111; }
+.top > .panel { margin-top: 6px; }
+.title { padding-top: 6px; }
+/* Beside the squares the title starts level with their labels, like the other panels' tops (Astra, 2026-10-24: "the
+   title needs to be up higher starting with the other panels"); the status panel sits 22px above those labels, as the
+   header sits above the next panel's label ("still need more space between the first panel and the next"). */
+.top.title-between > .title { padding-top: 0; margin-top: -15px; }
+.title .panel { margin-top: 22px; }
+/* In a narrow title column (a phone, or between the squares on a small window) its label wraps upward onto two lines,
+   so it gets room under the version. */
+@media (max-width: 1000px) { .title .panel { margin-top: 34px; } }
+/* The quick summary's box fits its text, with no empty line above or below it (Astra, 2026-10-20: "fitted"). */
+.title .summary[open] { padding: var(--pad); }
+.title .summary > p { margin: 0; }
+/* The two squares and the quick summary end on one line, always (Astra, 2026-10-24: "these should end at the same spot
+   always"): the header's row stretches them all to the tallest, and the summary grows to fill the title column. A
+   folded box stays only as tall as its label. */
+.top.title-between { align-items: stretch; }
+.top.title-between > .title { display: flex; flex-direction: column; }
+.top.title-between > .title > .panel[open] { flex: 1; }
+.top.title-between > .panel:not([open]) { align-self: start; }
+/* The pet fills its square: the den is the square's inside, and the pet and the rings shrink to fit it. */
+.top > .cyberhome[open] { padding: var(--pad); }
+.habitat { position: relative; text-align: center; display: flex; flex-direction: column; }
+/* The details box's own content slot is not a flex item, so the habitat takes the square's inside by container units. */
+/* No inner border: the tool and the picture sit right in the panel (Astra, 2026-10-23: "get rid of the extra border
+   within both the cyberhome and the system map panels"). */
+
+/* The map panel's tool box, like the cyberhome's den (Astra, 2026-10-23). */
+.map-box { flex: none; height: 60px; margin-top: var(--pad); min-height: 0; border: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 0; }
+/* The cyberhome's lights sit inside the den's top corner, off its border line (Astra, 2026-10-20: "Move those
+   indicator lights down. They are in the way of the line"). */
+/* <pet>-cyberhome, the tool inside the cyberhome (Astra, 2026-10-23): drawn like every tool, a small pill inside
+   its box with its lights and its name, never on a border ("we got rid of the lights in panel borders ... it should
+   only be on a tool"). */
+/* The tool sits at the top of its square and the picture in the middle of the room left below it, the same space above
+   and below (Astra, 2026-10-23: "awkward spacing"). */
+.habitat > .render-label { position: static; flex: none; align-self: center; z-index: 2; display: flex; align-items: center; gap: 7px; max-width: 100%;
+  min-height: 32px; padding: 2px 12px 2px 9.5px; border: 1px solid var(--line-dim); border-radius: 16px; background: var(--tool-bg); }
+.habitat > .render-label .lights { margin: 0; }
+.render-name { font: 10.5px/1.3 var(--label); color: var(--chalk); overflow-wrap: anywhere; min-width: 0; text-align: left; }
+.den { flex: none; height: 60px; margin-top: var(--pad); min-height: 0; border: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; }
+/* The pet as tall as on the desktop: the page builder works out --pet-height from its drawing. */
+.den img.pet { width: auto; height: var(--pet-height, auto); max-width: 86%; max-height: 100%; image-rendering: pixelated; cursor: pointer; }
+.den .no-art { width: auto; height: 80%; max-height: 100%; }
+/* The emotion bubbles are clouds (Astra, 2026-10-20: "make both the emotions and the idle bubble actually bubble border
+   like it looks like a cloud"): a scalloped edge from one small drawing, repeated along each side, and a thought
+   bubble's two puffs trailing to the pet. The cyberhome's own bubble is gone (2026-10-21). The colours are --slate and
+   --line, written out for the drawing. */
+.cloud, .mood-bubble { border: 1px solid var(--line); border-radius: 16px; }
+.mood-bubble::after { content: ''; position: absolute; width: 11px; height: 11px; right: -7px; top: calc(50% - 6px);
+  border: 1px solid var(--line); border-left: 0; border-bottom: 0; background: var(--slate); transform: rotate(45deg); }
+.bubble { position: relative; padding: 8px 12px; border: 1px solid var(--line); border-radius: 14px; font-size: 14px; }
+.small-bubble { display: inline-block; margin: 0; padding: 2px 10px; font-size: 13px; }
+/* Too narrow for the title between them: the two squares side by side at the top, the title below both. The page
+   script keeps the title between them (.title-between) as long as its name fits there at full size (Astra,
+   2026-10-23: "at this point, the title could go between. only when it outgrows should it move down"). */
+@media (max-width: 1000px) {
+  .top:not(.title-between) { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 14px; }
+  .top:not(.title-between) > .cyberhome, .top:not(.title-between) > .system-map { width: min(var(--square), calc((100% - 14px) / 2)); }
+  .top:not(.title-between) > .cyberhome { order: 1; }
+  .top:not(.title-between) > .system-map { order: 2; }
+  .top:not(.title-between) > .title { order: 3; flex: 0 0 100%; min-width: 0; margin-top: 26px; }
+}
+/* Too narrow even for two side by side: they stack, still squares, and the title goes below both. */
+@media (max-width: 340px) {
+  .top > .cyberhome, .top > .system-map { width: min(var(--square), 100%); }
+}
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.button { display: inline-block; font: 14px var(--text); color: var(--chalk); background: transparent; border: 1px solid var(--line); padding: 3px 12px; text-decoration: none; cursor: pointer; }
+.button:hover { background: var(--slate-2); }
+.button.off { color: var(--chalk-dim); border-style: dashed; cursor: default; }
+
+/* The paired lights: two buttons side by side, never stacked. They look like buttons so people click them (Astra,
+   2026-10-19): raised, a little bigger when pointed at, pressed in when clicked. Grey is not set yet. */
+.lights { display: inline-flex; gap: 7px; margin-right: 10px; vertical-align: middle; }
+/* Every light is a small raised round button, Halo List's look at the small size (Astra, 2026-10-23: "this circle format and tool format is what
+   I want to see here", then "make the indicator light buttons the small size too"). Only tools have lights. */
+.light { width: 11px; height: 11px; padding: 0; border-radius: 50%; border: 1px solid #111; cursor: pointer; flex: none;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .35);
+  transition: transform .08s ease-out; }
+.light:hover { transform: scale(1.18); }
+.light:active { transform: scale(.9); box-shadow: inset 0 2px 2px rgba(0, 0, 0, .4); }
+.light.onoff { background: var(--on); }
+.light.onoff.is-off { background: var(--off); }
+.light.care { background: var(--care); }
+.light.care.is-fix { background: var(--fix); }
+.light.is-unset { background: var(--planned); }
+/* The bubble that says what a light now means, under the light that was clicked. */
+.light-bubble { position: absolute; z-index: 40; max-width: 280px; padding: 6px 12px; border: 1px solid var(--chalk); border-radius: 14px;
+  background: var(--slate-2); color: var(--chalk); font-size: 13px; line-height: 1.4; box-shadow: 0 6px 18px rgba(0, 0, 0, .45); pointer-events: none; }
+.light-bubble[hidden] { display: none; }
+.legend-key { font-size: 12.5px; color: var(--chalk-dim); display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; margin: 0; }
+.key { display: inline-block; width: 11px; height: 11px; border-radius: 50%; border: 1px solid #111; margin-right: 2px; vertical-align: -1px; }
+.key.on { background: var(--on); } .key.off { background: var(--off); } .key.care { background: var(--care); } .key.fix { background: var(--fix); } .key.planned { background: var(--planned); }
+
+/* Inside the intelligence-level panels. */
+/* The sections stack, each across the whole tool panel, and the pills in them go three to a row, then two, then one as
+   the window narrows (Astra, 2026-10-21: "these need to be stacking in rows of 3, then 2,1 on collapse"). */
+.columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px 28px; }
+.columns .wide { grid-column: 1 / -1; }
+.items, .plain { list-style: none; margin: 0; padding: 0; }
+.items li { margin: 7px 0; }
+/* Two columns as soon as two 200px pills fit (Astra, 2026-10-23: "these tools could also be stacking in 2 columns right now"). */
+.items:has(> li.pill) { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, max(240px, calc((100% - 56px) / 3))), 1fr)); gap: 0 28px; align-items: start; }   /* every closed pill is one line, so they match; an opened one no longer stretches its row-mates (Astra, 2026-10-24); 240px keeps a name like "OVR Dynamic Resolution" on one line (Astra, 2026-10-23: "some of the tools still are including an extra space") */
+/* Every item is a pill, the same on every page (Astra, 2026-10-19): Halo List's (2026-10-23). Its two lights inside
+   on the left, then its name and its tags on one line; the pill is as wide as that, rounder while closed. Clicking it
+   opens it in place, with what it does, its label and the rest (2026-10-23: "just clicking the bubble opens it"). Its
+   summary stays for the keyboard, drawn as nothing; focused, the pill shows the outline. */
+/* Every pill fills its column, so they are all one size (Astra, 2026-10-23: "make these the same size"). */
+.items li.pill { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); justify-items: start; column-gap: 10px; row-gap: 4px;
+  justify-self: stretch; width: auto; max-width: 100%; min-width: 0; margin: 9px 0; padding: 5px 16px 9px 9.5px;
+  border: 1px solid var(--line-dim); border-radius: 16px; background: var(--tool-bg); cursor: pointer; }
+.items li.pill:hover { border-color: var(--line); background: var(--tool-bg-hover); }
+.items li.pill:has(> .pill-more[open]) { border-radius: 16px; border-color: var(--care); }
+/* The lights sit in the name's row, centred on it (Astra, 2026-10-23: "need the circles to be centerlined with the text"). */
+/* Each tool's first light sits at the center of its rounded corner, so the border curves around it evenly (Astra,
+   2026-10-23: "this button should sit rounded perfectly inside the tool border"): an 11px light, 1px border, so a
+   16px corner wants its left padding 16 - 5.5 - 1 = 9.5px and its first row centred 16px down (2026-10-23: "move the
+   indicator light buttons closer to the border ... we need to save room"). */
+.pill > .lights { grid-column: 1; grid-row: 1; align-self: start; margin: 4.6px 0 0; gap: 7px; }   /* on the name's first line */
+.pill > :not(.lights) { grid-column: 2; }
+.pill > .item-name { color: var(--chalk); font: 15px/1.35 var(--text); overflow-wrap: anywhere; }
+/* One size: a closed pill is one line, its name, since its state shows only when it is opened (Astra, 2026-10-23:
+   "they look one line too big"; "still too much space below"). A pill with a cadence tag takes a second line; pills in
+   a row stay one height. Closed, its hidden "more" shares the name's row, so no empty row or gap sits under the name,
+   and the bottom padding matches the top: a 32px pill with the name and the lights on its centre line. */
+.items li.pill { align-content: start; padding-bottom: 5px; }
+.items li.pill:has(> .pill-more[open]) { padding-bottom: 9px; }
+.pill > .item-name, .pill > .pill-more:not([open]) { grid-row: 1; }
+.items li.pill:hover .item-name, .items li.pill:has(> .pill-more[open]) .item-name { text-decoration: underline; text-underline-offset: 3px; }
+.pill > .item-desc, .pill > .label, .pill > .pill-more { justify-self: stretch; min-width: 0; }
+/* A device's serial, first when it is opened (Astra, 2026-10-24: "I need the first thing I see to be the tracker
+   serial #"). */
+.item-serial { margin: 6px 0 0; font-size: 14px; color: var(--chalk); }
+.item-serial code { font: 600 15px var(--label); color: #3ff0ff; letter-spacing: .03em; }
+.pill:not(:has(> .pill-more[open])) > .item-serial { display: none; }
+.pill:not(:has(> .pill-more[open])) > .item-desc, .pill:not(:has(> .pill-more[open])) > .label { display: none; }
+/* How often it runs shows once it is opened too, like its state, so every closed tool is one line (Astra, 2026-10-23:
+   "some of the tools still are including an extra space"). */
+.pill:not(:has(> .pill-more[open])) > .cadence { display: none; }
+.pill-more > summary { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); padding: 0; list-style: none; }
+.pill-more > summary::-webkit-details-marker { display: none; }
+.items li.pill:has(> .pill-more > summary:focus-visible) { outline: 2px solid var(--fix); outline-offset: 2px; }
+.item-desc { margin: 4px 0 2px; font-size: 13px; line-height: 1.4; color: var(--chalk); overflow-wrap: anywhere; }
+.item-desc.empty { color: var(--chalk-dim); }
+.pill > .label { overflow-wrap: anywhere; }
+.pill-body { margin-top: 6px; font-size: 13.5px; }
+.pill-body p { margin: 4px 0; }
+.pill-picture img { display: block; width: 160px; max-width: 100%; height: auto; }
+/* a tool that works right on the page, in its own tool panel inside L1 (Astra's Window Star, 2026-10-20) */
+.tool-frame { display: block; width: 100%; max-width: 480px; height: 600px; margin: 0 auto; border: 0; background: transparent; }
+.plain li { margin: 5px 0; }
+.about { margin-top: 10px; font-size: 12.5px; color: var(--chalk-dim); }
+.about > summary { cursor: pointer; width: fit-content; }
+.about > summary, .may-use > summary, .backlog > summary { list-style: none; display: flex; align-items: center; gap: 7px; }
+.about > summary::-webkit-details-marker, .may-use > summary::-webkit-details-marker, .backlog > summary::-webkit-details-marker { display: none; }
+.about > summary::before, .may-use > summary::before, .backlog > summary::before { content: ""; flex: none; width: 13px; height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 18'%3E%3Cpath d='M2.5 2.2 14 9 2.5 15.8Z' fill='%2346463f' stroke='%23e6e0c9' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .15s ease; }
+.about > summary:hover::before, .may-use > summary:hover::before, .backlog > summary:hover::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 18'%3E%3Cpath d='M2.5 2.2 14 9 2.5 15.8Z' fill='%2346463f' stroke='%23e8c547' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.about[open] > summary::before, .may-use[open] > summary::before, .backlog[open] > summary::before { transform: rotate(90deg); }
+.about > p { margin: 4px 0 0 16px; }
+/* A tool panel inside a level (L2's update history, L4's parts): the same box, a little closer to the one above. */
+.panel.sub { margin-top: 26px; }
+.level > .panel.sub:first-of-type { margin-top: 18px; }
+/* Room between the update history and the pets it talks to (her "needs more space"). */
+h3.talks { margin-top: 26px; }
+.tag.cadence { border-color: var(--care); color: var(--care); }
+.status { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 14px; margin: 0; }
+.status dt { color: var(--chalk-dim); }
+.status dd { margin: 0; overflow-wrap: anywhere; }
+/* min(..., 100%): on a narrow window a card is never wider than its panel (Astra, 2026-10-20, her screenshots). */
+.connections { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+.connection { border: 1px dashed var(--connection); padding: 8px 12px 10px; margin: 0; min-width: 0; }
+.connection legend { color: var(--connection); padding: 0 6px; font: 14px var(--label); }
+.connection .lights { margin-right: 4px; }
+.connection ul { margin: 2px 0; padding-left: 18px; }
+.flows { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { border-bottom: 1px solid var(--line-dim); padding: 4px 8px; text-align: left; vertical-align: top; }
+th { font-weight: 600; color: var(--chalk-dim); }
+
+/* The R W X panel and the session notes side by side. */
+.side-by-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 0 28px; align-items: start; }
+/* No empty band at the top of a panel ("weird gap here"). */
+.rwx-panel > p:first-of-type, .session-notes .notes { margin-top: 0; }
+.may-use > summary { cursor: pointer; margin: 4px 0 6px; }
+.may-use > summary h3 { display: inline; margin: 0; }
+
+/* Session notes. */
+.notes { display: grid; gap: 8px; }
+/* No empty line under the buttons until a file is added ("weird gap"). */
+#note-files:empty { display: none; }
+textarea, select { width: 100%; color: var(--chalk); background: var(--slate-2); border: 1px solid var(--line); font: 15px var(--text); padding: 8px; }
+textarea { resize: vertical; }
+textarea::-webkit-scrollbar { width: 22px; height: 22px; }
+textarea::-webkit-resizer { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M20 6 6 20M20 12l-8 8M20 17l-3 3' stroke='%23c94f93' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center; }   /* the grip in the line's pink (Astra, 2026-10-24) */
+select { width: auto; max-width: 100%; padding: 3px 6px; }
+.note-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+label.file input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+label.file { position: relative; }
+.backlog { margin-top: 8px; }
+.backlog summary { cursor: pointer; }
+.backlog li { margin: 6px 0; }
+
+/* Emotions (the sketch's 3 by 3) beside clicker training. Each bubble has its mood's name in its top border. */
+.pair { display: grid; grid-template-columns: 1fr minmax(240px, 330px); gap: 0 28px; align-items: start; }
+/* Three to a row, as in the sketch, when there is room for a cloud and its pet; fewer on a narrow window. */
+.moods { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, max(215px, calc((100% - 28px) / 3))), 1fr)); gap: 18px 14px; }
+.mood { margin: 0; display: grid; grid-template-columns: minmax(min-content, 1fr) 60px; gap: 22px; align-items: center; }
+/* Room inside the rounded corners, so a long first line never runs into the top corner (Astra, 2026-10-20). */
+.mood-bubble { position: relative; padding: 2px 12px 8px; margin: 0; min-width: min-content; font-size: 12.5px; } /* its edge: .cloud, above (no puffy cloud since 2026-10-22) */
+.mood-bubble legend { font: 13px var(--label); padding: 0 5px; white-space: nowrap; }
+/* The tail is part of the bubble (Astra, 2026-10-19: "make it look like an actual bubble"): drawn in outline like the
+   bubble itself, its inside the page's own colour, so it reads as one shape pointing at the pet. */
+
+/* The mood the pet is in now lights up (Astra, 2026-10-21: "select from 9 emotions at bottom what to 'light up'"),
+   in the green of the lights; the glow follows the cloud's own edge. */
+.mood.is-now .mood-bubble { border-color: var(--on); box-shadow: 0 0 0 1px var(--on); }
+.mood.is-now .mood-bubble::after { border-color: var(--on); }
+.mood.is-now .mood-bubble legend { color: #d4f7d8; font-weight: 600; }
+.mood.is-now img { filter: drop-shadow(0 0 6px rgba(79, 179, 90, .8)); }
+.mood ul { margin: 2px 0; padding-left: 16px; }
+.mood q { display: block; color: var(--link); font-style: italic; margin-top: 6px; padding-top: 5px; border-top: 1px dashed var(--line-dim); }
+.mood img, .mood .no-art { width: 60px; height: 60px; image-rendering: pixelated; }
+.no-art { display: grid; place-items: center; text-align: center; font-size: 12px; color: var(--chalk-dim); border: 1px dashed var(--chalk-dim); aspect-ratio: 1 / 1; }
+.den .no-art { width: 70%; }
+.clicks { display: grid; grid-template-columns: max-content 1fr; gap: 14px 18px; margin: 0; }
+.clicks dd { margin: 0; }
+
+/* The unified footer (Astra, 2026-10-20: "It looked really good ... It was listed like an actual aesthetic footer"):
+   Codex's footer-template of 2026-10-14 (Flash Audit A51) again. Centered and spacious between thin rules, its groups
+   slightly staggered, each after a pink ✦; no list. */
+/* Snug above and below its one row (Astra, 2026-10-24: "there still is an awkward space before and after these items"). */
+.panel.footer { padding: 10px var(--pad); }
+/* Folded, it is as thin as every other folded panel (Astra, 2026-10-24: "the last one looks too thick"). */
+.panel.footer:not([open]) { padding: 14px var(--pad) 0; }
+.astra-footer { display: grid; justify-items: center; gap: 8px; text-align: center; font-size: 13px; }
+.astra-footer p { margin: 0; max-width: 78ch; }
+.footer-status { color: var(--chalk-dim); }
+.footer-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; }
+.footer-group { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; padding: 0; }
+.footer-group::before, .footer-sparkle { content: "✦"; color: #d994c6; font-size: 12px; line-height: 1; margin-right: 8px; }
+/* By Astra, ✦, the photostar, ✦, Find Out More, the links (Astra, 2026-10-24): no ✦ before By Astra. */
+.footer-by::before { content: none; }
+.footer-sparkle { margin: 0 -8px 0 0; }
+.footer-title { font-weight: 600; letter-spacing: .02em; }
+.footer-group time { font: 12.5px var(--label); color: var(--chalk-dim); }
+.footer-icons { display: inline-flex; gap: 4px; }
+.footer-icons a, .footer-home { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; color: var(--chalk); text-decoration: none; }
+.footer-icons a:hover, .footer-home:hover { background: rgba(255, 255, 255, .1); }
+/* The photostar is the pets' drawn size (Astra, 2026-10-24: "photostar size to shrink a little to match pet icon
+   sizes"); the links went back to their own size ("ok go back to the size before of those icons"). */
+.footer-icons svg { width: 22px; height: 22px; fill: currentColor; }
+.footer-home img { width: 28px; height: 28px; object-fit: contain; image-rendering: pixelated; }
+/* The languages ("the codes") are their own line below the links (Astra, 2026-10-24). */
+.languages { list-style: none; margin: 0; padding: 0; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+/* The photostar sits in the footer border's right corner, like a label on the line. */
+.panel.footer { position: relative; }
+.footer-star { display: block; line-height: 0; }
+.footer-star img { width: 48px; height: 48px; }
+.languages .tag { font-size: 12px; padding: 1px 9px; }
+.astra-footer .footer-spawned { font-size: 11.5px; }
+
+/* The chat box fixed bottom right with its label in its top border. */
+/* The chat (Astra, 2026-10-19: "I want to see the chat in the bottom right. The shape is a little awkward. Make it
+   better"): closed, one rounded pill with its label in the top border, the paired lights and the circle-arrow button;
+   open, a rounded card whose window opens upward above them. */
+/* The label is part of the layout (set into the top border by a negative margin), so the pill is always at least as
+   wide as its label. */
+/* Since 2026-10-23 a square panel, `<pet>-chat-panel`, like the rest, with the chat inside it drawn as a tool: its
+   lights, its name and its open button in a pill. */
+.chat { position: fixed; right: 16px; bottom: 16px; z-index: 5; display: grid; grid-template-columns: auto; grid-template-areas: "label" "panel" "tool";
+  justify-content: end; align-items: center; padding: 0 10px 10px; border: 1px solid var(--line); border-radius: 0;
+  background: var(--slate); box-shadow: 0 8px 22px rgba(0, 0, 0, .45); max-width: min(400px, calc(100vw - 32px)); }
+.chat:has(.chat-panel:not([hidden])) { padding: 0 12px 12px; }
+/* Centred in its panel (Astra, 2026-10-24: "center the rift-rabbit-chat (tool) inside its tool panel"). As much room
+   right of the open button as left of the first light, 11.5px each (2026-10-24: "there needs to
+   be as much room on the right side as the left between item and tool border"). */
+.chat-tool { grid-area: tool; justify-self: center; display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 4px 11.5px;
+  border: 1px solid var(--line-dim); border-radius: 18px; background: var(--tool-bg); }
+.chat-tool > .lights { margin: 0; }
+.chat-name { font: 14px/1.35 var(--text); color: var(--chalk); white-space: nowrap; }
+.chat-label { grid-area: label; justify-self: start; margin: -0.75em 0 0 -6px; background: var(--slate); padding: 0 6px; font: 13px/1.5 var(--label); white-space: nowrap; }
+.chat-panel:not([hidden]) { margin-top: 8px; }
+/* The open button is the arrow alone, no circle: click it and it turns down as the chat drops open (Astra, 2026-10-24:
+   "no circle just a icon that you can click that icon, and it rotates for the dropdown"). */
+.chat-open { width: 26px; height: 26px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 4px;
+  background: transparent; color: var(--chalk); cursor: pointer; }
+.chat-open:hover { color: var(--fix); }
+.chat-open:focus-visible { outline: 2px solid var(--fix); outline-offset: 1px; }
+.chat-open svg { width: 20px; height: 20px; transition: transform .2s ease; }
+.chat-open[aria-expanded="true"] svg { transform: rotate(90deg); }
+.chat-panel { grid-area: panel; font-size: 13px; }
+.chat-panel p { margin: 6px 0 0; }
+
+/* Spawner list. */
+.cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 12px; }
+.card a { display: flex; gap: 10px; align-items: center; border: 1px solid var(--line); padding: 8px; text-decoration: none; color: var(--chalk); }
+.card a:hover { background: var(--slate-2); }
+.card .thumb, .card .no-art { width: 56px; height: 56px; image-rendering: pixelated; flex: none; }
+.card-text { display: grid; min-width: 0; overflow-wrap: anywhere; } .card-text b { font-weight: 600; } .card-text span { font-size: 12.5px; color: var(--chalk-dim); }
+
+/* Phones: everything stacks and every panel still collapses. */
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  .page { padding-top: 28px; }
+}
+@media (max-width: 760px) {
+  .pair { grid-template-columns: 1fr; }
+  /* On a phone the two squares are half the width each (Astra, 2026-10-20: "BOTH TO BE SQUARES"; 2026-10-21: the boxes
+     themselves are the squares). */
+  :root { --pad: 14px; }
+
+  .system-map .map-link { font-size: 12.5px; }
+  /* In a half-width box a long label wraps upward: its last line stays on the border and the square keeps all its room
+     (2026-10-21: the label used to take room inside, which pushed the pet's frame out of its square). */
+  /* A label that wraps here keeps its last line on the border, centred like a one-line label (half of 11px x 1.3). */
+  .top > .panel > summary { left: 6px; max-width: calc(100% - 12px); transform: translateY(calc(-100% + 7.15px)); }
+  .top > .panel > summary .legend { font-size: 11px; }
+  .moods { grid-template-columns: 1fr; }
+  .flows { grid-template-columns: 1fr; }
+  .page { padding-bottom: 150px; }
+  .chat { right: 10px; bottom: 10px; padding: 0 8px 8px; }
+  .chat-open { width: 26px; height: 26px; }
+  .chat-open svg { width: 19px; height: 19px; }
+  .chat-label { font-size: 10px; }
+  /* On a phone the chat covers less: its tool keeps its lights and its button, its name is in the label above (Astra,
+     2026-10-23: "change", to "make the chat box smaller so it covers less, and keep the tool names to two lines"). */
+  .chat-name { display: none; }
+  .chat-tool { gap: 6px; }
+  .chat-panel:not([hidden]) ~ .chat-tool .chat-name { display: none; }
+  /* The two square tools' names stay on two lines. */
+  .render-name { font-size: 9.5px; }
+  .habitat > .render-label { gap: 5px; padding-right: 8px; }
+  .habitat > .render-label .lights { gap: 5px; }
+}
+/* Faces the page script switches between: a hidden one never shows. */
+img[hidden] { display: none !important; }
+.awake-faces { display: inline-block; }
+/* API Fairy's key requests (Astra, 2026-10-19): three groups, each labelled in its top border. Waiting on you, the one
+   she acts on, runs the full width with its requests side by side; has a key and declined sit below it. One column on
+   a phone. */
+/* Rift Rabbit's VRChat launch panel (Astra, 2026-10-23): a box per headset, its four ways of tracking side by side,
+   one column on a phone. The try rated best glows. Each headset box is a tool, not a panel, so it is drawn like one:
+   round corners and the tool background; its four ways, its menus and its Launch buttons are parts of that tool and
+   round too (Astra, 2026-10-24: "I want to see this panel as a tool, so please give it round borders ... those should
+   also have round borders as they are not panels, they are a sub part of a tool"). */
+.launch-headset { border: 1px solid var(--line-dim); border-radius: 18px; background: var(--tool-bg); padding: 7px 16px 16px; margin: 0 0 18px; min-width: 0; }
+/* Its name inside the border on the first row, its lights left of it, like every tool (Astra, 2026-10-24). The first
+   light sits at the centre of the 18px corner, as on every tool: 18 - 5.5 - 1 = 11.5px in, its row centred 18px down. */
+.launch-head { display: flex; align-items: center; gap: 0; margin: 0 0 6px -4.5px; min-height: 20px; }
+.launch-head .lights { margin-right: 10px; }
+.launch-name { font: 600 15px var(--label); color: var(--chalk); }
+.launch-switches { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; margin: 4px 0 14px; font-size: 14px; }
+.launch-switch select, .launch-try select, .launch-try textarea { font: 13px var(--text); color: var(--chalk); background: var(--slate-2); border: 1px solid var(--line); border-radius: 8px; padding: 2px 6px; }
+/* The notes box keeps square corners (Astra, 2026-10-24: "this also should be square corners not rounded edges"). */
+.launch-try textarea { border-radius: 0; }
+/* Face tracking looks like the other switches, a box that cannot be unticked (Astra, 2026-10-24). */
+.launch-fixed { cursor: not-allowed; }
+.launch-fixed input { cursor: not-allowed; }
+.launch-fold.launch-name { font: 600 15px var(--label); }
+/* Checkboxes in the page's own pink, not the browser's blue (Astra, 2026-10-24: "make the check boxes the right color
+   themes"). */
+input[type="checkbox"] { accent-color: var(--line); }
+.launch-modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; align-items: start; }   /* a folded mode shrinks to its name (Astra, 2026-10-24: "arrow needs to shrink the border up") */
+.launch-mode { border: 1px solid var(--line-dim); border-radius: 14px; padding: 4px 12px 10px; margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.launch-mode .button { border-radius: 14px; }
+/* Each headset tool and each way folds to its name, with the panels' arrow: down while open, right while folded
+   (Astra, 2026-10-24: "these also need to be collapsable"). */
+.launch-fold { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+.launch-fold::after { content: "\00A0\00A0\25BE"; font-size: 10px; color: var(--chalk-dim); }
+.is-folded .launch-fold::after { content: "\00A0\00A0\25B8"; }
+.launch-fold:hover::after { color: var(--fix); }
+.launch-fold:focus-visible { outline: 2px solid var(--fix); outline-offset: 2px; }
+.launch-headset.is-folded > :not(.launch-head), .launch-mode.is-folded > :not(legend) { display: none; }
+.launch-headset.is-folded { padding-bottom: 7px; }
+.launch-headset.is-folded > .launch-head { margin-bottom: 0; }
+.launch-mode legend { font: 13px var(--label); padding: 0 6px; }
+.launch-mode[data-rating="best"] { border-color: var(--on); box-shadow: 0 0 10px var(--on); }
+.launch-mode[data-rating="bad"] { border-color: var(--off); }
+.launch-tracker { margin: 4px 0; color: var(--link); font-size: 14px; }
+/* How it works and what to expect, as bullets right under the yellow line (Astra, 2026-10-24). */
+.launch-points { margin: 6px 0 10px; padding-left: 18px; display: grid; gap: 3px; }
+.launch-points li::marker { color: #d994c6; }
+/* What a mode starts, one program per line, in order (Astra, 2026-10-24). */
+.launch-label { margin: 8px 0 2px; }
+.launch-order { margin: 0 0 8px; padding-left: 22px; display: grid; gap: 2px; }
+.launch-order li::marker { color: #d994c6; font-family: var(--label); }
+/* What SteamVR opens and what she opens next sit under their step (Astra, 2026-10-24, her order); the wait is a step. */
+.launch-order ul { margin: 2px 0 2px; padding-left: 18px; display: grid; gap: 1px; }
+.launch-order ul li::marker { color: var(--line-dim); }
+.launch-wait { color: var(--chalk-dim); font-style: italic; }
+.launch-warn { color: var(--fix); }
+.launch-try { display: grid; gap: 6px; }
+.launch-try textarea { width: 100%; box-sizing: border-box; }
+.request-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+.request-group { border: 1px solid var(--line); padding: 4px 12px 10px; margin: 0; min-width: 0; }
+.request-group legend { font: 13px var(--label); padding: 0 6px; }
+.request-group.waiting { border-color: var(--fix); grid-column: 1 / -1; }
+.request-group.waiting legend { color: var(--fix); }
+.request-group.waiting .requests { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0 24px; }
+.request-group.waiting .request, .request-group.waiting .request:first-child { border-top: 0; border-bottom: 1px solid var(--line-dim); }
+.requests { list-style: none; margin: 0; padding: 0; }
+.request { border-top: 1px solid var(--line-dim); padding: 8px 0 6px; overflow-wrap: anywhere; }
+.request:first-child { border-top: 0; }
+.request-head { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; }
+.request-head .lights { margin-right: 4px; }
+.request-link, .request-key { font-size: 13.5px; margin: 2px 0; }
+.request-label { color: var(--chalk-dim); }
+.request-note { font-size: 12.5px; margin-top: 3px; padding-left: 8px; border-left: 2px solid var(--fix); }
+.example-tag { border-style: dashed; }
+.request-count { margin: 0 0 2px; }
+.request-problems { margin: 4px 0 0; }
+/* GitHub Aquarium's outstanding items (Astra, 2026-10-21): the same groups, each labelled in its top border. Broken on
+   main and waiting on you, the two she acts on, run the full width; the others sit below them. */
+.outstanding-group.g-broken, .outstanding-group.g-you { grid-column: 1 / -1; }
+.outstanding-group.g-broken { border-color: var(--off); }
+.outstanding-group.g-broken legend { color: var(--off); }
+.outstanding-group.g-you { border-color: var(--fix); }
+.outstanding-group.g-you legend { color: var(--fix); }
+/* related-pets (Astra, 2026-10-19): the pets it talks to, at the bottom of every page. */
+.moods.related { list-style: none; margin: 0; padding: 0; align-items: start; }
+/* No dashed line between "I manage ..." and the quote (Astra, 2026-10-23, crossing it out). */
+.related-pet q { border-top: 0; padding-top: 0; }
+.talk .mood-bubble p { margin: 2px 0; font-size: 12.5px; }
+.related-pet > a, .related-pet > .related-static { display: contents; color: var(--chalk); text-decoration: none; }
+.related-pet > a:hover legend, .related-pet > a:focus-visible legend { text-decoration: underline; }
+.related-pet .mood-bubble p { margin: 2px 0; }
+.card .card-static { display: flex; gap: 10px; align-items: center; border: 1px dashed var(--line); padding: 8px; }
+.cards.related .card-text span + span { font-size: 12px; }
+/* The R W X panel (Astra, 2026-10-19, option C): what each level should be (R W X), then whether that is in code.
+   Green In code, yellow Rule only, dashed grey Not built, the page's own light colours. */
+.rwx-key { display: grid; gap: 6px; font-size: 12.5px; color: var(--chalk-dim); margin: 4px 0 14px; }
+.rwx-rows { display: grid; margin: 4px 0 16px; }
+.rwx-row, .rwx-rows > .grant { border-top: 1px solid var(--line-dim); padding: 8px 0; }
+.rwx-row > summary, .rwx-row.none, .grant > summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; list-style: none; cursor: pointer; }
+.rwx-row > summary::-webkit-details-marker, .grant > summary::-webkit-details-marker { display: none; }
+.rwx-row.none { cursor: default; opacity: .65; }
+.lv { font: 600 12px/1 var(--label); min-width: 30px; padding: 5px 4px; border: 1px solid var(--line); border-radius: 4px; text-align: center; flex: none; }
+.lv.out { border-style: dashed; color: var(--chalk-dim); }
+.should { font: 12px var(--label); color: var(--chalk-dim); flex: none; }
+.rwx { display: inline-flex; gap: 4px; flex: none; }
+.rwx b { position: relative; font: 600 12px/1 var(--label); width: 22px; height: 22px; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: 4px; background: var(--slate-2); }
+.rwx b.no { background: none; color: var(--planned); border-color: var(--line-dim); }
+.rwx b.pr::after, .rwx b.grant::after, .rwx b.ask::after { position: absolute; right: -5px; top: -7px; font-size: 9px; }
+.rwx b.pr::after { content: "🔒"; } .rwx b.grant::after { content: "🔑"; } .rwx b.ask::after { content: "?"; font: 700 10px var(--label); color: var(--fix); }
+.gwho { flex: 1; min-width: 150px; }
+.mark { font-size: 12.5px; border: 1px solid currentColor; border-radius: 10px; padding: 1px 8px; white-space: nowrap; flex: none; }
+.mark.enforced { color: var(--on); } .mark.written { color: var(--fix); } .mark.planned { color: var(--planned); border-style: dashed; }
+.rwx-key .mark { margin-right: 6px; }
+.rwx-body { display: grid; gap: 10px; margin: 10px 0 4px 40px; padding-left: 12px; border-left: 1px solid var(--line); }
+.grant p { margin: 5px 0 0; font-size: 12.5px; color: var(--chalk-dim); }
+.grant p b { color: var(--chalk); font-weight: 600; }
+@media (max-width: 760px) { .rwx-body { margin-left: 10px; } .gwho { min-width: 100%; order: 3; } }
+/* The cyberhome (Astra, 2026-10-19): empty until the page opens, then the pet moves in through Startup Star's door in
+   the top corner: the star opens, the pet comes in, the star closes again. */
+.den { position: relative; }
+.den[data-arrival="waiting"] .pet { visibility: hidden; }
+/* It arrives without moving in: the pet is shown still (Astra, 2026-10-24: "make the animation of the rabbit moving go
+   away on the pet program, just want to see it static"). */
+.den[data-arrival="arriving"] .pet:not([hidden]) { animation: none; }
+
+/* Activity lights (Astra, 2026-10-19): on while that level is working right now, and its tool panel glows with power.
+   Grey: not connected yet. */
+.panel.level[data-activity="live"] { border-color: var(--on); box-shadow: 0 0 0 1px var(--on), 0 0 16px rgba(79, 179, 90, .45); animation: power 2.4s ease-in-out infinite; }
+.panel.level[data-activity="live"] > summary .legend { color: #d4f7d8; }
+@keyframes power {
+  0%, 100% { box-shadow: 0 0 0 1px var(--on), 0 0 10px rgba(79, 179, 90, .35); }
+  50% { box-shadow: 0 0 0 1px var(--on), 0 0 20px rgba(79, 179, 90, .6); }
+}
+
+/* The chat window: it opens at once, you choose who answers. */
+.chat-panel { max-width: min(380px, calc(100vw - 48px)); max-height: calc(100vh - 110px); overflow-y: auto; }
+.chat-ask { font-weight: 600; }
+.chat-who { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.chat-who .button { font-size: 13px; }
+.chat-who .button[aria-pressed="true"] { background: var(--slate-2); border-color: var(--fix); color: var(--fix); }
+.chat-log { list-style: none; margin: 6px 0; padding: 0; max-height: 160px; overflow-y: auto; }
+.chat-log li { margin: 4px 0; padding: 4px 8px; border: 1px solid var(--line); border-radius: 10px; overflow-wrap: anywhere; }
+.chat-panel textarea { font-size: 14px; margin-top: 2px; }
+.chat-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .den .pet { animation: none !important; }
+  .chat-open svg { transition: none; }
+  .panel.level[data-activity="live"] { animation: none; }
+}
+
+/* Developer mode (Astra, 2026-10-19): programming words and no desktop pets. The agent already lives in its avatar
+   panel (the cyberhome), so Startup Star's door and the desktop pet's click bindings are left out; one click on the
+   agent says what it does. The words switch in the footer chooses the words in this browser. */
+[data-words="developer"] .den .star-door, [data-words="developer"] .clicker { display: none; }
+[data-words="developer"] .pair { grid-template-columns: 1fr; }
+[data-words="developer"] .den { cursor: help; }
+.words-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.words-choice { font: 13px var(--text); color: var(--chalk); background: transparent; border: 1px solid var(--line); padding: 2px 10px; cursor: pointer; }
+.words-choice[aria-pressed="true"] { background: var(--slate-2); border-color: var(--fix); color: var(--fix); }
+/* On a phone the footer piles together (Astra, 2026-10-23: "unified footer needs to squish together cutely"; "links like
+   icons in footer should be same size as pets"; "no borders. put the By Astra and Find Out More on the top, can you get
+   all of them in a row, put the photo star between the by astra and find out more"): By Astra, the photostar and Find
+   Out More across the top, the five links as pet-sized pictures in one row under them, the languages last. */
+@media (max-width: 760px) {
+  /* The same order as on a computer (2026-10-24): By Astra ✦ photostar ✦ Find Out More, the links on the row below. */
+  .footer-line { display: grid; grid-template-columns: repeat(4, auto); grid-template-areas: "by spark star more" "icons icons icons icons";
+    justify-content: center; justify-items: center; align-items: center; gap: 6px 10px; }
+  .footer-by { grid-area: by; }
+  .footer-sparkle { grid-area: spark; margin: 0; }
+  .footer-more { display: contents; }
+  .footer-more::before { content: none; }
+  .footer-more > .footer-title { grid-area: more; }
+  .footer-more > .footer-title::before { content: "✦"; color: #d994c6; font-size: 12px; margin-right: 10px; }
+  .footer-icons { grid-area: icons; display: grid; grid-template-columns: repeat(5, minmax(0, 56px)); gap: 4px; width: 100%; justify-content: center; }
+  .footer-icons a { width: 100%; max-width: 56px; height: auto; aspect-ratio: 1; }
+  .footer-icons svg { width: 32px; height: 32px; }
+  .languages .tag { font-size: 11px; padding: 0 7px; }
+  .footer-star { grid-area: star; margin: 0; }
+  .footer-star img { width: 48px; height: 48px; }
+}
+/* Room on the right for the phone's scroll bar (Astra, 2026-10-23: "need more room for the scroll bar on the right"). */
+@media (max-width: 760px) {
+  .page { padding-right: 28px; }
+  .chat { right: 22px; }
+}
