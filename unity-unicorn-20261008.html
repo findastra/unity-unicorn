@@ -30,34 +30,28 @@
 #uu-panels .uu-tag{font-size:11px;border:1px solid var(--fix);color:var(--fix);border-radius:999px;padding:0 7px;white-space:nowrap}
 #uu-panels .uu-tag.ok{border-color:var(--ok);color:#9fc3f3}
 #uu-panels .uu-chip{display:inline-block;width:34px;height:14px;border-radius:7px;flex:none;border:1px solid #10131a;vertical-align:middle}
-/* The world-building toolset (inside the L1 tool panel): one dark backdrop holding every tool as a pill button, like Rift Rabbit's page (Astra,
-   2026-10-24: "this tool should be all on one dark backdrop, that contains the buttons"). Pills go three to a row,
-   then two, then one; a pill opens in place across the whole row. */
+#uu-panels .uu-tc-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:8px 0 14px}
+#uu-panels .uu-tc-leg{background:#1d1e22;padding:8px;border-radius:6px;font-size:13px}
+#uu-panels .uu-tc-leg small{display:block;color:var(--muted);font-size:12px;min-height:16px}
+#uu-panels .uu-tc-grid{columns:3 300px;column-gap:14px}
+#uu-panels .uu-tc-cat{break-inside:avoid;border-left:4px solid;background:#1d1e22;padding:8px 10px;margin:0 0 14px;border-radius:4px}
+#uu-panels .uu-tc-cat h4{margin:0 0 6px}
+#uu-panels details.uu-tc-tool{border-top:1px solid #2f3036}
+#uu-panels details.uu-tc-tool>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;padding:4px 0}
+#uu-panels details.uu-tc-tool>summary::-webkit-details-marker{display:none}
+#uu-panels details.uu-tc-tool[open]>summary{background:#2a2b31}
+#uu-panels .uu-tc-old{color:#8d8a99;font-size:12px;text-decoration:line-through}
+#uu-panels .uu-tc-also{color:#ffe9a8;font-size:12px}
+#uu-panels .uu-tc-info{padding:6px 0 10px 42px;font-size:13px;color:var(--muted)}
+#uu-panels .uu-tc-info p{margin:4px 0}
+#uu-panels .uu-tc-send{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+/* The world-building toolset, inside the L1 tool panel: the original groupings (Astra, 2026-10-24: "I liked the original
+   groupings") on one dark backdrop ("this tool should be all on one dark backdrop"): no box has a fill of its own. */
 #uu-panels details#uu-p-tools{background:#1b1d22}
 #uu-panels details#uu-p-tools>summary{background:#1b1d22}
-#uu-panels .uu-tc-key{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:6px 0 4px;font-size:12.5px;color:var(--muted)}
-#uu-panels .uu-tc-key span{display:inline-flex;gap:6px;align-items:center}
-#uu-panels .uu-tc-key b{color:var(--ink);font-weight:600}
-#uu-panels .uu-tc-key i{font-style:normal;color:var(--muted);opacity:.8}
-#uu-panels .uu-tc-key .uu-chip{width:22px;height:11px}
-#uu-panels .uu-tc-cat h4{margin:18px 0 0;text-transform:none;letter-spacing:0;font-size:15px;font-weight:600}
-#uu-panels .uu-tc-cat h4 small{color:var(--muted);font-weight:400;font-size:12.5px;margin-left:6px}
-#uu-panels ul.uu-tc-pills{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 56px)/3))),1fr));gap:0 28px;align-items:start}
-#uu-panels li.uu-tc-pill{margin:9px 0;border:1px solid var(--pill);border-radius:16px;background:rgba(255,255,255,.05);min-width:0}
-#uu-panels li.uu-tc-pill:hover{background:rgba(255,255,255,.08);border-color:var(--pill-on)}
-#uu-panels li.uu-tc-pill:has(>details[open]){grid-column:1/-1;border-color:var(--pill-on)}
-#uu-panels li.uu-tc-pill>details>summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center;padding:5px 16px 5px 9.5px;min-height:20px}
-#uu-panels li.uu-tc-pill>details>summary::-webkit-details-marker{display:none}
-#uu-panels li.uu-tc-pill .uu-chip{width:26px;height:12px}
-#uu-panels li.uu-tc-pill .uu-tc-name{font:15px/1.35 system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);overflow-wrap:anywhere}
-#uu-panels li.uu-tc-pill:hover .uu-tc-name,#uu-panels li.uu-tc-pill>details[open] .uu-tc-name{text-decoration:underline;text-underline-offset:3px}
-#uu-panels li.uu-tc-pill>details>summary::after{content:"\25B8";font-size:10px;color:var(--muted);margin-left:auto}
-#uu-panels li.uu-tc-pill>details[open]>summary::after{content:"\25BE"}
-#uu-panels .uu-tc-info{padding:0 16px 10px 46px;font-size:13.5px;color:var(--ink)}
-#uu-panels .uu-tc-info p{margin:4px 0}
-#uu-panels .uu-tc-info .uu-tc-dim{color:var(--muted)}
-#uu-panels .uu-tc-old{text-decoration:line-through;color:var(--muted)}
-#uu-panels .uu-tc-send{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+#uu-panels details#uu-p-tools .uu-tc-leg,#uu-panels details#uu-p-tools .uu-tc-cat{background:transparent;border:1px solid #2f323a}
+#uu-panels details#uu-p-tools .uu-tc-cat{border-left:4px solid}
+#uu-panels details.uu-tc-tool>summary:hover{background:#25272e}
 #uu-panels .uu-tc-send select{background:#2a2d34;color:var(--ink);border:1px solid var(--edge);border-radius:8px;padding:5px 8px}
 #uu-panels .uu-lights{display:inline-flex;gap:4px;flex-shrink:0;align-self:center}
 #uu-panels .uu-light{width:16px;height:16px;border-radius:50%;border:2px solid #10131a;padding:0;background:var(--on)}
@@ -130,8 +124,8 @@
        "the unity-unicorn-world-building-toolset should be what it is called, and that goes in another panel". -->
   <details class="uu-panel" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
     <p class="uu-note" id="uu-tc-about"></p>
-    <div class="uu-tc-key" id="uu-tc-legend"></div>
-    <div id="uu-tc-grid"></div>
+    <div class="uu-tc-legend" id="uu-tc-legend"></div>
+    <div class="uu-tc-grid" id="uu-tc-grid"></div>
     <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
   </details>
   <h4>Added tonight</h4><ul class="uu-items" id="uu-added"></ul>
@@ -556,19 +550,17 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
   IN_WORLDS.forEach(([n,w,d,href])=>info[n]={desc:d,side:"world",where:WN[w].repo.split("/")[1]+" · "+WN[w].ref,href,world:w});
   const made=Object.fromEntries(MADE_BY.ours.map(o=>[o.id,o]));
   $("uu-tc-about").textContent=T.colors;
-  const leg=$("uu-tc-legend");leg.replaceChildren();[...new Set(T.categories.map(c=>c.family))].forEach(f=>{leg.append(el("i",null,f));
-    T.categories.filter(c=>c.family===f).forEach(c=>{const s=el("span");s.title=c.color_name+" · "+c.means;s.append(chipFor([c.id]),el("b",null,c.id));leg.append(s)})});
+  const leg=$("uu-tc-legend");leg.replaceChildren();T.categories.forEach(c=>{const b=el("div","uu-tc-leg");const fam=el("small",null,T.categories.find(x=>x.family===c.family)===c?c.family:"");
+    const r=el("div");r.append(chipFor([c.id]),document.createTextNode(" "),el("b",null,c.id),document.createTextNode(" -"+c.word));b.append(fam,r,el("small",null,c.color_name+" · "+c.means));leg.append(b)});
   const grid=$("uu-tc-grid");grid.replaceChildren();
-  T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id);const box=el("div","uu-tc-cat");
-    const h=el("h4",null,c.id+" · "+names.length);h.style.color=c.color;h.append(el("small",null,c.means));box.append(h);const ul=el("ul","uu-tc-pills");box.append(ul);
+  T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id);const box=el("div","uu-tc-cat");box.style.borderColor=c.color;
+    const h=el("h4",null,c.id+" · "+names.length);h.style.color=c.color;box.append(h);
     names.forEach(old=>{const nw=(T.renames&&T.renames[old])||old,cats=[c.id,...((T.also||{})[old]||[])],t=info[old]||{desc:"",side:"world",where:""};
-      const li=el("li","uu-tc-pill");li.style.setProperty("--pill",c.color+"66");li.style.setProperty("--pill-on",c.color);
-      const d=el("details");d.dataset.tool=old;const s=el("summary");s.title="Click to open "+nw;s.append(chipFor(cats),el("span","uu-tc-name",nw));d.append(s);li.append(d);
-      const inf=el("div","uu-tc-info");inf.append(el("p",null,t.desc||"No description yet."));
-      const jobs=el("p","uu-tc-dim","Jobs: "+cats.map((x,i)=>x+(i?"":" (main)")).join(" + ")+" · for "+(t.side==="avatar"?"avatars":"worlds"));inf.append(jobs);
-      if(nw!==old){const p=el("p","uu-tc-dim","Old name: ");p.append(el("span","uu-tc-old",old),document.createTextNode(" (still its name where it lives until the rename)"));inf.append(p)}
-      inf.append(el("p","uu-tc-dim","Lives in: "+t.where));
-      if(made[old])inf.append(el("p","uu-tc-dim","Made with: "+made[old].made_with+(made[old].date?", "+made[old].date:"")));
+      const d=el("details","uu-tc-tool");d.dataset.tool=old;const s=el("summary");s.append(chipFor(cats),el("span","uu-name",nw));
+      if(nw!==old)s.append(el("span","uu-tc-old",old));if(cats.length>1)s.append(el("span","uu-tc-also","+ "+cats.slice(1).join(" + ")));d.append(s);
+      const inf=el("div","uu-tc-info");inf.append(el("p",null,t.desc),el("p",null,"Jobs: "+cats.map((x,i)=>x+(i?"":" (main)")).join(" + ")+" · for "+(t.side==="avatar"?"avatars":"worlds")),
+        el("p",null,"Lives in: "+t.where+(nw!==old?" · still called "+old+" there until the rename":"")));
+      if(made[old])inf.append(el("p",null,"Made with: "+made[old].made_with+(made[old].date?", "+made[old].date:"")));
       if(t.href&&/^https:\/\/github\.com\/findastra\//.test(t.href)){const a=el("a","uu-src","source");a.href=t.href;a.rel="noopener noreferrer";a.target="_blank";const p=el("p");p.append(a);inf.append(p)}
       const row=el("div","uu-tc-send"),sel=el("select");sel.setAttribute("aria-label","Send "+nw+" to");
       const targets=t.side==="avatar"?PROGRAMS.filter(p=>/^avatar/.test(p[1])).map(p=>[p[0].toLowerCase().replace(/[^a-z0-9]+/g,"-"),p[0]]):WORLDS.map(w=>[w[0],w[1]]);
@@ -578,7 +570,7 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
         const job={schema:"unity-unicorn.send-tool-job/v1",tool_id:old,name:nw,jobs:cats,to:{kind:t.side,id:sel.value},made_at:now.toISOString()};
         const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(job,null,2)],{type:"application/json"}));a.download="unity-unicorn-send-"+nw+"-"+sel.value+"-"+stamp+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
         addBacklog("send to "+t.side,"unity-unicorn-world-building-toolset","Sent "+nw+" to "+sel.options[sel.selectedIndex].text+" ("+a.download+")",[]);msg.textContent="Saved "+a.download+" to Downloads."};
-      const msg=el("span","uu-note");row.append(sel,btn,msg);inf.append(row);d.append(inf);ul.append(li)});
+      const msg=el("span","uu-note");row.append(sel,btn,msg);inf.append(row);d.append(inf);box.append(d)});
     grid.append(box)})}
 function renderToolNames(){const T=TOOL_CATEGORIES;$("uu-names-rule").textContent="Naming: "+T.naming;
   const box=$("uu-names-cats");box.replaceChildren();T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id);
