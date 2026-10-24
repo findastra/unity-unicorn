@@ -75,3 +75,15 @@ test('the page shows the same list in its tool-names tool panel, and a category 
   assert.ok(html.includes('item(l,n,d,cat(n)+"not merged · "'));
   assert.ok(html.includes('item(l,n,d,cat(n)+"in "+WORLD'));
 });
+
+// Wonderland Launchpad's standard panels (Astra, 2026-10-24: "where are all of the other panels that Wonderland
+// Launchpad has"), dotted because they are standard; the old desk and tool library are dark tool panels now.
+test('the standard panels are there, in Wonderland Launchpad order, with dotted borders', () => {
+  const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-worldbuilding-desk-tool-panel', 'unity-unicorn-intelligence-levels-panel',
+    'unity-unicorn-L1-tool-panel', 'unity-unicorn-tool-library', 'unity-unicorn-L4-tool-panel', 'approvals-waiting-on-you', 'grants', 'keys',
+    'unity-unicorn-required-maintenance', 'pet-id', 'unity-unicorn-rwx-panel', 'unity-unicorn-session-notes', 'unity-unicorn-friends-list-panel', 'astras-pet-os-unified-footer'];
+  let at = -1;
+  for (const l of order) { const i = html.indexOf(l + '<'); assert.ok(i > at, l + ' in order'); at = i; }
+  assert.ok(html.includes('#uu-panels details.uu-panel.uu-std,#uu-panels .uu-box.uu-std{border-style:dotted'));
+  assert.ok(!html.includes('<p class="eyebrow">Worldbuilding desk'), 'the old white desk header is gone');
+});

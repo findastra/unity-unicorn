@@ -410,3 +410,20 @@ pills (Packages lists each package). The rows are still `docs/made-by-20261019.j
 
 The colour key and the category boxes have their own backdrop again, a third shade between the page's slate and the
 toolset's darker backdrop (Astra: "more intuitive as backdrop colors").
+
+## Standard panels, as on Wonderland Launchpad (Astra, 2026-10-24)
+
+Astra: "make this into a panel or tool matching the standards. and where are all of the other panels that Wonderland
+Launchpad has that this is missing? I feel like 'standard' panels need a different border style, like the very top
+panel has dots instead of lines". The page now runs in Rift Rabbit's order: `unity-stable-editorial-status-panel`
+(dashed cyan) · the cyberhome, title and System Map squares · Unity Stable's own panels
+(`unity-unicorn-worldbuilding-desk-tool-panel`, the tool names, the Avatar tools | World tools sides) ·
+`unity-unicorn-intelligence-levels-panel` with the light key around L1 to L4 · `unity-unicorn-rwx-panel` · session
+notes, emotions, clicker training · `unity-unicorn-friends-list-panel` · the unified footer.
+
+- The old white worldbuilding desk is now a dark tool panel; the old tool library is `unity-unicorn-tool-library`,
+  inside L1 under the world-building toolset.
+- L4 is five boxes: `approvals-waiting-on-you`, `grants`, `keys`, `unity-unicorn-required-maintenance`, `pet-id`.
+- R W X shows the grants that hold for every pet, from the hub's `system-map.json` (access).
+- The pets it talks to moved from L2 into the friends list.
+- Standard panels have a dotted border; Unity Stable's own panels keep a solid line.
