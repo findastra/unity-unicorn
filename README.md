@@ -315,7 +315,7 @@ Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it w
 | `stop-03-builder` | `stop-03-builder` (no change) | liminal-doors |
 | `booth-builder` | `booth-builder` (no change) | liminal-doors |
 
-### mover (`-mover`): makes things move or react in the world while people play (udon)
+### mover (`-mover`): makes things move or react in the world while people play (Udon)
 
 | Old name | New name | Lives in |
 |---|---|---|
