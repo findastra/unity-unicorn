@@ -27,6 +27,30 @@ test('every tool on the page has exactly one known category', () => {
   for (const [tool, c] of Object.entries(cats.tools)) assert.ok(ids.has(c), tool + ' has category ' + c);
 });
 
+test('colours run red to pink, and second and third jobs are real categories', () => {
+  assert.deepEqual(cats.categories.map((c) => c.color_name), ['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'violet', 'light pink', 'hot pink']);
+  for (const c of cats.categories) assert.match(c.color, /^#[0-9a-f]{6}$/, c.id);
+  const ids = new Set(cats.categories.map((c) => c.id));
+  for (const [tool, extra] of Object.entries(cats.also)) {
+    assert.ok(tool in cats.tools, tool);
+    assert.ok(extra.length >= 1 && extra.length <= 2, tool + ' does two or three jobs');
+    for (const c of extra) assert.ok(ids.has(c) && c !== cats.tools[tool], tool + ' also ' + c);
+  }
+});
+
+test('every rename keeps the main category word and no two tools share a name', () => {
+  const word = Object.fromEntries(cats.categories.map((c) => [c.id, c.word]));
+  const names = Object.keys(cats.tools).map((t) => cats.renames[t] || t);
+  assert.equal(new Set(names).size, names.length);
+  for (const t of Object.keys(cats.tools)) assert.ok((cats.renames[t] || t).endsWith('-' + word[cats.tools[t]]), t);
+});
+
+test('the tools tool panel draws every tool with its colours and a send button', () => {
+  assert.ok(html.includes('data-item="unity-unicorn-tools-tool-panel"></span>unity-unicorn-tools-tool-panel<'));
+  assert.ok(html.includes('renderMadeBy();renderToolNames();renderToolChart();'));
+  assert.ok(html.includes('schema:"unity-unicorn.send-tool-job/v1"'));
+});
+
 test('the page shows the same list in its tool-names tool panel, and a category on every tool row', () => {
   const line = html.split('\n').find((l) => l.startsWith('const TOOL_CATEGORIES='));
   assert.deepEqual(JSON.parse(line.slice('const TOOL_CATEGORIES='.length).replace(/;$/, '')), cats);

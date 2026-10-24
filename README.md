@@ -373,3 +373,29 @@ Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it w
 | `run-unity-tool` | **`unity-tool-runner`** | unity-unicorn |
 | `unity-asset-creator` | **`asset-checklist-runner`** | unity-unicorn |
 | `agent-queue` | **`agent-queue-runner`** | liminal-doors |
+
+## Tool colours and the tools tool panel (Astra, 2026-10-24)
+
+Astra: "this needs to be what the Unity Stable actually looks like where these tools are. Clicking on each opens
+information about them, and you can send to world". The new `unity-unicorn-tools-tool-panel` shows every tool in its
+category's colour. The colours run like a rainbow, red to purple, then pink: from the tools that change the most to the
+ones that change nothing.
+
+| Colour | Category | Family |
+|---|---|---|
+| red `#ff4d4d` | spawner | warm: changes objects |
+| orange `#ff8a2b` | carver | warm: changes objects |
+| yellow `#ffe14d` | painter | warm: changes objects |
+| green `#4dff7a` | strapper | green: adds onto things |
+| teal `#2bf5d0` | mover | green: adds onto things |
+| blue `#3da5ff` | builder | blue: assembles |
+| indigo `#6e6bff` | checker | purple: only looks |
+| violet `#b26bff` | viewer | purple: only looks |
+| light pink `#ff8fdc` | keeper | pink: tools about tools |
+| hot pink `#ff3db8` | runner | pink: tools about tools |
+
+- 28 tools do two or three jobs (`also` in `docs/tool-categories-20261024.json`) and get a split chip, main job first.
+- Clicking a tool opens what it does, its jobs, where it lives, who made it and a **Send to world** (or **Send to
+  avatar**) menu. Send saves `unity-unicorn-send-<tool>-<target>-<date>-<time>.json` to Downloads and adds a backlog
+  note; only vine-spawn's Unity window reads jobs today, so the others wait for their receivers.
+- Worlds and avatars get their own project panels next.

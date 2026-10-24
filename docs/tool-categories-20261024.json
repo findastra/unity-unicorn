@@ -3,76 +3,107 @@
   "updated": "2026-10-24",
   "about": "How Unity Unicorn's tools are named, and the category of every tool the page lists. Astra, 2026-10-24: \"its a spawner if it makes 3D objects, its a painter if it changes existing object surfaces\". Her tools pipe-spawn, vine-spawn, bubble-spawn, glitter-spawn, marble-carver and crystal-reflection-painter show the naming: what it works on, then the category's word.",
   "naming": "<what-it-works-on>-<category word>, lowercase with hyphens: pipe-spawn, vine-spawn, crystal-reflection-painter, marble-carver. New tools are named this way. Tools that already exist keep their names until Astra says to rename them.",
+  "colors": "Astra, 2026-10-24: the colours run like a rainbow, red to purple, then pink: from the tools that change the most to the ones that change nothing. A tool that does two or three jobs is drawn in two or three colours, its main job first (the main job gives its name).",
   "categories": [
     {
       "id": "spawner",
       "word": "spawn",
       "from": "Astra",
       "means": "Makes new 3D objects.",
-      "example": "vine-spawn"
-    },
-    {
-      "id": "painter",
-      "word": "painter",
-      "from": "Astra",
-      "means": "Changes the surfaces of objects that already exist: colours, textures, materials and shaders.",
-      "example": "crystal-reflection-painter"
+      "example": "vine-spawn",
+      "color": "#ff4d4d",
+      "color_name": "red",
+      "family": "Warm: changes objects"
     },
     {
       "id": "carver",
       "word": "carver",
       "from": "proposed",
       "means": "Changes the shape, weights or placement of objects that already exist.",
-      "example": "marble-carver"
+      "example": "marble-carver",
+      "color": "#ff8a2b",
+      "color_name": "orange",
+      "family": "Warm: changes objects"
+    },
+    {
+      "id": "painter",
+      "word": "painter",
+      "from": "Astra",
+      "means": "Changes the surfaces of objects that already exist: colours, textures, materials and shaders.",
+      "example": "crystal-reflection-painter",
+      "color": "#ffe14d",
+      "color_name": "yellow",
+      "family": "Warm: changes objects"
     },
     {
       "id": "strapper",
       "word": "strapper",
       "from": "proposed",
       "means": "Puts a ready-made add-on onto an avatar: wings, bending, sparks, a face tracking module.",
-      "example": "wing-strapper"
-    },
-    {
-      "id": "builder",
-      "word": "builder",
-      "from": "proposed",
-      "means": "Puts pieces together into a scene, a stop, a test build or a bake.",
-      "example": "stop-01-builder"
+      "example": "wing-strapper",
+      "color": "#4dff7a",
+      "color_name": "green",
+      "family": "Green: adds onto things"
     },
     {
       "id": "mover",
       "word": "mover",
       "from": "proposed",
       "means": "Makes things move or react in the world while people play (Udon).",
-      "example": "door-system"
+      "example": "door-system",
+      "color": "#2bf5d0",
+      "color_name": "teal",
+      "family": "Green: adds onto things"
+    },
+    {
+      "id": "builder",
+      "word": "builder",
+      "from": "proposed",
+      "means": "Puts pieces together into a scene, a stop, a test build or a bake.",
+      "example": "stop-01-builder",
+      "color": "#3da5ff",
+      "color_name": "blue",
+      "family": "Blue: assembles"
     },
     {
       "id": "checker",
       "word": "checker",
       "from": "proposed",
       "means": "Looks and reports; changes nothing.",
-      "example": "world-validator"
+      "example": "world-validator",
+      "color": "#6e6bff",
+      "color_name": "indigo",
+      "family": "Purple: only looks"
     },
     {
       "id": "viewer",
       "word": "viewer",
       "from": "proposed",
       "means": "Makes pictures for review: renders, previews, contact sheets and photos.",
-      "example": "review-shots"
+      "example": "review-shots",
+      "color": "#b26bff",
+      "color_name": "violet",
+      "family": "Purple: only looks"
     },
     {
       "id": "keeper",
       "word": "keeper",
       "from": "proposed",
       "means": "Keeps records and libraries: where things came from, what was made, what is installed.",
-      "example": "asset-ledger"
+      "example": "asset-ledger",
+      "color": "#ff8fdc",
+      "color_name": "light pink",
+      "family": "Pink: tools about tools"
     },
     {
       "id": "runner",
       "word": "runner",
       "from": "proposed",
       "means": "Runs other tools or walks a list of steps.",
-      "example": "run-unity-tool"
+      "example": "run-unity-tool",
+      "color": "#ff3db8",
+      "color_name": "hot pink",
+      "family": "Pink: tools about tools"
     }
   ],
   "tools": {
@@ -162,12 +193,93 @@
     "pickup-lift-out": "carver",
     "review-shots": "viewer"
   },
-  "questions": [
-    "The eight proposed categories (carver to runner) and their words wait on Astra's OK.",
-    "marble-carver is listed as a carver (it reshapes a scan); it also paints the weathering, so it could be a painter.",
-    "world-spawn-tool makes a new world project, not 3D objects, so it is listed as a builder although its name says spawn.",
-    "Astra, 2026-10-24: \"I want to rename the tools.\" The old-to-new table is in the README and under renames here; the files, Unity menus and world repos are not renamed yet."
-  ],
+  "also": {
+    "marble-carver": [
+      "painter"
+    ],
+    "cloud-sea-fusion": [
+      "spawner"
+    ],
+    "masonry-regeneration": [
+      "carver"
+    ],
+    "no-windows-scene-refresh": [
+      "builder"
+    ],
+    "masonry-unity-refresh": [
+      "painter"
+    ],
+    "house-scene-builder": [
+      "painter",
+      "mover"
+    ],
+    "stop-01-builder": [
+      "spawner"
+    ],
+    "stop-02-builder": [
+      "spawner"
+    ],
+    "stop-03-builder": [
+      "spawner"
+    ],
+    "stop-01-sky": [
+      "painter"
+    ],
+    "booth-builder": [
+      "painter"
+    ],
+    "blender-booth": [
+      "painter"
+    ],
+    "door-kit": [
+      "painter"
+    ],
+    "glass-animal-tool": [
+      "painter"
+    ],
+    "frond-grass": [
+      "mover"
+    ],
+    "door-wiring": [
+      "checker"
+    ],
+    "face-transfer": [
+      "keeper"
+    ],
+    "fan-fitter": [
+      "painter"
+    ],
+    "gunsmith-loadout": [
+      "viewer"
+    ],
+    "menu-map": [
+      "viewer"
+    ],
+    "matcap-palette": [
+      "viewer"
+    ],
+    "scene-preview-render": [
+      "builder"
+    ],
+    "review-shots": [
+      "runner"
+    ],
+    "copyright-catcher": [
+      "keeper"
+    ],
+    "foreground-tool-recorder": [
+      "keeper"
+    ],
+    "run-unity-tool": [
+      "keeper"
+    ],
+    "unity-asset-creator": [
+      "keeper"
+    ],
+    "shaders-shop": [
+      "runner"
+    ]
+  },
   "renames": {
     "cloud-mesh-generator": "cloud-spawn",
     "masonry-regeneration": "masonry-spawn",
@@ -239,5 +351,11 @@
     "run-unity-tool": "unity-tool-runner",
     "unity-asset-creator": "asset-checklist-runner",
     "agent-queue": "agent-queue-runner"
-  }
+  },
+  "questions": [
+    "The eight proposed categories (carver to runner) and their words wait on Astra's OK.",
+    "marble-carver is listed as a carver (it reshapes a scan); it also paints the weathering, so it could be a painter.",
+    "world-spawn-tool makes a new world project, not 3D objects, so it is listed as a builder although its name says spawn.",
+    "Astra, 2026-10-24: \"I want to rename the tools.\" The old-to-new table is in the README and under renames here; the files, Unity menus and world repos are not renamed yet."
+  ]
 }
