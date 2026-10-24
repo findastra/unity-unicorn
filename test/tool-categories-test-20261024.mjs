@@ -60,7 +60,7 @@ test('L1 shows 3rd party and native programs as pills with a count, like Wonderl
 test('the world-building toolset, inside the L1 tool panel, draws every tool with its colours and a send button', () => {
   assert.ok(html.includes('data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<'));
   // native tools are L1, so the toolset sits inside the L1 tool panel, before the panel closes
-  const l1 = html.indexOf('unity-unicorn-L1-tool-panel<'), toolset = html.indexOf('unity-unicorn-world-building-toolset<');
+  const l1 = html.indexOf('unity-unicorn-L1-control-panel<'), toolset = html.indexOf('unity-unicorn-world-building-toolset<');
   assert.ok(l1 > 0 && toolset > l1 && toolset < html.indexOf('id="uu-add"', l1), 'toolset inside L1');
   assert.ok(!html.includes('unity-unicorn-tools-tool-panel'), 'the old label is gone');
   assert.ok(html.includes('renderAssets();renderToolNames();renderToolChart();'));
@@ -79,11 +79,16 @@ test('the page shows the same list in its tool-names tool panel, and a category 
 // Wonderland Launchpad's standard panels (Astra, 2026-10-24: "where are all of the other panels that Wonderland
 // Launchpad has"), dotted because they are standard; the old desk and tool library are dark tool panels now.
 test('the standard panels are there, in Wonderland Launchpad order, with dotted borders', () => {
-  const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-worldbuilding-desk-tool-panel', 'unity-unicorn-intelligence-levels-panel',
-    'unity-unicorn-L1-tool-panel', 'unity-unicorn-tool-library', 'unity-unicorn-L4-tool-panel', 'approvals-waiting-on-you', 'grants', 'keys',
+  const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-intelligence-levels-panel',
+    'unity-unicorn-L1-control-panel', 'unity-unicorn-world-building-toolset', 'unity-unicorn-tool-library', 'unity-unicorn-avatar-build-tool-panel',
+    'unity-unicorn-world-assets-tool-panel', 'unity-unicorn-tool-names-tool-panel', 'unity-unicorn-worldbuilding-desk-tool-panel',
+    'unity-unicorn-L2-control-panel', 'unity-unicorn-L4-control-panel', 'approvals-waiting-on-you', 'grants', 'keys',
     'unity-unicorn-required-maintenance', 'pet-id', 'unity-unicorn-rwx-panel', 'unity-unicorn-session-notes', 'unity-unicorn-friends-list-panel', 'astras-pet-os-unified-footer'];
   let at = -1;
   for (const l of order) { const i = html.indexOf(l + '<'); assert.ok(i > at, l + ' in order'); at = i; }
+  // tools are never outside a control panel (Astra, 2026-10-24): every tool panel sits between L1 and L2
+  const l1 = html.indexOf('unity-unicorn-L1-control-panel<'), l2 = html.indexOf('unity-unicorn-L2-control-panel<');
+  for (const m of html.matchAll(/data-item="(unity-unicorn-[a-z0-9-]+-tool-panel)"/g)) assert.ok(m.index > l1 && m.index < l2, m[1] + ' inside L1');
   assert.ok(html.includes('#uu-panels details.uu-panel.uu-std,#uu-panels .uu-box.uu-std{border-style:dotted'));
   assert.ok(!html.includes('<p class="eyebrow">Worldbuilding desk'), 'the old white desk header is gone');
 });
