@@ -45,6 +45,18 @@ test('every rename keeps the main category word and no two tools share a name', 
   for (const t of Object.keys(cats.tools)) assert.ok((cats.renames[t] || t).endsWith('-' + word[cats.tools[t]]), t);
 });
 
+test('every tool is in one related group, and the toolset sorts by group, then A to Z', () => {
+  assert.deepEqual(Object.keys(cats.groups).sort(), Object.keys(cats.tools).sort());
+  for (const [t, g] of Object.entries(cats.groups)) assert.ok(cats.group_order.includes(g), t + ' group ' + g);
+  assert.ok(html.includes('.sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)))'));
+});
+
+test('L1 shows 3rd party and native programs as pills with a count, like Wonderland Launchpad', () => {
+  assert.ok(html.includes('3rd party programs · <span id="uu-n-third"></span></h4><ul class="uu-pills" id="uu-third">'));
+  assert.ok(html.includes('Native programs · <span id="uu-n-programs"></span></h4><ul class="uu-pills" id="uu-programs">'));
+  assert.ok(html.includes('THIRD.forEach(([n,d])=>pill("uu-third",n,d));'));
+});
+
 test('the world-building toolset, inside the L1 tool panel, draws every tool with its colours and a send button', () => {
   assert.ok(html.includes('data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<'));
   // native tools are L1, so the toolset sits inside the L1 tool panel, before the panel closes
