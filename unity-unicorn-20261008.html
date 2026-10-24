@@ -15,6 +15,14 @@
 /* Standard panels (the hub frame's, on every pet page) are dotted; Unity Stable's own panels keep a solid line (Astra,
    2026-10-24: "'standard' panels need a different border style, like the very top panel has dots instead of lines"). */
 details.panel:not(.editorial){border-style:dotted;border-width:2px}
+/* Tools and toolsets in L1 follow the tool rule (Astra, 2026-10-24: "1-6 are tools or toolsets (they follow the same
+   UI rule, tools have subtools, then toolsets have tools and subtools,etc)"): rounded, on the tool background. */
+.uu details.uu-panel.uu-tool{border-radius:16px;background:var(--tool-bg);border:1px solid var(--line-dim)}
+.uu details.uu-panel.uu-tool>summary{background:transparent}
+.uu details#uu-p-tools.uu-tool{background:#1b1d22}
+.uu .uu-tc-filter{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.uu .uu-tc-filter .uu-btn[aria-pressed="true"]{border-color:var(--fix);color:var(--fix)}
+.uu .uu-tc-cat.uu-filtered-out,.uu details.uu-tc-tool.uu-filtered-out{display:none}
 .uu .uu-light{width:11px;height:11px;border-width:1px}
 /* The tool library's cards for tools in the toolset are folded into those tools' cards; the rest stay here. */
 .uu #tool-grid .tool-card.uu-in-toolset{display:none}
@@ -295,15 +303,31 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 <p><a class="button" href="https://xxdevilishxx.github.io/Vr-Asset-Closet/">Open it</a></p></div></details></li></ul></section>
 <section class="wide uu"><h3>Native tools · 85</h3>
 <span id="today" hidden></span>
-  <details class="uu-panel" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
+  <details class="uu-panel uu-tool" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
     <p class="uu-note" id="uu-tc-about"></p>
     <p class="uu-note" id="uu-names-rule"></p>
+    <p class="uu-tc-filter" id="uu-tc-filter" role="group" aria-label="Show the tools for"><button type="button" class="uu-btn" data-f="all" aria-pressed="true">All</button><button type="button" class="uu-btn" data-f="avatar" aria-pressed="false">Avatar tools</button><button type="button" class="uu-btn" data-f="world" aria-pressed="false">World tools</button></p>
     <div class="uu-tc-legend" id="uu-tc-legend"></div>
     <div class="uu-tc-grid" id="uu-tc-grid"></div>
     <h4>Waiting on Astra</h4><ul class="uu-items" id="uu-names-questions"></ul>
     <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
   </details>
-  <details class="uu-panel uu-old" open id="uu-p-library"><summary><span class="uu-lights" data-item="unity-unicorn-tool-library"></span>unity-unicorn-tool-library<span class="uu-what">each tool's last recorded run: import a catalog or a report</span></summary>
+  <details class="uu-panel uu-tool" open id="uu-p-tool-maker"><summary><span class="uu-lights" data-item="unity-unicorn-tool-maker"></span>unity-unicorn-tool-maker<span class="uu-what">write down a tool or program idea the moment you have it</span></summary>
+  <h4>Ideas so far</h4><ul class="uu-items" id="uu-added"></ul>
+  <form id="uu-add" class="uu-row" style="margin-top:8px" autocomplete="off">
+    <div style="display:grid;gap:6px">
+      <input type="text" id="uu-add-name" required maxlength="80" placeholder="Name, e.g. sparkle-strapper or Dev's avatar closet" aria-label="Name">
+      <input type="text" id="uu-add-desc" maxlength="200" placeholder="What it does, in one line" aria-label="What it does">
+      <input type="url" id="uu-add-link" placeholder="Link (optional, https://…)" aria-label="Link">
+    </div>
+    <div style="display:grid;gap:6px;align-content:start">
+      <select id="uu-add-kind" aria-label="Kind"><option value="tool">Your tool</option><option value="program">Your program</option><option value="third">3rd party program</option></select>
+      <button class="uu-btn" type="submit">Add the idea</button>
+    </div>
+  </form>
+  <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
+  </details>
+  <details class="uu-panel uu-old uu-tool" open id="uu-p-library"><summary><span class="uu-lights" data-item="unity-unicorn-tool-library"></span>unity-unicorn-tool-library<span class="uu-what">each tool's last recorded run: import a catalog or a report</span></summary>
 <section id="tool-library" class="tool-library" aria-labelledby="tool-library-title">
 <div class="tool-heading"><div><p class="eyebrow">Tools &amp; activity</p><h2 id="tool-library-title">Your Unity tool library</h2><p>Keep the tools you already have together, with the last recorded time each was used. Import a private catalog to add local paths and history, then import a completed report after running a tool.</p></div></div>
 <div class="tool-actions"><button id="tool-import" type="button" class="primary">Import catalog or report</button><button id="tool-export" type="button" class="secondary">Export tool backup</button><input id="tool-file" type="file" accept=".json,.jsonl,application/json" multiple hidden></div>
@@ -313,13 +337,8 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 <details class="tool-help"><summary>How to use this library</summary><ol><li>Import a catalog with your existing tools, local paths and dated execution evidence. Dates that cannot be established stay Unknown.</li><li>Open a tool's command details and copy the command. Replace placeholders, check the project and output paths, then run it in the appropriate terminal or the already-open Unity editor.</li><li>Import the generated report or usage log. File modification dates are not execution evidence; this library uses the completion time in the imported record.</li></ol><p>Opening this page, importing a catalog, copying a command and exporting a backup never mark a tool as used. This browser has no connection to Unity and cannot run commands. Private paths, reports and history stay in this browser until you export them.</p></details>
 </section>
   </details>
-<div class="uu-sides" id="uu-sides" role="tablist" aria-label="Avatar tools and world tools">
-  <button type="button" class="uu-side-tab" role="tab" id="uu-tab-avatar" data-side="avatar" aria-controls="uu-side-avatar" aria-selected="true">Avatar tools <b id="uu-avatar-count"></b></button>
-  <button type="button" class="uu-side-tab" role="tab" id="uu-tab-world" data-side="world" aria-controls="uu-side-world" aria-selected="false" tabindex="-1">World tools <b id="uu-world-count"></b></button>
-</div>
-<div class="uu-side" id="uu-side-avatar" data-side="avatar" role="tabpanel" aria-labelledby="uu-tab-avatar">
-<p class="uu-side-lede">For avatars: fit them, colour them, map their menus and add effects. Click a tool panel to open it.</p>
-<details class="uu-panel" id="uu-matcap"><summary><span class="uu-lights" data-item="unity-unicorn-matcap-tool-panel"></span>unity-unicorn-matcap-tool-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
+<div class="uu-side" id="uu-side-avatar" data-side="avatar">
+<details class="uu-panel uu-tool" id="uu-matcap"><summary><span class="uu-lights" data-item="unity-unicorn-matcap-tool-panel"></span>unity-unicorn-matcap-tool-panel<span class="uu-what">matcap palette: every matcap on a sphere, like a makeup palette</span></summary>
 <style>
 #uu-matcap{--mc-case:#26272b;--mc-well:#1b1c20;--mc-pink:#ff3cc7;--mc-cyan:#2ef2ff}
 #uu-matcap .mc-case{background:linear-gradient(160deg,#2c2d33,var(--mc-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #ff3cc722,0 0 30px #2ef2ff14}
@@ -372,7 +391,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
   </div>
   <p class="uu-note">These 54 are drawn from math by Unity Unicorn, so they are yours to use anywhere. In Unity, <b>Tools › Unity Unicorn › matcap-palette</b> shows every matcap in your project the same way and puts the one you pick on a material. PNGs of this palette: <code>scripts/matcap-palette/make-matcaps-20261019.mjs</code>.</p>
 </details>
-<details class="uu-panel" id="uu-menumap"><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-tool-panel"></span>unity-unicorn-menu-map-tool-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
+<details class="uu-panel uu-tool" id="uu-menumap"><summary><span class="uu-lights" data-item="unity-unicorn-menu-map-tool-panel"></span>unity-unicorn-menu-map-tool-panel<span class="uu-what">menu map: an avatar's built radial menu and its 256-bit parameter budget</span></summary>
 <style>
 #uu-menumap{--mm-case:#26272b;--mm-well:#1b1c20;--mm-pink:#ff3cc7;--mm-cyan:#2ef2ff;--mm-lime:#b6ff3c;--mm-red:#ff4d5e}
 #uu-menumap .mm-case{background:linear-gradient(160deg,#2c2d33,var(--mm-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #0006 inset,0 0 18px #2ef2ff1c,0 0 30px #ff3cc714}
@@ -436,14 +455,13 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
   </div>
   <p class="uu-note">In Unity, select the avatar and run <b>Tools › Unity Unicorn › menu-map</b>: it builds a throwaway test copy (VRCFury and Modular Avatar included), writes <code>UnityUnicornReports/menu-map-&lt;avatar&gt;-&lt;time&gt;.json</code> and deletes the copy. Load that file here.</p>
 </details>
-<details class="uu-panel" id="uu-p-avatar-assets"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-assets-tool-panel"></span>unity-unicorn-avatar-assets-tool-panel<span class="uu-what">avatar assets we created, by type</span></summary>
+<details class="uu-panel uu-tool" id="uu-p-avatar-assets"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-assets-tool-panel"></span>unity-unicorn-avatar-assets-tool-panel<span class="uu-what">avatar assets we created, by type</span></summary>
   <div id="uu-assets-avatar"></div>
   <p class="uu-note">Every avatar asset we make goes here with where it is used. The list is <code>docs/assets-we-created-20261019.json</code>.</p>
 </details>
 </div>
-<div class="uu-side" id="uu-side-world" data-side="world" role="tabpanel" aria-labelledby="uu-tab-world" hidden>
-<p class="uu-side-lede">For worlds: Piranesi House, Astra's Infinite Pole, Liminal Doors and the next one. Click a tool panel to open it.</p>
-<details class="uu-panel" id="uu-vine"><summary><span class="uu-lights" data-item="unity-unicorn-vine-spawn-tool-panel"></span>unity-unicorn-vine-spawn-tool-panel<span class="uu-what">vine-spawn-with-trumpet-flowers: vines with trumpet flowers in up to 10 colours, opened in a world's Unity</span></summary>
+<div class="uu-side" id="uu-side-world" data-side="world">
+<details class="uu-panel uu-tool" id="uu-vine"><summary><span class="uu-lights" data-item="unity-unicorn-vine-spawn-tool-panel"></span>unity-unicorn-vine-spawn-tool-panel<span class="uu-what">vine-spawn-with-trumpet-flowers: vines with trumpet flowers in up to 10 colours, opened in a world's Unity</span></summary>
 <style>
 #uu-vine{--vn-case:#26272b;--vn-well:#1b1c20;--vn-pink:#ff3cc7;--vn-cyan:#2ef2ff}
 #uu-vine .vn-case{background:linear-gradient(160deg,#2c2d33,var(--vn-case) 55%,#202126);border:1px solid #3a3c44;border-radius:22px;padding:16px;box-shadow:0 0 0 1px #00000040,0 10px 30px #00000055}
@@ -504,36 +522,23 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
   </div>
   <p class="uu-note">Built on vine-bloomer (the Blender ivy mantle of Piranesi House). This one grows single vines in Unity over the objects you pick, with leaves, buds and five-lobed trumpet flowers, and its own Unity Stable/Vine Bloom shader. Your colours and world stay in this browser.</p>
 </details>
-<details class="uu-panel" id="uu-p-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-world-sparkles-tool-panel"></span>unity-unicorn-world-sparkles-tool-panel<span class="uu-what">world sparkle tools: every sparkle, glitter and mote used in the three worlds <span class="uu-count" id="uu-n-sparkles"></span></span></summary>
+<details class="uu-panel uu-tool" id="uu-p-sparkles"><summary><span class="uu-lights" data-item="unity-unicorn-world-sparkles-tool-panel"></span>unity-unicorn-world-sparkles-tool-panel<span class="uu-what">world sparkle tools: every sparkle, glitter and mote used in the three worlds <span class="uu-count" id="uu-n-sparkles"></span></span></summary>
   <h4>Liminal Doors · 11</h4><ul class="uu-items" id="uu-sparkle-liminal-doors"></ul>
   <h4>Astra's Infinite Pole · 13</h4><ul class="uu-items" id="uu-sparkle-astras-infinite-pole"></ul>
   <h4>Piranesi House · 3</h4><ul class="uu-items" id="uu-sparkle-piranesi-house"></ul>
   <p class="uu-note">Each sparkle links to its source on GitHub: Liminal Doors' are on branch claude/fresh-start-20261018 (liminal-doors PR #2, not merged yet), Astra's Infinite Pole's on its main and Piranesi House's on its master. The same list is in docs/world-sparkle-tools-20261019.json, for other pages to read.</p>
 </details>
-<details class="uu-panel" id="uu-p-world-assets"><summary><span class="uu-lights" data-item="unity-unicorn-world-assets-tool-panel"></span>unity-unicorn-world-assets-tool-panel<span class="uu-what">world assets we created, by type</span></summary>
+<details class="uu-panel uu-tool" id="uu-p-world-assets"><summary><span class="uu-lights" data-item="unity-unicorn-world-assets-tool-panel"></span>unity-unicorn-world-assets-tool-panel<span class="uu-what">world assets we created, by type</span></summary>
   <div id="uu-assets-world"></div>
   <p class="uu-note">One copy of each finished asset lives in <a href="https://github.com/findastra/unity-assets-library">unity-assets-library</a>, exported by unity-asset-creator; each card says where it is used. The list is <code>docs/assets-we-created-20261019.json</code>.</p>
 </details>
 </div>
 
 
-<details class="uu-panel uu-old" open id="uu-p-desk"><summary><span class="uu-lights" data-item="unity-unicorn-worldbuilding-desk-tool-panel"></span>unity-unicorn-worldbuilding-desk-tool-panel<span class="uu-what">scene ideas, build tasks and release checks, saved in this browser</span></summary>
+<details class="uu-panel uu-old uu-tool" open id="uu-p-desk"><summary><span class="uu-lights" data-item="unity-unicorn-worldbuilding-desk-tool-panel"></span>unity-unicorn-worldbuilding-desk-tool-panel<span class="uu-what">scene ideas, build tasks and release checks, saved in this browser</span></summary>
 <section class="stats" id="stats" aria-label="At a glance"></section><div class="workspace"><section class="dk-panel"><div class="dk-panel-head"><h2>Your desk</h2><span class="count" id="count"></span></div><div class="toolbar"><input id="search" aria-label="Search entries" placeholder="Search your desk…"><select id="filter" aria-label="Filter by status"><option value="">All statuses</option></select></div><div id="reminder" class="reminder hidden" role="status"></div><div class="records" id="records"></div><div class="exports"><button class="secondary" id="json-export">Export backup</button><button class="secondary" id="md-export">Export Markdown</button><span class="hint" id="saved">Saved only in this browser</span></div></section><section class="dk-panel form-panel"><div class="dk-panel-head"><h2 id="edit-title"></h2></div><form class="form" id="form"></form></section></div>
   <p class="uu-note">Run tools locally, then import their reports into unity-unicorn-tool-library (L1). Unity and VRChat are not directly connected to this browser.</p>
 </details>
-  <h4>Added tonight</h4><ul class="uu-items" id="uu-added"></ul>
-  <form id="uu-add" class="uu-row" style="margin-top:8px" autocomplete="off">
-    <div style="display:grid;gap:6px">
-      <input type="text" id="uu-add-name" required maxlength="80" placeholder="Name, e.g. sparkle-strapper or Dev's avatar closet" aria-label="Name">
-      <input type="text" id="uu-add-desc" maxlength="200" placeholder="What it does, in one line" aria-label="What it does">
-      <input type="url" id="uu-add-link" placeholder="Link (optional, https://…)" aria-label="Link">
-    </div>
-    <div style="display:grid;gap:6px;align-content:start">
-      <select id="uu-add-kind" aria-label="Kind"><option value="tool">Your tool</option><option value="program">Your program</option><option value="third">3rd party program</option></select>
-      <button class="uu-btn" type="submit">Add to the L1 tool panel</button>
-    </div>
-  </form>
-  <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
 </section>
 </div>
 <details class="about"><summary>More details</summary><p class="small">From the System Map. Click a name to open it. Click a light to change it: a bubble says what it means. Something not built yet is off, and a grey maintenance light is not checked yet. ON/OFF and maintenance are saved in this browser only: the core does not enforce them yet (PET-PROGRAM-FRAMEWORK.md, section 4).</p></details></details><details class="panel level" open><summary title="Click the label to fold or unfold this tool panel"><span class="legend">unity-unicorn-L2-control-panel</span></summary><div class="columns">
@@ -778,7 +783,7 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
   T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id).sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)));const box=el("div","uu-tc-cat");box.style.borderColor=c.color;
     const h=el("h4",null,c.id+" · "+names.length);h.style.color=c.color;box.append(h);
     names.forEach(old=>{const nw=(T.renames&&T.renames[old])||old,cats=[c.id,...((T.also||{})[old]||[])],t=info[old]||{desc:"",side:"world",where:""};
-      const d=el("details","uu-tc-tool");d.dataset.tool=old;const s=el("summary");s.append(chipFor(cats),el("span","uu-name",nw));
+      const d=el("details","uu-tc-tool");d.dataset.tool=old;d.dataset.side=t.side;const s=el("summary");s.append(chipFor(cats),el("span","uu-name",nw));
       if(nw!==old)s.append(el("span","uu-tc-old",old));if(cats.length>1)s.append(el("span","uu-tc-also","+ "+cats.slice(1).join(" + ")));d.append(s);
       const inf=el("div","uu-tc-info");inf.append(el("p",null,t.desc),el("p",null,"Jobs: "+cats.map((x,i)=>x+(i?"":" (main)")).join(" + ")+" · for "+(t.side==="avatar"?"avatars":"worlds")+" · group: "+T.groups[old]),
         el("p",null,"Made for: "+(MADE_FOR[t.panel]||"its own panel on the Avatar tools | World tools tabs")),el("p",null,"Lives in: "+t.where+(nw!==old?" · still called "+old+" there until the rename":"")));
@@ -1710,6 +1715,16 @@ const VINE = (() => {
   options(); render(); draw();
 })();
 </script>
+<script id="uu-toolset-filter">
+// Avatar tools | World tools | All, inside the toolset (Astra, 2026-10-24: the tabs were "sticking out").
+(()=>{const box=document.getElementById("uu-tc-filter");if(!box)return;
+  const rows=()=>[...document.querySelectorAll(".uu details.uu-tc-tool")],n=s=>rows().filter(d=>s==="all"||d.dataset.side===s).length;
+  const label={all:"All",avatar:"Avatar tools",world:"World tools"};
+  window.uuToolsetFilter=side=>{rows().forEach(d=>d.classList.toggle("uu-filtered-out",side!=="all"&&d.dataset.side!==side));
+    document.querySelectorAll(".uu .uu-tc-cat").forEach(c=>c.classList.toggle("uu-filtered-out",!c.querySelector("details.uu-tc-tool:not(.uu-filtered-out)")));
+    box.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.f===side)))};
+  box.querySelectorAll("button").forEach(b=>{b.textContent=label[b.dataset.f]+" · "+n(b.dataset.f);b.onclick=()=>window.uuToolsetFilter(b.dataset.f)});})();
+</script>
 <script id="uu-sides-app">
 // Avatar tools | World tools (Claude Opus 5.5, 2026-10-19): two tabs, one side shown at a time, and the panels you opened
 // stay open next time. Links: #avatar-tools, #world-tools or a panel's id (for example #uu-vine) open that side.
@@ -1736,7 +1751,7 @@ const VINE = (() => {
     };
   });
   document.querySelectorAll(".uu [data-goto-side]").forEach((b) => {
-    b.onclick = () => { show(b.dataset.gotoSide); document.getElementById("uu-sides").scrollIntoView({ behavior: "smooth", block: "start" }); };
+    b.onclick = () => { window.uuToolsetFilter(b.dataset.gotoSide); document.getElementById("uu-p-tools").scrollIntoView({ behavior: "smooth", block: "start" }); };
   });
   const open = new Set(Array.isArray(st.open) ? st.open : []);
   document.querySelectorAll(".uu .uu-side details.uu-panel").forEach((d) => {
@@ -1745,7 +1760,7 @@ const VINE = (() => {
   });
   function fromHash() {
     const hash = decodeURIComponent(location.hash.slice(1));
-    if (hash === "avatar-tools" || hash === "world-tools") { show(hash.split("-")[0]); document.getElementById("uu-sides").scrollIntoView(); return; }
+    if (hash === "avatar-tools" || hash === "world-tools") { window.uuToolsetFilter(hash.split("-")[0]); document.getElementById("uu-p-tools").scrollIntoView(); return; }
     const d = hash && document.getElementById(hash), side = d && d.closest(".uu-side");
     if (side) { show(side.dataset.side); if (d.tagName === "DETAILS") d.open = true; d.scrollIntoView(); }
   }

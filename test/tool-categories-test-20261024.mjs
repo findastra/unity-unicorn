@@ -101,3 +101,16 @@ test('the standard panels are there, in Wonderland Launchpad order, with dotted 
   assert.ok(html.includes('details.panel:not(.editorial){border-style:dotted'));
   assert.ok(!html.includes('<p class="eyebrow">Worldbuilding desk'), 'the old white desk header is gone');
 });
+
+// Astra, 2026-10-24: L1's tools and toolsets follow the tool rule; the Avatar | World tabs move inside the toolset as a
+// filter; Added tonight is the high-level tool unity-unicorn-tool-maker.
+test('L1 tools are rounded tools, the tabs are a toolset filter, and the tool maker is a tool', () => {
+  for (const id of ['uu-p-tools', 'uu-p-tool-maker', 'uu-p-library', 'uu-matcap', 'uu-menumap', 'uu-p-avatar-assets', 'uu-vine', 'uu-p-sparkles', 'uu-p-world-assets', 'uu-p-desk'])
+    assert.match(html, new RegExp(`<details class="uu-panel[^"]* uu-tool"(?: open)? id="${id}">`), id + ' is a tool');
+  assert.ok(html.includes('.uu details.uu-panel.uu-tool{border-radius:16px;background:var(--tool-bg)'));
+  assert.ok(!html.includes('id="uu-sides"') && !html.includes('role="tabpanel"'), 'no tabs');
+  const ts = html.indexOf('id="uu-p-tools"'), f = html.indexOf('id="uu-tc-filter"'), lib = html.indexOf('id="uu-p-library"');
+  assert.ok(f > ts && f < lib, 'the filter sits inside the toolset');
+  const maker = html.indexOf('unity-unicorn-tool-maker<'), add = html.indexOf('id="uu-add"');
+  assert.ok(maker > ts && maker < lib && add > maker && add < lib, 'the add form is the tool maker, right under the toolset');
+});

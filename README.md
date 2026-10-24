@@ -448,3 +448,11 @@ the page"; "fix where there is redundant things going on. Do not delete any of t
   The tool library keeps Import and Export and the two tricks to write; the tabs keep the working tools (matcap,
   menu-map, vine), the world sparkles and the assets; the worldbuilding desk and "Added tonight" are under them.
 - Standard panels are dotted; Unity Stable's own panels have a solid line.
+
+## Tools look like tools; the tool maker (Astra, 2026-10-24)
+
+In the L1 control panel's Native tools, every tool and toolset follows the tool rule: rounded corners on the tool
+background (Astra: "tools have subtools, then toolsets have tools and subtools"). The Avatar tools | World tools tabs
+are gone; the same choice is a filter inside `unity-unicorn-world-building-toolset` (All · 85, Avatar tools · 22,
+World tools · 63), and both sides' working tools show one after another. "Added tonight" is
+`unity-unicorn-tool-maker`, right under the toolset: write down a tool or program idea the moment you have it.
