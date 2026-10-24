@@ -4,16 +4,76 @@
   "about": "How Unity Unicorn's tools are named, and the category of every tool the page lists. Astra, 2026-10-24: \"its a spawner if it makes 3D objects, its a painter if it changes existing object surfaces\". Her tools pipe-spawn, vine-spawn, bubble-spawn, glitter-spawn, marble-carver and crystal-reflection-painter show the naming: what it works on, then the category's word.",
   "naming": "<what-it-works-on>-<category word>, lowercase with hyphens: pipe-spawn, vine-spawn, crystal-reflection-painter, marble-carver. New tools are named this way. Tools that already exist keep their names until Astra says to rename them.",
   "categories": [
-    { "id": "spawner", "word": "spawn", "from": "Astra", "means": "Makes new 3D objects.", "example": "vine-spawn" },
-    { "id": "painter", "word": "painter", "from": "Astra", "means": "Changes the surfaces of objects that already exist: colours, textures, materials and shaders.", "example": "crystal-reflection-painter" },
-    { "id": "carver", "word": "carver", "from": "proposed", "means": "Changes the shape, weights or placement of objects that already exist.", "example": "marble-carver" },
-    { "id": "strapper", "word": "strapper", "from": "proposed", "means": "Puts a ready-made add-on onto an avatar: wings, bending, sparks, a face tracking module.", "example": "wing-strapper" },
-    { "id": "builder", "word": "builder", "from": "proposed", "means": "Puts pieces together into a scene, a stop, a test build or a bake.", "example": "stop-01-builder" },
-    { "id": "mover", "word": "mover", "from": "proposed", "means": "Makes things move or react in the world while people play (Udon).", "example": "door-system" },
-    { "id": "checker", "word": "checker", "from": "proposed", "means": "Looks and reports; changes nothing.", "example": "world-validator" },
-    { "id": "viewer", "word": "viewer", "from": "proposed", "means": "Makes pictures for review: renders, previews, contact sheets and photos.", "example": "review-shots" },
-    { "id": "keeper", "word": "keeper", "from": "proposed", "means": "Keeps records and libraries: where things came from, what was made, what is installed.", "example": "asset-ledger" },
-    { "id": "runner", "word": "runner", "from": "proposed", "means": "Runs other tools or walks a list of steps.", "example": "run-unity-tool" }
+    {
+      "id": "spawner",
+      "word": "spawn",
+      "from": "Astra",
+      "means": "Makes new 3D objects.",
+      "example": "vine-spawn"
+    },
+    {
+      "id": "painter",
+      "word": "painter",
+      "from": "Astra",
+      "means": "Changes the surfaces of objects that already exist: colours, textures, materials and shaders.",
+      "example": "crystal-reflection-painter"
+    },
+    {
+      "id": "carver",
+      "word": "carver",
+      "from": "proposed",
+      "means": "Changes the shape, weights or placement of objects that already exist.",
+      "example": "marble-carver"
+    },
+    {
+      "id": "strapper",
+      "word": "strapper",
+      "from": "proposed",
+      "means": "Puts a ready-made add-on onto an avatar: wings, bending, sparks, a face tracking module.",
+      "example": "wing-strapper"
+    },
+    {
+      "id": "builder",
+      "word": "builder",
+      "from": "proposed",
+      "means": "Puts pieces together into a scene, a stop, a test build or a bake.",
+      "example": "stop-01-builder"
+    },
+    {
+      "id": "mover",
+      "word": "mover",
+      "from": "proposed",
+      "means": "Makes things move or react in the world while people play (Udon).",
+      "example": "door-system"
+    },
+    {
+      "id": "checker",
+      "word": "checker",
+      "from": "proposed",
+      "means": "Looks and reports; changes nothing.",
+      "example": "world-validator"
+    },
+    {
+      "id": "viewer",
+      "word": "viewer",
+      "from": "proposed",
+      "means": "Makes pictures for review: renders, previews, contact sheets and photos.",
+      "example": "review-shots"
+    },
+    {
+      "id": "keeper",
+      "word": "keeper",
+      "from": "proposed",
+      "means": "Keeps records and libraries: where things came from, what was made, what is installed.",
+      "example": "asset-ledger"
+    },
+    {
+      "id": "runner",
+      "word": "runner",
+      "from": "proposed",
+      "means": "Runs other tools or walks a list of steps.",
+      "example": "run-unity-tool"
+    }
   ],
   "tools": {
     "asset-contact-sheet": "viewer",
@@ -106,6 +166,78 @@
     "The eight proposed categories (carver to runner) and their words wait on Astra's OK.",
     "marble-carver is listed as a carver (it reshapes a scan); it also paints the weathering, so it could be a painter.",
     "world-spawn-tool makes a new world project, not 3D objects, so it is listed as a builder although its name says spawn.",
-    "Existing tools keep their names; renaming them to the new endings waits on Astra."
-  ]
+    "Astra, 2026-10-24: \"I want to rename the tools.\" The old-to-new table is in the README and under renames here; the files, Unity menus and world repos are not renamed yet."
+  ],
+  "renames": {
+    "cloud-mesh-generator": "cloud-spawn",
+    "masonry-regeneration": "masonry-spawn",
+    "vine-spawn-with-trumpet-flowers": "trumpet-vine-spawn",
+    "glass-animal-tool": "glass-animal-spawn",
+    "bubble-chair-blower": "bubble-chair-spawn",
+    "stop-01-sky": "pinkscape-sky-spawn",
+    "blender-booth": "k6-booth-spawn",
+    "door-kit": "door-spawn",
+    "neck-blender": "neck-seam-painter",
+    "realistic-prop-restyle": "prop-restyle-painter",
+    "vine-bloomer": "ivy-texture-painter",
+    "wall-texture-rebuild": "wall-texture-painter",
+    "matcap-palette": "matcap-painter",
+    "field-shaders": "field-painter",
+    "frond-grass": "frond-grass-painter",
+    "pool-tile": "pool-tile-painter",
+    "pool-water": "pool-water-painter",
+    "pool-window": "pool-window-painter",
+    "world-glow": "glow-painter",
+    "cloud-lounge-smoothing": "cloud-lounge-carver",
+    "cloud-sea-fusion": "cloud-sea-carver",
+    "no-windows-scene-refresh": "open-arch-carver",
+    "chain-dangle-weights": "chain-dangle-carver",
+    "hair-weighter": "hair-weight-carver",
+    "pickup-lift-out": "pickup-lift-carver",
+    "face-transfer": "face-tracking-strapper",
+    "fan-fitter": "fan-strapper",
+    "bending-adder": "bending-strapper",
+    "gunsmith-loadout": "gunsmith-loadout-strapper",
+    "desktop-world-test": "desktop-test-builder",
+    "desktop-test": "liminal-desktop-test-builder",
+    "masonry-unity-refresh": "masonry-refresh-builder",
+    "occlusion-bake": "occlusion-bake-builder",
+    "reflection-probe-bake": "reflection-probe-builder",
+    "world-spawn-tool": "world-project-builder",
+    "door-wiring": "door-wiring-builder",
+    "grass-push": "grass-push-mover",
+    "door-system": "door-travel-mover",
+    "button-check": "button-checker",
+    "cloud-collider-audit": "cloud-collider-checker",
+    "cloud-collider-validation": "cloud-outline-checker",
+    "cloud-physics-check": "cloud-physics-checker",
+    "cloud-survey": "cloud-survey-checker",
+    "masonry-structural-audit": "masonry-checker",
+    "no-windows-audit-tool": "open-arch-checker",
+    "prop-decomposer": "prop-reference-checker",
+    "scene-yaml-inspection": "scene-yaml-checker",
+    "world-validator": "world-checker",
+    "menu-map": "avatar-menu-checker",
+    "star-effects-diagnostic": "star-effects-checker",
+    "copyright-catcher": "copyright-checker",
+    "pickup-audit": "pickup-checker",
+    "asset-contact-sheet": "asset-sheet-viewer",
+    "scene-preview-render": "scene-preview-viewer",
+    "time-season-tide-preview": "time-season-tide-viewer",
+    "floor-cutter": "concept-floor-viewer",
+    "redline-sheet": "redline-sheet-viewer",
+    "contact-sheet": "floor-sheet-viewer",
+    "web-pictures": "web-picture-viewer",
+    "world-photos": "world-photo-viewer",
+    "review-shots": "piranesi-review-viewer",
+    "unity-assets-library": "asset-library-keeper",
+    "shaders-shop": "shader-keeper",
+    "learn-add-ons": "add-on-template-keeper",
+    "copyright-logger": "copyright-keeper",
+    "asset-ledger": "asset-ledger-keeper",
+    "foreground-tool-recorder": "foreground-tool-runner",
+    "run-unity-tool": "unity-tool-runner",
+    "unity-asset-creator": "asset-checklist-runner",
+    "agent-queue": "agent-queue-runner"
+  }
 }

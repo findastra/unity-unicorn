@@ -234,3 +234,142 @@ name is what it works on, then its category's word (`vine-spawn`, `crystal-refle
   questions. Every tool row on the Avatar tools and World tools sides starts with its category.
 - Existing tools keep their names. The rule is in the skill book under `my-preferred-nomenclature`.
 - `test/tool-categories-test-20261024.mjs` fails if a tool has no category or the page and the list differ.
+
+## Tool renames (Astra, 2026-10-24)
+
+Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it works on>-<category word>`, the category words being spawn, painter, carver, strapper, builder, mover, checker, viewer, keeper and runner (see Tool names and categories above). 70 of the 85 tools get a new name; 15 already fit and keep theirs. The same list is `renames` in `docs/tool-categories-20261024.json`. This table is the plan: the files, Unity menus and world repos are not renamed yet.
+
+### spawner (`-spawn`): makes new 3D objects
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `cloud-mesh-generator` | **`cloud-spawn`** | unity-unicorn |
+| `masonry-regeneration` | **`masonry-spawn`** | unity-unicorn |
+| `vine-spawn-with-trumpet-flowers` | **`trumpet-vine-spawn`** | unity-unicorn |
+| `glass-animal-tool` | **`glass-animal-spawn`** | unity-unicorn PR #3 (not merged) |
+| `bubble-chair-blower` | **`bubble-chair-spawn`** | unity-unicorn PR #3 (not merged) |
+| `stop-01-sky` | **`pinkscape-sky-spawn`** | liminal-doors |
+| `blender-booth` | **`k6-booth-spawn`** | liminal-doors |
+| `door-kit` | **`door-spawn`** | liminal-doors |
+
+### painter (`-painter`): changes the surfaces of objects that already exist: colours, textures, materials and shaders
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `neck-blender` | **`neck-seam-painter`** | unity-unicorn |
+| `realistic-prop-restyle` | **`prop-restyle-painter`** | unity-unicorn |
+| `vine-bloomer` | **`ivy-texture-painter`** | unity-unicorn |
+| `wall-texture-rebuild` | **`wall-texture-painter`** | unity-unicorn |
+| `matcap-palette` | **`matcap-painter`** | unity-unicorn |
+| `field-shaders` | **`field-painter`** | liminal-doors |
+| `frond-grass` | **`frond-grass-painter`** | liminal-doors |
+| `pool-tile` | **`pool-tile-painter`** | liminal-doors |
+| `pool-water` | **`pool-water-painter`** | liminal-doors |
+| `pool-window` | **`pool-window-painter`** | liminal-doors |
+| `world-glow` | **`glow-painter`** | liminal-doors |
+| `golden-painter` | `golden-painter` (no change) | unity-unicorn PR #1 (not merged) |
+| `rgb-painter` | `rgb-painter` (no change) | unity-unicorn PR #1 (not merged) |
+
+### carver (`-carver`): changes the shape, weights or placement of objects that already exist
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `cloud-lounge-smoothing` | **`cloud-lounge-carver`** | unity-unicorn |
+| `cloud-sea-fusion` | **`cloud-sea-carver`** | unity-unicorn |
+| `no-windows-scene-refresh` | **`open-arch-carver`** | unity-unicorn |
+| `chain-dangle-weights` | **`chain-dangle-carver`** | unity-unicorn PR #1 (not merged) |
+| `hair-weighter` | **`hair-weight-carver`** | unity-unicorn PR #1 (not merged) |
+| `pickup-lift-out` | **`pickup-lift-carver`** | astras-infinite-pole |
+| `marble-carver` | `marble-carver` (no change) | unity-unicorn |
+
+### strapper (`-strapper`): puts a ready-made add-on onto an avatar: wings, bending, sparks, a face tracking module
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `face-transfer` | **`face-tracking-strapper`** | unity-unicorn |
+| `fan-fitter` | **`fan-strapper`** | unity-unicorn PR #1 (not merged) |
+| `bending-adder` | **`bending-strapper`** | unity-unicorn PR #1 (not merged) |
+| `gunsmith-loadout` | **`gunsmith-loadout-strapper`** | unity-unicorn PR #1 (not merged) |
+| `sparkle-strapper` | `sparkle-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `blood-bender-strapper` | `blood-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `water-bender-strapper` | `water-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `sparkle-bender-strapper` | `sparkle-bender-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `wing-strapper` | `wing-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `neck-bow-strapper` | `neck-bow-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+| `spring-joint-strapper` | `spring-joint-strapper` (no change) | unity-unicorn PR #1 (not merged) |
+
+### builder (`-builder`): puts pieces together into a scene, a stop, a test build or a bake
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `desktop-world-test` | **`desktop-test-builder`** | unity-unicorn |
+| `desktop-test` | **`liminal-desktop-test-builder`** | liminal-doors |
+| `masonry-unity-refresh` | **`masonry-refresh-builder`** | unity-unicorn |
+| `occlusion-bake` | **`occlusion-bake-builder`** | unity-unicorn |
+| `reflection-probe-bake` | **`reflection-probe-builder`** | unity-unicorn |
+| `world-spawn-tool` | **`world-project-builder`** | unity-unicorn |
+| `door-wiring` | **`door-wiring-builder`** | liminal-doors |
+| `house-scene-builder` | `house-scene-builder` (no change) | unity-unicorn |
+| `stop-01-builder` | `stop-01-builder` (no change) | liminal-doors |
+| `stop-02-builder` | `stop-02-builder` (no change) | liminal-doors |
+| `stop-03-builder` | `stop-03-builder` (no change) | liminal-doors |
+| `booth-builder` | `booth-builder` (no change) | liminal-doors |
+
+### mover (`-mover`): makes things move or react in the world while people play (udon)
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `grass-push` | **`grass-push-mover`** | liminal-doors |
+| `door-system` | **`door-travel-mover`** | liminal-doors |
+
+### checker (`-checker`): looks and reports; changes nothing
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `button-check` | **`button-checker`** | unity-unicorn |
+| `cloud-collider-audit` | **`cloud-collider-checker`** | unity-unicorn |
+| `cloud-collider-validation` | **`cloud-outline-checker`** | unity-unicorn |
+| `cloud-physics-check` | **`cloud-physics-checker`** | unity-unicorn |
+| `cloud-survey` | **`cloud-survey-checker`** | unity-unicorn |
+| `masonry-structural-audit` | **`masonry-checker`** | unity-unicorn |
+| `no-windows-audit-tool` | **`open-arch-checker`** | unity-unicorn |
+| `prop-decomposer` | **`prop-reference-checker`** | unity-unicorn |
+| `scene-yaml-inspection` | **`scene-yaml-checker`** | unity-unicorn |
+| `world-validator` | **`world-checker`** | unity-unicorn |
+| `menu-map` | **`avatar-menu-checker`** | unity-unicorn |
+| `star-effects-diagnostic` | **`star-effects-checker`** | unity-unicorn PR #1 (not merged) |
+| `copyright-catcher` | **`copyright-checker`** | unity-unicorn PR #1 (not merged) |
+| `pickup-audit` | **`pickup-checker`** | astras-infinite-pole |
+
+### viewer (`-viewer`): makes pictures for review: renders, previews, contact sheets and photos
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `asset-contact-sheet` | **`asset-sheet-viewer`** | unity-unicorn |
+| `scene-preview-render` | **`scene-preview-viewer`** | unity-unicorn |
+| `time-season-tide-preview` | **`time-season-tide-viewer`** | unity-unicorn |
+| `floor-cutter` | **`concept-floor-viewer`** | liminal-doors |
+| `redline-sheet` | **`redline-sheet-viewer`** | liminal-doors |
+| `contact-sheet` | **`floor-sheet-viewer`** | liminal-doors |
+| `web-pictures` | **`web-picture-viewer`** | liminal-doors |
+| `world-photos` | **`world-photo-viewer`** | astras-infinite-pole |
+| `review-shots` | **`piranesi-review-viewer`** | piranesi-house |
+
+### keeper (`-keeper`): keeps records and libraries: where things came from, what was made, what is installed
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `unity-assets-library` | **`asset-library-keeper`** | unity-unicorn |
+| `shaders-shop` | **`shader-keeper`** | unity-unicorn |
+| `learn-add-ons` | **`add-on-template-keeper`** | unity-unicorn PR #1 (not merged) |
+| `copyright-logger` | **`copyright-keeper`** | unity-unicorn PR #1 (not merged) |
+| `asset-ledger` | **`asset-ledger-keeper`** | unity-unicorn design only (not merged) |
+
+### runner (`-runner`): runs other tools or walks a list of steps
+
+| Old name | New name | Lives in |
+|---|---|---|
+| `foreground-tool-recorder` | **`foreground-tool-runner`** | unity-unicorn |
+| `run-unity-tool` | **`unity-tool-runner`** | unity-unicorn |
+| `unity-asset-creator` | **`asset-checklist-runner`** | unity-unicorn |
+| `agent-queue` | **`agent-queue-runner`** | liminal-doors |
