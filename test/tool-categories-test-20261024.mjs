@@ -45,8 +45,12 @@ test('every rename keeps the main category word and no two tools share a name', 
   for (const t of Object.keys(cats.tools)) assert.ok((cats.renames[t] || t).endsWith('-' + word[cats.tools[t]]), t);
 });
 
-test('the tools tool panel draws every tool with its colours and a send button', () => {
-  assert.ok(html.includes('data-item="unity-unicorn-tools-tool-panel"></span>unity-unicorn-tools-tool-panel<'));
+test('the world-building toolset, inside the L1 tool panel, draws every tool with its colours and a send button', () => {
+  assert.ok(html.includes('data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<'));
+  // native tools are L1, so the toolset sits inside the L1 tool panel, before the panel closes
+  const l1 = html.indexOf('unity-unicorn-L1-tool-panel<'), toolset = html.indexOf('unity-unicorn-world-building-toolset<');
+  assert.ok(l1 > 0 && toolset > l1 && toolset < html.indexOf('id="uu-add"', l1), 'toolset inside L1');
+  assert.ok(!html.includes('unity-unicorn-tools-tool-panel'), 'the old label is gone');
   assert.ok(html.includes('renderMadeBy();renderToolNames();renderToolChart();'));
   assert.ok(html.includes('schema:"unity-unicorn.send-tool-job/v1"'));
 });

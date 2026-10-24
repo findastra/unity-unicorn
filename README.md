@@ -374,10 +374,10 @@ Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it w
 | `unity-asset-creator` | **`asset-checklist-runner`** | unity-unicorn |
 | `agent-queue` | **`agent-queue-runner`** | liminal-doors |
 
-## Tool colours and the tools tool panel (Astra, 2026-10-24)
+## Tool colours and the world-building toolset (Astra, 2026-10-24)
 
 Astra: "this needs to be what the Unity Stable actually looks like where these tools are. Clicking on each opens
-information about them, and you can send to world". The new `unity-unicorn-tools-tool-panel` shows every tool in its
+information about them, and you can send to world". The `unity-unicorn-world-building-toolset`, inside the L1 tool panel (native tools are L1), shows every tool in its
 category's colour. The colours run like a rainbow, red to purple, then pink: from the tools that change the most to the
 ones that change nothing.
 

@@ -30,7 +30,7 @@
 #uu-panels .uu-tag{font-size:11px;border:1px solid var(--fix);color:var(--fix);border-radius:999px;padding:0 7px;white-space:nowrap}
 #uu-panels .uu-tag.ok{border-color:var(--ok);color:#9fc3f3}
 #uu-panels .uu-chip{display:inline-block;width:34px;height:14px;border-radius:7px;flex:none;border:1px solid #10131a;vertical-align:middle}
-/* The tools tool panel: one dark backdrop holding every tool as a pill button, like Rift Rabbit's page (Astra,
+/* The world-building toolset (inside the L1 tool panel): one dark backdrop holding every tool as a pill button, like Rift Rabbit's page (Astra,
    2026-10-24: "this tool should be all on one dark backdrop, that contains the buttons"). Pills go three to a row,
    then two, then one; a pill opens in place across the whole row. */
 #uu-panels details#uu-p-tools{background:#1b1d22}
@@ -126,6 +126,14 @@
   <h4>3rd party programs</h4><ul class="uu-items" id="uu-third"></ul>
   <h4>Your programs</h4><ul class="uu-items" id="uu-programs"></ul>
   <h4>Your tools</h4><p class="uu-note" id="uu-tools-where" style="margin:0"></p>
+  <!-- Native tools are L1: code that runs with no AI deciding (PET-PROGRAM-FRAMEWORK.md, "Which kind"). Astra, 2026-10-24:
+       "the unity-unicorn-world-building-toolset should be what it is called, and that goes in another panel". -->
+  <details class="uu-panel" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
+    <p class="uu-note" id="uu-tc-about"></p>
+    <div class="uu-tc-key" id="uu-tc-legend"></div>
+    <div id="uu-tc-grid"></div>
+    <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
+  </details>
   <h4>Added tonight</h4><ul class="uu-items" id="uu-added"></ul>
   <form id="uu-add" class="uu-row" style="margin-top:8px" autocomplete="off">
     <div style="display:grid;gap:6px">
@@ -139,13 +147,6 @@
     </div>
   </form>
   <p class="uu-note">Added items stay in this browser and go into the backlog too, so nothing made on the fly is lost. They are not on GitHub until they are added to <code>tools/</code> in a branch.</p>
-</details>
-
-<details class="uu-panel" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-tools-tool-panel"></span>unity-unicorn-tools-tool-panel<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
-  <p class="uu-note" id="uu-tc-about"></p>
-  <div class="uu-tc-key" id="uu-tc-legend"></div>
-  <div id="uu-tc-grid"></div>
-  <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
 </details>
 
 <details class="uu-panel" open id="uu-p-made-by"><summary><span class="uu-lights" data-item="unity-unicorn-made-by-tool-panel"></span>unity-unicorn-made-by-tool-panel<span class="uu-what">who made each tool: us, or somebody else</span></summary>
@@ -543,7 +544,7 @@ MOODS.forEach(([m,d])=>{const n=SKETCH_NAMES[m]||m;const b=el("div","uu-mood");c
 const home=$("uu-home-pet");home.src=ART+"idle.png";
 let blinkT=setInterval(()=>{home.src=ART+"blink.png";setTimeout(()=>home.src=ART+"idle.png",220)},4200);
 
-// The tools tool panel (Astra, 2026-10-24: "this needs to be what the Unity Stable actually looks like where these
+// The world-building toolset (Astra, 2026-10-24: "this needs to be what the Unity Stable actually looks like where these
 // tools are. Clicking on each opens information about them, and you can send to world"). Colours run red to pink; a
 // tool doing two or three jobs gets a split chip, its main job first.
 function chipFor(cats){const T=TOOL_CATEGORIES,col=Object.fromEntries(T.categories.map(c=>[c.id,c.color])),n=cats.length;
@@ -576,7 +577,7 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
       btn.onclick=()=>{const now=new Date(),stamp=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(now).replace(/[-:]/g,"").replace(", ","-");
         const job={schema:"unity-unicorn.send-tool-job/v1",tool_id:old,name:nw,jobs:cats,to:{kind:t.side,id:sel.value},made_at:now.toISOString()};
         const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(job,null,2)],{type:"application/json"}));a.download="unity-unicorn-send-"+nw+"-"+sel.value+"-"+stamp+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-        addBacklog("send to "+t.side,"unity-unicorn-tools-tool-panel","Sent "+nw+" to "+sel.options[sel.selectedIndex].text+" ("+a.download+")",[]);msg.textContent="Saved "+a.download+" to Downloads."};
+        addBacklog("send to "+t.side,"unity-unicorn-world-building-toolset","Sent "+nw+" to "+sel.options[sel.selectedIndex].text+" ("+a.download+")",[]);msg.textContent="Saved "+a.download+" to Downloads."};
       const msg=el("span","uu-note");row.append(sel,btn,msg);inf.append(row);d.append(inf);ul.append(li)});
     grid.append(box)})}
 function renderToolNames(){const T=TOOL_CATEGORIES;$("uu-names-rule").textContent="Naming: "+T.naming;
