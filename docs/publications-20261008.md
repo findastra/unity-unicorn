@@ -64,3 +64,12 @@ Version `0.5.1-20261019`, with Claude Opus 5.5 (`claude-opus-5-5`):
 
 - Every page box label that ended in `-panel` ends in `-tool-panel` (Astra, 2026-10-19; astras-pet-os#129). Saved lights
   carry over. Nothing is tagged or released.
+
+## Udon kits · 2026-10-26
+
+Version `0.5.4-20261026`, with Claude Opus 5.5 (`claude-opus-5-5`), on branch `claude/cung-list-udon-kits-20261026`:
+
+- `udon-kit-mover` (eight Udon kits: pure cores, UdonSharp wrappers, the manifest, an installer) and the
+  `compose-a-world-from-kits` trick. Kit tests: 29 core and parity tests pass (`dotnet run`, .NET 8) and the Node gate's
+  5 pass. Node tests overall: 81, of which 69 pass, 1 is skipped and 11 fail, the same 11 that fail on `main`. Python tests: 50 pass.
+- Not compiled by UdonSharp, not in a world, not playtested. Nothing is tagged or released.

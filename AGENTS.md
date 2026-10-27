@@ -2,7 +2,7 @@
 
 Public credit is always Astra.
 
-Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
+Browser interface prepared with Codex (GPT-6), 2026-10-08. **Changes are recorded in `changes/`** (the hub's rule, Astra, 2026-10-21, card 069; switched here on 2026-10-26): a pull request that changes something substantial adds its own new file, `changes/<topic>-YYYYMMDD.md`, with what changed, Astra's words and the date, the model and version, and the pull request. Never add a new credit line below; the lines below are the record before the switch.
 Square pet frame (`v0.1.1-20261009`) fixed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09.
 Skill book `docs/skills-20261009.md` started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. After avatar or world sessions, add learned skills to its categories and append to its session log, without account details, blueprint IDs or machine paths.
 Avatar tracker and plans (`docs/avatar-tracker-20261009.md`, `docs/avatar-plans-20261009.md`) started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. Rules: every avatar asset folder keeps an `Edit Log - <avatar>-<date>.txt`, so create one from the template when it's missing. Refresh both files on each routine scan. When an avatar's licence may not allow uploads to more than one account, upload to findノastra only. Poppy's thumbnail is always `art/avatars/poppy-20261009.jpg` (the original is kept beside Poppy's assets); use it for every Poppy upload and tracker row. Fae's thumbnail is always `art/avatars/fae-20261009.jpg` (the original is kept beside Fae's assets).

@@ -18,3 +18,7 @@ unity-unicorn-local-tools-*.js
 # Python execution caches
 __pycache__/
 *.pyc
+
+# .NET build output (scripts/udon-kits)
+bin/
+obj/

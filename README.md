@@ -456,3 +456,23 @@ background (Astra: "tools have subtools, then toolsets have tools and subtools")
 are gone; the same choice is a filter inside `unity-unicorn-world-building-toolset` (All · 85, Avatar tools · 22,
 World tools · 63), and both sides' working tools show one after another. "Added tonight" is
 `unity-unicorn-tool-maker`, right under the toolset: write down a tool or program idea the moment you have it.
+
+## Udon kits and composing worlds from them (0.5.4-20261026)
+
+The Cung List, item 1 (Tyson Cung's Placeforge pattern): agents build world behaviour from tested kits instead of
+writing Udon scripts from scratch.
+
+- **`udon-kit-mover`** (`scripts/udon-kits/`, a world tool in the mover category): eight kits, `doorspace-door`,
+  `teleport-pad`, `glass-animal-collectible`, `toggle-switch`, `synced-counter`, `timed-respawn`, `audio-zone` and
+  `quest-checklist`. Each is a pure C# core (no Unity or VRChat; time, randomness, sync and saves come in through seams)
+  and a thin UdonSharp wrapper. Udon cannot run the cores, so each wrapper re-states its core and a parity test drives
+  both through the same long run of events. The contract is `scripts/udon-kits/udon-kits-manifest.json` (fixed ids and
+  families; each kit's inputs, calls and events).
+- **Tests:** `dotnet run --project scripts/udon-kits/Tests -c Release` (29 core and parity tests; no NuGet packages) and
+  `node --test test/udon-kits-test-20261026.mjs` (the manifest and UdonSharp limits gate). GitHub Actions runs both on
+  push (`.github/workflows/udon-kits-20261026.yml`).
+- **The trick `compose-a-world-from-kits`** (`skills/compose-a-world-from-kits/SKILL.md`): kits only, run the tests,
+  playtest, at most 3 repair tries, then roll back to the snapshot and hand off.
+- **Install in a world** on Astra's PC: `scripts\udon-kits\Tools\install-udon-kits-20261026.ps1 -World <folder> -RunTests -Apply`.
+- **Limits:** the real UdonSharp compile, scenes, ClientSim and networking are checked only in Unity on Astra's PC; no
+  world uses the kits yet. Guide: [docs/udon-kits-20261026.md](docs/udon-kits-20261026.md).
