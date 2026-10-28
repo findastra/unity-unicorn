@@ -1,0 +1,24 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "iris-tool",
+      "name": "iris-tool-20261027.json",
+      "kind": "Editor",
+      "description": "Put an iris pack on an avatar's eyes behind a menu toggle and keep its pupils, eye tracking and RGB. Texture eyes get the iris cut out and fitted to their eye layout; Love Eye eyes get a picture layer under the shader's own pupil.",
+      "source_path": "scripts/unity-editor/iris-tool-20261027.cs",
+      "command_template": "Copy scripts/unity-editor/iris-tool-20261027.cs into Assets/UnityUnicorn/Editor/, then open Tools > Unity Unicorn > iris-tool",
+      "requirements": [
+        "Unity 2022.3 with VRCFury (for the menu toggle).",
+        "Eyes drawn by a Poiyomi or lilToon texture (the iris picture is the main texture), or by Iamres' Love Eye Shader, locked.",
+        "An iris pack picture in the project, and where its one iris sits in it (pixels, as an image editor shows them)."
+      ],
+      "limitations": [
+        "Texture eyes: the pack's picture replaces the eye's own, so a pupil painted into the old texture goes with it; pupil blendshapes still work.",
+        "Love Eye eyes: the shader copy is made from the locked shader in the project and never shipped; lock the eyes in Love Eye first.",
+        "Not tested in VRChat yet; first used on Obsi, 2026-10-27 (Poppy's star irises were made by hand the same way just before)."
+      ],
+      "last_used": null
+    }
+  ]
+}

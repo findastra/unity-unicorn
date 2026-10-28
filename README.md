@@ -261,6 +261,7 @@ Astra, 2026-10-24: "I want to rename the tools." Every tool is named `<what it w
 | `vine-bloomer` | **`ivy-texture-painter`** | unity-unicorn |
 | `wall-texture-rebuild` | **`wall-texture-painter`** | unity-unicorn |
 | `matcap-palette` | **`matcap-painter`** | unity-unicorn |
+| `iris-tool` | **`iris-painter`** (Astra named it iris-tool) | unity-unicorn |
 | `field-shaders` | **`field-painter`** | liminal-doors |
 | `frond-grass` | **`frond-grass-painter`** | liminal-doors |
 | `pool-tile` | **`pool-tile-painter`** | liminal-doors |
@@ -456,3 +457,10 @@ background (Astra: "tools have subtools, then toolsets have tools and subtools")
 are gone; the same choice is a filter inside `unity-unicorn-world-building-toolset` (All · 85, Avatar tools · 22,
 World tools · 63), and both sides' working tools show one after another. "Added tonight" is
 `unity-unicorn-tool-maker`, right under the toolset: write down a tool or program idea the moment you have it.
+
+## iris-tool (0.5.4-20261027)
+
+An iris pack on an avatar's eyes behind a menu toggle, keeping its pupils, eye tracking and RGB (Astra, 2026-10-27: "Can we call this iris-tool so we can use it on other avis?"). It handles texture eyes (Poppy: the iris is cut out of the pack and fitted to the eye texture) and Iamres' Love Eye eyes (Obsi: a copy of the avatar's own locked shader gets a picture layer under its pupil, so the parallax tracking and pupil shapes stay).
+
+- **iris-tool** (Unity): Tools › Unity Unicorn › iris-tool. Code: `scripts/unity-editor/iris-tool-20261027.cs`; needs VRCFury for the toggle.
+- Guide: [docs/iris-tool-20261027.md](docs/iris-tool-20261027.md). Made with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-27, first used on Obsi. Not tested in VRChat yet.

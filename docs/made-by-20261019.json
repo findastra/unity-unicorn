@@ -1,6 +1,6 @@
 {
   "schema": "unity-unicorn.made-by/v1",
-  "updated": "2026-10-19",
+  "updated": "2026-10-27",
   "about": "Who made each tool Unity Unicorn lists: made by us (Astra with an AI assistant, which one and when, from the commit that added it or a repo credit line) or made by others (programs and packages Unity Unicorn uses). 'not recorded' means no commit or credit line names the assistant. The page's made-by panel shows these rows (test/made-by-test-20261019.mjs).",
   "ours": [
     {
@@ -307,6 +307,15 @@
       "date": "2026-10-19",
       "first_in": "Poppy",
       "evidence": "unity-unicorn commit 1a17f86",
+      "state": "on main"
+    },
+    {
+      "id": "iris-tool",
+      "side": "avatar",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-27",
+      "first_in": "Obsi",
+      "evidence": "scripts/unity-editor/iris-tool-20261027.cs; first runs on Obsi and Poppy",
       "state": "on main"
     },
     {
