@@ -1,10 +1,19 @@
 # Unity Unicorn
 
-*An Intelligent App, or Pet, by Astra.*
+*By Astra.* A pet that keeps Astra's Unity and VRChat work in one place: 85 world and avatar tools, avatar plans,
+scene ideas, build tasks and release checks.
 
-## Unity Unicorn
+## Unity Stable
 
-Keep scene ideas, build tasks and release checks in one place.
+Unity Unicorn's program page. Every world tool is listed once, coloured by what it does: red to purple, then pink,
+from the tools that change the most to the ones that change nothing.
+
+<img src="docs/images/unity-unicorn-world-building-toolset-20261029.png" alt="Unity Stable's world-building toolset: the tools in rainbow-coloured groups, spawner, carver, painter, mover, builder, checker, viewer, keeper and runner" width="100%">
+
+**[⬇ Download Unity Unicorn (ZIP)](https://github.com/findastra/unity-unicorn/archive/refs/heads/main.zip)**, then open
+`unity-unicorn-20261008.html` in your browser.
+
+**Needs:** a browser for the page; Unity 2022.3 and the VRChat Creator Companion for the tools.
 
 ## How to run
 
