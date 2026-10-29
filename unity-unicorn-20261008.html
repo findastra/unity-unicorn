@@ -19,9 +19,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
    UI rule, tools have subtools, then toolsets have tools and subtools,etc)"): rounded, on the tool background. */
 .uu details.uu-panel.uu-tool{border-radius:16px;background:var(--tool-bg);border:1px solid var(--line-dim)}
 .uu details.uu-panel.uu-tool>summary{background:transparent}
-.uu details#uu-p-tools.uu-tool{background:#1b1d22}
-.uu .uu-tc-filter{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.uu .uu-tc-filter .uu-btn[aria-pressed="true"]{border-color:var(--fix);color:var(--fix)}
+.uu details.uu-toolset.uu-tool{background:#1b1d22}
 .uu .uu-tc-cat.uu-filtered-out,.uu details.uu-tc-tool.uu-filtered-out{display:none}
 .uu .uu-light{width:11px;height:11px;border-width:1px}
 /* The tool library's cards for tools in the toolset are folded into those tools' cards; the rest stay here. */
@@ -113,15 +111,15 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 .uu .uu-tc-send{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
 /* The world-building toolset, inside the L1 tool panel: the original groupings (Astra, 2026-10-24: "I liked the original
    groupings") on one dark backdrop ("this tool should be all on one dark backdrop"): no box has a fill of its own. */
-.uu details#uu-p-tools{background:#1b1d22}
-.uu details#uu-p-tools>summary{background:#1b1d22}
-.uu details#uu-p-tools .uu-tc-leg,.uu details#uu-p-tools .uu-tc-cat{background:#262a32;border:1px solid #343844}
+.uu details.uu-toolset{background:#1b1d22}
+.uu details.uu-toolset>summary{background:#1b1d22}
+.uu details.uu-toolset .uu-tc-leg,.uu details.uu-toolset .uu-tc-cat{background:#262a32;border:1px solid #343844}
 /* Backdrop colours give the groupings back (Astra, 2026-10-24: "more intuitive as backdrop colors, so just use a newer
    3rd color for these groupings"): the page's slate, the toolset's darker backdrop, and a third, lighter shade for the
    colour key and the category boxes. */
 .uu .uu-tc-made{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:2px 0 8px;padding:6px 10px;border-radius:8px;background:#1b1d22;border:1px solid #3a3f4b;color:var(--ink)}
 .uu .uu-tc-made span:not(.uu-tag){color:var(--muted)}
-.uu details#uu-p-tools .uu-tc-cat{border-left:4px solid}
+.uu details.uu-toolset .uu-tc-cat{border-left:4px solid}
 .uu details.uu-tc-tool>summary:hover{background:#25272e}
 .uu .uu-tc-send select{background:#2a2d34;color:var(--ink);border:1px solid var(--edge);border-radius:8px;padding:5px 8px}
 .uu .uu-lights{display:inline-flex;gap:4px;flex-shrink:0;align-self:center}
@@ -268,7 +266,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 .uu .uu-tag,.uu button.uu-btn,.uu textarea,.uu input,.uu select,
 .uu .uu-old .panel,.uu .uu-old .stat,.uu .uu-old .badge,.uu .uu-old .primary,
 .uu .uu-old .secondary,.uu .uu-old .tool-search,.uu .uu-old .tool-counts span,.toast{border-radius:0}
-.uu details.uu-panel#uu-p-tools{border-radius:16px}
+.uu details.uu-panel.uu-toolset{border-radius:16px}
 
 </style>
 <style id="unity-stable-desk">
@@ -303,14 +301,18 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 <p><a class="button" href="https://xxdevilishxx.github.io/Vr-Asset-Closet/">Open it</a></p></div></details></li></ul></section>
 <section class="wide uu"><h3>Native tools · 85</h3>
 <span id="today" hidden></span>
-  <details class="uu-panel uu-tool" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every tool by colour: click one to see what it does and send it to a world or an avatar</span></summary>
+  <details class="uu-panel uu-toolset uu-tool" open id="uu-p-tools"><summary><span class="uu-lights" data-item="unity-unicorn-world-building-toolset"></span>unity-unicorn-world-building-toolset<span class="uu-what">every world tool by colour: click one to see what it does and send it to a world</span></summary>
     <p class="uu-note" id="uu-tc-about"></p>
     <p class="uu-note" id="uu-names-rule"></p>
-    <p class="uu-tc-filter" id="uu-tc-filter" role="group" aria-label="Show the tools for"><button type="button" class="uu-btn" data-f="all" aria-pressed="true">All</button><button type="button" class="uu-btn" data-f="avatar" aria-pressed="false">Avatar tools</button><button type="button" class="uu-btn" data-f="world" aria-pressed="false">World tools</button></p>
     <div class="uu-tc-legend" id="uu-tc-legend"></div>
     <div class="uu-tc-grid" id="uu-tc-grid"></div>
     <h4>Waiting on Astra</h4><ul class="uu-items" id="uu-names-questions"></ul>
     <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
+  </details>
+  <details class="uu-panel uu-toolset uu-tool" open id="uu-p-avatar-tools"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-building-toolset"></span>unity-unicorn-avatar-building-toolset<span class="uu-what">every avatar tool by colour: click one to see what it does and send it to an avatar</span></summary>
+    <p class="uu-note">The same colours as the world-building toolset above; its naming rule and open questions cover these tools too.</p>
+    <div class="uu-tc-legend" id="uu-tc-legend-avatar"></div>
+    <div class="uu-tc-grid" id="uu-tc-grid-avatar"></div>
   </details>
   <details class="uu-panel uu-tool" open id="uu-p-tool-maker"><summary><span class="uu-lights" data-item="unity-unicorn-tool-maker"></span>unity-unicorn-tool-maker<span class="uu-what">write down a tool or program idea the moment you have it</span></summary>
   <h4>Ideas so far</h4><ul class="uu-items" id="uu-added"></ul>
@@ -775,12 +777,15 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
   IN_WORLDS.forEach(([n,w,d,href])=>info[n]={panel:w,desc:d,side:"world",where:WN[w].repo.split("/")[1]+" · "+WN[w].ref,href,world:w});
   const made=Object.fromEntries(MADE_BY.ours.map(o=>[o.id,o]));
   $("uu-tc-about").textContent=T.colors;
-  const leg=$("uu-tc-legend");leg.replaceChildren();T.categories.forEach(c=>{const b=el("div","uu-tc-leg");const fam=el("small",null,T.categories.find(x=>x.family===c.family)===c?c.family:"");
+  // Two toolsets, world and avatar, drawn the same way (Astra, 2026-10-28: avatar tools were under the world-building toolset).
+  [["world","uu-tc-legend","uu-tc-grid"],["avatar","uu-tc-legend-avatar","uu-tc-grid-avatar"]].forEach(([SIDE,LEG,GRID])=>{
+  const inSide=n=>(info[n]||{side:"world"}).side===SIDE,has=c=>Object.keys(T.tools).some(n=>T.tools[n]===c.id&&inSide(n));
+  const leg=$(LEG);leg.replaceChildren();T.categories.filter(has).forEach(c=>{const b=el("div","uu-tc-leg");const fam=el("small",null,T.categories.find(x=>x.family===c.family)===c?c.family:"");
     const r=el("div");r.append(chipFor([c.id]),document.createTextNode(" "),el("b",null,c.id),document.createTextNode(" -"+c.word));b.append(fam,r,el("small",null,c.color_name+" · "+c.means));leg.append(b)});
-  const grid=$("uu-tc-grid");grid.replaceChildren();
+  const grid=$(GRID);grid.replaceChildren();
   // Inside each colour, related tools side by side, A to Z inside each group (Astra, 2026-10-24: "all recommended").
   const newName=n=>(T.renames&&T.renames[n])||n,gi=n=>T.group_order.indexOf(T.groups[n]);
-  T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id).sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)));const box=el("div","uu-tc-cat");box.style.borderColor=c.color;
+  T.categories.filter(has).forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id&&inSide(n)).sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)));const box=el("div","uu-tc-cat");box.style.borderColor=c.color;
     const h=el("h4",null,c.id+" · "+names.length);h.style.color=c.color;box.append(h);
     names.forEach(old=>{const nw=(T.renames&&T.renames[old])||old,cats=[c.id,...((T.also||{})[old]||[])],t=info[old]||{desc:"",side:"world",where:""};
       const d=el("details","uu-tc-tool");d.dataset.tool=old;d.dataset.side=t.side;const s=el("summary");s.append(chipFor(cats),el("span","uu-name",nw));
@@ -801,9 +806,9 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
       btn.onclick=()=>{const now=new Date(),stamp=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Denver",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(now).replace(/[-:]/g,"").replace(", ","-");
         const job={schema:"unity-unicorn.send-tool-job/v1",tool_id:old,name:nw,jobs:cats,to:{kind:t.side,id:sel.value},made_at:now.toISOString()};
         const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(job,null,2)],{type:"application/json"}));a.download="unity-unicorn-send-"+nw+"-"+sel.value+"-"+stamp+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-        addBacklog("send to "+t.side,"unity-unicorn-world-building-toolset","Sent "+nw+" to "+sel.options[sel.selectedIndex].text+" ("+a.download+")",[]);msg.textContent="Saved "+a.download+" to Downloads."};
+        addBacklog("send to "+t.side,"unity-unicorn-"+t.side+"-building-toolset","Sent "+nw+" to "+sel.options[sel.selectedIndex].text+" ("+a.download+")",[]);msg.textContent="Saved "+a.download+" to Downloads."};
       const msg=el("span","uu-note");row.append(sel,btn,msg);inf.append(row);d.append(inf);box.append(d)});
-    grid.append(box)})}
+    grid.append(box)})})}
 function renderToolNames(){const T=TOOL_CATEGORIES;$("uu-names-rule").textContent="Naming: "+T.naming;
   const box=$("uu-names-cats");box.replaceChildren();T.categories.forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id);
     const h=el("h4",null,c.id+" · -"+c.word+" · "+names.length);if(c.from!=="Astra")h.append(el("span","uu-tag","proposed"));box.append(h);
@@ -1716,14 +1721,8 @@ const VINE = (() => {
 })();
 </script>
 <script id="uu-toolset-filter">
-// Avatar tools | World tools | All, inside the toolset (Astra, 2026-10-24: the tabs were "sticking out").
-(()=>{const box=document.getElementById("uu-tc-filter");if(!box)return;
-  const rows=()=>[...document.querySelectorAll(".uu details.uu-tc-tool")],n=s=>rows().filter(d=>s==="all"||d.dataset.side===s).length;
-  const label={all:"All",avatar:"Avatar tools",world:"World tools"};
-  window.uuToolsetFilter=side=>{rows().forEach(d=>d.classList.toggle("uu-filtered-out",side!=="all"&&d.dataset.side!==side));
-    document.querySelectorAll(".uu .uu-tc-cat").forEach(c=>c.classList.toggle("uu-filtered-out",!c.querySelector("details.uu-tc-tool:not(.uu-filtered-out)")));
-    box.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.f===side)))};
-  box.querySelectorAll("button").forEach(b=>{b.textContent=label[b.dataset.f]+" · "+n(b.dataset.f);b.onclick=()=>window.uuToolsetFilter(b.dataset.f)});})();
+// Avatar tools and world tools are two toolsets now (Astra, 2026-10-28), so "go to a side" opens that side's toolset.
+window.uuToolsetFilter=side=>{const d=document.getElementById(side==="avatar"?"uu-p-avatar-tools":"uu-p-tools");d.open=true;return d};
 </script>
 <script id="uu-sides-app">
 // Avatar tools | World tools (Claude Opus 5.5, 2026-10-19): two tabs, one side shown at a time, and the panels you opened
@@ -1751,7 +1750,7 @@ const VINE = (() => {
     };
   });
   document.querySelectorAll(".uu [data-goto-side]").forEach((b) => {
-    b.onclick = () => { window.uuToolsetFilter(b.dataset.gotoSide); document.getElementById("uu-p-tools").scrollIntoView({ behavior: "smooth", block: "start" }); };
+    b.onclick = () => { window.uuToolsetFilter(b.dataset.gotoSide).scrollIntoView({ behavior: "smooth", block: "start" }); };
   });
   const open = new Set(Array.isArray(st.open) ? st.open : []);
   document.querySelectorAll(".uu .uu-side details.uu-panel").forEach((d) => {
@@ -1760,7 +1759,7 @@ const VINE = (() => {
   });
   function fromHash() {
     const hash = decodeURIComponent(location.hash.slice(1));
-    if (hash === "avatar-tools" || hash === "world-tools") { window.uuToolsetFilter(hash.split("-")[0]); document.getElementById("uu-p-tools").scrollIntoView(); return; }
+    if (hash === "avatar-tools" || hash === "world-tools") { window.uuToolsetFilter(hash.split("-")[0]).scrollIntoView(); return; }
     const d = hash && document.getElementById(hash), side = d && d.closest(".uu-side");
     if (side) { show(side.dataset.side); if (d.tagName === "DETAILS") d.open = true; d.scrollIntoView(); }
   }
