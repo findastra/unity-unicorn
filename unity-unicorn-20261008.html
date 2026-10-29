@@ -104,6 +104,9 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 .uu details.uu-tc-tool>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;padding:4px 0}
 .uu details.uu-tc-tool>summary::-webkit-details-marker{display:none}
 .uu details.uu-tc-tool[open]>summary{background:#2a2b31}
+/* Same arrows as the panels, so each tool card shows it opens (Astra, 2026-10-29: tools were "missing the arrows"). */
+.uu details.uu-tc-tool>summary::before{content:"▸";color:var(--muted);width:1em}
+.uu details.uu-tc-tool[open]>summary::before{content:"▾"}
 .uu .uu-tc-old{color:#8d8a99;font-size:12px;text-decoration:line-through}
 .uu .uu-tc-also{color:#ffe9a8;font-size:12px}
 .uu .uu-tc-info{padding:6px 0 10px 42px;font-size:13px;color:var(--muted)}
