@@ -94,9 +94,10 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 .uu .uu-old .badge{background:#2a2d34;border-color:var(--edge);color:#9fc3f3}
 .uu .uu-old .tool-library{margin-top:0}.uu .uu-old .tool-heading .eyebrow{display:none}.uu .uu-old .tool-heading h2{font-size:17px}
 .uu .uu-chip{display:inline-block;width:34px;height:14px;border-radius:7px;flex:none;border:1px solid #10131a;vertical-align:middle}
-.uu .uu-tc-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:8px 0 14px}
-.uu .uu-tc-leg{background:#1d1e22;padding:8px;border-radius:6px;font-size:13px}
-.uu .uu-tc-leg small{display:block;color:var(--muted);font-size:12px;min-height:16px}
+/* The colour key is plain lines, no boxes (Astra, 2026-10-29: "get rid of that entirely"). */
+.uu .uu-tc-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px 16px;margin:8px 0 14px}
+.uu .uu-tc-leg{display:flex;gap:8px;align-items:center;font-size:13px}
+.uu .uu-tc-leg span{color:var(--muted)}
 .uu .uu-tc-grid{columns:3 300px;column-gap:14px}
 .uu .uu-tc-cat{break-inside:avoid;border-left:4px solid;background:#1d1e22;padding:8px 10px;margin:0 0 14px;border-radius:4px}
 .uu .uu-tc-cat h4{margin:0 0 6px}
@@ -107,8 +108,9 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
 /* Same arrows as the panels, so each tool card shows it opens (Astra, 2026-10-29: tools were "missing the arrows"). */
 .uu details.uu-tc-tool>summary::before{content:"▸";color:var(--muted);width:1em}
 .uu details.uu-tc-tool[open]>summary::before{content:"▾"}
-.uu .uu-tc-old{color:#8d8a99;font-size:12px;text-decoration:line-through}
-.uu .uu-tc-also{color:#ffe9a8;font-size:12px}
+/* Each tool row: arrow, its two lights like the panels, colour chip, name, on one line (Astra, 2026-10-29). */
+.uu details.uu-tc-tool>summary{flex-wrap:nowrap}
+.uu details.uu-tc-tool .uu-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .uu .uu-tc-info{padding:6px 0 10px 42px;font-size:13px;color:var(--muted)}
 .uu .uu-tc-info p{margin:4px 0}
 .uu .uu-tc-send{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
@@ -116,7 +118,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
    groupings") on one dark backdrop ("this tool should be all on one dark backdrop"): no box has a fill of its own. */
 .uu details.uu-toolset{background:#1b1d22}
 .uu details.uu-toolset>summary{background:#1b1d22}
-.uu details.uu-toolset .uu-tc-leg,.uu details.uu-toolset .uu-tc-cat{background:#262a32;border:1px solid #343844}
+.uu details.uu-toolset .uu-tc-cat{background:#262a32;border:1px solid #343844}
 /* Backdrop colours give the groupings back (Astra, 2026-10-24: "more intuitive as backdrop colors, so just use a newer
    3rd color for these groupings"): the page's slate, the toolset's darker backdrop, and a third, lighter shade for the
    colour key and the category boxes. */
@@ -265,7 +267,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
    menu-map and vine, the tool library's cards, the program pills; and the world-building toolset. Lights and colour
    chips are dots, not edges. This block comes last on the page, so it wins over the rules above it. */
 .uu,.uu details.uu-panel,.uu fieldset,.uu .uu-conn,.uu .uu-home,.uu .uu-chat,.uu .uu-asset,
-.uu .uu-asset img,.uu .uu-side-tab,.uu .uu-tc-cat,.uu .uu-tc-leg,.uu .uu-tc-made,
+.uu .uu-asset img,.uu .uu-side-tab,.uu .uu-tc-cat,.uu .uu-tc-made,
 .uu .uu-tag,.uu button.uu-btn,.uu textarea,.uu input,.uu select,
 .uu .uu-old .panel,.uu .uu-old .stat,.uu .uu-old .badge,.uu .uu-old .primary,
 .uu .uu-old .secondary,.uu .uu-old .tool-search,.uu .uu-old .tool-counts span,.toast{border-radius:0}
@@ -310,7 +312,7 @@ details.panel:not(.editorial){border-style:dotted;border-width:2px}
     <div class="uu-tc-legend" id="uu-tc-legend"></div>
     <div class="uu-tc-grid" id="uu-tc-grid"></div>
     <h4>Waiting on Astra</h4><ul class="uu-items" id="uu-names-questions"></ul>
-    <p class="uu-note">Names are the new ones (the old name is struck through until the rename is done). <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
+    <p class="uu-note">Names are the new ones; open a tool to see its old name and its other jobs. <b>Send</b> saves a small job file, <code>unity-unicorn-send-&lt;tool&gt;-&lt;world or avatar&gt;-&lt;date&gt;-&lt;time&gt;.json</code>, to your Downloads and adds a backlog note. A web page can't open Unity, so that project's Unity picks the job up; today only vine-spawn reads jobs, so the other tools' jobs wait for their receivers. The list is <code>docs/tool-categories-20261024.json</code>.</p>
   </details>
   <details class="uu-panel uu-toolset uu-tool" open id="uu-p-avatar-tools"><summary><span class="uu-lights" data-item="unity-unicorn-avatar-building-toolset"></span>unity-unicorn-avatar-building-toolset<span class="uu-what">every avatar tool by colour: click one to see what it does and send it to an avatar</span></summary>
     <p class="uu-note">The same colours as the world-building toolset above; its naming rule and open questions cover these tools too.</p>
@@ -783,16 +785,15 @@ function renderToolChart(){const T=TOOL_CATEGORIES,info={};
   // Two toolsets, world and avatar, drawn the same way (Astra, 2026-10-28: avatar tools were under the world-building toolset).
   [["world","uu-tc-legend","uu-tc-grid"],["avatar","uu-tc-legend-avatar","uu-tc-grid-avatar"]].forEach(([SIDE,LEG,GRID])=>{
   const inSide=n=>(info[n]||{side:"world"}).side===SIDE,has=c=>Object.keys(T.tools).some(n=>T.tools[n]===c.id&&inSide(n));
-  const leg=$(LEG);leg.replaceChildren();T.categories.filter(has).forEach(c=>{const b=el("div","uu-tc-leg");const fam=el("small",null,T.categories.find(x=>x.family===c.family)===c?c.family:"");
-    const r=el("div");r.append(chipFor([c.id]),document.createTextNode(" "),el("b",null,c.id),document.createTextNode(" -"+c.word));b.append(fam,r,el("small",null,c.color_name+" · "+c.means));leg.append(b)});
+  const leg=$(LEG);leg.replaceChildren();T.categories.filter(has).forEach(c=>{const b=el("div","uu-tc-leg");
+    b.append(chipFor([c.id]),el("b",null,c.id),el("span",null,c.means));leg.append(b)});
   const grid=$(GRID);grid.replaceChildren();
   // Inside each colour, related tools side by side, A to Z inside each group (Astra, 2026-10-24: "all recommended").
   const newName=n=>(T.renames&&T.renames[n])||n,gi=n=>T.group_order.indexOf(T.groups[n]);
   T.categories.filter(has).forEach(c=>{const names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id&&inSide(n)).sort((a,b)=>gi(a)-gi(b)||newName(a).localeCompare(newName(b)));const box=el("div","uu-tc-cat");box.style.borderColor=c.color;
     const h=el("h4",null,c.id+" · "+names.length);h.style.color=c.color;box.append(h);
     names.forEach(old=>{const nw=(T.renames&&T.renames[old])||old,cats=[c.id,...((T.also||{})[old]||[])],t=info[old]||{desc:"",side:"world",where:""};
-      const d=el("details","uu-tc-tool");d.dataset.tool=old;d.dataset.side=t.side;const s=el("summary");s.append(chipFor(cats),el("span","uu-name",nw));
-      if(nw!==old)s.append(el("span","uu-tc-old",old));if(cats.length>1)s.append(el("span","uu-tc-also","+ "+cats.slice(1).join(" + ")));d.append(s);
+      const d=el("details","uu-tc-tool");d.dataset.tool=old;d.dataset.side=t.side;const s=el("summary");s.append(lights(nw),chipFor(cats),el("span","uu-name",nw));d.append(s);
       const inf=el("div","uu-tc-info");inf.append(el("p",null,t.desc),el("p",null,"Jobs: "+cats.map((x,i)=>x+(i?"":" (main)")).join(" + ")+" · for "+(t.side==="avatar"?"avatars":"worlds")+" · group: "+T.groups[old]),
         el("p",null,"Made for: "+(MADE_FOR[t.panel]||"its own panel on the Avatar tools | World tools tabs")),el("p",null,"Lives in: "+t.where+(nw!==old?" · still called "+old+" there until the rename":"")));
       // Who made it, first thing in the card (Astra, 2026-10-24: the made-by tool panel's information "to go inside the
