@@ -453,6 +453,7 @@ the page"; "fix where there is redundant things going on. Do not delete any of t
 
 In the L1 control panel's Native tools, every tool and toolset follows the tool rule: rounded corners on the tool
 background (Astra: "tools have subtools, then toolsets have tools and subtools"). The Avatar tools | World tools tabs
-are gone; the same choice is a filter inside `unity-unicorn-world-building-toolset` (All · 85, Avatar tools · 22,
-World tools · 63), and both sides' working tools show one after another. "Added tonight" is
+are gone; since 2026-10-28 they are two toolsets that look the same: `unity-unicorn-world-building-toolset` (world
+tools) and, right after it, `unity-unicorn-avatar-building-toolset` (avatar tools). Astra: "there are avatar building
+tools under the world building tool set ... This needs to be delineation." Both sides' working tools show one after another. "Added tonight" is
 `unity-unicorn-tool-maker`, right under the toolset: write down a tool or program idea the moment you have it.

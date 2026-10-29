@@ -75,6 +75,16 @@ test('the world-building toolset, inside the L1 tool panel, draws every tool wit
   assert.ok(html.includes('schema:"unity-unicorn.send-tool-job/v1"'));
 });
 
+// Astra, 2026-10-28: avatar building tools were under the world-building toolset; two toolsets, drawn the same way.
+test('avatar tools have their own toolset, right after the world-building one, and each draws only its side', () => {
+  assert.ok(html.includes('data-item="unity-unicorn-avatar-building-toolset"></span>unity-unicorn-avatar-building-toolset<'));
+  const world = html.indexOf('unity-unicorn-world-building-toolset<'), avatar = html.indexOf('unity-unicorn-avatar-building-toolset<');
+  assert.ok(avatar > world && avatar < html.indexOf('id="uu-p-tool-maker"'), 'avatar toolset right after the world one');
+  assert.ok(html.includes('[["world","uu-tc-legend","uu-tc-grid"],["avatar","uu-tc-legend-avatar","uu-tc-grid-avatar"]]'));
+  assert.ok(html.includes('names=Object.keys(T.tools).filter(n=>T.tools[n]===c.id&&inSide(n))'), 'each toolset only its own side');
+  assert.ok(!html.includes('id="uu-tc-filter"'), 'no All | Avatar | World filter any more');
+});
+
 test('the page carries the same list, and the naming rule and open questions sit in the toolset', () => {
   const line = html.split('\n').find((l) => l.startsWith('const TOOL_CATEGORIES='));
   assert.deepEqual(JSON.parse(line.slice('const TOOL_CATEGORIES='.length).replace(/;$/, '')), cats);
@@ -87,7 +97,7 @@ test('the page carries the same list, and the naming rule and open questions sit
 // Launchpad has"), dotted because they are standard; the old desk and tool library are dark tool panels now.
 test('the standard panels are there, in Wonderland Launchpad order, with dotted borders', () => {
   const order = ['unity-stable-editorial-status-panel', 'unity-unicorn-cyberhome-panel', 'unity-stable-quick-summary-panel', 'unity-unicorn-system-map-panel',
-    'unity-unicorn-intelligence-levels-panel', 'unity-unicorn-L1-control-panel', 'unity-unicorn-world-building-toolset', 'unity-unicorn-tool-library',
+    'unity-unicorn-intelligence-levels-panel', 'unity-unicorn-L1-control-panel', 'unity-unicorn-world-building-toolset', 'unity-unicorn-avatar-building-toolset', 'unity-unicorn-tool-library',
     'unity-unicorn-matcap-tool-panel', 'unity-unicorn-world-assets-tool-panel', 'unity-unicorn-worldbuilding-desk-tool-panel',
     'unity-unicorn-L2-control-panel', 'unity-unicorn-L3-control-panel', 'unity-unicorn-L4-control-panel', 'approvals-waiting-on-you', 'grants', 'keys',
     'unity-unicorn-required-maintenance', 'pet-id', 'unity-unicorn-rwx-panel', 'unity-unicorn-session-notes-panel', 'unity-unicorn-emotions-panel',
@@ -109,8 +119,7 @@ test('L1 tools are rounded tools, the tabs are a toolset filter, and the tool ma
     assert.match(html, new RegExp(`<details class="uu-panel[^"]* uu-tool"(?: open)? id="${id}">`), id + ' is a tool');
   assert.ok(html.includes('.uu details.uu-panel.uu-tool{border-radius:16px;background:var(--tool-bg)'));
   assert.ok(!html.includes('id="uu-sides"') && !html.includes('role="tabpanel"'), 'no tabs');
-  const ts = html.indexOf('id="uu-p-tools"'), f = html.indexOf('id="uu-tc-filter"'), lib = html.indexOf('id="uu-p-library"');
-  assert.ok(f > ts && f < lib, 'the filter sits inside the toolset');
+  const ts = html.indexOf('id="uu-p-tools"'), lib = html.indexOf('id="uu-p-library"');
   const maker = html.indexOf('unity-unicorn-tool-maker<'), add = html.indexOf('id="uu-add"');
   assert.ok(maker > ts && maker < lib && add > maker && add < lib, 'the add form is the tool maker, right under the toolset');
 });
