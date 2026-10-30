@@ -1,0 +1,23 @@
+{
+  "schema": "unity-unicorn.tool-catalog/v1",
+  "tools": [
+    {
+      "id": "udon-kit-mover",
+      "name": "udon-kit-mover-20261026.json",
+      "kind": "Library",
+      "description": "Eight tested Udon kits a VRChat world is composed from instead of new scripts: doors to Doorspaces, teleport pads, hidden glass animals with a found count, toggles, a synced counter, timed respawn, audio zones and quests. Each is a pure C# core and an UdonSharp wrapper kept in step by parity tests.",
+      "source_path": "scripts/udon-kits/",
+      "command_template": "dotnet run --project scripts/udon-kits/Tests -c Release",
+      "requirements": [
+        "The .NET 8 SDK and Node 20 for the tests; no NuGet packages.",
+        "Unity 2022.3 with the VRChat Worlds SDK (UdonSharp) in the world that uses the kits.",
+        "Install with scripts/udon-kits/Tools/install-udon-kits-20261026.ps1 -World <world folder> -RunTests -Apply (Astra's PC)."
+      ],
+      "limitations": [
+        "The tests run the cores and the wrappers against small stand-ins for the Unity and VRChat API; the real UdonSharp compile, scenes, ClientSim and networking are checked only on Astra's PC.",
+        "No world uses the kits yet, so there is no run record."
+      ],
+      "last_used": null
+    }
+  ]
+}

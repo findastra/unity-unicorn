@@ -1,0 +1,44 @@
+# Udon kits: build the pure cores under the strict type gate, run the core and parity tests, and run the manifest and
+# UdonSharp limits gate, on every push and pull request that touches the kits. Free GitHub-hosted runner; no secrets.
+# Claude Opus 5.5 (claude-opus-5-5), 2026-10-26.
+name: udon-kits
+
+on:
+  push:
+    paths:
+      - 'scripts/udon-kits/**'
+      - 'test/udon-kits-test-20261026.mjs'
+      - 'skills/compose-a-world-from-kits/**'
+      - '.github/workflows/udon-kits-20261026.yml'
+  pull_request:
+    paths:
+      - 'scripts/udon-kits/**'
+      - 'test/udon-kits-test-20261026.mjs'
+      - 'skills/compose-a-world-from-kits/**'
+      - '.github/workflows/udon-kits-20261026.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Strict type gate (cores; warnings are errors)
+        run: dotnet build scripts/udon-kits/Cores -c Release
+      - name: Core and parity tests
+        run: dotnet run --project scripts/udon-kits/Tests -c Release
+      - name: Manifest and UdonSharp limits gate
+        run: node --test test/udon-kits-test-20261026.mjs

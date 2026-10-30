@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Udon kits: the headless tests. Builds the cores (their own strict project), the UdonSharp wrappers against the shims
+       in Shims/, and a test runner with no packages, so `dotnet run` works offline and in CI.
+       Run: dotnet run -c Release (from this folder). Claude Opus 5.5 (claude-opus-5-5), 2026-10-26. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>UdonKits.Tests</RootNamespace>
+    <AssemblyName>UdonKits.Tests</AssemblyName>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Cores/UdonKits.Cores.csproj" />
+    <!-- the real wrapper files, exactly as a world gets them -->
+    <Compile Include="../Assets/UdonKits/Kits/*.cs" Link="Wrappers/%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

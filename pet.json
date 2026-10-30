@@ -6,7 +6,7 @@
   "sprite": "sprite-20261008.json",
   "preview": "unity-unicorn-20261008.html",
   "status": "hatching",
-  "version": "0.5.3-20261024",
+  "version": "0.5.4-20261026",
   "source": "https://github.com/findastra/unity-unicorn/tree/v0.3.0-20261011",
   "release_tag": "v0.3.0-20261011",
   "publication_status": "source-release; verification in docs/open-arches-publication-20261011.md",
@@ -17,8 +17,8 @@
     "home": "README.md",
     "repository": "https://github.com/findastra/astras-pet-os"
   },
-  "updated": "2026-10-19",
-  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; matcap palette panel, matcap-palette Unity window and PNG maker with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; menu-map panel and Unity export with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; vcc-package-manager and vrchat-avatar-upload moved from L1 tools to L2 tricks to write (astras-pet-os PR #114) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; unity-asset-creator, unity-assets-library and shaders-shop moved in from findastra/liminal-doors, and the unity-asset-creator trick, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; avatar tools and world tools on two sides of the page, the world sparkle tools panel, the Liminal Doors, Infinite Pole and Piranesi House tool panels, and vine-spawn-with-trumpet-flowers (page panel and Unity window), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; tool panels: every page box label that ended in -panel ends in -tool-panel (unity-unicorn-L1-tool-panel to -L4-tool-panel and the 15 other tool panels), saved lights carried over (0.5.1; astras-pet-os#129, card 047 task 7), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; tool names and categories (spawner, painter and eight proposed ones), the tool-names tool panel, a category on every tool row, the rename table, and the world-building toolset (inside the L1 tool panel) in rainbow colours with send-to-world (0.5.3), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-24",
+  "updated": "2026-10-26",
+  "built_with": "browser interface prepared with Codex (GPT-6), 2026-10-08; tool library and report imports with Codex (GPT-6), 2026-10-11; framework modules (L1 to L4, session notes, emotions, clicker training, footer, chat) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; world-spawn-tool moved in from findastra/liminal-doors and intelligence_levels added with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; module labels set on each box's top border as in Astra's sketch, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-18; panels, not modules (unity-unicorn-L1-panel to -L4-panel), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; matcap palette panel, matcap-palette Unity window and PNG maker with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; menu-map panel and Unity export with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; vcc-package-manager and vrchat-avatar-upload moved from L1 tools to L2 tricks to write (astras-pet-os PR #114) with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; unity-asset-creator, unity-assets-library and shaders-shop moved in from findastra/liminal-doors, and the unity-asset-creator trick, with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; avatar tools and world tools on two sides of the page, the world sparkle tools panel, the Liminal Doors, Infinite Pole and Piranesi House tool panels, and vine-spawn-with-trumpet-flowers (page panel and Unity window), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; tool panels: every page box label that ended in -panel ends in -tool-panel (unity-unicorn-L1-tool-panel to -L4-tool-panel and the 15 other tool panels), saved lights carried over (0.5.1; astras-pet-os#129, card 047 task 7), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-19; tool names and categories (spawner, painter and eight proposed ones), the tool-names tool panel, a category on every tool row, the rename table, and the world-building toolset (inside the L1 tool panel) in rainbow colours with send-to-world (0.5.3), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-24; udon-kit-mover (the Udon kits: eight kits, each a pure C# core and an UdonSharp wrapper, the kit manifest, headless core and parity tests and their GitHub Actions workflow) and the compose-a-world-from-kits trick (0.5.4; the Cung List, item 1), with Claude Opus 5.5 (claude-opus-5-5), 2026-10-26",
   "entry": "unity-unicorn-20261008.html",
   "runs_on": "Modern browser, directly from the local HTML file; no server or dependencies.",
   "audit": {
@@ -88,6 +88,7 @@
         "matcap-palette",
         "menu-map",
         "vine-spawn-with-trumpet-flowers",
+        "udon-kit-mover",
         "unity-asset-creator",
         "unity-assets-library",
         "shaders-shop"
@@ -184,7 +185,8 @@
           "shaders-shop",
           "glass-animal-tool",
           "bubble-chair-blower",
-          "asset-ledger"
+          "asset-ledger",
+          "udon-kit-mover"
         ]
       },
       "tools_in_worlds": {
@@ -239,7 +241,8 @@
     "L2": {
       "tricks": [
         "make-a-prop-look-real",
-        "unity-asset-creator-trick"
+        "unity-asset-creator-trick",
+        "compose-a-world-from-kits"
       ],
       "tricks_to_write": [
         "weekly-update-from-friendly-farmer",

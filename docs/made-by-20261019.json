@@ -767,6 +767,15 @@
       "first_in": "Piranesi House",
       "evidence": "https://github.com/findastra/piranesi-house/blob/master/Assets/Piranesi/Editor/HouseReview.cs",
       "state": "in Piranesi House's repo"
+    },
+    {
+      "id": "udon-kit-mover",
+      "side": "world",
+      "made_with": "Claude Opus 5.5",
+      "date": "2026-10-26",
+      "first_in": "Unity Unicorn (for Liminal Doors, Astra's Infinite Pole and Piranesi House)",
+      "evidence": "unity-unicorn branch claude/cung-list-udon-kits-20261026",
+      "state": "not merged · Cung List PR"
     }
   ],
   "others": [

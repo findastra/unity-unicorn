@@ -1,0 +1,232 @@
+{
+  "schema": "unity-unicorn.udon-kits/v1",
+  "updated": "2026-10-26",
+  "about": "The Udon kits an agent may compose a VRChat world from, and nothing else. Each kit is a pure C# core (its rules, tested headlessly) and a thin UdonSharp wrapper that re-states the core for Udon, kept in step by a parity test. The ids and families below are the whole vocabulary: a kit that is not listed here does not exist. Made with Claude Opus 5.5 (claude-opus-5-5), 2026-10-26, after Tyson Cung's Placeforge pattern (the Cung List, item 1).",
+  "trick": "skills/compose-a-world-from-kits/SKILL.md",
+  "guide": "docs/udon-kits-20261026.md",
+  "families": [
+    "travel",
+    "collect",
+    "toggle",
+    "sync",
+    "spawn",
+    "audio",
+    "quest"
+  ],
+  "ids": [
+    "doorspace-door",
+    "teleport-pad",
+    "glass-animal-collectible",
+    "toggle-switch",
+    "synced-counter",
+    "timed-respawn",
+    "audio-zone",
+    "quest-checklist"
+  ],
+  "seams": {
+    "clock": "IClock.Now: seconds since load (wrapper: Time.time)",
+    "random": "IRandomSource.Range(min, max): whole number, max exclusive (wrapper: UnityEngine.Random.Range)",
+    "sync": "ISyncSeam: IsOwner, TakeOwnership, RequestSerialization (wrapper: Networking.IsOwner, Networking.SetOwner, RequestSerialization, [UdonSynced] field, OnDeserialization)",
+    "store": "IPlayerStore: TryGetInt, SetInt for the local player (wrapper: VRC.SDK3.Persistence.PlayerData, OnPlayerRestored)"
+  },
+  "events_how": "Every kit can tell one other UdonSharpBehaviour (its listener field) about its events: set the event's string field to the name of a public method with no parameters on the listener (for example a KitQuestStep's CompleteStep, a KitToggle's TurnOn, a KitSyncedCounter's Increment). Empty means not sent.",
+  "kits": [
+    {
+      "id": "doorspace-door",
+      "family": "travel",
+      "purpose": "Doors to Doorspaces: a forward door sends the local player to a random stop (never the start, never the one they are in, not one of their last few); an arrival door takes them back the way they came. Only the stop they are in is switched on, on their screen. From Liminal Doors' LiminalTraveler.",
+      "core": "Cores/DoorspaceTravelCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitDoorspaceTraveler.cs", "Assets/UdonKits/Kits/KitDoorspaceDoor.cs"],
+      "seams": ["clock", "random"],
+      "sync": "none: each player travels alone",
+      "inputs": [
+        { "on": "KitDoorspaceTraveler", "name": "stops", "type": "GameObject[]", "what": "Stop roots in order; [0] is the start" },
+        { "on": "KitDoorspaceTraveler", "name": "arrivals", "type": "Transform[]", "what": "Where a forward door lands you in each stop" },
+        { "on": "KitDoorspaceTraveler", "name": "returns", "type": "Transform[]", "what": "Where the way back lands you in each stop" },
+        { "on": "KitDoorspaceTraveler", "name": "avoidRecent", "type": "int", "what": "How many of your last stops a forward door avoids (default 3)" },
+        { "on": "KitDoorspaceTraveler", "name": "cooldown", "type": "float", "what": "Seconds after a trip before doors work again (default 0.75)" },
+        { "on": "KitDoorspaceDoor", "name": "traveler", "type": "KitDoorspaceTraveler", "what": "The world's one traveler" },
+        { "on": "KitDoorspaceDoor", "name": "stop", "type": "int", "what": "The stop this door stands in" },
+        { "on": "KitDoorspaceDoor", "name": "back", "type": "bool", "what": "On: an arrival door (the way back)" }
+      ],
+      "calls": [
+        { "on": "KitDoorspaceTraveler", "name": "ResetTravel", "what": "Back to the start with an empty way back" }
+      ],
+      "events": [
+        { "on": "KitDoorspaceTraveler", "name": "onTraveled", "when": "After every trip (read CurrentStop and LastByWayBack)" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "teleport-pad",
+      "family": "travel",
+      "purpose": "A fixed teleport used with Interact; optionally it only offers itself while the player stands near a spot. From Piranesi House's HouseTeleport (the Climb vine).",
+      "core": "Cores/TeleportPadCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitTeleportPad.cs"],
+      "seams": ["clock"],
+      "sync": "none: only the user moves",
+      "inputs": [
+        { "on": "KitTeleportPad", "name": "target", "type": "Transform", "what": "Where it sends you" },
+        { "on": "KitTeleportPad", "name": "near", "type": "Transform", "what": "Optional: only offer the teleport near this spot" },
+        { "on": "KitTeleportPad", "name": "nearRadius", "type": "float", "what": "How near, in metres (default 2.4)" },
+        { "on": "KitTeleportPad", "name": "checkEvery", "type": "float", "what": "Seconds between distance checks (default 0.2)" },
+        { "on": "KitTeleportPad", "name": "cooldown", "type": "float", "what": "Seconds between uses (default 0.5)" },
+        { "on": "KitTeleportPad", "name": "sound", "type": "AudioSource", "what": "Optional: played on each use" }
+      ],
+      "calls": [],
+      "events": [
+        { "on": "KitTeleportPad", "name": "onTeleported", "when": "When the pad sends the player" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "glass-animal-collectible",
+      "family": "collect",
+      "purpose": "Up to 30 hidden things (Liminal Doors: one glass animal behind every door) each player finds on their own, saved to them, with a found count on plaques and twins on a shelf.",
+      "core": "Cores/CollectibleSetCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitGlassAnimalSet.cs", "Assets/UdonKits/Kits/KitGlassAnimalLink.cs"],
+      "seams": ["store"],
+      "sync": "none: per player, saved with PlayerData",
+      "inputs": [
+        { "on": "KitGlassAnimalSet", "name": "count", "type": "int", "what": "How many (1 to 30)" },
+        { "on": "KitGlassAnimalSet", "name": "saveKey", "type": "string", "what": "The PlayerData key, one per world" },
+        { "on": "KitGlassAnimalSet", "name": "hidden", "type": "GameObject[]", "what": "Optional: the hidden animals, off once found" },
+        { "on": "KitGlassAnimalSet", "name": "shelf", "type": "GameObject[]", "what": "Optional: their twins, on once found" },
+        { "on": "KitGlassAnimalSet", "name": "counts", "type": "GameObject[]", "what": "Optional: plaques 0..count" },
+        { "on": "KitGlassAnimalSet", "name": "chime", "type": "AudioSource", "what": "Optional: played on each find" },
+        { "on": "KitGlassAnimalLink", "name": "set", "type": "KitGlassAnimalSet", "what": "The world's set" },
+        { "on": "KitGlassAnimalLink", "name": "index", "type": "int", "what": "Which animal this is" },
+        { "on": "KitGlassAnimalLink", "name": "findOnTouch", "type": "bool", "what": "Also find it by walking into its trigger" }
+      ],
+      "calls": [],
+      "events": [
+        { "on": "KitGlassAnimalSet", "name": "onFound", "when": "Each new find (read LastFound and FoundCount)" },
+        { "on": "KitGlassAnimalSet", "name": "onAllFound", "when": "Once, when the last one is found" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "toggle-switch",
+      "family": "toggle",
+      "purpose": "On or off with Interact: a mirror (local, each player's own) or lights everyone shares (synced: the presser takes ownership and sends it).",
+      "core": "Cores/ToggleCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitToggle.cs"],
+      "seams": ["sync"],
+      "sync": "manual, only when synced is on",
+      "inputs": [
+        { "on": "KitToggle", "name": "startOn", "type": "bool", "what": "The state at load" },
+        { "on": "KitToggle", "name": "synced", "type": "bool", "what": "On: everyone sees the same state" },
+        { "on": "KitToggle", "name": "targets", "type": "GameObject[]", "what": "On while it is on" },
+        { "on": "KitToggle", "name": "inverted", "type": "GameObject[]", "what": "On while it is off" }
+      ],
+      "calls": [
+        { "on": "KitToggle", "name": "Press", "what": "Flip it" },
+        { "on": "KitToggle", "name": "TurnOn", "what": "Set it on" },
+        { "on": "KitToggle", "name": "TurnOff", "what": "Set it off" }
+      ],
+      "events": [
+        { "on": "KitToggle", "name": "onChanged", "when": "Whenever it changes, locally or from the network (read IsOn)" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "synced-counter",
+      "family": "sync",
+      "purpose": "One whole number everyone in the instance sees (a score, a lap count, a tip jar), clamped or wrapping between min and max.",
+      "core": "Cores/SyncedCounterCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitSyncedCounter.cs"],
+      "seams": ["sync"],
+      "sync": "manual: the presser takes ownership and sends it",
+      "inputs": [
+        { "on": "KitSyncedCounter", "name": "min", "type": "int", "what": "Lowest value" },
+        { "on": "KitSyncedCounter", "name": "max", "type": "int", "what": "Highest value" },
+        { "on": "KitSyncedCounter", "name": "step", "type": "int", "what": "How much each press changes it (at least 1)" },
+        { "on": "KitSyncedCounter", "name": "start", "type": "int", "what": "The value at load and after ResetCount" },
+        { "on": "KitSyncedCounter", "name": "wrap", "type": "bool", "what": "On: past max starts again at min" },
+        { "on": "KitSyncedCounter", "name": "digits", "type": "GameObject[]", "what": "Optional: digits[k] is on when the value is min + k" }
+      ],
+      "calls": [
+        { "on": "KitSyncedCounter", "name": "Increment", "what": "Add step" },
+        { "on": "KitSyncedCounter", "name": "Decrement", "what": "Take away step" },
+        { "on": "KitSyncedCounter", "name": "ResetCount", "what": "Back to start" }
+      ],
+      "events": [
+        { "on": "KitSyncedCounter", "name": "onChanged", "when": "Whenever it changes, locally or from the network (read Value)" },
+        { "on": "KitSyncedCounter", "name": "onReachedMax", "when": "When a local change lands on max" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "timed-respawn",
+      "family": "spawn",
+      "purpose": "A pickup goes home a set time after it is dropped, unless someone picks it up again first; with VRC Object Sync it respawns for everyone. For lost pickups like the Infinite Pole's.",
+      "core": "Cores/TimedRespawnCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitTimedRespawn.cs"],
+      "seams": ["clock"],
+      "sync": "the dropper owns it and runs the timer; VRC Object Sync carries the respawn",
+      "inputs": [
+        { "on": "KitTimedRespawn", "name": "delay", "type": "float", "what": "Seconds after a drop (default 30)" },
+        { "on": "KitTimedRespawn", "name": "home", "type": "Transform", "what": "Optional: where home is; empty means where it started" },
+        { "on": "KitTimedRespawn", "name": "objectSync", "type": "VRCObjectSync", "what": "Optional: the object's VRC Object Sync" }
+      ],
+      "calls": [
+        { "on": "KitTimedRespawn", "name": "ForceRespawn", "what": "Send it home now (ignored while held)" }
+      ],
+      "events": [
+        { "on": "KitTimedRespawn", "name": "onRespawned", "when": "When it goes home" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "audio-zone",
+      "family": "audio",
+      "purpose": "A sound that fades in while the local player is inside a trigger and out after they leave: a Doorspace's hum, the pool's water, a room tone.",
+      "core": "Cores/AudioZoneCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitAudioZone.cs"],
+      "seams": ["clock"],
+      "sync": "none: each player hears their own",
+      "inputs": [
+        { "on": "KitAudioZone", "name": "source", "type": "AudioSource", "what": "The sound (Loop on, Play On Awake off)" },
+        { "on": "KitAudioZone", "name": "maxVolume", "type": "float", "what": "Volume inside, 0 to 1 (default 0.6)" },
+        { "on": "KitAudioZone", "name": "fadeSeconds", "type": "float", "what": "Seconds to fade fully in or out (default 1.5)" }
+      ],
+      "calls": [],
+      "events": [
+        { "on": "KitAudioZone", "name": "onEntered", "when": "When the local player comes in" },
+        { "on": "KitAudioZone", "name": "onExited", "when": "When they leave or respawn" }
+      ],
+      "tested": true
+    },
+    {
+      "id": "quest-checklist",
+      "family": "quest",
+      "purpose": "A list of up to 30 steps each player ticks off, in order or not, saved to them, with ticks and a count on plaques. From Piranesi House's Far Hall Quests.",
+      "core": "Cores/QuestChecklistCore.cs",
+      "wrappers": ["Assets/UdonKits/Kits/KitQuestChecklist.cs", "Assets/UdonKits/Kits/KitQuestStep.cs"],
+      "seams": ["store"],
+      "sync": "none: per player, saved with PlayerData",
+      "inputs": [
+        { "on": "KitQuestChecklist", "name": "steps", "type": "int", "what": "How many steps (1 to 30)" },
+        { "on": "KitQuestChecklist", "name": "ordered", "type": "bool", "what": "On: a step counts only after every step before it" },
+        { "on": "KitQuestChecklist", "name": "saveKey", "type": "string", "what": "The PlayerData key, one per quest" },
+        { "on": "KitQuestChecklist", "name": "ticks", "type": "GameObject[]", "what": "Optional: ticks[i] is on once step i is done" },
+        { "on": "KitQuestChecklist", "name": "plaques", "type": "GameObject[]", "what": "Optional: plaques 0..steps" },
+        { "on": "KitQuestChecklist", "name": "chime", "type": "AudioSource", "what": "Optional: played on each step" },
+        { "on": "KitQuestStep", "name": "quest", "type": "KitQuestChecklist", "what": "The quest" },
+        { "on": "KitQuestStep", "name": "index", "type": "int", "what": "Which step this is" },
+        { "on": "KitQuestStep", "name": "completeOnTouch", "type": "bool", "what": "Also tick it by walking into its trigger" },
+        { "on": "KitQuestStep", "name": "interactable", "type": "bool", "what": "Off: no Interact prompt (ticked by touch or another kit's event)" }
+      ],
+      "calls": [
+        { "on": "KitQuestStep", "name": "CompleteStep", "what": "Tick off this step (what another kit's event calls)" },
+        { "on": "KitQuestChecklist", "name": "ResetQuest", "what": "Start over" }
+      ],
+      "events": [
+        { "on": "KitQuestChecklist", "name": "onStepDone", "when": "Each step done (read LastStep and DoneCount)" },
+        { "on": "KitQuestChecklist", "name": "onBlocked", "when": "An ordered step tried too early (read LastStep)" },
+        { "on": "KitQuestChecklist", "name": "onQuestDone", "when": "Once, when the last step is done" }
+      ],
+      "tested": true
+    }
+  ]
+}

@@ -192,7 +192,8 @@
     "world-photos": "viewer",
     "pickup-audit": "checker",
     "pickup-lift-out": "carver",
-    "review-shots": "viewer"
+    "review-shots": "viewer",
+    "udon-kit-mover": "mover"
   },
   "also": {
     "marble-carver": [
@@ -380,7 +381,8 @@
     "world-photos": "pictures",
     "pickup-audit": "props and pickups",
     "pickup-lift-out": "props and pickups",
-    "review-shots": "pictures"
+    "review-shots": "pictures",
+    "udon-kit-mover": "whole world"
   },
   "renames": {
     "cloud-mesh-generator": "cloud-spawn",
