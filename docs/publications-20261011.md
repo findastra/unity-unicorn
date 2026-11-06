@@ -4,7 +4,7 @@
 - Version: `0.2.0-20261011`.
 - Immutable source tag: [`v0.2.0-20261011`](https://github.com/findastra/unity-unicorn/tree/v0.2.0-20261011).
 - Release destination: [GitHub Releases](https://github.com/findastra/unity-unicorn/releases/tag/v0.2.0-20261011).
-- Browser entry: `unity-unicorn-20261008.html`, copied unchanged into the desktop Cage's app folder.
+- Browser entry: `unity-unicorn-20261008.html`, copied unchanged into the desktop hub's app folder.
 - Built with Codex (GPT-6).
 
 ## What changed

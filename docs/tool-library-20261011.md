@@ -57,7 +57,7 @@ Private paths, project names, reports, run history and backups must remain outsi
 
 The page can read an optional, ignored file named unity-unicorn-local-tools-20261011.js in the same folder as the HTML. It contains one controlled assignment to globalThis.UnityUnicornLocalTools with a unity-unicorn.tool-library-backup/v1 object. The locally installed copy can therefore show a private catalog and dated reports immediately, even when a different browser has different storage. Missing sidecar files leave the generic catalog available.
 
-This optional sidecar is trusted local code: generate it only from reviewed JSON, never from imported code or remote content. Never commit it or publish it as an asset. The source and Cage ignore matching local-tool files. Updates merge missing tools and newer completed evidence, preserve custom tools and commands; known built-in tools receive the current dated name and summary and retain existing run history. A malformed sidecar is rejected before it mutates stored records. The page does not monitor other tools or create completion records simply by loading the sidecar.
+This optional sidecar is trusted local code: generate it only from reviewed JSON, never from imported code or remote content. Never commit it or publish it as an asset. The source and hub ignore matching local-tool files. Updates merge missing tools and newer completed evidence, preserve custom tools and commands; known built-in tools receive the current dated name and summary and retain existing run history. A malformed sidecar is rejected before it mutates stored records. The page does not monitor other tools or create completion records simply by loading the sidecar.
 
 ## Recording future runs
 
