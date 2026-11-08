@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
+import { panels, panelScript } from './page-parts-20261108.mjs';
 
 const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
 // Cut by plain string search: this reads one known page, it does not filter HTML.
@@ -14,24 +15,27 @@ const between = (text, open, close, from = 0) => {
   const end = start < 0 ? -1 : text.indexOf(close, start + open.length);
   return end < 0 ? '' : text.slice(start, end + close.length);
 };
-const section = between(html, '<section id="uu-panels"', '</section>');
-const script = between(section, '<script>', '</script>').slice('<script>'.length, -'</script>'.length);
+// The panels and their script, where the hub frame put them (2026-10-24).
+const section = panels;
+const script = panelScript;
 const KEY = 'astra-pet-desk:unity-unicorn:modules:1';
 const LEVELS = ['L1', 'L2', 'L3', 'L4'];
 // Every label on a box of the page, from its lights: <span class="uu-lights" data-item="label"></span>label
 const LABELS = [...section.matchAll(/<span class="uu-lights" data-item="([^"]+)"><\/span>([^<]+)</g)].map((m) => [m[1], m[2]]);
 
-test('the four level panels are labelled unity-unicorn-L1-tool-panel to -L4-tool-panel', () => {
-  assert.ok(section, 'the page has a uu-panels section');
+// Since the hub frame (2026-10-24) the four level panels are the frame's control panels.
+test('the four level panels are labelled unity-unicorn-L1-control-panel to -L4-control-panel', () => {
+  assert.ok(section, 'the page has the Unity Unicorn panels');
   for (const l of LEVELS) {
-    assert.ok(section.includes(`data-item="unity-unicorn-${l}-tool-panel"></span>unity-unicorn-${l}-tool-panel<`), `${l} tool panel label`);
+    assert.ok(html.includes(`unity-unicorn-${l}-control-panel<`), `${l} control panel label`);
+    assert.ok(!html.includes(`unity-unicorn-${l}-tool-panel<`), `${l} has no old tool panel label`);
   }
-  assert.ok((section.match(/<details class="uu-panel"/g) || []).length >= 8, 'every box is a details.uu-panel');
+  assert.ok((section.match(/<details class="uu-panel[ "]/g) || []).length >= 8, 'every box is a details.uu-panel');
 });
 
 test('every box label that ends in panel says tool-panel, and its light has the same name', () => {
   const panels = LABELS.filter(([item]) => item.endsWith('panel'));
-  assert.ok(panels.length >= 16, 'the four level panels and the tool panels on the two sides');
+  assert.ok(panels.length >= 7, 'the tool panels on the two sides');
   for (const [item, text] of panels) {
     assert.match(item, /^unity-unicorn-[A-Za-z0-9-]+-tool-panel$/, item);
     assert.equal(text, item, 'the label and its light have one name');
@@ -48,8 +52,13 @@ test('no page box is called a module', () => {
 });
 
 class Element {
-  constructor(tag) { this.tag = tag; this.children = []; this.dataset = {}; this.attrs = {}; this.textContent = ''; this.value = ''; this.files = []; }
+  constructor(tag) { this.tag = tag; this.children = []; this.dataset = {}; this.attrs = {}; this.textContent = ''; this.value = ''; this.files = []; this.style = {}; }
   append(...items) { this.children.push(...items); }
+  prepend(...items) { this.children.unshift(...items); }
+  addEventListener() {}
+  querySelector() { return null; }
+  querySelectorAll() { return []; }
+  get classList() { return { add() {}, remove() {}, toggle() {}, contains: () => false }; }
   replaceChildren(...items) { this.children = [...items]; }
   replaceWith(other) { this.replacedBy = other; }
   setAttribute(k, v) { this.attrs[k] = String(v); }
@@ -64,8 +73,9 @@ function boot(saved) {
     const s = new Element('span'); s.dataset.item = m[1]; return s;
   });
   const document = {
-    getElementById: (id) => { assert.ok(nodes.has(id), 'Missing DOM element ' + id); return nodes.get(id); },
-    querySelectorAll: (sel) => { assert.equal(sel, '#uu-panels span.uu-lights[data-item]'); return spans; },
+    // The page's $() makes a stand-in for an element the hub frame took away, so the mock returns null for those too.
+    getElementById: (id) => nodes.get(id) ?? null,
+    querySelectorAll: (sel) => { assert.equal(sel, '.uu span.uu-lights[data-item]'); return spans; },
     createElement: (tag) => new Element(tag),
     createTextNode: (text) => text,
   };
@@ -76,20 +86,24 @@ function boot(saved) {
   return { stored: () => JSON.parse(storage.get(KEY)), lightsFor };
 }
 
-test('lights saved on the old -module labels carry over to the tool panel labels', () => {
-  const app = boot({ lights: { 'unity-unicorn-L2-module': { on: false, fix: true }, 'unity-unicorn-cyberhome': { on: true, fix: true } }, added: [], lastOpened: null });
+test('lights saved on the old -module labels carry over to the new labels', () => {
+  const app = boot({ lights: { 'unity-unicorn-L2-module': { on: false, fix: true }, 'unity-unicorn-matcap-module': { on: false, fix: true }, 'unity-unicorn-cyberhome': { on: true, fix: true } }, added: [], lastOpened: null });
   const lights = app.stored().lights;
-  assert.deepEqual(lights['unity-unicorn-L2-tool-panel'], { on: false, fix: true });
+  assert.deepEqual(lights['unity-unicorn-L2-control-panel'], { on: false, fix: true }, 'a level panel goes to its control panel');
+  assert.deepEqual(lights['unity-unicorn-matcap-tool-panel'], { on: false, fix: true });
   assert.equal(lights['unity-unicorn-L2-module'], undefined);
+  assert.equal(lights['unity-unicorn-matcap-module'], undefined);
   assert.deepEqual(lights['unity-unicorn-cyberhome'], { on: true, fix: true });
-  const [power, care] = app.lightsFor('unity-unicorn-L2-tool-panel').children;
+  const [power, care] = app.lightsFor('unity-unicorn-matcap-tool-panel').children;
   assert.equal(power.attrs['aria-pressed'], 'false');
   assert.equal(care.attrs['aria-pressed'], 'true');
-  assert.equal(power.title, 'unity-unicorn-L2-tool-panel: off');
+  assert.equal(power.title, 'unity-unicorn-matcap-tool-panel: off');
 });
 
 test('lights saved on the old -panel labels carry over to the tool panel labels, on every box', () => {
-  const old = Object.fromEntries(LABELS.filter(([item]) => item.endsWith('-tool-panel'))
+  // Only boxes that had an older label; the worldbuilding desk was born as a tool panel (2026-10-24).
+  const renamed = JSON.parse(/const RENAMED=(\[[^\]]*\]);/.exec(script)[1]);
+  const old = Object.fromEntries(LABELS.filter(([item]) => item.endsWith('-tool-panel') && renamed.includes(item.replace(/^unity-unicorn-|-tool-panel$/g, '')))
     .map(([item]) => [item.replace(/-tool-panel$/, '-panel'), { on: false, fix: true }]));
   const app = boot({ lights: old, added: [], lastOpened: null });
   const lights = app.stored().lights;
@@ -103,15 +117,15 @@ test('lights saved on the old -panel labels carry over to the tool panel labels,
   }
 });
 
-test('a light already saved on a tool panel label is not overwritten by an older one', () => {
+test('a light already saved on a newer label is not overwritten by an older one', () => {
   const app = boot({ lights: {
     'unity-unicorn-L1-module': { on: false, fix: false }, 'unity-unicorn-L1-panel': { on: false, fix: true }, 'unity-unicorn-L1-tool-panel': { on: true, fix: true },
     'unity-unicorn-L3-module': { on: false, fix: false }, 'unity-unicorn-L3-panel': { on: true, fix: true },
   }, added: [], lastOpened: null });
   const lights = app.stored().lights;
-  assert.deepEqual(lights['unity-unicorn-L1-tool-panel'], { on: true, fix: true });
-  assert.deepEqual(lights['unity-unicorn-L3-tool-panel'], { on: true, fix: true }, 'the -panel light is newer than the -module one');
-  for (const o of ['L1-module', 'L1-panel', 'L3-module', 'L3-panel']) assert.equal(lights['unity-unicorn-' + o], undefined, o);
+  assert.deepEqual(lights['unity-unicorn-L1-control-panel'], { on: true, fix: true }, 'the -tool-panel light is the newest');
+  assert.deepEqual(lights['unity-unicorn-L3-control-panel'], { on: true, fix: true }, 'the -panel light is newer than the -module one');
+  for (const o of ['L1-module', 'L1-panel', 'L1-tool-panel', 'L3-module', 'L3-panel']) assert.equal(lights['unity-unicorn-' + o], undefined, o);
 });
 
 test('a first visit starts with every tool panel light on and working', () => {

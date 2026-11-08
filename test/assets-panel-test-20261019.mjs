@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
+import { panels, panelScript } from './page-parts-20261108.mjs';
 
 const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
 const list = JSON.parse(readFileSync(new URL('../docs/assets-we-created-20261019.json', import.meta.url), 'utf8'));
@@ -14,15 +15,16 @@ const between = (text, open, close) => {
   const end = start < 0 ? -1 : text.indexOf(close, start + open.length);
   return end < 0 ? '' : text.slice(start, end + close.length);
 };
-const section = between(html, '<section id="uu-panels"', '</section>');
-const script = between(section, '<script>', '</script>').slice('<script>'.length, -'</script>'.length);
+// The panels and their script, where the hub frame put them (2026-10-24).
+const section = panels;
+const script = panelScript;
 
-test('avatar assets sit in the Avatar tools tab and world assets in the World tools tab, never together', () => {
+test('avatar assets sit on the avatar side and world assets on the world side, never together', () => {
   const at = (s) => section.indexOf(s), avatarTab = at('id="uu-side-avatar"'), worldTab = at('id="uu-side-world"');
   assert.ok(section.includes('data-item="unity-unicorn-avatar-assets-tool-panel"></span>unity-unicorn-avatar-assets-tool-panel<'));
   assert.ok(section.includes('data-item="unity-unicorn-world-assets-tool-panel"></span>unity-unicorn-world-assets-tool-panel<'));
-  assert.ok(at('id="uu-assets-avatar"') > avatarTab && at('id="uu-assets-avatar"') < worldTab, 'avatar assets are in the avatar tab');
-  assert.ok(at('id="uu-assets-world"') > worldTab, 'world assets are in the world tab');
+  assert.ok(at('id="uu-assets-avatar"') > avatarTab && at('id="uu-assets-avatar"') < worldTab, 'avatar assets are on the avatar side');
+  assert.ok(at('id="uu-assets-world"') > worldTab, 'world assets are on the world side');
   assert.ok(!section.includes('unity-unicorn-assets-we-created<'), 'no mixed assets panel is left');
 });
 
@@ -46,8 +48,13 @@ test('every asset has a known side and type, a licence, and says where it is use
 });
 
 class Element {
-  constructor(tag) { this.tag = tag; this.children = []; this.dataset = {}; this.attrs = {}; this.textContent = ''; this.files = []; }
+  constructor(tag) { this.tag = tag; this.children = []; this.dataset = {}; this.attrs = {}; this.textContent = ''; this.files = []; this.style = {}; }
   append(...items) { this.children.push(...items); }
+  prepend(...items) { this.children.unshift(...items); }
+  addEventListener() {}
+  querySelector() { return null; }
+  querySelectorAll() { return []; }
+  get classList() { return { add() {}, remove() {}, toggle() {}, contains: () => false }; }
   replaceChildren(...items) { this.children = [...items]; }
   replaceWith(other) { this.replacedBy = other; }
   setAttribute(k, v) { this.attrs[k] = String(v); }

@@ -7,8 +7,8 @@ import { loadRecipes, encodePng, renderMatcap } from '../scripts/matcap-palette/
 
 const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
 const { MC_RECIPES, MC, MC_FAMILIES } = loadRecipes();
-const sectionStart = html.indexOf('<section id="uu-panels"');
-const section = html.slice(sectionStart, html.indexOf('</section>', sectionStart));
+// The panels, where the hub frame put them (2026-10-24).
+import { panels as section } from './page-parts-20261108.mjs';
 
 test('the matcap panel is a labelled uu-panel inside the panels section', () => {
   assert.ok(section.includes('data-item="unity-unicorn-matcap-tool-panel"></span>unity-unicorn-matcap-tool-panel<'));

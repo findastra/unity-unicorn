@@ -203,8 +203,11 @@
   (function () {
     if (!document.querySelector('button.light[data-unseen]')) return;
     if (!(location.protocol === 'file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname))) return;
-    // From apps/pet-programs/ in Documents\Astra's PetOS\astras-pet-os up to Documents.
-    var LOCAL_PROGRAMS = "../../../../Astra's PetOS Data/benchmark-rock/programs-page-data.js";
+    // Up to Documents: four folders from the hub's apps/pet-programs/ (Documents\Astra's PetOS\astras-pet-os), two from a
+    // pet repo's own page (Documents\Astra's PetOS\<repo>). Unity Unicorn's page used the hub's four, so its program
+    // lights never found the watch (2026-11-08 audit).
+    var UP = /\/apps\/pet-programs\/[^\/]*$/.test(location.pathname) ? "../../../../" : "../../";
+    var LOCAL_PROGRAMS = UP + "Astra's PetOS Data/benchmark-rock/programs-page-data.js";
     function load() {
       var script = document.createElement('script');
       script.setAttribute('src', LOCAL_PROGRAMS + '?t=' + Date.now());

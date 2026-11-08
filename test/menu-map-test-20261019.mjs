@@ -6,8 +6,8 @@ import vm from 'node:vm';
 
 const html = readFileSync(new URL('../unity-unicorn-20261008.html', import.meta.url), 'utf8');
 const sample = JSON.parse(readFileSync(new URL('../docs/menu-map-sample-20261019.json', import.meta.url), 'utf8'));
-const sectionStart = html.indexOf('<section id="uu-panels"');
-const section = html.slice(sectionStart, html.indexOf('</section>', sectionStart));
+// The panels, where the hub frame put them (2026-10-24).
+import { panels as section } from './page-parts-20261108.mjs';
 const block = (id) => {
   const start = html.indexOf(`<script id="${id}">`);
   assert.ok(start > 0, id);
