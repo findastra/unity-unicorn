@@ -11,7 +11,7 @@
 
 The pet frame in the side rail is now square at every window width. Its height came from a minimum height while its width followed the rail, so it was 176×190 on wide windows, 151×190 on laptop widths (where the 165px pet also overflowed and was clipped) and 70×77 on phones. The frame now uses `aspect-ratio: 1/1` and the pet scales with it.
 
-Layout only: records, storage keys, exports and behaviour are unchanged. The same fix was applied to all eight rail-style pet apps from one shared script in the Cage repository, `scripts/square-pet-well-20261009.mjs`.
+Layout only: records, storage keys, exports and behaviour are unchanged. The same fix was applied to all eight rail-style pet apps from one shared script in the hub repository, `scripts/square-pet-well-20261009.mjs`.
 
 ## Validation
 
