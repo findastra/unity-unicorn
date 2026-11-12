@@ -203,6 +203,10 @@ h3 { font-size: 15px; } h4 { font-size: 13.5px; margin-top: 10px; }
 .light:active { transform: scale(.9); box-shadow: inset 0 2px 2px rgba(0, 0, 0, .4); }
 .light.onoff { background: var(--on); }
 .light.onoff.is-off { background: var(--off); }
+/* A 3rd party program opening or closing after its light was clicked (2026-11-06): it blinks until the watch answers. */
+.light.onoff.is-busy { animation: light-busy .6s ease-in-out infinite alternate; }
+@keyframes light-busy { to { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .light.onoff.is-busy { animation: none; opacity: .6; } }
 .light.care { background: var(--care); }
 .light.care.is-fix { background: var(--fix); }
 .light.is-unset { background: var(--planned); }
