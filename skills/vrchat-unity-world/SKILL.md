@@ -5,7 +5,7 @@ description: Work on the owner's Unity/VRChat worlds (Astra's Infinite Pole) wit
 
 # VRChat world work in Unity (Claude)
 
-Pair this with `%USERPROFILE%\.codex\skills\blender-unity-assets\SKILL.md` for Blender meshes.
+Pair this with the `blender-unity-assets` skill for Blender meshes (its master is in this repo, `skills/blender-unity-assets/`).
 
 ## 0. Before touching anything
 - Open the caretaker pet's panels on the right (skill `show-pet-panel`): Unity Stable for Unity Unicorn's tools and assets, Infinite Studio for Astra's Infinite Pole when it has a page.
@@ -16,7 +16,10 @@ Pair this with `%USERPROFILE%\.codex\skills\blender-unity-assets\SKILL.md` for B
 - **Where things live (2026-10-18):**
   - Unity world and avatar projects live on the external drive, `D:\personal-files\unity\VRChatProjects\<repo>`, backed up on GitHub (Astra, 2026-10-25; not under Astra's PetOS). Astra's Infinite Pole is `D:\personal-files\unity\VRChatProjects\astras-infinite-pole` (moved 2026-10-25 from `Documents\ChatGPT\Mommy's Discord\Astra-Infinite-Pole`).
   - D: is exFAT, so git needs a `safe.directory` entry per repo there. Change nothing on D: without Astra's OK for that change; never move a project folder yourself.
+  - On D: that includes agent-queue `.cmd` files, Unity saves and `Review/` reports (Astra, 2026-10-25: "dont change anything in the external drive"): ask for that task first. Reading, hashing and copying from D: is fine.
   - The world's caretaker pet is **Pole Puff** (program Infinite Studio). Reusable Unity/Blender tools belong to **Unity Unicorn**.
+  - Find the project yourself (Everything, her folders, past chats, skill `find-things`) and open it yourself; never ask her where it is or to open it (Astra, 2026-10-19).
+- **A new world starts fresh (Astra, 2026-10-18):** VRChat Creator Companion's World template (`%LOCALAPPDATA%\VRChatCreatorCompanion\VRCTemplates\World`) plus the SDK from VCC's `Repos` cache. Never copy another world's Packages, ProjectSettings, shaders, scenes or scripts; take only the pieces she names, and ask before bringing their materials, shaders or scripts. The agent queue and desktop test may be reused. Its first steps, in order, are a public findastra repo and a link with a cute one-line summary on her profile README, both done by Unity Unicorn's `world-spawn-tool` (`--check`, `--create-repo`, `--profile-pr`, then `--apply`).
 - Read the workspace `AGENTS.md` and the newest `ACTIVITY.md` entries (`Documents\ChatGPT\Mommy's Discord\`). Then read the project's `AGENTS.md`, `CLAUDE.md` and `docs/agent-coordination.md`, and claim exact files on that board.
 - **Push before you stop (Astra, 2026-10-12):**
   - Commit to `claude/<topic>-YYYYMMDD` and push it, even if unfinished. Work that is only on the PC counts as lost.
@@ -27,12 +30,15 @@ Pair this with `%USERPROFILE%\.codex\skills\blender-unity-assets\SKILL.md` for B
 - The scene and `Assets/SerializedUdonPrograms` are often already dirty from other agents. Preserve that work. Back up the scene and any assets you will change to `Review/Backups/<task>/` first.
 
 ## 1. Unity: never relaunch it
-- Never close, kill or batchmode-launch Unity on an open project, because the VRChat SDK sign-in is lost each time. If Unity isn't running (`tasklist | grep Unity.exe`), open it normally once:
-  `Start-Process "C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe" -ArgumentList '-projectPath','"<project>"'`
+- Never close, kill or batchmode-launch Unity on an open project, because the VRChat SDK sign-in is lost each time. If Unity isn't running (`tasklist | grep Unity.exe`), open it once, the way she would (2026-10-19):
+  - Write a `.lnk` in your scratchpad (WScript.Shell) with target `C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Unity.exe` and arguments `-projectPath "<project>" -logFile "<project>\Logs\<name>.log"`, then run `explorer.exe "<lnk>"`.
+  - Explorer starts Unity outside the Claude app, so Unity reads her real settings, where the VRChat SDK sign-in lives. `Start-Process` from a Claude shell runs Unity inside the app's private copy of AppData and the sign-in is missing.
 - Then wait for a new timestamp in `Review/agent-queue/_listener.txt`. The SDK restores its sign-in after about 30–60 s; check with `status`.
+- A project that was closed for a while re-saves its generated Udon assets when it opens (line endings only). Say so in the handoff and don't commit them.
+- Editors can close on their own. If a `.cmd` sits unanswered, check that Unity is still running before you wait longer.
 - Drive the editor by writing `Review/agent-queue/<name>.cmd` and reading `<name>.result.txt`. Commands: `status`, `refresh`, `save`, `menu Astra/...` (it saves the scene first), `desktop-test`, `build`.
   - `upload` only after the owner says yes in chat.
-- After each `refresh`, wait about 45 s, then grep the new lines of `%LOCALAPPDATA%\Unity\Editor\Editor.log` for `error CS` and `Shader error`.
+- After each `refresh`, wait about 45 s, then grep the new lines of the project's own log (`-logFile`, above) for `error CS` and `Shader error`. `%LOCALAPPDATA%\Unity\Editor\Editor.log` is shared by every open editor, so it can't say which project failed.
 - Put tools in `Assets/Astra/Editor/Claude*.cs` as `[MenuItem("Astra/Claude/..")]`, so the queue can run them. Each tool writes a report to `Review/<task>/`.
 
 ## 2. Editor-script gotchas seen here
@@ -87,6 +93,7 @@ Pair this with `%USERPROFILE%\.codex\skills\blender-unity-assets\SKILL.md` for B
 - Before you replace a mesh asset, search the scene for every renderer that uses it.
 - Put new shader looks behind a material keyword, so other materials sharing the shader stay unchanged.
 - Render before and after the same way: fix the orbit pose (t = 35 s) and restore every transform you posed afterwards. Shoot close, about 15 m and bird's-eye, plus orthographic top and side collider overlays (`Hidden/Internal-Colored`, ZTest Always). Then look at them. The bloom-heavy pink world hides faint texture and exaggerates dark blotches.
+- Pictures of the Unity editor itself: never `InternalEditorUtility.ReadScreenPixel`, which reads the screen and once caught her private chat lying over the window (2026-10-19). Use `PrintWindow` from outside, or `GUIView.GrabPixels` from inside Unity, and crop off folder lines that show her user name.
 - A reviewing agent checks the actual files and renders. Report exact paths, counts and what you didn't verify.
 
 ## 5. Desktop test
