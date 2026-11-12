@@ -54,7 +54,7 @@ test('every tool is in one related group, and the toolset sorts by group, then A
 // Since 2026-10-24 the page is the hub's pet program frame (last night's Wonderland Launchpad layout), with Unity
 // Stable's own tools in its L1 control panel, each listed once.
 test('L1 is the hub frame: programs as pills with a count, then the native tools, each once', () => {
-  assert.ok(html.includes('<h3>3rd party programs · 6</h3><ul class="items"><li class="pill">'));
+  assert.ok(html.includes('<h3>3rd party programs · 7</h3><ul class="items"><li class="pill">'));
   assert.ok(!html.includes('class="side-avatar"') && !html.includes('class="side-world"'), 'the hub pills for the tools are replaced by the toolset');
   assert.ok(html.includes('<section class="wide uu"><h3>Native tools · 85</h3>'));
   for (const k of ['avatar-build', 'avatar-sparkles', 'avatar-effects', 'avatar-records', 'every-world', 'piranesi-house', 'astras-infinite-pole', 'liminal-doors'])

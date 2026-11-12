@@ -11,8 +11,8 @@ const pet = JSON.parse(read('pet.json'));
 const L1 = pet.intelligence_levels.L1;
 const sparkleDoc = JSON.parse(read('docs/world-sparkle-tools-20261019.json'));
 const cs = read('scripts/unity-editor/vine-spawn-with-trumpet-flowers-20261019.cs');
-const sectionStart = html.indexOf('<section id="uu-panels"');
-const section = html.slice(sectionStart, html.indexOf('</section>', sectionStart));
+// The panels, where the hub frame put them (2026-10-24).
+import { panels as section } from './page-parts-20261108.mjs';
 const block = (id) => {
   const start = html.indexOf(`<script id="${id}">`);
   assert.ok(start > 0, id);
@@ -74,49 +74,23 @@ class Element {
   set innerHTML(_) { throw new Error('Page text must never be rendered as HTML.'); }
 }
 
-test('the page puts every row in its own panel, once, on the right side', () => {
-  const script = (() => { const s = section.indexOf('<script>'); return section.slice(s + 8, section.indexOf('</script>', s)); })();
-  const nodes = new Map([...section.matchAll(/\bid="([^"]+)"/g)].map((m) => [m[1], new Element('div')]));
-  const document = {
-    getElementById: (id) => { assert.ok(nodes.has(id), 'Missing DOM element ' + id); return nodes.get(id); },
-    querySelectorAll: () => [],
-    createElement: (tag) => new Element(tag),
-    createTextNode: (text) => text,
-  };
-  const sandbox = { document, localStorage: { getItem: () => null, setItem: () => {} }, setInterval: () => 0, setTimeout: () => 0, confirm: () => true, alert: () => {}, URL, Blob };
-  vm.createContext(sandbox); vm.runInContext(script, sandbox);
-  const rows = new Map();
-  const toolList = (id) => /^uu-(avatar-(build|sparkles|effects|records)|every-world|world-|sparkle-)/.test(id);
-  for (const [id, node] of nodes) if (toolList(id)) for (const li of node.children) if (li.tag === 'li') {
-    const name = li.children.find((c) => c.className === 'uu-name');
-    if (name) { assert.ok(!rows.has(name.textContent), name.textContent + ' is in two panels'); rows.set(name.textContent, id); }
-  }
-  const sideOfList = (id) => {
-    const at = section.indexOf(`id="${id}"`);
-    return at > section.indexOf('id="uu-side-world"') ? 'world' : at > section.indexOf('id="uu-side-avatar"') ? 'avatar' : 'neither';
-  };
-  for (const [n, , , panel] of TOOLS_MAIN) {
-    if (panel.startsWith('own-')) { assert.ok(!rows.has(n), n + ' is its own panel, not a row'); continue; }
-    assert.equal(sideOfList(rows.get(n)), SIDE(panel), n);
-  }
-  for (const [n, , , , panel] of UNMERGED) assert.equal(sideOfList(rows.get(n)), SIDE(panel), n);
-  for (const [n, w] of IN_WORLDS) assert.equal(rows.get(n), 'uu-world-' + w, n);
-  for (const [n, w] of SPARKLES) assert.equal(rows.get(n), 'uu-sparkle-' + w, n);
-  // the tools that are their own panel sit on their side
+// Since 2026-10-24 the tool rows are cards in the toolsets (tool-categories-test-20261024.mjs checks those), and since
+// 2026-10-28 there are two toolsets instead of Avatar | World tabs. What is left of the two sides: the tools that are
+// their own panel sit on their side, and the sides are two plain divs, avatar first.
+test('the tools that are their own panel sit on their side', () => {
   const at = (s) => section.indexOf(s);
-  for (const [label, side] of [['unity-unicorn-matcap-tool-panel', 'avatar'], ['unity-unicorn-menu-map-tool-panel', 'avatar'], ['unity-unicorn-vine-spawn-tool-panel', 'world']]) {
+  for (const [label, side] of [['unity-unicorn-matcap-tool-panel', 'avatar'], ['unity-unicorn-menu-map-tool-panel', 'avatar'], ['unity-unicorn-avatar-assets-tool-panel', 'avatar'], ['unity-unicorn-vine-spawn-tool-panel', 'world'], ['unity-unicorn-world-sparkles-tool-panel', 'world'], ['unity-unicorn-world-assets-tool-panel', 'world']]) {
     const p = at(`data-item="${label}"`);
+    assert.ok(p > 0, label);
     assert.ok(side === 'world' ? p > at('id="uu-side-world"') : p > at('id="uu-side-avatar"') && p < at('id="uu-side-world"'), label + ' on the ' + side + ' side');
   }
-  assert.equal(nodes.get('uu-avatar-count').textContent, String(L1.sides.avatar.length));
-  assert.equal(nodes.get('uu-world-count').textContent, String(L1.sides.world.length + IN_WORLDS.length));
-  assert.match(nodes.get('uu-n-sparkles').textContent, new RegExp(`${SPARKLES.length} in 3 worlds`));
+  for (const [n, , , panel] of TOOLS_MAIN) if (panel.startsWith('own-')) assert.ok(L1.sides[SIDE(panel)].includes(n), n + ' side');
 });
 
-test('the two sides are tabs over plain divs, so the panels section is still one section', () => {
-  assert.equal((section.match(/<section/g) || []).length, 1, 'no section inside the panels section');
-  assert.ok(section.includes('role="tablist"') && section.includes('id="uu-tab-avatar"') && section.includes('id="uu-tab-world"'));
-  assert.ok(section.includes('<div class="uu-side" id="uu-side-avatar"') && section.includes('<div class="uu-side" id="uu-side-world"'));
+test('the two sides are plain divs, avatar first, with no tabs left over', () => {
+  assert.ok(section.includes('<div class="uu-side" id="uu-side-avatar" data-side="avatar">') && section.includes('<div class="uu-side" id="uu-side-world" data-side="world">'));
+  assert.ok(section.indexOf('id="uu-side-avatar"') < section.indexOf('id="uu-side-world"'));
+  assert.ok(!section.includes('role="tablist"') && !section.includes('id="uu-tab-avatar"'), 'the Avatar | World tabs are gone');
 });
 
 const vine = vm.createContext({});
