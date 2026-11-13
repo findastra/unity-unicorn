@@ -624,7 +624,7 @@ input[type="checkbox"] { accent-color: var(--line); }
 /* On a phone the footer piles together (Astra, 2026-10-23: "unified footer needs to squish together cutely"; "links like
    icons in footer should be same size as pets"; "no borders. put the By Astra and Find Out More on the top, can you get
    all of them in a row, put the photo star between the by astra and find out more"): By Astra, the photostar and Find
-   Out More across the top, the five links as pet-sized pictures in one row under them, the languages last. */
+   Out More across the top, the links as pet-sized pictures in one row under them (since 2026-11-13 only her GitHub; auto-fit keeps it centered), the languages last. */
 @media (max-width: 760px) {
   /* The same order as on a computer (2026-10-24): By Astra ✦ photostar ✦ Find Out More, the links on the row below. */
   .footer-line { display: grid; grid-template-columns: repeat(4, auto); grid-template-areas: "by spark star more" "icons icons icons icons";
@@ -635,7 +635,7 @@ input[type="checkbox"] { accent-color: var(--line); }
   .footer-more::before { content: none; }
   .footer-more > .footer-title { grid-area: more; }
   .footer-more > .footer-title::before { content: "✦"; color: #d994c6; font-size: 12px; margin-right: 10px; }
-  .footer-icons { grid-area: icons; display: grid; grid-template-columns: repeat(5, minmax(0, 56px)); gap: 4px; width: 100%; justify-content: center; }
+  .footer-icons { grid-area: icons; display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 56px)); gap: 4px; width: 100%; justify-content: center; }
   .footer-icons a { width: 100%; max-width: 56px; height: auto; aspect-ratio: 1; }
   .footer-icons svg { width: 32px; height: 32px; }
   .languages .tag { font-size: 11px; padding: 0 7px; }
