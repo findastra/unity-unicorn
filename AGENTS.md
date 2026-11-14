@@ -2,25 +2,6 @@
 
 Public credit is always Astra.
 
-Browser interface prepared with Codex (GPT-6), 2026-10-08. Record the model and version when another assistant changes this repository.
-Square pet frame (`v0.1.1-20261009`) fixed with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09.
-Skill book `docs/skills-20261009.md` started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. After avatar or world sessions, add learned skills to its categories and append to its session log, without account details, blueprint IDs or machine paths.
-Avatar tracker and plans (`docs/avatar-tracker-20261009.md`, `docs/avatar-plans-20261009.md`) started with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-09. Rules: every avatar asset folder keeps an `Edit Log - <avatar>-<date>.txt`, so create one from the template when it's missing. Refresh both files on each routine scan. When an avatar's licence may not allow uploads to more than one account, upload to findノastra only. Poppy's thumbnail is always `art/avatars/poppy-20261009.jpg` (the original is kept beside Poppy's assets); use it for every Poppy upload and tracker row. Fae's thumbnail is always `art/avatars/fae-20261009.jpg` (the original is kept beside Fae's assets).
-
-Tool library and private report imports prepared with Codex (GPT-6), 2026-10-11.
-marble-carver and vine-bloomer tools, scripts and guides added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
-neck-blender tool, script and guide added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
-face-transfer tool, script and guide added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-11.
-Realistic-props guide, prop-decomposer and realistic-prop-restyle tools, and the asset ledger's Downloads section added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
-Framework modules on the page (L1 to L4, session notes, emotions, clicker training, footer, chat) added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
-world-spawn-tool moved in from findastra/liminal-doors, and pet.json `intelligence_levels` added, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
-Module labels on each box's top border, the cyberhome's own label, the sketch's summary and mood names (0.4.1) with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
-Panels, not modules (0.4.2): the page boxes are panels (`unity-unicorn-L1-panel` to `-L4-panel`, `uu-panels`, `uu-panel`), saved lights carried over, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19 (Astra's decision of the same day). A module is a file of code; never call a page box a module again.
-Matcap palette panel (unity-unicorn-matcap-panel), the matcap-palette Unity window and the PNG maker added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. The 48 palette matcaps are drawn from math in the page's `uu-matcap-recipes` script; never commit matcaps that came with avatars or shaders.
-Menu map panel (unity-unicorn-menu-map-panel) and the menu-map Unity export added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. The sample menu map uses made-up names; never commit a menu map, icon or parameter list exported from Astra's avatars (they hold paid assets' names and icons).
-vcc-package-manager and vrchat-avatar-upload moved from L1 tools to L2 tricks to write (0.4.5; astras-pet-os PR #114, Astra's decision of 2026-10-19); their catalog files stay, marked `Trick to write`, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19.
-unity-asset-creator, unity-assets-library and shaders-shop moved in from findastra/liminal-doors unchanged (`scripts/unity-asset-creator/`, `scripts/shaders-shop/`, their catalog files and guides), and the unity-asset-creator trick (`skills/unity-asset-creator/`), with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19 (0.4.6). The trick is listed as `unity-asset-creator-trick` in `pet.json` and on the page, because no item may be both a tool and a trick. Change these tools here first, then in the worlds that use them. The trick's step table and `AssetChecklist.cs` must list the same steps in the same order (`test/asset-tools-test-20261019.mjs`).
-
 ## Scope
 
 Working offline draft: purpose-specific records, editing, status changes, search, local browser storage, JSON and Markdown exports. External integrations are planned.
@@ -44,11 +25,27 @@ Check the actual browser script syntax and meaningful user flows after behavior 
 
 Hub: https://github.com/findastra/astras-pet-os. Repository topic: `pet-app`.
 
-Tool-library interface sync: OpenAI Codex (GPT-6), 2026-10-11. Local machine seed and user exports must remain outside Git.
+## Pictures and avatars
 
-Pictures moved to the hub (one art source, Flash Audit A58, Astra 2026-10-18): every picture of Unity Unicorn lives only in [findastra/astras-pet-os](https://github.com/findastra/astras-pet-os) (`art/frames/unity-unicorn/`); this repo links to them and keeps no copy, so change a picture there, never here. By Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
-Avatar tools and world tools as two tabs of panels, the world sparkle tools panel (`docs/world-sparkle-tools-20261019.json`), the Piranesi House, Infinite Pole and Liminal Doors tool panels, `pet.json` `L1.sides` and `L1.tools_in_worlds`, and vine-spawn-with-trumpet-flowers (page panel, Unity window and its job inbox) added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19 (0.5.0). Every tool is in exactly one panel (`test/avatar-and-world-tools-test-20261019.mjs`); the vine panel's palette, limits and job file must match the Unity tool's.
-vine-spawn-with-trumpet-flowers fixed after its first real use (an optional Leaf glow and job setting `leaf_glow`, 0 unless turned up and offered for the Pole; Flower glow 0.4; the window opening centred and wrapping; vines starting and growing only where the object is open to the world), with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. A new job setting stays optional: a job without it gets the default, and the schema stays v1. A new default must not change vines that already look right in a world. Liminal Doors calls `VineBuilder20261019.Grow` by name through reflection: keep exactly one `Grow` and the `VineSettings20261019` field names and types. Vine tests set `VineInbox20261019.OnlyProjectInbox`, so they never take a real job from Downloads.
-Assets we created panel (`unity-unicorn-assets-we-created`, `docs/assets-we-created-20261019.json`, `test/assets-panel-test-20261019.mjs`) added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. When you make or export an asset, add its row there, with every world and avatar it is used in.
-Made-by panel (`unity-unicorn-made-by-panel`, `docs/made-by-20261019.json`) and the assets panel split into the avatar and world tabs, with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. A new tool gets a made-by row: who made it, when, and where it was first made.
-Tool panels (0.5.1; Astra, 2026-10-19: "I do want all of it to say tool panel instead of just panel"; astras-pet-os#129, card 047 task 7): every page box label that ended in `-panel` ends in `-tool-panel` (`unity-unicorn-L1-tool-panel` to `-L4-tool-panel`, and the 15 other tool panels such as `unity-unicorn-matcap-tool-panel` and `unity-unicorn-made-by-tool-panel`), with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-19. Lights saved on the old `-panel` and `-module` labels carry over (the page's `RENAMED` list); give a new tool panel a `-tool-panel` label from the start. Code names stay (`uu-panels`, `uu-panel`, the chat panel), and so do the Unity scripts' own words.
+- One art source (Flash Audit A58, Astra 2026-10-18): every picture of Unity Unicorn lives only in [findastra/astras-pet-os](https://github.com/findastra/astras-pet-os) (`art/frames/unity-unicorn/`); this repo links to them and keeps no copy, so change a picture there, never here.
+- Every avatar asset folder keeps an `Edit Log - <avatar>-<date>.txt`, so create one from the template when it's missing. Refresh the avatar tracker and plans (`docs/avatar-tracker-20261009.md`, `docs/avatar-plans-20261009.md`) on each routine scan.
+- When an avatar's licence may not allow uploads to more than one account, upload to findノastra only.
+- Poppy's thumbnail is always `art/avatars/poppy-20261009.jpg` (the original is kept beside Poppy's assets); use it for every Poppy upload and tracker row. Fae's thumbnail is always `art/avatars/fae-20261009.jpg` (the original is kept beside Fae's assets).
+- After avatar or world sessions, add learned skills to the categories of the skill book `docs/skills-20261009.md` and append to its session log, without account details, blueprint IDs or machine paths.
+
+## Tools, tricks and tool panels
+
+- Tool panels (Astra, 2026-10-19: "I do want all of it to say tool panel instead of just panel"; astras-pet-os#129): give a new tool panel a `-tool-panel` label from the start. Lights saved on the old `-panel` and `-module` labels carry over (the page's `RENAMED` list). Code names stay (`uu-panels`, `uu-panel`, the chat panel), and so do the Unity scripts' own words.
+- A module is a file of code; never call a page box a module again (Astra's decision of 2026-10-19).
+- Every tool is in exactly one tool panel (`test/avatar-and-world-tools-test-20261019.mjs`); the vine tool panel's palette, limits and job file must match the Unity tool's.
+- vine-spawn-with-trumpet-flowers: a new job setting stays optional: a job without it gets the default, and the schema stays v1. A new default must not change vines that already look right in a world. Liminal Doors calls `VineBuilder20261019.Grow` by name through reflection: keep exactly one `Grow` and the `VineSettings20261019` field names and types. Vine tests set `VineInbox20261019.OnlyProjectInbox`, so they never take a real job from Downloads.
+- The 48 palette matcaps are drawn from math in the page's `uu-matcap-recipes` script; never commit matcaps that came with avatars or shaders.
+- The sample menu map uses made-up names; never commit a menu map, icon or parameter list exported from Astra's avatars (they hold paid assets' names and icons).
+- When you make or export an asset, add its row to `docs/assets-we-created-20261019.json`, with every world and avatar it is used in.
+- A new tool gets a made-by row in `docs/made-by-20261019.json`: who made it, when, and where it was first made.
+- Change unity-asset-creator, unity-assets-library and shaders-shop (`scripts/unity-asset-creator/`, `scripts/shaders-shop/`, their catalog files and guides) here first, then in the worlds that use them.
+- No item may be both a tool and a trick, so the unity-asset-creator trick (`skills/unity-asset-creator/`) is listed as `unity-asset-creator-trick` in `pet.json` and on the page. The trick's step table and `AssetChecklist.cs` must list the same steps in the same order (`test/asset-tools-test-20261019.mjs`).
+- vcc-package-manager and vrchat-avatar-upload are L2 tricks to write, not L1 tools (astras-pet-os PR #114, Astra's decision of 2026-10-19); their catalog files stay, marked `Trick to write`.
+- The tool library's local machine seed and user exports must remain outside Git.
+
+Built with Codex (GPT-6), 2026-10-08. Record each change in its own new file in `changes/` (`changes/<topic>-YYYYMMDD.md`, the hub's rule of 2026-10-21), never as a new line here. The lines that stood here before are in [changes/history-20261008-20261019.md](changes/history-20261008-20261019.md).
