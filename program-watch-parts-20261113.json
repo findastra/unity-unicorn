@@ -1,0 +1,10 @@
+{
+  "about": "Unity Unicorn's parts of the lights on Unity Stable's page (Astra, 2026-11-13: these belong to Unity Unicorn, not to Inference Iguana). Inference Iguana's Benchmark Rock reads this file from the folder next to its own: when Unity's red light is pressed it runs the opener script below instead of opening Unity on its own.",
+  "pet": "Unity Unicorn",
+  "openers": [
+    { "program": "unity-editor", "script": "scripts/unity-editor/open-newest-project-20261113.ps1" }
+  ],
+  "cannot_open": {
+    "unity-mcp": "It runs inside the Unity editor (Window, MCP for Unity), so it starts when Unity opens a project that has it: press Unity's light instead."
+  }
+}
