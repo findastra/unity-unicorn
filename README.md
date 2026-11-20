@@ -103,7 +103,8 @@ Limits: the lights, the backlog and added items are saved in this browser only, 
 ## world-spawn-tool (2026-10-18)
 
 - **world-spawn-tool**: spawns a new VRChat world. First a public GitHub repo, then a link with a cute one-line summary in the Findastra profile README (by pull request), then the Unity project skeleton. It started in Liminal Doors (draft findastra/liminal-doors#1) and moved here, its own pet program, on 2026-10-18. Guide: [docs/world-spawn-tool-20261018.md](docs/world-spawn-tool-20261018.md); code and tests in `scripts/world-spawn-tool/`.
-- Limit: its skeleton step still copies from a reference world. Astra's rule since 2026-10-18 is that new worlds start fresh from VCC's World template, so change that step before the next world.
+- Since 0.2.0 (2026-10-19) the skeleton step starts fresh from VCC's World template and the VRChat SDK in VCC's package cache; it never copies another world. When gh can't sign in from Python, the tool checks through GitHub's public API and prints the gh command to run from the shell.
+- Limits: steps 4 to 6 (pieces Astra names, the first import, git) are still by hand, and no spawned skeleton has been opened in Unity yet. First real use: Mommy's World, 2026-10-19, steps 1 and 2 only.
 
 `pet.json` now has the framework's `intelligence_levels` block: every tool in L1 (on `main`, and not merged with its pull request), tricks in L2, harness skills in L3, and no item in two panels. Added with Claude Opus 5.5 (`claude-opus-5-5`), 2026-10-18.
 
